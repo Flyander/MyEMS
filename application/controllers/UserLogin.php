@@ -25,11 +25,11 @@ class UserLogin extends CI_Controller
 	 * Function to load when we send an form
 	 */
 	public function userLogin(){
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
 		if($this->form_validation->run() == FALSE){
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('dashboard/welcome_message');
+				$this->load->view('dashboard/login');
 			}
 			else{
 				$this->load->view('Login/loginForm');
@@ -50,7 +50,7 @@ class UserLogin extends CI_Controller
 						'fullname' => $result[0]->Fullname,
 					);
 					$this->session->set_userdata('logged_in', $sessionData);
-					$this->load->view('dashboard/welcome_message');
+					$this->load->view('dashboard/login');
 
 				}
 			}
