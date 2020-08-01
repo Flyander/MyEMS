@@ -7,7 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
 ?>
 <head>
 	<title>Login Form</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
