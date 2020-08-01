@@ -32,7 +32,7 @@ class UserLogin extends CI_Controller
 				$this->load->view('dashboard/welcome_message');
 			}
 			else{
-				$this->load->view('login_form');
+				$this->load->view('Login/loginForm');
 			}
 		}
 		else{
