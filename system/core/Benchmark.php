@@ -26,16 +26,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
+ * @package    CodeIgniter
+ * @author    EllisLab Dev Team
+ * @copyright    Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright    Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license    https://opensource.org/licenses/MIT	MIT License
+ * @link    https://codeigniter.com
+ * @since    Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  * Benchmark Class
@@ -43,18 +43,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * This class enables you to mark points and calculate the time difference
  * between them. Memory consumption can also be displayed.
  *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/benchmark.html
+ * @package        CodeIgniter
+ * @subpackage    Libraries
+ * @category    Libraries
+ * @author        EllisLab Dev Team
+ * @link        https://codeigniter.com/user_guide/libraries/benchmark.html
  */
-class CI_Benchmark {
+class CI_Benchmark
+{
 
 	/**
 	 * List of all benchmark markers
 	 *
-	 * @var	array
+	 * @var    array
 	 */
 	public $marker = array();
 
@@ -64,8 +65,8 @@ class CI_Benchmark {
 	 * Multiple calls to this function can be made so that several
 	 * execution points can be timed.
 	 *
-	 * @param	string	$name	Marker name
-	 * @return	void
+	 * @param string $name Marker name
+	 * @return    void
 	 */
 	public function mark($name)
 	{
@@ -84,28 +85,25 @@ class CI_Benchmark {
 	 * execution time to be shown in a template. The output class will
 	 * swap the real value for this variable.
 	 *
-	 * @param	string	$point1		A particular marked point
-	 * @param	string	$point2		A particular marked point
-	 * @param	int	$decimals	Number of decimal places
+	 * @param string $point1 A particular marked point
+	 * @param string $point2 A particular marked point
+	 * @param int $decimals Number of decimal places
 	 *
-	 * @return	string	Calculated elapsed time on success,
-	 *			an '{elapsed_string}' if $point1 is empty
-	 *			or an empty string if $point1 is not found.
+	 * @return    string    Calculated elapsed time on success,
+	 *            an '{elapsed_string}' if $point1 is empty
+	 *            or an empty string if $point1 is not found.
 	 */
 	public function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
 	{
-		if ($point1 === '')
-		{
+		if ($point1 === '') {
 			return '{elapsed_time}';
 		}
 
-		if ( ! isset($this->marker[$point1]))
-		{
+		if (!isset($this->marker[$point1])) {
 			return '';
 		}
 
-		if ( ! isset($this->marker[$point2]))
-		{
+		if (!isset($this->marker[$point2])) {
 			$this->marker[$point2] = microtime(TRUE);
 		}
 
@@ -123,7 +121,7 @@ class CI_Benchmark {
 	 * without the memory being calculated until the end.
 	 * The output class will swap the real value for this variable.
 	 *
-	 * @return	string	'{memory_usage}'
+	 * @return    string    '{memory_usage}'
 	 */
 	public function memory_usage()
 	{
