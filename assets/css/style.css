@@ -210,3 +210,64 @@ input:focus {
 	width: auto;
 	margin: 20px;
 }
+
+.preloader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 999999;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+
+.preloader:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #ffffff;
+	z-index: 0;
+	-webkit-transform: translateX(0%);
+	-ms-transform: translateX(0%);
+	transform: translateX(0%);
+	-webkit-transition: all 800ms ease;
+	-moz-transition: all 800ms ease;
+	-ms-transition: all 800ms ease;
+	-o-transition: all 800ms ease;
+	transition: all 800ms ease;
+}
+
+.page-loaded .preloader:before {
+	-webkit-transform: translateX(-101%);
+	-ms-transform: translateX(-101%);
+	transform: translateX(-101%);
+}
+
+.preloader:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #1b82e9;
+	z-index: 2;
+	-webkit-transform: translateX(101%);
+	-ms-transform: translateX(101%);
+	transform: translateX(101%);
+	-webkit-transition: all 800ms ease;
+	-moz-transition: all 800ms ease;
+	-ms-transition: all 800ms ease;
+	-o-transition: all 800ms ease;
+	transition: all 800ms ease;
+}
+
+.page-loaded .preloader:after {
+	-webkit-transform: translateX(-101%);
+	-ms-transform: translateX(-101%);
+	transform: translateX(-101%);
+}

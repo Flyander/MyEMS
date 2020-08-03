@@ -59,9 +59,11 @@ class UserLogin extends CI_Controller
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
 		if($this->form_validation->run() == FALSE){
 			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('template/header');
 				$this->load->view('dashboard/login');
 			}
 			else{
+				$this->load->view('template/header');
 				$this->load->view('Login/loginForm');
 			}
 		}
@@ -81,6 +83,7 @@ class UserLogin extends CI_Controller
 						// TODO : Add les autres information nécessaire grade..
 					);
 					$this->session->set_userdata('logged_in', $sessionData);
+					$this->load->view('template/header');
 					$this->load->view('dashboard/login');
 
 				}
@@ -89,6 +92,7 @@ class UserLogin extends CI_Controller
 				$data = array(
 					'error_message' => 'Invalid Username or Password'
 				);
+				$this->load->view('template/header');
 				$this->load->view('Login/loginForm', $data);
 			}
 
