@@ -23,4 +23,13 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('dashboard/login');
 	}
+	public function logout() {
+		$sessionInfo = array(
+			'username' => ''
+		);
+		$this->session->unset_userdata('logged_in', $sessionInfo);
+		$data['message_display'] = 'Successfully Logout';
+		$this->load->view('Login/loginForm', $data);
+	}
+
 }

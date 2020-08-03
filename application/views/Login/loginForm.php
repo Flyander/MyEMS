@@ -4,8 +4,12 @@
 
 			header("location: http://localhost/ems");
 		}
+	if (isset($logout_message)) {
+		echo "<div class='message'>";
+		echo $logout_message;
+		echo "</div>";
+	}
 	?>
-
 	<body>
 		<div class="session">
 			<div class="left"></div>
