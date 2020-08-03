@@ -99,7 +99,6 @@ class UserLogin extends CI_Controller
 			'username' => ''
 		);
 		$this->session->unset_userdata('logged_in', $sessionInfo);
-		$data['message_display'] = 'Successfully Logout';
 		$this->load->view('template/header');
 		$this->load->view('Login/loginForm');
 	}
