@@ -211,6 +211,11 @@ input:focus {
 	margin: 20px;
 }
 
+.error_msg {
+	background-color: #ca1616;
+	border: #000;
+}
+
 .preloader {
 	position: fixed;
 	left: 0px;

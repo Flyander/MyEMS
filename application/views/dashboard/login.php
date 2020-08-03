@@ -6,7 +6,7 @@ $fullname = ($this->session->userdata['logged_in']['fullname']);
 		<div class="preloader"></div>
 		<div id="container">
 			<h1>MyEMS</h1>
-			<?php echo "Bonjour $fullname"  ?>
+			<?php echo "Bonjour $fullname"?>
 		</div>
 		<b id="logout"><a href="logout">Logout</a></b>
 

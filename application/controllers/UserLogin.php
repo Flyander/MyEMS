@@ -90,7 +90,7 @@ class UserLogin extends CI_Controller
 			}
 			else{
 				$data = array(
-					'error_message' => 'Invalid Username or Password'
+					'error_message' => 'Identifiants invalides.'
 				);
 				$this->load->view('template/header');
 				$this->load->view('Login/loginForm', $data);

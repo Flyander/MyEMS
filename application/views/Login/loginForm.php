@@ -2,7 +2,7 @@
 	<?php
 		if (isset($this->session->userdata['logged_in'])) {
 
-			header("location: http://localhost/ems");
+			//header("location: http://localhost/ems");
 		}
 	if (isset($logout_message)) {
 		echo "<div class='message'>";
@@ -18,12 +18,12 @@
 				<p>Se connecter à votre compte</p>
 				<?php echo form_open('UserLogin/userLogin'); ?>
 				<?php
-				echo "<div class='error_msg'>";
 				if (isset($error_message)) {
+					echo "<div style='color: #6b1f33; background-color: #f5d8e0; border-color: #f1c9d3; padding: 15px 15px; width: 250px;' class='error_msg'>";
 					echo $error_message;
+					echo "</div>";
 				}
 				echo validation_errors();
-				echo "</div>";
 				?>
 				<div class="floating-label">
 					<input type="text" name="username" id="username" placeholder="Pseudo" autocomplete="off"/>
