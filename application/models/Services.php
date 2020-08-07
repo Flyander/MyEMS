@@ -8,6 +8,15 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result;
-}
+	}
+	public function startService($hour){
+
+	}
+	public function endService($hour){
+
+	}
+	public function myService($idUser){
+
+	}
 
 }

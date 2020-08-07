@@ -30,14 +30,8 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$isAvailable = $this->Services->isAvailable();
-		$data = $this->session->flashdata('sessionData');
-		/*var_dump($isAvailable);*/
+		$data = $this->session->userdata('sessionData');
 		$this->load->view('template/header');
-		/*if (isset($isAvailable)){
-			$data = array(
-				'onService' => $isAvailable
-			);
-		}*/
 		$this->load->view('dashboard/login',$data);
 	}
 
@@ -46,7 +40,8 @@ class Dashboard extends CI_Controller {
 		redirect('/UserLogin/logout');
 	}
 
-	public function savepdsMyService(){
+	public function pds(){
+
 
 	}
 

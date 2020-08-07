@@ -86,7 +86,7 @@ class UserLogin extends CI_Controller
 						// TODO : Add les autres information nécessaire grade..
 					);
 					$this->load->view('template/header');
-					$this->session->set_flashdata('sessionData', $sessionData);
+					$this->session->set_userdata('sessionData', $sessionData);
 					redirect('/Dashboard/index');
 				}
 			}
