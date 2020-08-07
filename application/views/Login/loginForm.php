@@ -12,9 +12,13 @@
 	?>
 	<body>
 		<div class="session">
-			<div class="left"></div>
+			<div class="left">
+				<h1>Bienvenue sur MyEMS</h1>
+				<p>Bienvenue sur la plateforme MyEMS. Cette plateforme a pour objectif de faciliter le travaille des médecins de Los Santos dans leur quotidien. Elle comprend une gestion avancée des prises de services et des rapports.</p>
+				<a href="https://discord.gg/gtalife"><button class="btn-join">Nous rejoindre</button></a>
+			</div>
 			<div class="form-login">
-				<h4><span>MyEMS</span></h4>
+				<h4><span>Connexion</span></h4>
 				<p>Se connecter à votre compte</p>
 				<?php echo form_open('UserLogin/userLogin'); ?>
 				<?php
@@ -57,7 +61,7 @@
 						</svg>
 					</div>
 				</div>
-				<button type="submit">Se connecter</button>
+				<button class="btn-submit" type="submit">Se connecter</button>
 				<?php echo form_close(); ?>
 			</div>
 		</div>
