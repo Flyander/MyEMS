@@ -10,6 +10,8 @@ class UserLogin extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('loginDatabase');
+		$this->load->model('Services');
+
 
 	}
 
@@ -76,15 +78,16 @@ class UserLogin extends CI_Controller
 			if($result == TRUE) {
 				$username = $this->input->post('username');
 				$result = $this->loginDatabase->readUserInformation($username);
+				$onServiceName = $this->Services->isAvailable();
 				if ($result != false) {
 					$sessionData = array(
 						'username' => $result[0]->username,
 						'fullname' => $result[0]->Fullname,
+						'onServiceName' => $onServiceName
 						// TODO : Add les autres information nécessaire grade..
 					);
-					$this->session->set_userdata('logged_in', $sessionData);
 					$this->load->view('template/header');
-					$this->load->view('dashboard/login');
+					$this->load->view('dashboard/login',$sessionData);
 
 				}
 			}

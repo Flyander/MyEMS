@@ -18,18 +18,28 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct()
+	{
+		$this->load->model('Services');
+	}
+
+
 	public function index()
 	{
+		$isAvailable = $this->Services->isAvailable();
+		var_dump($isAvailable);
 		$this->load->view('template/header');
-		$this->load->view('dashboard/login');
+		if (isset($isAvailable)){
+			$data = array(
+				'onService' => $isAvailable
+			);
 	}
-	public function logout() {
-		$sessionInfo = array(
-			'username' => ''
-		);
-		$this->session->unset_userdata('logged_in', $sessionInfo);
-		$this->load->view('template/header');
-		$this->load->view('Login/loginForm');
+		$this->load->view('dashboard/login',$data);
 	}
+
+	public function savepdsMyService(){
+
+	}
+
 
 }
