@@ -37,7 +37,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['form_validation_required']		= 'The {field} field is required.';
+$lang['form_validation_required']		= '<div style=\'color: #6b1f33; background-color: #f5d8e0; border-color: #f1c9d3; padding: 15px 15px; width: 250px;\'>Le {field} n\'est pas remplie.</div>';
 $lang['form_validation_isset']			= 'The {field} field must have a value.';
 $lang['form_validation_valid_email']		= 'The {field} field must contain a valid email address.';
 $lang['form_validation_valid_emails']		= 'The {field} field must contain all valid email addresses.';

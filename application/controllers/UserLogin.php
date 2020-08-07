@@ -57,8 +57,8 @@ class UserLogin extends CI_Controller
 	 * Function to load when we send an form
 	 */
 	public function userLogin(){
-		$this->form_validation->set_rules('username', 'username', 'trim|required');
-		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$this->form_validation->set_rules('username', 'pseudo', 'trim|required');
+		$this->form_validation->set_rules('password', 'mot de passe', 'trim|required');
 		if($this->form_validation->run() == FALSE){
 			if(isset($this->session->userdata['logged_in'])){
 				$this->load->view('template/header');
