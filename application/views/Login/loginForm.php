@@ -4,11 +4,11 @@
 
 			//header("location: http://localhost/ems");
 		}
-	if (isset($logout_message)) {
-		echo "<div class='message'>";
-		echo $logout_message;
-		echo "</div>";
-	}
+		if (isset($logout_message)) {
+			echo "<div class='message'>";
+			echo $logout_message;
+			echo "</div>";
+		}
 	?>
 	<body>
 		<div class="session">
@@ -49,7 +49,7 @@
 					<input placeholder="Mot de passe" type="password" name="password" id="password" autocomplete="off">
 					<label for="password">Mot de passe :</label>
 					<div class="icon">
-						<svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve"              xmlns="http://www.w3.org/2000/svg">
+						<svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 							<style type="text/css">
 								.st0{fill:none;}
 								.st1{fill:#010101;}

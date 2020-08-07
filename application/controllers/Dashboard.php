@@ -20,6 +20,9 @@ class Dashboard extends CI_Controller {
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+		$this->load->helper(array('url','form','language'));
+		$this->load->library('session');
 		$this->load->model('Services');
 	}
 
@@ -27,14 +30,20 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$isAvailable = $this->Services->isAvailable();
-		var_dump($isAvailable);
+		$data = $this->session->flashdata('sessionData');
+		/*var_dump($isAvailable);*/
 		$this->load->view('template/header');
-		if (isset($isAvailable)){
+		/*if (isset($isAvailable)){
 			$data = array(
 				'onService' => $isAvailable
 			);
-	}
+		}*/
 		$this->load->view('dashboard/login',$data);
+	}
+
+	public function logout()
+	{
+		redirect('/UserLogin/logout');
 	}
 
 	public function savepdsMyService(){

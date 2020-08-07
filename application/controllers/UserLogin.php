@@ -6,13 +6,11 @@ class UserLogin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('form');
+		$this->load->helper(array('url','form','language'));
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('loginDatabase');
 		$this->load->model('Services');
-
-
 	}
 
 	/**
@@ -61,8 +59,9 @@ class UserLogin extends CI_Controller
 		$this->form_validation->set_rules('password', 'mot de passe', 'trim|required');
 		if($this->form_validation->run() == FALSE){
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('template/header');
-				$this->load->view('dashboard/login');
+				//$this->load->view('template/header');
+				//redirect('/dashboard/login');
+				//$this->load->view('dashboard/login');
 			}
 			else{
 				$this->load->view('template/header');
@@ -87,8 +86,8 @@ class UserLogin extends CI_Controller
 						// TODO : Add les autres information nécessaire grade..
 					);
 					$this->load->view('template/header');
-					$this->load->view('dashboard/login',$sessionData);
-
+					$this->session->set_flashdata('sessionData', $sessionData);
+					redirect('/Dashboard/index');
 				}
 			}
 			else{
