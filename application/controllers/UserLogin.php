@@ -109,5 +109,10 @@ class UserLogin extends CI_Controller
 		$this->load->view('template/header');
 		$this->load->view('Login/loginForm');
 	}
+
+	public function pds(){
+
+
+	}
 	
 }

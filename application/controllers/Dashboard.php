@@ -37,9 +37,5 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/login',$data);
 	}
 
-	public function savepdsMyService(){
-
-	}
-
 
 }
