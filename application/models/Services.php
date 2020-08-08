@@ -10,6 +10,9 @@ class Services extends CI_Model
 		return $result;
 	}
 	public function startService($hour){
+		$query = "UPDATE user SET  isAvailable=1 WHERE username='$hour'";
+		$queryResult = $this->db->query($query);
+
 
 	}
 	public function endService($hour){

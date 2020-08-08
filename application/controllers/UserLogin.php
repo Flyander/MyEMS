@@ -110,8 +110,19 @@ class UserLogin extends CI_Controller
 	}
 
 	public function pds(){
-
+		$username = $this->input->get('id');
+		$this->Services->startService($username);
+		$this->load->view('template/header');
+		$result = $this->loginDatabase->readUserInformation($username);
+		$onServiceName = $this->Services->isAvailable();
+		$sessionData = array(
+			'username' => $result[0]->username,
+			'fullname' => $result[0]->Fullname,
+			'onServiceName' => $onServiceName
+		);
+//		$this->session->set_userdata('sessionData', $sessionData);
+//		redirect('/Dashboard/index');
 
 	}
-	
+
 }
