@@ -31,6 +31,7 @@ class Dashboard extends CI_Controller {
 	{
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
 		$this->load->view('template/header');
 		$this->load->view('dashboard/login',$data);
 	}
@@ -66,6 +67,4 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 
 	}
-
-
 }
