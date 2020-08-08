@@ -80,10 +80,12 @@ class UserLogin extends CI_Controller
 				$onServiceName = $this->Services->isAvailable();
 				if ($result != false) {
 					$sessionData = array(
+						'id' => $result[0]->id,
 						'username' => $result[0]->username,
 						'fullname' => $result[0]->Fullname,
+						'onService'=> $result[0]->isAvailable,
+						'grade' => $result[0]->grade,
 						'onServiceName' => $onServiceName
-						// TODO : Add les autres information nécessaire grade..
 					);
 					$this->load->view('template/header');
 					$this->session->set_userdata('sessionData', $sessionData);

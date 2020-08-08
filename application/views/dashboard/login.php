@@ -9,7 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<h1>MyEMS</h1>
 			<?php echo "Bonjour $fullname"?>
 		</div>
-		<b id="pds"> <a href="pds?id=<?=$username?>"> Prise de service</a> </b>
+	<?php if($onService == 0)  { ?> <b id="pds"> <a href="pds"> Prise de service</a> </b>
+		<?php }else{ ?>
+		<b id="fds"> <a href="fds"> Fin de service</a> </b>
+
+	<?php	} ?>
 		<br>
 		<b id="logout"><a href="logout">Logout</a></b>
     </body>

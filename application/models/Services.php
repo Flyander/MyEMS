@@ -16,6 +16,8 @@ class Services extends CI_Model
 
 	}
 	public function endService($hour){
+		$query = "UPDATE user SET  isAvailable=0 WHERE username='$hour'";
+		$queryResult = $this->db->query($query);
 
 	}
 	public function myService($idUser){
