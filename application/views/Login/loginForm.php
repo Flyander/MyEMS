@@ -1,9 +1,5 @@
 <html>
 	<?php
-		if (isset($this->session->userdata['logged_in'])) {
-
-			//header("location: http://localhost/ems");
-		}
 		if (isset($logout_message)) {
 			echo "<div class='message'>";
 			echo $logout_message;

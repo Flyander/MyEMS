@@ -24,6 +24,9 @@ class Dashboard extends CI_Controller {
 		$this->load->helper(array('url','form','language'));
 		$this->load->library('session');
 		$this->load->model('Services');
+		if (!isset($this->session->userdata['sessionData'])) {
+			redirect('/UserLogin');
+		}
 	}
 
 

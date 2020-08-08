@@ -58,7 +58,7 @@ class UserLogin extends CI_Controller
 		$this->form_validation->set_rules('username', 'pseudo', 'trim|required');
 		$this->form_validation->set_rules('password', 'mot de passe', 'trim|required');
 		if($this->form_validation->run() == FALSE){
-			if(isset($this->session->userdata['logged_in'])){
+			if(isset($this->session->userdata['sessionData'])){
 				//$this->load->view('template/header');
 				//redirect('/dashboard/login');
 				//$this->load->view('dashboard/login');
@@ -106,7 +106,7 @@ class UserLogin extends CI_Controller
 		$sessionInfo = array(
 			'username' => ''
 		);
-		$this->session->unset_userdata('logged_in', $sessionInfo);
+		$this->session->unset_userdata('sessionData', $sessionInfo);
 		$this->load->view('template/header');
 		$this->load->view('Login/loginForm');
 	}

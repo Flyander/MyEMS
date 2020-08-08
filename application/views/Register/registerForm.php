@@ -1,6 +1,6 @@
 <html>
 <?php
-if (isset($this->session->userdata['logged_in'])) {
+if (isset($this->session->userdata['sessionData'])) {
 header("location: http://localhost/login/index.php/UserLogin/userLogin");
 }
 ?>
