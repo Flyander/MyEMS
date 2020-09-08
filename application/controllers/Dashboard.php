@@ -35,8 +35,11 @@ class Dashboard extends CI_Controller {
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/login',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function logout()

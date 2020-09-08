@@ -17,11 +17,11 @@ class UserLogin extends CI_Controller
 	 * Function to load an view
 	 */
 	public function index(){
-		$this->load->view('template/header');
+		$this->load->view('template/headerLogin');
 		$this->load->view('Login/loginForm');
 	}
 	public function userRegister(){
-		$this->load->view('template/header');
+		$this->load->view('template/headerLogin');
 		$this->load->view('Register/registerForm');
 
 	}
@@ -59,12 +59,12 @@ class UserLogin extends CI_Controller
 		$this->form_validation->set_rules('password', 'mot de passe', 'trim|required');
 		if($this->form_validation->run() == FALSE){
 			if(isset($this->session->userdata['sessionData'])){
-				//$this->load->view('template/header');
+				//$this->load->view('template/headerLogin');
 				//redirect('/dashboard/login');
 				//$this->load->view('dashboard/login');
 			}
 			else{
-				$this->load->view('template/header');
+				$this->load->view('template/headerLogin');
 				$this->load->view('Login/loginForm');
 			}
 		}
@@ -87,7 +87,7 @@ class UserLogin extends CI_Controller
 						'grade' => $result[0]->grade,
 						'onServiceName' => $this->Services->isAvailable()
 					);
-					$this->load->view('template/header');
+					$this->load->view('template/headerLogin');
 					$this->session->set_userdata('sessionData', $sessionData);
 					redirect('/Dashboard/index');
 				}
@@ -96,7 +96,7 @@ class UserLogin extends CI_Controller
 				$data = array(
 					'error_message' => 'Identifiants invalides.'
 				);
-				$this->load->view('template/header');
+				$this->load->view('template/headerLogin');
 				$this->load->view('Login/loginForm', $data);
 			}
 
@@ -107,14 +107,14 @@ class UserLogin extends CI_Controller
 			'username' => ''
 		);
 		$this->session->unset_userdata('sessionData', $sessionInfo);
-		$this->load->view('template/header');
+		$this->load->view('template/headerLogin');
 		$this->load->view('Login/loginForm');
 	}
 
 	public function pds(){
 		$username = $this->input->get('id');
 		$this->Services->startService($username);
-		$this->load->view('template/header');
+		$this->load->view('template/headerLogin');
 		$result = $this->loginDatabase->readUserInformation($username);
 		$onServiceName = $this->Services->isAvailable();
 		$sessionData = array(
