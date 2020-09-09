@@ -4,7 +4,7 @@
 class Services extends CI_Model
 {
 	public function isAvailable(){
-		$query = "SELECT fullname, grade, spe FROM user WHERE isAvailable=1";
+		$query = "SELECT fullname, grade, spe, isAvailable FROM user WHERE isAvailable=1 or isAvailable=2";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result;
@@ -20,6 +20,13 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 
 	}
+
+	public function pauseCurrentService($name)
+	{
+		$query = "UPDATE user SET isAvailable=2 WHERE username='$name'";
+		$queryResult = $this->db->query($query);
+	}
+
 	public function myService($idUser){
 
 	}

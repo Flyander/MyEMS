@@ -61,6 +61,35 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 
 	}
+
+	public function pauseService(){
+
+		$this->Services->pauseCurrentService($this->session->sessionData['username']);
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $this->Services->isAvailable();
+		$data['onService'] = 2;
+		$this->session->unset_userdata('sessionData');
+		$this->session->set_userdata('sessionData', $data);
+		$this->load->view('template/header');
+		$this->load->view('dashboard/login',$data);
+		redirect('/Dashboard/index');
+
+	}
+
+	public function finPauseService(){
+
+		$this->Services->startService($this->session->sessionData['username']);
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $this->Services->isAvailable();
+		$data['onService'] = 1;
+		$this->session->unset_userdata('sessionData');
+		$this->session->set_userdata('sessionData', $data);
+		$this->load->view('template/header');
+		$this->load->view('dashboard/login',$data);
+		redirect('/Dashboard/index');
+
+	}
+
 	public function fds(){
 
 		$this->Services->endService($this->session->sessionData['username']);
