@@ -578,6 +578,7 @@ body {
 /*----------------page-wrapper----------------*/
 
 .page-wrapper {
+    background: #f2f3f8;
     height: 100vh;
 }
 
