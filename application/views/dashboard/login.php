@@ -30,6 +30,7 @@
 	                                        <table class="table table-hover">
 	                                            <thead>
 	                                                <tr>
+														<th style="width: 10px;" scope="col"></th>
 	                                                    <th scope="col">Prénom & Nom</th>
 	                                                    <th scope="col">Grade</th>
 	                                                    <th scope="col">Spécialisation</th>
@@ -41,6 +42,10 @@
 													<?php
 														foreach ($onServiceName as $key){
 															echo '<tr>';
+															if ($key['supervisor'] == 1)
+																echo "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
+															else
+																echo "<td></td>";
 															echo "<td>".$key['fullname']."</td>";
 															echo "<td>".$key['grade']."</td>";
 															echo "<td>".$key['spe']."</td>";
