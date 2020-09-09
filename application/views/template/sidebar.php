@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <img class="img-responsive img-rounded" src="<?php echo base_url()?>assets/img/user.jpg" alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name"><?php echo "$fullname"?>
+                        <span class="user-name"><?php echo "$name"?>
                         </span>
                         <span class="user-role"><?php echo "$userGrade"?></span>
                         <span class="user-status">

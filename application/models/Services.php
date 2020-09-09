@@ -31,4 +31,11 @@ class Services extends CI_Model
 		return $result[0]["grade"];
 	}
 
+	public function getName($name) {
+		$query = "SELECT fullname FROM user WHERE username = '$name'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0]["fullname"];
+	}
+
 }
