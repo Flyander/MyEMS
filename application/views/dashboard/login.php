@@ -9,13 +9,12 @@
 	            <div class="form-group col-md-12">
 	                <div>
 
-	                    <h4 class="text-muted mb-4">Tables </h4>
-
+	                    <h4 class="text-muted mb-4">Dispatch </h4>
 	                    <div class="row mb-4">
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
 	                                <div class="card-title mb-1 p-3">
-										<h5>Basic table</h5>
+										<h5>Dispatch actuelle</h5>
 										<?php if($onService == 0)  { ?> <b id="pds"> <a href="pds"> Prise de service</a> </b>
 										<?php }else{ ?>
 										<b id="fds"> <a href="fds">Fin de service</a> </b>
@@ -40,7 +39,7 @@
 															echo "<td>".$key['fullname']."</td>";
 															echo "<td>".$key['grade']."</td>";
 															echo "<td>".$key['spe']."</td>";
-															echo "<td>En service</td>";
+															echo "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
 															echo "<td><a class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
 																</a>
 																<a class=\"btn btn-sm btn-outline-lightning rounded-0\">
