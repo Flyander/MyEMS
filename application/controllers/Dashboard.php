@@ -54,6 +54,7 @@ class Dashboard extends CI_Controller {
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
+		$data['supervisor'] = 0;
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -67,6 +68,7 @@ class Dashboard extends CI_Controller {
 		$this->Services->pauseCurrentService($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
+		$data['supervisor'] = 0;
 		$data['onService'] = 2;
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -82,6 +84,7 @@ class Dashboard extends CI_Controller {
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['onService'] = 1;
+		$data['supervisor'] = 0;
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -96,11 +99,39 @@ class Dashboard extends CI_Controller {
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
+		$data['supervisor'] = 0;
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
 		$this->load->view('dashboard/login',$data);
 		redirect('/Dashboard/index');
 
+	}
+	public function supervisor(){
+
+		$this->Services->supervisor($this->session->sessionData['username']);
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] =  $this->Services->isAvailable();
+		$data['onService'] =  0;
+		$data['supervisor'] = 1;
+		$data['fname'] = $this->session->sessionData['fullname'];
+		$this->session->unset_userdata('sessionData');
+		$this->session->set_userdata('sessionData', $data);
+		$this->load->view('template/header',$data);
+		$this->load->view('dashboard/login',$data);
+		redirect('/Dashboard/index');
+	}
+	public function endSupervisor(){
+		$this->Services->endSupervisor($this->session->sessionData['username']);
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] =  $this->Services->isAvailable();
+		$data['onService'] =  0;
+		$data['supervisor'] = 0;
+		$data['fname'] = $this->session->sessionData['fullname'];
+		$this->session->unset_userdata('sessionData');
+		$this->session->set_userdata('sessionData', $data);
+		$this->load->view('template/header',$data);
+		$this->load->view('dashboard/login',$data);
+		redirect('/Dashboard/index');
 	}
 }

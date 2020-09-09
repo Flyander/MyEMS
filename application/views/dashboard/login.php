@@ -54,9 +54,9 @@
 															else if ($key['isAvailable'] == 2)
 																echo "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 											
-															echo "<td><a class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
+															echo "<td><a href='supervisor' id='supervisor' class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
 																</a>
-																<a class=\"btn btn-sm btn-outline-lightning rounded-0\">
+																<a id='endSupervisor' href='endSupervisor' class=\"btn btn-sm btn-outline-lightning rounded-0\">
 																<i class=\"far fa-trash-alt\"></i>
 																</a>
 																</td>";
@@ -65,7 +65,8 @@
 													?>
 	                                            </tbody>
 	                                        </table>
-	                                    </div>
+
+										</div>
 
 	                                </div>
 	                            </div>
@@ -73,6 +74,14 @@
 	                        </div>
 	                    </div>
 	                </div>
+					<div>
+
+						<?php foreach ($onServiceName as $key){
+							if($key['id'] == $id && $key['supervisor'] == 1){
+								echo'<p> bonjour </p>';
+							}
+						};?>
+					</div>
 	                </body>
 	            </div>
 			</div>
