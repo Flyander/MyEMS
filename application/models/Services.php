@@ -9,11 +9,16 @@ class Services extends CI_Model
 		$result = $queryResult->result_array();
 		return $result;
 	}
+	public function nbDispatch(){
+		$query = "SELECT * from USER where supervisor='1'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+
+		return count($result);
+	}
 	public function startService($hour){
 		$query = "UPDATE user SET isAvailable=1 WHERE username='$hour'";
 		$queryResult = $this->db->query($query);
-
-
 	}
 	public function endService($hour){
 		$query = "UPDATE user SET isAvailable=0 WHERE username='$hour'";
