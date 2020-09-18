@@ -117,7 +117,6 @@ class Dashboard extends CI_Controller {
 		$this->Services->supervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['onService'] =  0;
 		$data['supervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch();
@@ -131,7 +130,6 @@ class Dashboard extends CI_Controller {
 		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['onService'] =  0;
 		$data['supervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch();

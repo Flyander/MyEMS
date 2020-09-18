@@ -14,32 +14,23 @@
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
 	                                <div class="card-title mb-1 p-3">
-										<h5>Dispatch actuelle</h5>
-										<?php if($onService == 0)  { ?> <b id="pds"> <a href="pds">Prise de service</a> </b>
-										<?php }else{ ?>
-											<?php if ($onService == 1) {?>
-												<b id="fds"> <a href="pauseService">Faire une pause</a> </b></br>
-											<?php }else{ ?>
-												<b id="fds"> <a href="finPauseService">Reprendre le service</a> </b></br>
-											<?php } ?>
-										<b id="fds"> <a href="fds">Fin de service</a> </b>
-										<?php } ?>
+	                                    <h5>Dispatch actuelle</h5>
 	                                </div>
 	                                <div class="card-body">
 	                                    <div class="table-responsive-md">
 	                                        <table class="table table-hover">
 	                                            <thead>
 	                                                <tr>
-														<th style="width: 10px;" scope="col"></th>
+	                                                    <th style="width: 10px;" scope="col"></th>
 	                                                    <th scope="col">Prénom & Nom</th>
 	                                                    <th scope="col">Grade</th>
 	                                                    <th scope="col">Spécialisation</th>
 	                                                    <th scope="col">Status</th>
-	                                                    <th scope="col">Actions</th>
+	                                                    <!--<th scope="col">Actions</th>-->
 	                                                </tr>
 	                                            </thead>
 	                                            <tbody>
-													<?php
+	                                                <?php
 														foreach ($onServiceName as $key){
 															echo '<tr>';
 															if ($key['supervisor'] == 1)
@@ -54,8 +45,8 @@
 															else if ($key['isAvailable'] == 2)
 																echo "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
-															echo "<td>";
-																if($nbSupervisor == 0){
+															/*echo "<td>";
+																if($key['id'] == $id && $nbSupervisor == 0){
 															echo "<a href='supervisor' id='supervisor' class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
 																</a>";
 																}
@@ -66,14 +57,14 @@
 
 																}
 																
-																echo "</td>";
+																echo "</td>";*/
 															echo '</tr>';
 														}
 													?>
 	                                            </tbody>
 	                                        </table>
 
-										</div>
+	                                    </div>
 
 	                                </div>
 	                            </div>
@@ -81,20 +72,54 @@
 	                        </div>
 	                    </div>
 	                </div>
-					<div>
+	                <div>
+					<div class="row mb-4">
+	                    <div class="col-md-12">
+	                        <div class="card border-0 rounded-0">
+	                            <div class="card-title mb-1 p-3">
+	                                <h5>Option dispatch</h5>
+	                            </div>
+	                            <div class="card-body">
+									<div class="row">
+										<?php if($onService == 0)  { ?> 
+											<div class="col-md-4 mb-2">
+												<a class="btn btn-outline-success w-100 rounded-0" href='pds' type="button">Prise de service</a>
+											</div>
+	                                    <?php }else{ ?>
+	                                    <?php if ($onService == 1) {?>
+	                                    	<div class="col-md-4 mb-2">
+												<a class="btn btn-outline-warning w-100 rounded-0" href='pauseService' type="button">Faire une pause</a>
+											</div>
+	                                    <?php }else{ ?>
+											<div class="col-md-4 mb-2">
+												<a class="btn btn-outline-success w-100 rounded-0" href='finPauseService' type="button">Reprendre le service</a>
+											</div>
+	                                    <?php } ?>
+	                                    	<div class="col-md-4 mb-2">
+												<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
+											</div>
+										<?php } ?>
 
-						<?php foreach ($onServiceName as $key){
-							if($key['id'] == $id && $key['supervisor'] == 1){
-								echo'<p> bonjour </p>';
-
-							}
-
-						};
-						?>
-					</div>
+										<?php if($onService != 0) { ?>
+											<?php if($nbSupervisor == 0){ ?>
+												<div class="col-md-4 mb-2">
+													<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir superviseur</a>
+												</div>
+											<?php } ?>
+											<?php if($nbSupervisor == 1){ ?>
+												<div class="col-md-4 mb-2">
+													<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop superviseur</a>
+												</div>
+											<?php } ?>
+										<?php } ?>
+									</div>
+								</div>
+							</div>
+						</div>
+	                </div>
 	                </body>
 	            </div>
-			</div>
-		</div>
+	        </div>
+	    </div>
 	</main>
-</div>
+	</div>
