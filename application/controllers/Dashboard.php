@@ -68,6 +68,7 @@ class Dashboard extends CI_Controller {
 	public function pauseService(){
 
 		$this->Services->pauseCurrentService($this->session->sessionData['username']);
+		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['supervisor'] = 0;
@@ -100,6 +101,7 @@ class Dashboard extends CI_Controller {
 	public function fds(){
 
 		$this->Services->endService($this->session->sessionData['username']);
+		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;

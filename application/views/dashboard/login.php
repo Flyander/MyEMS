@@ -9,7 +9,7 @@
 	            <div class="form-group col-md-12">
 	                <div>
 
-	                    <h4 class="text-muted mb-4">Dispatch</h4>
+	                    <h4 class="text-muted mb-4">Gestion du dispatch</h4>
 	                    <div class="row mb-4">
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
