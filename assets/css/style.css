@@ -860,3 +860,9 @@ body {
 .table.table-hover tbody tr:hover {
     background-color: #f5f6fa;
 }
+
+.preloader-icon .icon {
+    position: static;
+    margin-left: 48%;
+    z-index: 1;
+}
