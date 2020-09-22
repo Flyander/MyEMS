@@ -53,3 +53,4 @@ $route['default_controller'] = 'UserLogin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['/Dashboard/index'] = 'Dashboard';
+$route['/UserLogin/userLogin'] = 'UserLogin/userLogin';
