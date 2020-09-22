@@ -18,6 +18,7 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -44,6 +45,20 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function getDispatch()
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
 	public function logout()
 	{
 		redirect('/UserLogin/logout');
@@ -68,6 +83,7 @@ class Dashboard extends CI_Controller {
 	public function pauseService(){
 
 		$this->Services->pauseCurrentService($this->session->sessionData['username']);
+		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['supervisor'] = 0;
@@ -100,6 +116,7 @@ class Dashboard extends CI_Controller {
 	public function fds(){
 
 		$this->Services->endService($this->session->sessionData['username']);
+		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
@@ -112,12 +129,12 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 
 	}
+
 	public function supervisor(){
 
 		$this->Services->supervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['onService'] =  0;
 		$data['supervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch();
@@ -127,11 +144,11 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/login',$data);
 		redirect('/Dashboard/index');
 	}
+
 	public function endSupervisor(){
 		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['onService'] =  0;
 		$data['supervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch();
