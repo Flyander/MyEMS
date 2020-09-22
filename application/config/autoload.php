@@ -132,6 +132,6 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('loginDatabase', 'services');
+$autoload['model'] = array('LoginDatabase');
 
 $autoload['helper'] = array('url');
