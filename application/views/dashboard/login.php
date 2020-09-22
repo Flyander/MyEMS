@@ -55,7 +55,7 @@
 																echo "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
 															echo "<td>";
-																if($nbSupervisor != 0 ){
+																if($nbSupervisor == 0){
 															echo "<a href='supervisor' id='supervisor' class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
 																</a>";
 																}
