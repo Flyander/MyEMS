@@ -1,5 +1,5 @@
 <?php
-class LoginDatabase extends CI_Model {
+class Logindatabase_model extends CI_Model {
 	public function login($data){
 		$condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
 		$this->db->select('*');

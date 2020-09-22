@@ -9,7 +9,7 @@ class UserLogin extends CI_Controller
 		$this->load->helper(array('url','form','language'));
 		$this->load->library('form_validation');
 		$this->load->library('session');
-		$this->load->model('LoginDatabase','loginDatabase');
+		$this->load->model('Logindatabase_model','logindatabase_model');
 		$this->load->model('Services');
 	}
 
@@ -39,7 +39,7 @@ class UserLogin extends CI_Controller
 				'password' => $this->input->post('password'),
 				'grade'=> $this->input->post('grade')
 			);
-			$result = $this->loginDatabase->registerUser($data);
+			$result = $this->Logindatabase_model->registerUser($data);
 			if ($result == TRUE) {
 				$data['message_display'] = 'Registration Successfully !';
 				$this->load->view('Login/loginForm', $data);
@@ -73,10 +73,10 @@ class UserLogin extends CI_Controller
 				'username' => $this->input->post('username'),
 				'password' => $this->input->post('password')
 			);
-			$result = $this->loginDatabase->login($data);
+			$result = $this->Logindatabase_model->login($data);
 			if($result == TRUE) {
 				$username = $this->input->post('username');
-				$result = $this->loginDatabase->readUserInformation($username);
+				$result = $this->Logindatabase_model->readUserInformation($username);
 				$onServiceName = $this->Services->isAvailable();
 				if ($result != false) {
 					$sessionData = array(
@@ -115,7 +115,7 @@ class UserLogin extends CI_Controller
 		$username = $this->input->get('id');
 		$this->Services->startService($username);
 		$this->load->view('template/headerLogin');
-		$result = $this->loginDatabase->readUserInformation($username);
+		$result = $this->Logindatabase_model->readUserInformation($username);
 		$onServiceName = $this->Services->isAvailable();
 		$sessionData = array(
 			'username' => $result[0]->username,
