@@ -1,7 +1,7 @@
 <html>
 <?php
 if (isset($this->session->userdata['sessionData'])) {
-header("location: http://myems.me/login/index.php/UserLogin/userLogin");
+header("location: http://localhost/login/index.php/UserLogin/userLogin");
 }
 ?>
 <head>

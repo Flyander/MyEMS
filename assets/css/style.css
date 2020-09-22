@@ -809,7 +809,6 @@ body {
   background-color: transparent;
   border-color: #5b6582;
 }
-
 .btn.btn-outline-lightning:hover {
     transition: 0.5s;
     color: #f0f3ff;
@@ -827,42 +826,18 @@ body {
     color: #f0f3ff;
 }
 
-.card {
-    box-shadow: 1px 1px 2px rgba(91, 101, 130, .1);
-}
-.card .card-title {
-    color: rgba(61, 68, 101, .8);
-}
-.card .card-icon i {
-    color: #98a4c7;
-}
-.card .card-footer {
-    border-top: 1px solid #f2f3f8;
-    background: none;
-}
-.card .card-title {
-    border-bottom: 1px solid #f2f3f8;
-}
 
-
-.table {
-    border: 1px solid #ebedf4;
-}
-.table td {
+  
+  .table th,
+  .table td {
     border-top: 1px solid #ebedf4;
-}
-.table thead th {
+  }
+  .table thead th {
     border-bottom: 2px solid #ebedf4;
-}
-.table.table-striped tbody tr:nth-of-type(odd) {
+  }
+  .table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #f5f6fa;
-}
-.table.table-hover tbody tr:hover {
+  }
+  .table.table-hover tbody tr:hover {
     background-color: #f5f6fa;
-}
-
-.preloader-icon .icon {
-    position: static;
-    margin-left: 48%;
-    z-index: 1;
-}
+  }

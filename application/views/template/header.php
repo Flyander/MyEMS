@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php echo base_url()?>assets/img/favicon.ico">
+    <link rel="icon" href="../../favicon.ico">
 
     <title>MyEMS</title>
 
@@ -29,5 +29,4 @@
     <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url()?>assets/js/mCustomScrollbar.concat.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
-    
 </head>
