@@ -111,6 +111,12 @@ class UserLogin extends CI_Controller
 		$this->load->view('Login/loginForm');
 	}
 
+	public function pull() {
+		if ( $_POST['payload'] ) {
+			shell_exec('cd /var/www/MyEMS/ && git reset –hard HEAD && git pull');
+		}
+	}
+
 	public function pds(){
 		$username = $this->input->get('id');
 		$this->Services->startService($username);
