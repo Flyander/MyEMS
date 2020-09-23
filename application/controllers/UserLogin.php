@@ -112,9 +112,9 @@ class UserLogin extends CI_Controller
 	}
 
 	public function pull() {
-		if ( $_POST['payload'] ) {
+		//if ( $_POST['payload'] ) {
 			shell_exec('cd /var/www/MyEMS/ && git reset –hard HEAD && git pull');
-		}
+		//}
 	}
 
 	public function pds(){
