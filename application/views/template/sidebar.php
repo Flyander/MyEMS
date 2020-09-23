@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="user-role"><?php echo "$userGrade"?></span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
-                            <span>Online</span>
+                            <span>En ligne</span>
                         </span>
                     </div>
                 </div>
@@ -65,15 +65,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Products
-
-                                        </a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Orders</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Credit cart</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                 </ul>
                             </div>
@@ -86,19 +84,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">General</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Panels</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tables</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Icons</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Forms</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                 </ul>
                             </div>
@@ -106,21 +104,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-chart-line"></i>
-                                <span class="menu-text">Charts</span>
+                                <span class="menu-text">In progress</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Pie chart</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Line chart</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Bar chart</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Histogram</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                 </ul>
                             </div>
@@ -128,15 +126,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-globe"></i>
-                                <span class="menu-text">Maps</span>
+                                <span class="menu-text">In progress</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Google maps</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Open street map</a>
+                                        <a href="#">Examples</a>
                                     </li>
                                 </ul>
                             </div>
