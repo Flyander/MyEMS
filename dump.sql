@@ -46,6 +46,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `grade`, `spe`, `i
 (2, 'jripper', 'test', 'Jacob Ripper', 'Médecin', 'Psychologue - Hypnothérapeute', 1),
 (3, 'a', 'bc', 'Tony Blake', 'Chômeur', 'N/A', 1);
 
+INSERT INTO `user`(`username`, `password`, `fullname`, `grade`, `spe`, `isAvailable`) VALUES ('tblake', '1234', 'Tony Blake', 'Chômeur', 'N/A', 1);
+
+UPDATE `user` SET `username` = 'afenrir', `password` = 'menfou', `fullname` = 'Aleks Fenrir' WHERE `username` = 'a';
 --
 -- Index pour les tables déchargées
 --
