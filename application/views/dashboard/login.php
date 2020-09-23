@@ -85,7 +85,7 @@
 													<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir superviseur</a>
 												</div>
 											<?php } ?>
-											<?php if($nbSupervisor == 1){ ?>
+											<?php if($nbSupervisor == 1){ ?> 
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop superviseur</a>
 												</div>
