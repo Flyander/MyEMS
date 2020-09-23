@@ -28,43 +28,7 @@
 	                                                    <!--<th scope="col">Actions</th>-->
 	                                                </tr>
 	                                            </thead>
-<<<<<<< HEAD
-	                                            <tbody>
-													<?php
-														foreach ($onServiceName as $key){
-															echo '<tr>';
-															if ($key['supervisor'] == 1)
-																echo "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
-															else
-																echo "<td></td>";
-															echo "<td>".$key['fullname']."</td>";
-															echo "<td>".$key['grade']."</td>";
-															echo "<td>".$key['spe']."</td>";
-															if ($key['isAvailable'] == 1)
-																echo "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
-															else if ($key['isAvailable'] == 2)
-																echo "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
-
-															echo "<td>";
-																if($nbSupervisor == 0){
-															echo "<a href='supervisor' id='supervisor' class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i>
-																</a>";
-																}
-																if($key['id'] == $id && $key['supervisor'] == 1){
-																echo "<a id='endSupervisor' href='endSupervisor' class=\"btn btn-sm btn-outline-lightning rounded-0\">
-																<i class=\"far fa-trash-alt\"></i>
-																</a>";
-
-																}
-																
-																echo "</td>";
-															echo '</tr>';
-														}
-													?>
-	                                            </tbody>
-=======
 	                                            <tbody id='tbody_dispatch'></tbody>
->>>>>>> c6afc2f9f52466d94d492ff9e957a0af8281dec9
 	                                        </table>
 											<div class="preloader-icon">
 												<div class="icon"><svg width="64px" height="64px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
