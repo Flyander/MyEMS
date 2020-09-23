@@ -135,6 +135,7 @@ function getTableDispatch()
 
             $('#tbody_dispatch').html(table);
             $('.icon').css({ "display": "none" });
+            setTimeout(getTableDispatch, 10000);
         }
     });
 }

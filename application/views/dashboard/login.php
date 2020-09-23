@@ -103,4 +103,4 @@
 	</main>
 	</div>
 
-	<script>$(function () { getTableDispatch(); setInterval(getTableDispatch, 20000); });</script>
+	<script>$(function () { getTableDispatch(); });</script>
