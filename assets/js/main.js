@@ -105,6 +105,7 @@ function getTableDispatch()
     jQuery.ajax({
         url: "getDispatch",
         type: "POST",
+        dataType: 'json',
     }).done(function (data) {
         data = JSON.parse(data);
         if (data.code == 200)
