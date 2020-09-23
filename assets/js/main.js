@@ -105,37 +105,40 @@ function getTableDispatch()
     jQuery.ajax({
         url: "getDispatch",
         type: "POST",
-    }).done(function (data) {
-        data = JSON.parse(data);
-        if (data.code == 200)
-        {
-            $('.icon').css({ "display": "block" });
-            table = '';
-
-            jQuery.each(data.data.onServiceName, function (i, item)
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
             {
-                table += '<tr>';
+                $('.icon').css({ "display": "block" });
+                table = '';
 
-                if (item.supervisor == 1)
-                    table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
-                else
-                    table += "<td></td>";
+                jQuery.each(data.data.onServiceName, function (i, item)
+                {
+                    table += '<tr>';
 
-                table += "<td>"+ item.fullname +"</td>";
-                table += "<td>"+ item.grade +"</td>";
-                table += "<td>"+ item.spe +"</td>";
+                    if (item.supervisor == 1)
+                        table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
+                    else
+                        table += "<td></td>";
 
-                if (item.isAvailable == 1)
-                    table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
-                else if (item.isAvailable == 2)
-                    table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
+                    table += "<td>"+ item.fullname +"</td>";
+                    table += "<td>"+ item.grade +"</td>";
+                    table += "<td>"+ item.spe +"</td>";
 
-                table += '</tr>';
-            });
+                    if (item.isAvailable == 1)
+                        table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
+                    else if (item.isAvailable == 2)
+                        table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
-            $('#tbody_dispatch').html(table);
-            $('.icon').css({ "display": "none" });
-            setTimeout(getTableDispatch, 20000);
+                    table += '</tr>';
+                });
+
+                $('#tbody_dispatch').html(table);
+                $('.icon').css({ "display": "none" });
+            }
+        },
+        complete: function() {
+            setTimeout(getTableDispatch, 20000); //After completion of request, time to redo it after a second
         }
     });
 }
