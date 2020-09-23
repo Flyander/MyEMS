@@ -9,7 +9,7 @@
 	<body>
 		<div class="session">
 			<div class="left">
-				<h1>MyEMS TEST</h1>
+				<h1>MyEMS</h1>
 				<p>Bienvenue sur la plateforme MyEMS. Cette plateforme a pour objectif de faciliter le travail des médecins de Los Santos dans leur quotidien. Elle comprend une gestion avancée des prises de services et des rapports.</p>
 				<a href="https://discord.gg/gtalife"><button class="btn-join">Nous rejoindre</button></a>
 			</div>
