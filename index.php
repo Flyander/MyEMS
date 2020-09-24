@@ -54,14 +54,15 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	$domain = ! empty($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'cli';
-
+	var_dump($domain);
 	if (strpos($domain, '.me') !== false || $domain == 'cli')
 	{
 		define('ENVIRONMENT', 'development');
 	}
 	else 
 	{
-		define('ENVIRONMENT', 'production');
+		//define('ENVIRONMENT', 'production');
+		define('ENVIRONMENT', 'development');
 	}
 	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
