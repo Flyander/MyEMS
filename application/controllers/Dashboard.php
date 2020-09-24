@@ -38,7 +38,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/login',$data);
@@ -52,7 +52,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$return['data'] = $data;
 		$return['code'] = 200;
 		 
@@ -71,7 +71,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['supervisor'] = 0;
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -88,7 +88,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['supervisor'] = 0;
 		$data['onService'] = 2;
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -104,7 +104,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['onService'] = 1;
 		$data['supervisor'] = 0;
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -121,7 +121,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
 		$data['supervisor'] = 0;
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -137,7 +137,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['supervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);
@@ -151,7 +151,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['supervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
-		$data['nbSupervisor'] = $this->Services->nbDispatch();
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);

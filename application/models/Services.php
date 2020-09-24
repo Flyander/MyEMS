@@ -9,8 +9,9 @@ class Services extends CI_Model
 		$result = $queryResult->result_array();
 		return $result;
 	}
-	public function nbDispatch(){
-		$query = "SELECT * from user where supervisor=1";
+
+	public function nbDispatch($name){
+		$query = "SELECT * from user where supervisor=1 AND username = '$name'";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 
@@ -32,7 +33,9 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 	public function supervisor($name){
-		$query = "UPDATE user SET supervisor=1 WHERE username='$name'";
+		$query = "UPDATE user SET supervisor=1 WHERE username = '$name'";
+		$queryResult = $this->db->query($query);
+		$query = "UPDATE user SET supervisor=0 WHERE username != '$name'";
 		$queryResult = $this->db->query($query);
 	}
 	public function endSupervisor($name){
