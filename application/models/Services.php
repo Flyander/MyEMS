@@ -10,7 +10,7 @@ class Services extends CI_Model
 		return $result;
 	}
 	public function nbDispatch(){
-		$query = "SELECT * from USER where supervisor='1'";
+		$query = "SELECT * from user where supervisor=1";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 
