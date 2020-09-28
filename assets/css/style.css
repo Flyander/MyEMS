@@ -848,6 +848,11 @@ body {
 .table {
     border: 1px solid #ebedf4;
 }
+
+.table tbody tr {
+    cursor: pointer;
+}
+
 .table td {
     border-top: 1px solid #ebedf4;
 }

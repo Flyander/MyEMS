@@ -114,8 +114,7 @@ function getTableDispatch()
 
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    console.log(data.data);
-                    table += '<tr id=\'row_'+ item.username +'\'>';
+                    table += '<tr id="'+ item.username +'" onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.supervisor +'\')">';
 
                     if (item.supervisor == 1)
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
@@ -140,6 +139,49 @@ function getTableDispatch()
         },
         complete: function() {
             setTimeout(getTableDispatch, 20000); //After completion of request, time to redo it after a second
+        }
+    });
+}
+
+function getOptionDispatch(id, isSupervisor) 
+{
+    $('#option_dispatch').html('');
+    jQuery.ajax({
+        url: "getOptionDispatch",
+        type: "POST",
+        data: { id: id, isSupervisor: isSupervisor },
+        dataType: 'json',
+        success: function (data) {
+            player = data.data.playerInfo
+            optionHtml = '';
+            optionHtml += "<div class=\"card-title mb-1 p-3\"><h5>Option dispatch - "+ player.fullname +"</h5></div><div class=\"card-body\">"
+            optionHtml += "<div class=\"row\">";
+            if (player.isAvailable == 0)
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='pds' type=\"button\">Prise de service</a></div>";
+            else
+            {
+                if (player.isAvailable == 1)
+                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-warning w-100 rounded-0\" href='pauseService' type=\"button\">Faire une pause</a></div>";
+                else
+                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='finPauseService' type=\"button\">Reprendre le service</a></div>";
+                
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-danger w-100 rounded-0\" href='fds' type=\"button\">Fin de service</a></div>";
+            }
+
+            if (player.isAvailable != 0 && data.data.isYourself == 1) {
+                if (player.supervisor == 0)
+                {
+                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='supervisor' type=\"button\">Devenir superviseur</a></div>";
+                }
+                
+                if (player.supervisor == 1)
+                {
+                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='endSupervisor' type=\"button\">Stop superviseur</a></div>";
+                }
+            }
+            optionHtml += "</div></div>";            
+            
+            $('#option_dispatch').html(optionHtml);
         }
     });
 }

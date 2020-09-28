@@ -59,6 +59,25 @@ class Dashboard extends CI_Controller {
 		echo json_encode($return);
 	}
 
+	public function getOptionDispatch()
+	{
+		$id = $this->input->post('id');
+		$isSupervisor = $this->input->post('isSupervisor');
+
+
+		$data['playerInfo'] = $this->Services->getOptionForPlayer($id);
+
+		if ($this->session->sessionData['username'] == $id)
+			$data['isYourself'] = 1;
+		else
+			$data['isYourself'] = 0;
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
 	public function logout()
 	{
 		redirect('/UserLogin/logout');

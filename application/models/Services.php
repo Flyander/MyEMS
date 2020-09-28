@@ -61,5 +61,11 @@ class Services extends CI_Model
 		return $result[0]["fullname"];
 	}
 
-
+	public function getOptionForPlayer($username)
+	{
+		$query = "SELECT * FROM user WHERE username = '$username'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0];
+	}
 }

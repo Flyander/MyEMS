@@ -55,43 +55,8 @@
 					<div class="row mb-4">
 	                    <div class="col-md-12">
 	                        <div class="card border-0 rounded-0">
-	                            <div class="card-title mb-1 p-3">
-	                                <h5>Option dispatch</h5>
-	                            </div>
-	                            <div class="card-body">
-									<div class="row">
-										<?php if($onService == 0)  { ?> 
-											<div class="col-md-4 mb-2">
-												<a class="btn btn-outline-success w-100 rounded-0" href='pds' type="button">Prise de service</a>
-											</div>
-	                                    <?php }else{ ?>
-	                                    <?php if ($onService == 1) {?>
-	                                    	<div class="col-md-4 mb-2">
-												<a class="btn btn-outline-warning w-100 rounded-0" href='pauseService' type="button">Faire une pause</a>
-											</div>
-	                                    <?php }else{ ?>
-											<div class="col-md-4 mb-2">
-												<a class="btn btn-outline-success w-100 rounded-0" href='finPauseService' type="button">Reprendre le service</a>
-											</div>
-	                                    <?php } ?>
-	                                    	<div class="col-md-4 mb-2">
-												<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
-											</div>
-										<?php } ?>
-
-										<?php if($onService != 0) { ?>
-											<?php if($nbSupervisor == 0){ ?>
-												<div class="col-md-4 mb-2">
-													<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir superviseur</a>
-												</div>
-											<?php } ?>
-											<?php if($nbSupervisor == 1){ ?> 
-												<div class="col-md-4 mb-2">
-													<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop superviseur</a>
-												</div>
-											<?php } ?>
-										<?php } ?>
-									</div>
+								<div id='option_dispatch'>
+									
 								</div>
 							</div>
 						</div>
