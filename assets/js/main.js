@@ -114,7 +114,8 @@ function getTableDispatch()
 
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    table += '<tr>';
+                    console.log(data.data);
+                    table += '<tr id=\'row_'+ item.username +'\'>';
 
                     if (item.supervisor == 1)
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
