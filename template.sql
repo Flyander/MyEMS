@@ -33,6 +33,7 @@ CREATE TABLE spe(
 #------------------------------------------------------------
 
 CREATE TABLE grade(
+        name Varchar (250) NOT NULL,
         gradeName Varchar (250) NOT NULL ,
         type Int NOT NULL
 	,CONSTRAINT Grade_PK PRIMARY KEY (name)
@@ -40,10 +41,10 @@ CREATE TABLE grade(
 
 
 #------------------------------------------------------------
-# Table: user
+# Table: users
 #------------------------------------------------------------
 
-CREATE TABLE user(
+CREATE TABLE users(
         id       Int  Auto_increment  NOT NULL ,
         fullname Varchar (250) NOT NULL ,
         password Varchar (250) NOT NULL ,
@@ -69,7 +70,7 @@ CREATE TABLE ordonnance(
         id_patient Int NOT NULL
 	,CONSTRAINT ORDONNANCE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT ORDONNANCE_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT ORDONNANCE_USER_FK FOREIGN KEY (id_user) REFERENCES users(id)
 	,CONSTRAINT ORDONNANCE_Patient0_FK FOREIGN KEY (id_patient) REFERENCES patient(id)
 )ENGINE=InnoDB;
 
@@ -84,12 +85,12 @@ CREATE TABLE rapport(
         auscult      Varchar (250) NOT NULL ,
         intervention Longtext NOT NULL ,
         amount       Int NOT NULL ,
-        isPayed      Bool NOT NULL ,
+        isPayed      Int NOT NULL ,
         id_user      Int NOT NULL ,
         id_patient   Int NOT NULL
 	,CONSTRAINT Rapport_PK PRIMARY KEY (id)
 
-	,CONSTRAINT Rapport_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT Rapport_USER_FK FOREIGN KEY (id_user) REFERENCES users(id)
 	,CONSTRAINT Rapport_Patient0_FK FOREIGN KEY (id_patient) REFERENCES patient(id)
 )ENGINE=InnoDB;
 
@@ -102,7 +103,7 @@ CREATE TABLE dayofFollow(
         id          Int  Auto_increment  NOT NULL ,
         date        Date NOT NULL ,
         description Varchar (250) NOT NULL ,
-        isOk        Bool NOT NULL ,
+        isOk        Int NOT NULL ,
         id_Rapport  Int NOT NULL
 	,CONSTRAINT dayofFollow_PK PRIMARY KEY (id)
 
@@ -124,7 +125,7 @@ CREATE TABLE service(
         id_user      Int NOT NULL
 	,CONSTRAINT SERVICE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT SERVICE_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT SERVICE_USER_FK FOREIGN KEY (id_user) REFERENCES users(id)
 )ENGINE=InnoDB;
 
 
@@ -138,6 +139,6 @@ CREATE TABLE have(
 	,CONSTRAINT HAVE_PK PRIMARY KEY (NAME,ID)
 
 	,CONSTRAINT HAVE_Spe_FK FOREIGN KEY (name) REFERENCES spe(name)
-	,CONSTRAINT HAVE_USER0_FK FOREIGN KEY (id) REFERENCES user(id)
+	,CONSTRAINT HAVE_USER0_FK FOREIGN KEY (id) REFERENCES users(id)
 )ENGINE=InnoDB;
 
