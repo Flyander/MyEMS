@@ -110,15 +110,15 @@ function getTableDispatch()
 
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    table += '<tr id="'+ item.username +'" onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.supervisor +'\')">';
+                    table += '<tr id="'+ item.username +'" onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')">';
 
-                    if (item.supervisor == 1)
+                    if (item.isSupervisor == 1)
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
                     else
                         table += "<td></td>";
 
                     table += "<td>"+ item.fullname +"</td>";
-                    table += "<td>"+ item.grade +"</td>";
+                    table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>"+ item.spe +"</td>";
 
                     if (item.isAvailable == 1)
@@ -165,12 +165,12 @@ function getOptionDispatch(id, isSupervisor)
             }
 
             if (player.isAvailable != 0 && data.data.isYourself == 1) {
-                if (player.supervisor == 0)
+                if (player.isSupervisor == 0)
                 {
                     optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='supervisor' type=\"button\">Devenir superviseur</a></div>";
                 }
                 
-                if (player.supervisor == 1)
+                if (player.isSupervisor == 1)
                 {
                     optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='endSupervisor' type=\"button\">Stop superviseur</a></div>";
                 }

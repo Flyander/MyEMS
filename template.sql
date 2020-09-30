@@ -145,3 +145,4 @@ CREATE TABLE have(
 
 INSERT INTO `grade`(`name`, `gradeName`, `type`) VALUES ('medecin','Médecin', 1);
 INSERT INTO `users`(`fullname`, `password`, `username`, `name`) VALUES ('Jacob Ripper','test','jripper','medecin');
+INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30',1, 1, 1, 1)

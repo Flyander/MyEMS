@@ -89,7 +89,7 @@ class Dashboard extends CI_Controller {
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
-		$data['supervisor'] = 0;
+		$data['isSupervisor'] = 0;
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -105,7 +105,7 @@ class Dashboard extends CI_Controller {
 		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
-		$data['supervisor'] = 0;
+		$data['isSupervisor'] = 0;
 		$data['onService'] = 2;
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
@@ -122,7 +122,7 @@ class Dashboard extends CI_Controller {
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $this->Services->isAvailable();
 		$data['onService'] = 1;
-		$data['supervisor'] = 0;
+		$data['isSupervisor'] = 0;
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -154,7 +154,7 @@ class Dashboard extends CI_Controller {
 		$this->Services->supervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['supervisor'] = 1;
+		$data['isSupervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
@@ -168,7 +168,7 @@ class Dashboard extends CI_Controller {
 		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['supervisor'] = 0;
+		$data['isSupervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
