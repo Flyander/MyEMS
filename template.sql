@@ -49,10 +49,10 @@ CREATE TABLE users(
         fullname Varchar (250) NOT NULL ,
         password Varchar (250) NOT NULL ,
         username Varchar (250) NOT NULL ,
-        name     Varchar (250) NOT NULL
+        grade_name     Varchar (250) NOT NULL
 	,CONSTRAINT USER_PK PRIMARY KEY (id)
 
-	,CONSTRAINT USER_Grade_FK FOREIGN KEY (name) REFERENCES grade(name)
+	,CONSTRAINT USER_Grade_FK FOREIGN KEY (grade_name) REFERENCES grade(name)
 )ENGINE=InnoDB;
 
 
@@ -142,3 +142,6 @@ CREATE TABLE have(
 	,CONSTRAINT HAVE_USER0_FK FOREIGN KEY (id) REFERENCES users(id)
 )ENGINE=InnoDB;
 
+
+INSERT INTO `grade`(`name`, `gradeName`, `type`) VALUES ('medecin','Médecin', 1);
+INSERT INTO `users`(`fullname`, `password`, `username`, `name`) VALUES ('Jacob Ripper','test','jripper','medecin');

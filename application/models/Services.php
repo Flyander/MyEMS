@@ -4,14 +4,14 @@
 class Services extends CI_Model
 {
 	public function isAvailable(){
-		$query = "SELECT * FROM user WHERE isAvailable=1 or isAvailable=2";
+		$query = "SELECT * FROM users WHERE isAvailable=1 or isAvailable=2";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result;
 	}
 
 	public function nbDispatch($name){
-		$query = "SELECT * from user where supervisor=1 AND username = '$name'";
+		$query = "SELECT * from users where supervisor=1 AND username = '$name'";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 
