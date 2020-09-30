@@ -4,35 +4,35 @@
 
 
 #------------------------------------------------------------
-# Table: Patient
+# Table: patient
 #------------------------------------------------------------
 
-CREATE TABLE Patient(
+CREATE TABLE patient(
         id         Int  Auto_increment  NOT NULL ,
         fullname   Varchar (250) NOT NULL ,
         height     Float NOT NULL ,
         weight     Float NOT NULL ,
-        Commentary Longtext NOT NULL
+        commentary Longtext NOT NULL
 	,CONSTRAINT Patient_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Spe
+# Table: spe
 #------------------------------------------------------------
 
-CREATE TABLE Spe(
-        NAME Varchar (250) NOT NULL ,
-        Type Int NOT NULL
-	,CONSTRAINT Spe_PK PRIMARY KEY (NAME)
+CREATE TABLE spe(
+        name Varchar (250) NOT NULL ,
+        type Int NOT NULL
+	,CONSTRAINT Spe_PK PRIMARY KEY (name)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Grade
+# Table: grade
 #------------------------------------------------------------
 
-CREATE TABLE Grade(
+CREATE TABLE grade(
         gradeName Varchar (250) NOT NULL ,
         type Int NOT NULL
 	,CONSTRAINT Grade_PK PRIMARY KEY (name)
@@ -40,57 +40,57 @@ CREATE TABLE Grade(
 
 
 #------------------------------------------------------------
-# Table: USER
+# Table: user
 #------------------------------------------------------------
 
-CREATE TABLE USER(
-        ID       Int  Auto_increment  NOT NULL ,
-        FULLNAME Varchar (250) NOT NULL ,
-        PASSWORD Varchar (250) NOT NULL ,
-        USERNAME Varchar (250) NOT NULL ,
+CREATE TABLE user(
+        id       Int  Auto_increment  NOT NULL ,
+        fullname Varchar (250) NOT NULL ,
+        password Varchar (250) NOT NULL ,
+        username Varchar (250) NOT NULL ,
         name     Varchar (250) NOT NULL
-	,CONSTRAINT USER_PK PRIMARY KEY (ID)
+	,CONSTRAINT USER_PK PRIMARY KEY (id)
 
-	,CONSTRAINT USER_Grade_FK FOREIGN KEY (name) REFERENCES Grade(name)
+	,CONSTRAINT USER_Grade_FK FOREIGN KEY (name) REFERENCES grade(name)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: ORDONNANCE
+# Table: ordonnance
 #------------------------------------------------------------
 
-CREATE TABLE ORDONNANCE(
+CREATE TABLE ordonnance(
         id         Int NOT NULL ,
         nbDay      Int NOT NULL ,
         nbPrise    Int NOT NULL ,
         drugName   Varchar (250) NOT NULL ,
         whenInDay  Varchar (250) NOT NULL ,
-        ID_USER    Int NOT NULL ,
-        id_Patient Int NOT NULL
+        id_user    Int NOT NULL ,
+        id_patient Int NOT NULL
 	,CONSTRAINT ORDONNANCE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT ORDONNANCE_USER_FK FOREIGN KEY (ID_USER) REFERENCES USER(ID)
-	,CONSTRAINT ORDONNANCE_Patient0_FK FOREIGN KEY (id_Patient) REFERENCES Patient(id)
+	,CONSTRAINT ORDONNANCE_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT ORDONNANCE_Patient0_FK FOREIGN KEY (id_patient) REFERENCES patient(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Rapport
+# Table: rapport
 #------------------------------------------------------------
 
-CREATE TABLE Rapport(
+CREATE TABLE rapport(
         id           Int  Auto_increment  NOT NULL ,
-        Date         Date NOT NULL ,
-        Auscult      Varchar (250) NOT NULL ,
-        Intervention Longtext NOT NULL ,
-        Amount       Int NOT NULL ,
+        date         Date NOT NULL ,
+        auscult      Varchar (250) NOT NULL ,
+        intervention Longtext NOT NULL ,
+        amount       Int NOT NULL ,
         isPayed      Bool NOT NULL ,
-        ID_USER      Int NOT NULL ,
-        id_Patient   Int NOT NULL
+        id_user      Int NOT NULL ,
+        id_patient   Int NOT NULL
 	,CONSTRAINT Rapport_PK PRIMARY KEY (id)
 
-	,CONSTRAINT Rapport_USER_FK FOREIGN KEY (ID_USER) REFERENCES USER(ID)
-	,CONSTRAINT Rapport_Patient0_FK FOREIGN KEY (id_Patient) REFERENCES Patient(id)
+	,CONSTRAINT Rapport_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT Rapport_Patient0_FK FOREIGN KEY (id_patient) REFERENCES patient(id)
 )ENGINE=InnoDB;
 
 
@@ -106,38 +106,38 @@ CREATE TABLE dayofFollow(
         id_Rapport  Int NOT NULL
 	,CONSTRAINT dayofFollow_PK PRIMARY KEY (id)
 
-	,CONSTRAINT dayofFollow_Rapport_FK FOREIGN KEY (id_Rapport) REFERENCES Rapport(id)
+	,CONSTRAINT dayofFollow_Rapport_FK FOREIGN KEY (id_Rapport) REFERENCES rapport(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: SERVICE
+# Table: service
 #------------------------------------------------------------
 
-CREATE TABLE SERVICE(
-        ID           Int  Auto_increment  NOT NULL ,
+CREATE TABLE service(
+        id           Int  Auto_increment  NOT NULL ,
         dateStart    Date NOT NULL ,
         dateEnd      Date NOT NULL ,
         isSupervisor Int NOT NULL ,
         isAvailable  Int NOT NULL ,
-        Type         Int NOT NULL ,
-        ID_USER      Int NOT NULL
-	,CONSTRAINT SERVICE_PK PRIMARY KEY (ID)
+        type         Int NOT NULL ,
+        id_user      Int NOT NULL
+	,CONSTRAINT SERVICE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT SERVICE_USER_FK FOREIGN KEY (ID_USER) REFERENCES USER(ID)
+	,CONSTRAINT SERVICE_USER_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: HAVE
+# Table: have
 #------------------------------------------------------------
 
-CREATE TABLE HAVE(
-        NAME Varchar (250) NOT NULL ,
-        ID   Int NOT NULL
+CREATE TABLE have(
+        name Varchar (250) NOT NULL ,
+        id   Int NOT NULL
 	,CONSTRAINT HAVE_PK PRIMARY KEY (NAME,ID)
 
-	,CONSTRAINT HAVE_Spe_FK FOREIGN KEY (NAME) REFERENCES Spe(NAME)
-	,CONSTRAINT HAVE_USER0_FK FOREIGN KEY (ID) REFERENCES USER(ID)
+	,CONSTRAINT HAVE_Spe_FK FOREIGN KEY (name) REFERENCES spe(name)
+	,CONSTRAINT HAVE_USER0_FK FOREIGN KEY (id) REFERENCES user(id)
 )ENGINE=InnoDB;
 
