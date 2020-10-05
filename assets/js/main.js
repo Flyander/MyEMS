@@ -119,7 +119,10 @@ function getTableDispatch()
 
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
-                    table += "<td>"+ item.spe +"</td>";
+                    if (item.spe == null)
+                        table += "<td>N/A</td>";
+                    else
+                        table += "<td>"+ item.spe +"</td>";
 
                     if (item.isAvailable == 1)
                         table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";

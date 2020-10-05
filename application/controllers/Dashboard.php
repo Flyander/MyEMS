@@ -41,7 +41,7 @@ class Dashboard extends CI_Controller {
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		$this->load->view('template/footer');
 	}
 
@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
 
 	}
@@ -111,7 +111,7 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
 
 	}
@@ -127,7 +127,7 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
 
 	}
@@ -144,7 +144,7 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
 
 	}
@@ -160,7 +160,7 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
 	}
 
@@ -174,7 +174,22 @@ class Dashboard extends CI_Controller {
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);
-		$this->load->view('dashboard/login',$data);
+		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
+	}
+
+
+	public function dispatchFusillade()
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/dispatch_fusillade',$data);
+		$this->load->view('template/footer');
 	}
 }

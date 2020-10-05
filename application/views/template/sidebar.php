@@ -29,112 +29,111 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <!-- sidebar-menu  -->
-                <div class=" sidebar-item sidebar-menu">
+                <div class="sidebar-item sidebar-menu noselect usepointer">
                     <ul>
                         <li class="header-menu">
                             <span>General</span>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span class="menu-text">Gestion de service</span>
-                                <span class="badge badge-pill badge-warning">Wip</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Dashboard 1
-                                            <span class="badge badge-pill badge-success">Pro</span>
+                                        <a href="index">Dispatch global
+                                            <span class="badge badge-pill badge-success">Beta</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">Dashboard 2</a>
+                                        <a href="dispatchFusillade">Dispatch fusillade<span class="badge badge-pill badge-warning">WIP</span></a>
                                     </li>
                                     <li>
-                                        <a href="#">Dashboard 3</a>
+                                        <a>Dashboard 3</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a>
                                 <i class="fas fa-user-edit"></i>
                                 <span class="menu-text">Rechercher un patient</span>
-                                <span class="badge badge-pill badge-danger">3</span>
+                                <!--<span class="badge badge-pill badge-danger">3</span>-->
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a>
                                 <i class="far fa-gem"></i>
                                 <span class="menu-text">In progress</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-chart-line"></i>
                                 <span class="menu-text">In progress</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-globe"></i>
                                 <span class="menu-text">In progress</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                     <li>
-                                        <a href="#">Examples</a>
+                                        <a>Examples</a>
                                     </li>
                                 </ul>
                             </div>
@@ -143,20 +142,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span>Extra</span>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-book"></i>
                                 <span class="menu-text">Documentation</span>
                                 <span class="badge badge-pill badge-primary">Beta</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-calendar"></i>
                                 <span class="menu-text">Tarification</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <i class="fa fa-folder"></i>
                                 <span class="menu-text">Examples</span>
                             </a>

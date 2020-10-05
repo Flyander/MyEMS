@@ -61,7 +61,7 @@ class UserLogin extends CI_Controller
 			if(isset($this->session->userdata['sessionData'])){
 				//$this->load->view('template/headerLogin');
 				//redirect('/dashboard/login');
-				//$this->load->view('dashboard/login');
+				//$this->load->view('dashboard/dispatch_global');
 			}
 			else{
 				$this->load->view('template/headerLogin');

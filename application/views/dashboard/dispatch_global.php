@@ -51,7 +51,6 @@
 	                        </div>
 	                    </div>
 	                </div>
-	                <div>
 					<div class="row mb-4">
 	                    <div class="col-md-12">
 	                        <div class="card border-0 rounded-0">
@@ -98,7 +97,6 @@
 							</div>
 						</div>
 	                </div>
-	                </body>
 	            </div>
 	        </div>
 	    </div>
