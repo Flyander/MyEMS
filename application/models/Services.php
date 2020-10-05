@@ -72,13 +72,13 @@ class Services extends CI_Model
 	}
 
 	public function userGrade($name){
-		$query = "SELECT grade_name 
+		$query = "SELECT gradeName 
 		FROM users 
 		INNER JOIN grade ON users.grade_name = grade.name 
 		WHERE username = '$name'";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
-		return $result[0]["grade_name"];
+		return $result[0]["gradeName"];
 	}
 
 	public function getName($name) {
