@@ -30,9 +30,14 @@ class Fusillade extends CI_Model
         if ($data_etat == 'État Stable')
             $data_etat = 1;
 
+        if ($data_medecin == '' && $data_desc == '' && $data_patient == '')
+            $havePatient = 1;
+        else
+            $havePatient = 0;
+
 
 		$query = "UPDATE fusillade 
-		SET patient='$data_patient', medecin='$data_medecin', description='$data_desc', etatPatient='$data_etat'
+		SET patient='$data_patient', medecin='$data_medecin', description='$data_desc', etatPatient='$data_etat', havePatient='$havePatient'
         WHERE bed='$bed'";
 		$queryResult = $this->db->query($query);
     }

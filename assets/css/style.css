@@ -934,7 +934,7 @@ body {
 .modalBed-data {
     color: #1A9CC7;
     border-color: #1A9CC7;
-    border-bottom: solid;
+    /*border-bottom: solid;*/
     border-radius: 2px;
     border-width: thin;
     text-align: center;
