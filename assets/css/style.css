@@ -572,6 +572,7 @@
 
 body {
     font-size: .9rem;
+    background-color: #f2f3f8;
 }
 
 
@@ -884,3 +885,31 @@ body {
 .usepointer {
     cursor: pointer;
 }
+
+.bed-icon {
+    color: gray;
+    border: solid;
+    padding: 15px;
+    font-size: 8em;
+    transition: 0.2s;
+}
+
+.left {
+    margin-left: 10%;
+}
+
+.right {
+    float: right;
+    margin-right: 10%;
+}
+
+.inprogress {
+    color: green;
+}
+
+.bed-icon:hover {
+    border-color: rgb(26, 156, 199);
+    background-color: rgb(26, 156, 199);
+    color: white;
+}
+
