@@ -165,3 +165,23 @@ INSERT INTO `grade`(`name`, `gradeName`, `type`) VALUES ('medecin','Médecin', 1
 INSERT INTO `users`(`fullname`, `password`, `username`, `name`) VALUES ('Jacob Ripper','test','jripper','medecin');
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30',1, 1, 1, 1);
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_1', 'Bloc opératoire n°1', 'Kilauea Ake', 'Jacob Ripper', 'Jambe cassé et traumatisme crânien', 1, 1);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_2', 'Bloc opératoire n°2', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_3', 'Bloc opératoire n°3', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_4', 'Bloc opératoire n°4', '', '', '', 0, 0);
+
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_1', 'Salle de repos - Lit n°1', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_2', 'Salle de repos - Lit n°2', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_3', 'Salle de repos - Lit n°3', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_4', 'Salle de repos - Lit n°4', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_5', 'Salle de repos - Lit n°5', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_6', 'Salle de repos - Lit n°6', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_7', 'Salle de repos - Lit n°7', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_8', 'Salle de repos - Lit n°8', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_9', 'Salle de repos - Lit n°9', '', '', '', 0, 0);
+
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_1', 'Salle de réveil - Lit n°1', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_2', 'Salle de réveil - Lit n°2', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_3', 'Salle de réveil - Lit n°3', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_4', 'Salle de réveil - Lit n°4', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_5', 'Salle de réveil - Lit n°5', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_6', 'Salle de réveil - Lit n°6', '', '', '', 0, 0);
