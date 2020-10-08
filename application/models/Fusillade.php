@@ -23,6 +23,7 @@ class Fusillade extends CI_Model
 
     public function setDataBed($bed, $data_patient, $data_medecin, $data_desc, $data_etat)
     {
+        $havePatient = 0;
         if ($data_etat == 'État Critique')
             $data_etat = 3;
         if ($data_etat == 'État Instable')
