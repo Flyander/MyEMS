@@ -31,9 +31,9 @@ class Fusillade extends CI_Model
             $data_etat = 1;
 
         if ($data_medecin == '' && $data_desc == '' && $data_patient == '')
-            $havePatient = 1;
-        else
             $havePatient = 0;
+        else
+            $havePatient = 1;
 
 
 		$query = "UPDATE fusillade 
