@@ -197,9 +197,10 @@ function getDataBed() {
                 jQuery.each(data.data.dataFusillade, function (i, bed)
                 {
                     if (bed.havePatient == 1)
-                    {
                         $("#"+bed.bed).addClass("inprogress");
-                    }
+                    else
+                        $("#"+bed.bed).removeClass("inprogress");
+
                 });
                 
             }
@@ -337,9 +338,6 @@ function showModalWithData(id_bed)
                     setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_etat);
                 });
             }
-        },
-        complete: function() {
-            setTimeout(getDataBed, 20000); //After completion of request, time to redo it after a second
         }
     });
 }

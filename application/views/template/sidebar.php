@@ -38,19 +38,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a>
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span class="menu-text">Gestion de service</span>
+                                <span class="badge badge-pill badge-primary">Beta</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
                                         <a href="index">Dispatch global
-                                            <span class="badge badge-pill badge-success">Beta</span>
+                                            <!--<span class="badge badge-pill badge-success">Feat</span>-->
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="dispatchFusillade">Dispatch fusillade<span class="badge badge-pill badge-warning">WIP</span></a>
-                                    </li>
-                                    <li>
-                                        <a>Dashboard 3</a>
+                                        <a href="dispatchFusillade">Dispatch fusillade <!--<span class="badge badge-pill badge-warning">WIP</span>--></a>
                                     </li>
                                 </ul>
                             </div>
@@ -59,6 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a>
                                 <i class="fas fa-user-edit"></i>
                                 <span class="menu-text">Rechercher un patient</span>
+                                <span class="badge badge-pill badge-warning">Soon</span>
                                 <!--<span class="badge badge-pill badge-danger">3</span>-->
                             </a>
                             <div class="sidebar-submenu">
@@ -75,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </ul>
                             </div>
                         </li>
-                        <li class="sidebar-dropdown">
+                        <!--<li class="sidebar-dropdown">
                             <a>
                                 <i class="far fa-gem"></i>
                                 <span class="menu-text">In progress</span>
@@ -137,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li>-->
                         <li class="header-menu">
                             <span>Extra</span>
                         </li>
@@ -145,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a>
                                 <i class="fa fa-book"></i>
                                 <span class="menu-text">Documentation</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
+                                <!--<span class="badge badge-pill badge-primary">Beta</span>-->
                             </a>
                         </li>
                         <li>
@@ -154,12 +153,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="menu-text">Tarification</span>
                             </a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a>
                                 <i class="fa fa-folder"></i>
                                 <span class="menu-text">Examples</span>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
