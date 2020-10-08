@@ -25,7 +25,6 @@
 	                                                    <th scope="col">Grade</th>
 	                                                    <th scope="col">Spécialisation</th>
 	                                                    <th scope="col">Status</th>
-	                                                    <!--<th scope="col">Actions</th>-->
 	                                                </tr>
 	                                            </thead>
 	                                            <tbody id='tbody_dispatch'></tbody>

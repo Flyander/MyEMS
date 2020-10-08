@@ -889,7 +889,8 @@ body {
 .bed-icon {
     color: gray;
     border: solid;
-    padding: 15px;
+    border-radius: 4px;
+    padding: 20px;
     font-size: 8em;
     transition: 0.2s;
 }
@@ -904,12 +905,120 @@ body {
 }
 
 .inprogress {
-    color: green;
+    color: rgb(29, 182, 29);
 }
 
 .bed-icon:hover {
-    border-color: rgb(26, 156, 199);
-    background-color: rgb(26, 156, 199);
+    border-color: #1A9CC7;
+    background-color:#1A9CC7;
     color: white;
 }
 
+
+.modalBed-label {
+    color: gray;
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.modalBed-label-state {
+    color: gray;
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 6%;
+    margin-top: 12%;
+}
+
+.modalBed-data {
+    color: #1A9CC7;
+    border-color: #1A9CC7;
+    border-bottom: solid;
+    border-radius: 2px;
+    border-width: thin;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    margin-right: 5%;
+}
+
+.modalBed-data-desc {
+    color: #1A9CC7;
+    border-color: #dae0e5;
+    border: solid;
+    border-radius: 2px;
+    border-width: thin;
+    padding-top: 5px;
+    padding-left: 8px;
+    padding-bottom: 50px;
+    font-size: 20px;
+    margin-right: 5%;
+}
+
+.deactivated-elem {
+    background-color: #f8f9fa;
+    border-color: #dae0e5;
+}
+
+.heart-rate {
+    max-width: 300px;
+    height: 143px;
+    position: relative;
+    margin: 0px auto;
+    overflow:hidden;
+}
+
+.fade-in {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  background-color: white;
+  top: 0;
+  right: 0;
+  animation: heartRateIn 6.5s linear infinite;
+
+ /* Gia na katalavw ti ginetai des auto
+    border:1px solid red;
+    */
+
+}
+
+.fade-out {
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: 0;
+  left: -120%;
+  animation: heartRateOut 6.5s linear infinite;
+  background: rgba(255, 255, 255, 1);
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0) 100%);
+}
+
+@keyframes heartRateIn {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 0%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes heartRateOut {
+  0% {
+    left: -120%;
+  }
+  30% {
+    left: -120%;
+  }
+  100% {
+    left: 0;
+  }
+}

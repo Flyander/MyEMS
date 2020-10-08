@@ -151,7 +151,7 @@ function getOptionDispatch(id, isSupervisor)
         data: { id: id, isSupervisor: isSupervisor },
         dataType: 'json',
         success: function (data) {
-            player = data.data.playerInfo
+            player = data.data.playerInfo;
             optionHtml = '';
             optionHtml += "<div class=\"card-title mb-1 p-3\"><h5>Option dispatch - "+ player.fullname +"</h5></div><div class=\"card-body\">"
             optionHtml += "<div class=\"row\">";
@@ -181,6 +181,182 @@ function getOptionDispatch(id, isSupervisor)
             optionHtml += "</div></div>";            
             
             $('#option_dispatch').html(optionHtml);
+        }
+    });
+}
+
+function getDataBed() {
+
+    jQuery.ajax({
+        url: "getDataFusillade",
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
+            {
+                jQuery.each(data.data.dataFusillade, function (i, bed)
+                {
+                    if (bed.havePatient == 1)
+                    {
+                        $("#"+bed.bed).addClass("inprogress");
+                    }
+                });
+                
+            }
+        },
+        complete: function() {
+            setTimeout(getDataBed, 20000); //After completion of request, time to redo it after a second
+        }
+    });
+}
+
+
+function showModalWithData(id_bed)
+{
+    jQuery.ajax({
+        url: "getDataModalBed",
+        type: "POST",
+        data: { bed: id_bed},
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
+            {
+                bed = data.data.dataBed;
+
+                modalHtml = '';
+                modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
+
+                modalHtml += '<div class="modal-header">';
+                    modalHtml += '<h4 class="modal-title">'+ bed.bedLabel +'</h4>';
+                    modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+                modalHtml += '</div>';
+
+                modalHtml += '<div class="modal-body">';
+                    modalHtml += '<div class="row">';
+                        modalHtml += '<div class="col-md-3">';
+                            modalHtml += '<div class="modalBed-label">Patient :</div>';
+                        modalHtml += '</div>';
+                        modalHtml += '<div class="col-md-9">';
+                        if (bed.isSupervisor == 1)
+                        {
+                            modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'">';
+                        }
+                        else
+                        {
+                            modalHtml += '<div class="modalBed-data">'+ bed.patient +'</div>'; //deactivated-elem
+                        }
+                        modalHtml += '</div>';
+                    modalHtml += '</div>';
+
+                    modalHtml += '<div style="margin-top: 6%;"></div>';
+
+                    modalHtml += '<div class="row">';
+                        modalHtml += '<div class="col-md-3">';
+                            modalHtml += '<div class="modalBed-label">Médecin :</div>';
+                        modalHtml += '</div>';
+                        modalHtml += '<div class="col-md-9">';
+                            if (bed.isSupervisor == 1)
+                            {
+                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'">';
+                            }
+                            else
+                            {
+                                modalHtml += '<div class="modalBed-data">'+ bed.medecin +'</div>'; //deactivated-elem
+                            }
+                        modalHtml += '</div>';
+                    modalHtml += '</div>';
+                    
+                    modalHtml += '<div style="margin-top: 6%;"></div>';
+
+                    modalHtml += '<div class="row">';
+                        modalHtml += '<div class="col-md-3">';
+                            modalHtml += '<div class="modalBed-label">Description :</div>';
+                        modalHtml += '</div>';
+                        modalHtml += '<div class="col-md-9">';
+                            if (bed.isSupervisor == 1)
+                            {
+                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'">';
+                            }
+                            else
+                            {
+                                modalHtml += '<div class="modalBed-data-desc">'+ bed.description +'</div>'; //deactivated-elem
+                            }
+                        modalHtml += '</div>';
+                    modalHtml += '</div>';
+
+                    modalHtml += '<div style="margin-top: 6%;"></div>';
+
+                    modalHtml += '<div class="row">';
+                        modalHtml += '<div class="col-md-4">';
+                            modalHtml += '<div class="modalBed-label-state">État du patient :</div>';
+                        modalHtml += '</div>';
+                        modalHtml += '<div class="col-md-8">';
+                            if (bed.isSupervisor == 0)
+                            {
+                                modalHtml += '<div class="heart-rate">';
+                                if (bed.etatPatient == 1)
+                                    modalHtml += '<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="176px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve"><polyline fill="none" stroke="green" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"/></svg>';
+                                if (bed.etatPatient == 2)
+                                    modalHtml += '<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="176px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve"><polyline fill="none" stroke="orange" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"/></svg>';
+                                if (bed.etatPatient == 3)
+                                    modalHtml += '<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="176px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve"><polyline fill="none" stroke="red" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"/></svg>';
+                                
+                                modalHtml += '<div class="fade-in"></div>';
+                                modalHtml += '<div class="fade-out"></div>';
+                                modalHtml += '</div>';
+                            }
+                            else
+                            {
+                                modalHtml += '<div style="margin-top: 5%;">';
+                                    modalHtml += '<select class="form-control" id="select-etat"><option>État Stable</option><option>État Instable</option><option>État Critique</option></select>'
+                                modalHtml += '</div>';
+                            }
+                        modalHtml += '</div>';
+                    modalHtml += '</div>';
+
+                    modalHtml += '<div style="margin-top: 8%;"></div>';
+                modalHtml += '</div>';
+                $("#modalFusillade").html(modalHtml);
+                if (bed.isSupervisor == 1)
+                {
+                    modalHtml += '<div class="modal-footer">';
+                        modalHtml += '<button type="button" id="submit-modal" class="btn btn-primary">Sauvegarder les modifications</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+                    modalHtml += '</div>';
+                }
+
+                modalHtml += '</div></div>';
+                $("#modalFusillade").html(modalHtml);
+
+                $('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+                
+                $("#submit-modal").click(function(){
+                    var data_patient = $("#input-patient").val();
+                    var data_medecin = $("#input-medecin").val();
+                    var data_desc = $("#input-description").val();
+                    var data_etat = $("#select-etat").val();
+                    setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_etat);
+                });
+            }
+        },
+        complete: function() {
+            setTimeout(getDataBed, 20000); //After completion of request, time to redo it after a second
+        }
+    });
+}
+
+function setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_etat)
+{
+    jQuery.ajax({
+        url: "setDataModalBed",
+        data: {id_bed: id_bed, data_patient: data_patient, data_medecin: data_medecin, data_desc: data_desc, data_etat: data_etat},
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
+            {
+                $("#submit-modal").html('');
+                $(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
+            }
         }
     });
 }

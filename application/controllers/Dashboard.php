@@ -25,6 +25,7 @@ class Dashboard extends CI_Controller {
 		$this->load->helper(array('url','form','language'));
 		$this->load->library('session');
 		$this->load->model('Services');
+		$this->load->model('Fusillade');
 		if (!isset($this->session->userdata['sessionData'])) {
 			redirect('/UserLogin');
 		}
@@ -80,6 +81,12 @@ class Dashboard extends CI_Controller {
 
 	public function logout()
 	{
+		$this->Services->endService($this->session->sessionData['username']);
+		$this->Services->endSupervisor($this->session->sessionData['username']);
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] =  $this->Services->isAvailable();
+		$data['onService'] =  0;
+		$data['supervisor'] = 0;
 		redirect('/UserLogin/logout');
 	}
 
@@ -189,7 +196,48 @@ class Dashboard extends CI_Controller {
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('dashboard/dispatch_fusillade',$data);
 		$this->load->view('template/footer');
+	}
+
+	public function getDataFusillade()
+	{
+		$data = $this->session->userdata('sessionData');
+
+		$data['dataFusillade'] = $this->Fusillade->getFusillade();
+		
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
+	public function getDataModalBed()
+	{
+		$bed = $this->input->post('bed');
+
+		$data = $this->session->userdata('sessionData');
+		$data['dataBed'] = $this->Fusillade->getDataBed($bed, $this->session->sessionData['username']);
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
+	public function setDataModalBed() {
+		$bed = $this->input->post('id_bed');
+		$data_patient = $this->input->post('data_patient');
+		$data_medecin = $this->input->post('data_medecin');
+		$data_desc = $this->input->post('data_desc');
+		$data_etat = $this->input->post('data_etat');
+
+		$this->Fusillade->setDataBed($bed, $data_patient, $data_medecin, $data_desc, $data_etat);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
 	}
 }
