@@ -164,12 +164,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- sidebar-menu  -->
             </div>
         </nav>
-    
-    <!-- page-wrapper -->
-
-    <!-- using online scripts -->
-    <!-- using local scripts -->
-    <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
