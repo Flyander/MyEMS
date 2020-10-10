@@ -278,11 +278,11 @@ function showModalWithData(id_bed)
                         modalHtml += '<div class="col-md-9">';
                             if (bed.isSupervisor == 1)
                             {
-                                modalHtml += '<input style="margin-top: 2%; padding-bottom: 10%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'">';
+                                modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'">';
                             }
                             else
                             {
-                                modalHtml += '<input style="margin-top: 2%; padding-bottom: 10%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'" disabled>';
+                                modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'" disabled>';
                             }
                         modalHtml += '</div>';
                     modalHtml += '</div>';
