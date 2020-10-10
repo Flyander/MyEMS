@@ -91,7 +91,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function pds(){
-
+		$this->Services->CreateServices($this->session->sessionData['id']);
 		$this->Services->startService($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();

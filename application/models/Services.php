@@ -24,11 +24,21 @@ class Services extends CI_Model
 		return count($result);
 	}
 	public function startService($hour){
+
+		$idd = "SELECT id from users where username ='$hour'";
+		$idUser  = ($this->db->query($idd)->result_array());
+
+		$idServiceQuerry = "SELECT id from Service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
+		$idS = ($this->db->query($idServiceQuerry)->result_array());
+		$id = $idS[0]['id'];
+
 		$query = "UPDATE users 
 		JOIN service ON users.id = service.id_user 
 		SET service.isAvailable=1 
-		WHERE username='$hour'";
+		WHERE username='$hour' AND service.id =".$id;
 		$queryResult = $this->db->query($query);
+		var_dump($queryResult);
+
 	}
 	public function endService($hour){
 		$query = "UPDATE users 
@@ -36,15 +46,32 @@ class Services extends CI_Model
 		SET isAvailable=0 
 		WHERE username='$hour'";
 		$queryResult = $this->db->query($query);
+		$idd = "SELECT id from users where username ='$hour'";
+		$id  = ($this->db->query($idd)->result_array());
 
-	}
+		$idServiceQuerry = "SELECT id from Service where id_user = ".$id[0]['id'];
+		$idS = ($this->db->query($idServiceQuerry)->result_array());
+		$idService = $idS[0]['id'];
+		$queryy = "UPDATE Service set dateEnd = '".date('Y-m-d H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
+		$this->db->query($queryy);
+
+		$queryyS = "UPDATE Service set type=0 WHERE id_user = ".$id[0]['id']." AND id=".$idService;
+		$this->db->query($queryyS);
+		  }
 
 	public function pauseCurrentService($name)
 	{
+		$idd = "SELECT id from users where username ='$name'";
+		$idUser  = ($this->db->query($idd)->result_array());
+
+		$idServiceQuerry = "SELECT id from Service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
+		$idS = ($this->db->query($idServiceQuerry)->result_array());
+		$id = $idS[0]['id'];
+
 		$query = "UPDATE users 
 		JOIN service ON users.id = service.id_user 
 		SET isAvailable=2
-		WHERE username='$name'";
+		WHERE username='$name' AND service.id = $id";
 		$queryResult = $this->db->query($query);
 	}
 	public function supervisor($name){
@@ -100,5 +127,10 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result[0];
+	}
+	public function CreateServices($id){
+		$today = date("Y-m-d H:i:s");
+		$query  = "INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('".$today."', '2999-09-30 00:00:00',0, 1, 1, ".$id.")";
+		$this->db->query($query);
 	}
 }

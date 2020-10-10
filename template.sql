@@ -162,7 +162,7 @@ CREATE TABLE fusillade(
 
 
 INSERT INTO `grade`(`name`, `gradeName`, `type`) VALUES ('medecin','Médecin', 1);
-INSERT INTO `users`(`fullname`, `password`, `username`, `name`) VALUES ('Jacob Ripper','test','jripper','medecin');
+INSERT INTO `users`(`fullname`, `password`, `username`, `grade_name`) VALUES ('Billy Renvess','test','brenves','medecin');
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30',1, 1, 1, 1);
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_1', 'Bloc opératoire n°1', 'Kilauea Ake', 'Jacob Ripper', 'Jambe cassé et traumatisme crânien', 1, 1);
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_2', 'Bloc opératoire n°2', '', '', '', 0, 0);
