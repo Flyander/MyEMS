@@ -82,12 +82,12 @@
 											<?php if($onService != 0) { ?>
 												<?php if($nbSupervisor == 0){ ?>
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir superviseur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir régulateur</a>
 													</div>
 												<?php } ?>
 												<?php if($nbSupervisor == 1){ ?> 
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop superviseur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur</a>
 													</div>
 												<?php } ?>
  
