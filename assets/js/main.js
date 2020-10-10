@@ -244,7 +244,8 @@ function showModalWithData(id_bed)
                         }
                         else
                         {
-                            modalHtml += '<div class="modalBed-data">'+ bed.patient +'</div>'; //deactivated-elem
+                            modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'" disabled>';
+                            //modalHtml += '<div class="modalBed-data">'+ bed.patient +'</div>'; //deactivated-elem
                         }
                         modalHtml += '</div>';
                     modalHtml += '</div>';
@@ -262,7 +263,8 @@ function showModalWithData(id_bed)
                             }
                             else
                             {
-                                modalHtml += '<div class="modalBed-data">'+ bed.medecin +'</div>'; //deactivated-elem
+                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'" disabled>';
+                               // modalHtml += '<div class="modalBed-data">'+ bed.medecin +'</div>'; //deactivated-elem
                             }
                         modalHtml += '</div>';
                     modalHtml += '</div>';
@@ -280,7 +282,7 @@ function showModalWithData(id_bed)
                             }
                             else
                             {
-                                modalHtml += '<div class="modalBed-data-desc">'+ bed.description +'</div>'; //deactivated-elem
+                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'" disabled>';
                             }
                         modalHtml += '</div>';
                     modalHtml += '</div>';
