@@ -96,7 +96,7 @@
 														<a class="btn btn-outline-purple w-100 rounded-0" href='setCounty' type="button">Prendre son service sur Blaine County</a>
 													</div>
 												<?php } ?>
- 
+
 												<?php if($county == 'BC'){ ?>
 													<div class="col-md-4 mb-2">
 														<a class="btn btn-outline-purple w-100 rounded-0" href='setCounty' type="button">Prendre son service sur Los Santos</a>
