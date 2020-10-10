@@ -28,7 +28,7 @@ class Services extends CI_Model
 		$idd = "SELECT id from users where username ='$hour'";
 		$idUser  = ($this->db->query($idd)->result_array());
 
-		$idServiceQuerry = "SELECT id from Service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
+		$idServiceQuerry = "SELECT id from service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$id = $idS[0]['id'];
 
@@ -64,7 +64,7 @@ class Services extends CI_Model
 		$idd = "SELECT id from users where username ='$name'";
 		$idUser  = ($this->db->query($idd)->result_array());
 
-		$idServiceQuerry = "SELECT id from Service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
+		$idServiceQuerry = "SELECT id from service where id_user = ".$idUser[0]['id']." ORDER BY id DESC";
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$id = $idS[0]['id'];
 
