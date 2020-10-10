@@ -2974,10 +2974,23 @@ fieldset:disabled a.btn {
     border-color: #17a2b8
 }
 
+
 .btn-outline-info:hover {
     color: #fff;
     background-color: #17a2b8;
     border-color: #17a2b8
+}
+
+.btn-outline-purple {
+    color: #8766c4;
+    border-color: #8766c4;
+}
+
+
+.btn-outline-purple:hover {
+    color: #fff;
+    background-color: #8766c4;
+    border-color: #8766c4;
 }
 
 .btn-outline-info.focus,

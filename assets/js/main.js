@@ -129,6 +129,8 @@ function getTableDispatch()
                     else if (item.isAvailable == 2)
                         table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
+                    table += '<td style = \"color: #1A9CC7;\">'+ item.county +'</td>';
+
                     table += '</tr>';
                 });
 
@@ -178,6 +180,12 @@ function getOptionDispatch(id, isSupervisor)
                     optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='endSupervisor' type=\"button\">Stop superviseur</a></div>";
                 }
             }
+
+            if (player.county == 'BC')
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Los Santos</a></div>";
+            else if (player.county == 'LS')
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Blaine County</a></div>";
+            
             optionHtml += "</div></div>";            
             
             $('#option_dispatch').html(optionHtml);

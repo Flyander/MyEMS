@@ -25,6 +25,7 @@
 	                                                    <th scope="col">Grade</th>
 	                                                    <th scope="col">Spécialisation</th>
 	                                                    <th scope="col">Status</th>
+														<th scope="col">Dispatch</th>
 	                                                </tr>
 	                                            </thead>
 	                                            <tbody id='tbody_dispatch'></tbody>
@@ -81,14 +82,27 @@
 											<?php if($onService != 0) { ?>
 												<?php if($nbSupervisor == 0){ ?>
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir superviseur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir régulateur</a>
 													</div>
 												<?php } ?>
 												<?php if($nbSupervisor == 1){ ?> 
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop superviseur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur</a>
 													</div>
 												<?php } ?>
+ 
+												<?php if($county == 'LS'){ ?>
+													<div class="col-md-4 mb-2">
+														<a class="btn btn-outline-purple w-100 rounded-0" href='setCounty' type="button">Prendre son service sur Blaine County</a>
+													</div>
+												<?php } ?>
+
+												<?php if($county == 'BC'){ ?>
+													<div class="col-md-4 mb-2">
+														<a class="btn btn-outline-purple w-100 rounded-0" href='setCounty' type="button">Prendre son service sur Los Santos</a>
+													</div>
+												<?php } ?>
+
 											<?php } ?>
 										</div>
 									</div>
