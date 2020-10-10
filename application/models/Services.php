@@ -133,4 +133,25 @@ class Services extends CI_Model
 		$query  = "INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('".$today."', '2999-09-30 00:00:00',0, 1, 1, ".$id.")";
 		$this->db->query($query);
 	}
+
+	public function getCounty($username){
+		$query = "SELECT county
+		FROM users 
+		INNER JOIN service ON users.id = service.id_user
+		WHERE username = '$username'";
+
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0]["county"];
+	}
+
+	public function setCounty($county, $name)
+	{
+		$query = "UPDATE users 
+		JOIN service ON users.id = service.id_user 
+		SET county = '$county' 
+		WHERE username='$name'";
+		$queryResult = $this->db->query($query);
+	}
+
 }

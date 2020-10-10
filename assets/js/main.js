@@ -129,6 +129,8 @@ function getTableDispatch()
                     else if (item.isAvailable == 2)
                         table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
+                    table += '<td style = \"color: #1A9CC7;\">'+ item.county +'</td>';
+
                     table += '</tr>';
                 });
 

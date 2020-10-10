@@ -121,6 +121,7 @@ CREATE TABLE service(
         dateEnd      Date NOT NULL ,
         isSupervisor Int NOT NULL ,
         isAvailable  Int NOT NULL ,
+        county       Varchar (250) NOT NULL ,
         type         Int NOT NULL ,
         id_user      Int NOT NULL
 	,CONSTRAINT SERVICE_PK PRIMARY KEY (id)

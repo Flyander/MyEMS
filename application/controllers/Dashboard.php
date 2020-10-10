@@ -40,6 +40,8 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/dispatch_global',$data);
@@ -54,6 +56,8 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
+		
 		$return['data'] = $data;
 		$return['code'] = 200;
 		 
@@ -239,5 +243,20 @@ class Dashboard extends CI_Controller {
 		$return['code'] = 200;
 		 
 		echo json_encode($return);
+	}
+	
+	public function setCounty()
+	{
+		$county = $this->Services->getCounty($this->session->sessionData['username']);
+
+		if ($county == 'LS')
+		{
+			$this->Services->setCounty('BC', $this->session->sessionData['username']);
+		}
+		else
+		{
+			$this->Services->setCounty('LS', $this->session->sessionData['username']);
+		}
+		redirect('/Dashboard/index');
 	}
 }
