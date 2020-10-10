@@ -240,11 +240,11 @@ function showModalWithData(id_bed)
                         modalHtml += '<div class="col-md-9">';
                         if (bed.isSupervisor == 1)
                         {
-                            modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'">';
+                            modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'">';
                         }
                         else
                         {
-                            modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'" disabled>';
+                            modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-patient" value="'+ bed.patient +'" disabled>';
                             //modalHtml += '<div class="modalBed-data">'+ bed.patient +'</div>'; //deactivated-elem
                         }
                         modalHtml += '</div>';
@@ -259,11 +259,11 @@ function showModalWithData(id_bed)
                         modalHtml += '<div class="col-md-9">';
                             if (bed.isSupervisor == 1)
                             {
-                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'">';
+                                modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'">';
                             }
                             else
                             {
-                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'" disabled>';
+                                modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-medecin" value="'+ bed.medecin +'" disabled>';
                                // modalHtml += '<div class="modalBed-data">'+ bed.medecin +'</div>'; //deactivated-elem
                             }
                         modalHtml += '</div>';
@@ -278,11 +278,11 @@ function showModalWithData(id_bed)
                         modalHtml += '<div class="col-md-9">';
                             if (bed.isSupervisor == 1)
                             {
-                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'">';
+                                modalHtml += '<input style="margin-top: 2%; padding-bottom: 10%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'">';
                             }
                             else
                             {
-                                modalHtml += '<input style="margin-top: 1%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'" disabled>';
+                                modalHtml += '<input style="margin-top: 2%; padding-bottom: 10%;" type="text" class="form-control" id="input-description" value="'+ bed.description +'" disabled>';
                             }
                         modalHtml += '</div>';
                     modalHtml += '</div>';
