@@ -52,10 +52,10 @@ class Services extends CI_Model
 		$idServiceQuerry = "SELECT id from Service where id_user = ".$id[0]['id'];
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$idService = $idS[0]['id'];
-		$queryy = "UPDATE Service set dateEnd = '".date('Y-m-d H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
+		$queryy = "UPDATE service set dateEnd = '".date('Y-m-d H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
 		$this->db->query($queryy);
 
-		$queryyS = "UPDATE Service set type=0 WHERE id_user = ".$id[0]['id']." AND id=".$idService;
+		$queryyS = "UPDATE service set type=0 WHERE id_user = ".$id[0]['id']." AND id=".$idService;
 		$this->db->query($queryyS);
 		  }
 
