@@ -41,6 +41,8 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
+		$data['isPharmacien'] =  $this->Services->getIfPharmacien($this->session->sessionData['username']);
+		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -56,7 +58,9 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isPharmacien'] =  $this->Services->getIfPharmacien($this->session->sessionData['username']);
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
+		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 		
 		$return['data'] = $data;
 		$return['code'] = 200;
@@ -189,6 +193,17 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 	}
 
+	public function ouvrirPharmacie()
+	{
+		$this->Services->openPharmacie($this->session->sessionData['username']);
+		redirect('/Dashboard/index');
+	}
+
+	public function fermerPharmacie()
+	{
+		$this->Services->closePharmacie();
+		redirect('/Dashboard/index');
+	}
 
 	public function dispatchFusillade()
 	{

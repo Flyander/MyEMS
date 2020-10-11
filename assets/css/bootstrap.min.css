@@ -2993,6 +2993,18 @@ fieldset:disabled a.btn {
     border-color: #8766c4;
 }
 
+.btn-outline-brown {
+    color: #8B4513;
+    border-color: #8B4513;
+}
+
+
+.btn-outline-brown:hover {
+    color: #fff;
+    background-color: #8B4513;
+    border-color: #8B4513;
+}
+
 .btn-outline-info.focus,
 .btn-outline-info:focus {
     box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5)

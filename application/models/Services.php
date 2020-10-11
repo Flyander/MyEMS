@@ -154,4 +154,45 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 
+	public function getPharmacieState($name)
+	{
+		$query = "SELECT * from users 
+		INNER JOIN service ON users.id = service.id_user 
+		INNER JOIN grade ON users.grade_name = grade.name 
+		WHERE isPharmacieOpen=1 AND username = '$name'";
+
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return count($result);
+	}
+
+	public function openPharmacie($username)
+	{
+		$query = "UPDATE users
+		JOIN service ON users.id = service.id_user 
+		JOIN grade ON users.grade_name = grade.name 
+		SET isPharmacieOpen=1
+		WHERE username='$username' AND isPharmacieGrade=1";
+		$queryResult = $this->db->query($query);
+	}
+
+	public function closePharmacie()
+	{
+		$query = "UPDATE service 
+		SET isPharmacieOpen=0";
+		$queryResult = $this->db->query($query);
+	}
+
+	public function getIfPharmacien($username)
+	{
+		$query = "SELECT isPharmacieGrade
+		FROM users 
+		INNER JOIN service ON users.id = service.id_user
+		INNER JOIN grade ON users.grade_name = grade.name
+		WHERE username = '$username'";
+
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0]["isPharmacieGrade"];
+	}
 }

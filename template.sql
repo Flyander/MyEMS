@@ -35,7 +35,8 @@ CREATE TABLE spe(
 CREATE TABLE grade(
         name Varchar (250) NOT NULL,
         gradeName Varchar (250) NOT NULL ,
-        type Int NOT NULL
+        type Int NOT NULL ,
+        isPharmacieGrade Int NOT NULL ,
 	,CONSTRAINT Grade_PK PRIMARY KEY (name)
 )ENGINE=InnoDB;
 
@@ -121,6 +122,7 @@ CREATE TABLE service(
         dateEnd      Date NOT NULL ,
         isSupervisor Int NOT NULL ,
         isAvailable  Int NOT NULL ,
+        isPharmacieOpen Int NOT NULL ,
         county       Varchar (250) NOT NULL ,
         type         Int NOT NULL ,
         id_user      Int NOT NULL

@@ -107,7 +107,7 @@ function getTableDispatch()
             {
                 $('.icon').css({ "display": "block" });
                 table = '';
-
+                console.log(data);
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
                     table += '<tr id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')
@@ -125,7 +125,12 @@ function getTableDispatch()
                         table += "<td>"+ item.spe +"</td>";
 
                     if (item.isAvailable == 1)
-                        table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
+                    {
+                        if (item.isPharmacieGrade == 1 && item.isPharmacieOpen == 1)
+                            table += "<td style = \"color: green;\"><i class=\"fad fa-pills\"></i> Pharmacie</td>";
+                        else
+                            table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
+                    }
                     else if (item.isAvailable == 2)
                         table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
 
