@@ -185,6 +185,13 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 
+	public function closePharmacieAll()
+	{
+		$query = "UPDATE service 
+		SET isPharmacieOpen=0";
+		$queryResult = $this->db->query($query);
+	}
+
 	public function getIfPharmacien($username)
 	{
 		$query = "SELECT isPharmacieGrade

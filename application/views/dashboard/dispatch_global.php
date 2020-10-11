@@ -108,7 +108,7 @@
 														<a class="btn btn-outline-brown w-100 rounded-0" href='ouvrirPharmacie' type="button">Ouvrir la pharmacie</a>
 													</div>
 												<?php } ?>
-												<?php if($isPharmacieOpen >= 1 || $nbSupervisor >= 1){ ?> 
+												<?php if($isPharmacieOpen >= 1){ ?> 
 													<div class="col-md-4 mb-2">
 														<a class="btn btn-outline-brown w-100 rounded-0" href='fermerPharmacie' type="button">Fermer la pharmacie</a>
 													</div>
