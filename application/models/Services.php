@@ -176,10 +176,12 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 
-	public function closePharmacie()
+	public function closePharmacie($name)
 	{
-		$query = "UPDATE service 
-		SET isPharmacieOpen=0";
+		$query = "UPDATE users
+		JOIN service ON users.id = service.id_user  
+		SET isPharmacieOpen=0
+		WHERE username='$name'";
 		$queryResult = $this->db->query($query);
 	}
 
