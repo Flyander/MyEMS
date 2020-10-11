@@ -110,7 +110,7 @@ function getTableDispatch()
 
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    table += '<tr id="'+ item.username +'" onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')">';
+                    table += '<tr id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')
 
                     if (item.isSupervisor == 1)
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";

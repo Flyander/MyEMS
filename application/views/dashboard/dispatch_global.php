@@ -13,7 +13,7 @@
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
 	                                <div class="card-title mb-1 p-3">
-	                                    <h5>Dispatch actuelle</h5>
+	                                    <h5>Dispatch actuel</h5>
 	                                </div>
 	                                <div class="card-body">
 	                                    <div class="table-responsive-md">
@@ -85,7 +85,7 @@
 														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir régulateur</a>
 													</div>
 												<?php } ?>
-												<?php if($nbSupervisor == 1){ ?> 
+												<?php if($nbSupervisor >= 1){ ?> 
 													<div class="col-md-4 mb-2">
 														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur</a>
 													</div>
