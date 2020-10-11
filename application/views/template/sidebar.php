@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span>Extra</span>
                         </li>
                         <li>
-                            <a>
+                            <a href="documentation">
                                 <i class="fa fa-book"></i>
                                 <span class="menu-text">Documentation</span>
                                 <!--<span class="badge badge-pill badge-primary">Beta</span>-->

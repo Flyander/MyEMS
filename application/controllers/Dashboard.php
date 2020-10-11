@@ -259,4 +259,19 @@ class Dashboard extends CI_Controller {
 		}
 		redirect('/Dashboard/index');
 	}
+
+	public function documentation()
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
+		$this->load->view('dashboard/documentation',$data);
+		$this->load->view('template/footer');
+	}
 }

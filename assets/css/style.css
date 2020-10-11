@@ -1022,3 +1022,20 @@ body {
     left: 0;
   }
 }
+
+.doc-title {
+    margin-left: 2%;
+    margin-bottom: 6px;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.doc-content {
+    font-size: 15px;
+    margin-left: 0.6%;
+}
+
+#doc-id li {
+    position: relative;
+    padding-bottom: 5px;
+}
