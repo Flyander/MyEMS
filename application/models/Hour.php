@@ -8,7 +8,5 @@ class Hour extends CI_Model
 		$querryR = $this->db->querry($querry);
 		$result = $querryR->result_array();
 		return $result[0];
-
-
 	}
 }

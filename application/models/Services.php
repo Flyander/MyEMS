@@ -52,7 +52,7 @@ class Services extends CI_Model
 		$idServiceQuerry = "SELECT id from service where id_user = ".$id[0]['id'];
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$idService = $idS[0]['id'];
-		$queryy = "UPDATE service set dateEnd = '".date('Y-m-d H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
+		$queryy = "UPDATE service set dateEnd = '".date('d-m-YY H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
 		$this->db->query($queryy);
 
 		$queryyS = "UPDATE service set type=0 WHERE id_user = ".$id[0]['id']." AND id=".$idService;
@@ -129,7 +129,7 @@ class Services extends CI_Model
 		return $result[0];
 	}
 	public function CreateServices($id){
-		$today = date("Y-m-d H:i:s");
+		$today = date("d-m-YY H:i:s");
 		$query  = "INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('".$today."', '2999-09-30 00:00:00',0, 1, 1, ".$id.")";
 		$this->db->query($query);
 	}
