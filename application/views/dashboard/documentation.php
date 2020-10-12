@@ -18,13 +18,26 @@
 									</div>
 									<div class="card-body">
                                         <div class="form-group col-md-12">
-                                            <div class="doc-title">Annexe(s) :</div>
+                                            <div class="doc-title">Anatomie Générale Externe Annexe(s) :</div>
 
                                             <div class="form-group col-md-12 doc-content">
                                                 <ul>
-                                                    <li><a href="https://media.discordapp.net/attachments/762710604615385118/764878355941818438/Anatomie_1.png">Schéma A</a></li>
-                                                    <li><a href="https://media.discordapp.net/attachments/762710604615385118/764878352967794690/Anatomie_1.2.png">Schéma B</a></li>
-                                                    <li><a href="https://media.discordapp.net/attachments/762710604615385118/764878354708037642/Anatomie_1.3.png">Schéma C</a></li>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/762710604615385118/764878355941818438/Anatomie_1.png">Schéma A</a></li>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/762710604615385118/764878352967794690/Anatomie_1.2.png">Schéma B</a></li>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/762710604615385118/764878354708037642/Anatomie_1.3.png">Schéma C</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+										<div class="form-group col-md-12">
+                                            <div class="doc-title">Gestes de Premiers Secours Annexe(s) :</div>
+
+                                            <div class="form-group col-md-12 doc-content">
+                                                <ul>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765207884107350046/unknown.png">FAST</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765215018437836850/Claque_dans_le_dos.png">Claques dans le dos</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765216505801211994/Methode_Heimlich.png?width=622&height=468">Méthode Heimlich</a></li>
+													<li><a class="image-link" href="https://cdn.discordapp.com/attachments/649321513023045665/765229391923773470/RCP.png">Schéma RCP</a></li>
                                                 </ul>
                                             </div>
                                         </div>

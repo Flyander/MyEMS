@@ -92,7 +92,10 @@ jQuery(function($) {
         });
         $('.sidebar-content').addClass('desktop');
     }
+
+    $('.image-link').magnificPopup({type:'image'});
 });
+
 
 
 function getTableDispatch()
