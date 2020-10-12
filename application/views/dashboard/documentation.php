@@ -194,4 +194,3 @@
 	        </div>
 	    </div>
 	</main>
-	<script>$(function () { getDataBed(); });</script>
