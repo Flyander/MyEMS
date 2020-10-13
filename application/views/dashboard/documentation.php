@@ -17,6 +17,19 @@
 										<h5>Basic Life Support (BLS)</h5>
 									</div>
 									<div class="card-body">
+										<div class="form-group col-md-12">
+                                            <div class="doc-title">Guide recrue :</div>
+
+                                            <div class="form-group col-md-12 doc-content">
+                                                <ul>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765627605083750426/BLS_-_Formation_Initiale-1.png">Fiche Récapitulative 1</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765627613913022464/BLS_-_Formation_Initiale-2.png">Fiche Récapitulative 2</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/649321513023045665/765627628853264394/BLS_-_Formation_Initiale-3.png">Fiche Récapitulative 3</a></li>
+												</ul>
+                                            </div>
+                                        </div>
+
+
                                         <div class="form-group col-md-12">
                                             <div class="doc-title">Anatomie Générale Externe Annexe(s) :</div>
 
