@@ -7,7 +7,8 @@ class Services extends CI_Model
 		$query = "SELECT * FROM users 
 		INNER JOIN service ON users.id = service.id_user 
 		INNER JOIN grade ON users.grade_name = grade.name 
-		WHERE isAvailable=1 or isAvailable=2";
+		WHERE isAvailable=1 or isAvailable=2
+		ORDER BY county DESC, gradeName ASC";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result;
