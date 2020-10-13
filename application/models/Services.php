@@ -173,7 +173,7 @@ class Services extends CI_Model
 		JOIN service ON users.id = service.id_user 
 		JOIN grade ON users.grade_name = grade.name 
 		SET isPharmacieOpen=1
-		WHERE username='$username' AND isPharmacieGrade=1";
+		WHERE username='$username' AND typeGrade=1";
 		$queryResult = $this->db->query($query);
 	}
 
@@ -195,7 +195,7 @@ class Services extends CI_Model
 
 	public function getIfPharmacien($username)
 	{
-		$query = "SELECT isPharmacieGrade
+		$query = "SELECT typeGrade
 		FROM users 
 		INNER JOIN service ON users.id = service.id_user
 		INNER JOIN grade ON users.grade_name = grade.name
@@ -203,6 +203,6 @@ class Services extends CI_Model
 
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
-		return $result[0]["isPharmacieGrade"];
+		return $result[0]["typeGrade"];
 	}
 }

@@ -129,8 +129,10 @@ function getTableDispatch()
 
                     if (item.isAvailable == 1)
                     {
-                        if (item.isPharmacieGrade == 1 && item.isPharmacieOpen == 1)
+                        if (item.typeGrade == 1 && item.isPharmacieOpen == 1)
                             table += "<td style = \"color: green;\"><i class=\"fad fa-pills\"></i> Pharmacie</td>";
+                        else if (item.typeGrade == 2)
+                            table += "<td style = \"color: #FF7500;\"><i class=\"fad fa-fire\"></i> Service LSFD</td>";
                         else
                             table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
                     }
