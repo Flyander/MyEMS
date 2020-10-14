@@ -87,8 +87,15 @@ class UserLogin extends CI_Controller
 						'grade' => $result[0]->grade,
 						'onServiceName' => $this->Services->isAvailable()
 					);
-					$this->load->view('template/headerLogin');
 					$this->session->set_userdata('sessionData', $sessionData);
+					$data = $this->session->userdata('sessionData');
+					$data['onServiceName'] =  $this->Services->isAvailable();
+					$data['onService'] =  1;
+					$data['isSupervisor'] = 0;
+					$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+					$this->session->unset_userdata('sessionData');
+					$this->session->set_userdata('sessionData', $data);
+					$this->load->view('template/headerLogin');
 					redirect('/Dashboard/index');
 				}
 			}
