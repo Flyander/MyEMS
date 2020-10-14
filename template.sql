@@ -37,7 +37,7 @@ CREATE TABLE grade(
         gradeName Varchar (250) NOT NULL ,
         type Int NOT NULL ,
         typeGrade Int NOT NULL ,
-	,CONSTRAINT Grade_PK PRIMARY KEY (name)
+	, CONSTRAINT Grade_PK PRIMARY KEY (name)
 )ENGINE=InnoDB;
 
 
