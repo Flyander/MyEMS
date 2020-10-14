@@ -19,8 +19,9 @@
 	                                    <h5>Liste des utilisateurs</h5>
 	                                </div>
 	                                <div class="card-body">
+										<input type="text" id="myInput" onkeyup="getNameInTable()" placeholder="Rechercher un utilisateur..">
 	                                    <div class="table-responsive-md">
-	                                        <table class="table table-hover">
+	                                        <table id="myTable" class="table table-hover">
 	                                            <thead>
 	                                                <tr>
 	                                                    <th style="width: 10px;" scope="col"></th>
