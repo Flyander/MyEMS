@@ -14,6 +14,26 @@ class Services extends CI_Model
 		return $result;
 	}
 
+	public function isAdmin($name) {
+		$query = "SELECT isAdmin 
+		FROM users 
+		WHERE username = '$name'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0]["isAdmin"];
+	}
+
+	public function getAllAccount()
+	{
+		$query = "SELECT * 
+		FROM users
+		INNER JOIN grade ON users.grade_name = grade.name
+		ORDER BY gradeName ASC";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result;
+	}
+
 	public function nbDispatch($name){
 		$query = "SELECT * from users 
 		INNER JOIN service ON users.id = service.id_user 
@@ -38,8 +58,7 @@ class Services extends CI_Model
 		SET service.isAvailable=1 
 		WHERE username='$hour' AND service.id =".$id;
 		$queryResult = $this->db->query($query);
-		var_dump($queryResult);
-
+		//var_dump($queryResult);
 	}
 	public function endService($hour){
 		$query = "UPDATE users 
@@ -58,7 +77,7 @@ class Services extends CI_Model
 
 		$queryyS = "UPDATE service set type=0 WHERE id_user = ".$id[0]['id']." AND id=".$idService;
 		$this->db->query($queryyS);
-		  }
+	}
 
 	public function pauseCurrentService($name)
 	{

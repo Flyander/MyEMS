@@ -50,7 +50,8 @@ CREATE TABLE users(
         fullname Varchar (250) NOT NULL ,
         password Varchar (250) NOT NULL ,
         username Varchar (250) NOT NULL ,
-        grade_name     Varchar (250) NOT NULL
+        grade_name     Varchar (250) NOT NULL,
+        isAdmin INT(2) NOT NULL DEFAULT '0'
 	,CONSTRAINT USER_PK PRIMARY KEY (id)
 
 	,CONSTRAINT USER_Grade_FK FOREIGN KEY (grade_name) REFERENCES grade(name)

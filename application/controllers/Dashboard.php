@@ -44,6 +44,8 @@ class Dashboard extends CI_Controller {
 		$data['isPharmacien'] =  $this->Services->getIfPharmacien($this->session->sessionData['username']);
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/dispatch_global',$data);
@@ -96,6 +98,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
 		$data['supervisor'] = 0;
+		$data['isAdmin'] = 0;
 		redirect('/UserLogin/logout');
 	}
 
@@ -106,6 +109,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -284,12 +288,33 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
-		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('dashboard/documentation',$data);
 		$this->load->view('template/footer');
 	}
+
+	public function listAccount() 
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['collAccount'] = $this->Services->getAllAccount();
+
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/listAccount',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function myHours(){
 
 	}
