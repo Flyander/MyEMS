@@ -42,7 +42,7 @@ class Services extends CI_Model
 
 	}
 		public function isOnService($id){
-			$condition = "id_user = $id AND isAvailable =1" ;
+			$condition = "id_user = $id AND isAvailable =1 " ;
 			$this->db->select('*');
 			$this->db->from('service');
 			$this->db->where($condition);
