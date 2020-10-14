@@ -30,11 +30,16 @@
 	                                            <tbody>
 													<?php foreach ($collAccount as $user) { ?>
 														<tr id="<?php echo $user['username']; ?>">
-															<td></td>
+															<?php if ($user['isAdmin'] == 1) {
+																	echo "<td style=\"color: darkorange; font-size: 18px; padding-top: 15px;\"><i class=\"fas fa-user-shield\"></i></td>";
+																} else { 
+																	echo "<td></td>";
+																} 
+															?>
 															
-															<td><?php echo $user['fullname'];?></td>
-															<td><?php echo $user['gradeName'];?></td>
-															<?php echo "<td>N/A</td>"; ?>
+															<td style="transform: translateY(10%);"><?php echo $user['fullname'];?></td>
+															<td style="transform: translateY(10%);"><?php echo $user['gradeName'];?></td>
+															<?php echo "<td style=\"transform: translateY(10%);\">N/A</td>"; ?>
 															<?php 
 															echo "<td><a class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
 																	<a class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
