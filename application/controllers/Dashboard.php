@@ -103,8 +103,11 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function pds(){
-		$this->Services->CreateServices($this->session->sessionData['id']);
-		$this->Services->startService($this->session->sessionData['username']);
+		if(!$this->Services->isOnService($this->session->sessionData['id'])) {
+			$this->Services->CreateServices($this->session->sessionData['id']);
+			$this->Services->startService($this->session->sessionData['username']);
+
+		}
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
@@ -116,7 +119,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('dashboard/dispatch_global',$data);
 		redirect('/Dashboard/index');
-
 	}
 
 	public function pauseService(){

@@ -60,6 +60,19 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 		//var_dump($queryResult);
 	}
+		public function isOnService($id){
+			$condition = "id_user = $id AND isAvailable =1 " ;
+			$this->db->select('*');
+			$this->db->from('service');
+			$this->db->where($condition);
+			$this->db->limit(1);
+			$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return true;
+			} else {
+				return false;
+			}
+	}
 	public function endService($hour){
 		$query = "UPDATE users 
 		JOIN service ON users.id = service.id_user 

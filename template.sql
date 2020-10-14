@@ -37,7 +37,7 @@ CREATE TABLE grade(
         gradeName Varchar (250) NOT NULL ,
         type Int NOT NULL ,
         typeGrade Int NOT NULL ,
-	,CONSTRAINT Grade_PK PRIMARY KEY (name)
+	, CONSTRAINT Grade_PK PRIMARY KEY (name)
 )ENGINE=InnoDB;
 
 
@@ -119,8 +119,8 @@ CREATE TABLE dayofFollow(
 
 CREATE TABLE service(
         id           Int  Auto_increment  NOT NULL ,
-        dateStart    Date NOT NULL ,
-        dateEnd      Date NOT NULL ,
+        dateStart    varchar(200) NOT NULL ,
+        dateEnd      varchar(200) NOT NULL ,
         isSupervisor Int NOT NULL ,
         isAvailable  Int NOT NULL ,
         isPharmacieOpen Int NOT NULL ,
