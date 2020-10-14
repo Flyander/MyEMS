@@ -1,5 +1,8 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
+	if ($isAdmin != 1) {
+		redirect('/Dashboard/index');
+	}
 	?>
 
 	<div class="preloader"></div>
@@ -31,9 +34,20 @@
 													<?php foreach ($collAccount as $user) { ?>
 														<tr id="<?php echo $user['username']; ?>">
 															<?php if ($user['isAdmin'] == 1) {
-																	echo "<td style=\"color: darkorange; font-size: 18px; padding-top: 15px;\"><i class=\"fas fa-user-shield\"></i></td>";
-																} else { 
-																	echo "<td></td>";
+																	echo "<td style=\"color: darkorange; font-size: 22px; padding-top: 14px;\"><i class=\"fas fa-user-shield\"></i></td>";
+																} else {
+																	if ($user['typeGrade'] == 1) 
+																	{
+																		echo "<td style=\"color: green; font-size: 22px; padding-top: 14px;\"><i class=\"fas fa-hand-holding-medical\"></i></td>";
+																	}
+																	elseif ($user['typeGrade'] == 2) 
+																	{
+																		echo "<td style=\"color: red; font-size: 22px; padding-top: 14px;\"><i class=\"fad fa-user-nurse\"></i></td>";
+																	}
+																	else
+																	{
+																		echo "<td style=\"color: #17a2b8; font-size: 22px; padding-top: 14px;\"><i class=\"fad fa-user-md\"></i></td>";
+																	}
 																} 
 															?>
 															

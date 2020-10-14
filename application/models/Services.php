@@ -28,7 +28,7 @@ class Services extends CI_Model
 		$query = "SELECT * 
 		FROM users
 		INNER JOIN grade ON users.grade_name = grade.name
-		ORDER BY gradeName ASC";
+		ORDER BY isAdmin DESC, typeGrade DESC, gradeName ASC";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result;
