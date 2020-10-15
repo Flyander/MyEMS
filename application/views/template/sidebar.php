@@ -153,6 +153,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="menu-text">Tarification</span>
                             </a>
                         </li>
+
+                        <?php if ($isAdmin == 1) { ?>
+
+                            <li class="header-menu">
+                                <span>Admin</span>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a>
+                                    <i class="fas fa-users"></i>
+                                    <span class="menu-text">Gestion des utilisateurs</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="listAccount">Liste des utilisateurs</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Ajouter un utilisateur</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        <?php } ?>
                         <!--<li>
                             <a>
                                 <i class="fa fa-folder"></i>
