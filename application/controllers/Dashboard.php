@@ -43,7 +43,7 @@ class Dashboard extends CI_Controller {
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
 		$data['isPharmacien'] =  $this->Services->getIfPharmacien($this->session->sessionData['username']);
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
-
+		$data['onService'] = $this->Services->isOnService($this->session->sessionData['id']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/dispatch_global',$data);
