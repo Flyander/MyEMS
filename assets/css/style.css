@@ -904,6 +904,14 @@ body {
     margin-right: 10%;
 }
 
+.center {
+    margin-left: 60%;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
 .inprogress {
     color: rgb(29, 182, 29);
 }

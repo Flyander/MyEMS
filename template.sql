@@ -190,6 +190,21 @@ INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, 
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_5', 'Salle de réveil - Lit n°5', '', '', '', 0, 0);
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('reveil_6', 'Salle de réveil - Lit n°6', '', '', '', 0, 0);
 
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_ss_1', 'Salle de repos - Lit n°1', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_ss_2', 'Salle de repos - Lit n°2', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_ss_3', 'Salle de repos - Lit n°3', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_ss_4', 'Salle de repos - Lit n°4', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('repos_ss_5', 'Salle de repos - Lit n°5', '', '', '', 0, 0);
+
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_ss_1', 'Sandy Shores - Bloc opératoire n°1', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_ss_2', 'Sandy Shores - Bloc opératoire n°2', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_ss_3', 'Sandy Shores - Bloc opératoire n°3', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_ss_4', 'Sandy Shores - Bloc opératoire n°4', '', '', '', 0, 0);
+
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_pb_1', 'Paleto Bay - Bloc opératoire n°1', '', '', '', 0, 0);
+INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_pb_2', 'Paleto Bay - Bloc opératoire n°2', '', '', '', 0, 0);
+
+
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 4);
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 5);
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 6);

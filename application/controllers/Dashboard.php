@@ -219,10 +219,22 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$county = $this->Services->getCounty($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('modal/modal_fusillade',$data);
-		$this->load->view('dashboard/dispatch_fusillade',$data);
+
+		if ($county == 'LS')
+		{
+			$this->load->view('dashboard/dispatch_fusillade',$data);
+		}
+		else
+		{
+			$this->load->view('dashboard/dispatch_fusillade_bc',$data);
+		}
+
 		$this->load->view('template/footer');
 	}
 
