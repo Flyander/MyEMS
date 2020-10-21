@@ -25,7 +25,7 @@ jQuery(function($) {
     });
 
     //toggle sidebar
-    $('#toggle-sidebar').click(function() {
+    $('.toggle-sidebar').click(function() {
         $('.page-wrapper').toggleClass('toggled');
     });
 
@@ -91,6 +91,10 @@ jQuery(function($) {
             scrollInertia: 300,
         });
         $('.sidebar-content').addClass('desktop');
+    }
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        $('.page-wrapper').toggleClass('toggled');
     }
 
     $('.image-link').magnificPopup({type:'image'});

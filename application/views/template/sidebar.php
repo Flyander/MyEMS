@@ -4,10 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <body>
     <div class="page-wrapper legacy-theme sidebar-bg toggled">
+        <div style="margin-top: 1%;"class="form-group col-md-12" ><i class="fas fa-bars fa-lg usepointer toggle-sidebar"></i><div>
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
                 <div class="sidebar-item sidebar-brand">
+                    <a class="toggle-sidebar usepointer"><i class="fas fa-arrow-left"></i></a>
                     <a href="">MyEMS</a>
                     <div>
                         <a class="sidebar-right" href="logout"><i class="fas fa-power-off"></i></a>
