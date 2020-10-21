@@ -110,10 +110,12 @@ function getTableDispatch()
             {
                 $('.icon').css({ "display": "block" });
                 table = '';
-                console.log(data);
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    table += '<tr id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')
+                    if (item.isAdmin == 1)
+                        table += '<tr onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')" id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
+                    else
+                        table += '<tr id="'+ item.username +'"">';
 
                     if (item.isSupervisor == 1)
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
@@ -167,19 +169,22 @@ function getOptionDispatch(id, isSupervisor)
             optionHtml = '';
             optionHtml += "<div class=\"card-title mb-1 p-3\"><h5>Option dispatch - "+ player.fullname +"</h5></div><div class=\"card-body\">"
             optionHtml += "<div class=\"row\">";
+
+            console.log(data);
+
             if (player.isAvailable == 0)
-                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='pds' type=\"button\">Prise de service</a></div>";
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='pds' onclick='getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')' type=\"button\">Prise de service</a></div>";
             else
             {
-                if (player.isAvailable == 1)
-                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-warning w-100 rounded-0\" href='pauseService' type=\"button\">Faire une pause</a></div>";
+                /*if (player.isAvailable == 1)
+                    //optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-warning w-100 rounded-0\" href='pauseService' type=\"button\">Faire une pause</a></div>";
                 else
                     optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='finPauseService' type=\"button\">Reprendre le service</a></div>";
-                
-                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-danger w-100 rounded-0\" href='fds' type=\"button\">Fin de service</a></div>";
+                */
+                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-danger w-100 rounded-0\" href='index' onclick='setService(\""+ id +"\", \"end\")' type=\"button\">Fin de service</a></div>";
             }
 
-            if (player.isAvailable != 0 && data.data.isYourself == 1) {
+           /* if (player.isAvailable != 0 && data.data.isYourself == 1) {
                 if (player.isSupervisor == 0)
                 {
                     optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='supervisor' type=\"button\">Devenir superviseur</a></div>";
@@ -195,12 +200,30 @@ function getOptionDispatch(id, isSupervisor)
                 optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Los Santos</a></div>";
             else if (player.county == 'LS')
                 optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Blaine County</a></div>";
-            
+            */
             optionHtml += "</div></div>";            
             
             $('#option_dispatch').html(optionHtml);
         }
     });
+}
+
+function setService(username, action)
+{
+    if (action = 'end')
+    {
+        jQuery.ajax({
+            url: "endServiceOptionDispatch",
+            type: "POST",
+            data: { username: username },
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200)
+                {
+                }
+            }
+        });
+    }
 }
 
 function getDataBed() {

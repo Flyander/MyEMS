@@ -336,4 +336,17 @@ class Dashboard extends CI_Controller {
 
 	}
 
+	public function endServiceOptionDispatch()
+	{
+		$username = $this->input->post('username');
+
+		$this->Services->endService($username);
+		$this->Services->endSupervisor($username);
+
+		$return['message'] = "Fin de service effectué";
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
 }

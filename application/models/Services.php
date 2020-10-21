@@ -186,7 +186,8 @@ class Services extends CI_Model
 		FROM users 
 		INNER JOIN service ON users.id = service.id_user 
 		INNER JOIN grade ON users.grade_name = grade.name 
-		WHERE username = '$username'";
+		WHERE username = '$username'
+		ORDER BY isAvailable DESC";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 		return $result[0];
