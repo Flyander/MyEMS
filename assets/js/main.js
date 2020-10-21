@@ -116,7 +116,7 @@ function getTableDispatch()
                 table = '';
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                    if (item.isAdmin == 1)
+                    if (data.data.isAdmin == 1)
                         table += '<tr onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')" id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
                     else
                         table += '<tr id="'+ item.username +'"">';
@@ -173,8 +173,6 @@ function getOptionDispatch(id, isSupervisor)
             optionHtml = '';
             optionHtml += "<div class=\"card-title mb-1 p-3\"><h5>Option dispatch - "+ player.fullname +"</h5></div><div class=\"card-body\">"
             optionHtml += "<div class=\"row\">";
-
-            console.log(data);
 
             if (player.isAvailable == 0)
                 optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='pds' onclick='getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')' type=\"button\">Prise de service</a></div>";

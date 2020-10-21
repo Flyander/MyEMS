@@ -62,6 +62,7 @@ class Dashboard extends CI_Controller {
 		$data['isPharmacien'] =  $this->Services->getIfPharmacien($this->session->sessionData['username']);
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		
 		$return['data'] = $data;
 		$return['code'] = 200;
