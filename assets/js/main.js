@@ -98,6 +98,20 @@ jQuery(function($) {
     }
 
     $('.image-link').magnificPopup({type:'image'});
+
+    
+    $("#submit-user").click(function(){
+        var data_prenom = $("#newUser-prenom").val();
+        var data_nom = $("#newUser-nom").val();
+        var data_grade = $("#newUser-grade").val();
+        var data_mdp = $("#newUser-mdp").val();
+        var chxbox_isAdmin = $("#newUser-isAdmin").is(":checked");
+        if (chxbox_isAdmin == true)
+            data_isAdmin = 1
+        else
+            data_isAdmin = 0
+        addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin);
+    });
 });
 
 
@@ -402,6 +416,30 @@ function setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_et
             }
         }
     });
+}
+
+function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin)
+{
+    if (data_prenom != '' && data_nom != '' && data_grade != '' && data_mdp != '')
+    {
+        jQuery.ajax({
+            url: "addNewUserInDB",
+            data: {data_prenom: data_prenom, data_nom: data_nom, data_grade: data_grade, data_mdp: data_mdp, data_isAdmin: data_isAdmin},
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200)
+                {
+                    $("#submit-user").html('');
+                    $("#footer-btn-user").html('<button type="button" id="submit-user" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+                }
+            }
+        });
+    }
+    else
+    {
+        alert('Il manque des informations');
+    }
 }
 
 function getNameInTable() {

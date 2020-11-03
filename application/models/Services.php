@@ -268,4 +268,19 @@ class Services extends CI_Model
 		$result = $queryResult->result_array();
 		return $result[0]["typeGrade"];
 	}
+
+	public function getAllGrade()
+	{
+		$query = "SELECT name FROM grade";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result;
+	}
+
+	public function addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin)
+	{
+		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`) 
+		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin')";
+		$queryResult = $this->db->query($query);
+	}
 }

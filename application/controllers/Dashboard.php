@@ -341,7 +341,8 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['collAccount'] = $this->Services->getAllAccount();
+
+		$data['collGrade'] = $this->Services->getAllGrade();
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
@@ -349,6 +350,25 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/admin/newAccount',$data);
 		$this->load->view('template/footer');
+	}
+
+	public function addNewUserInDB()
+	{
+		$data_prenom = $this->input->post('data_prenom');
+		$data_nom = $this->input->post('data_nom');
+		$data_grade = $this->input->post('data_grade');
+		$data_mdp = $this->input->post('data_mdp');
+		$data_isAdmin = $this->input->post('data_isAdmin');
+
+		$data_fullname = "{$data_prenom} {$data_nom}";
+		$data_username = strtolower($data_prenom[0]) . strtolower($data_nom);
+
+		$this->Services->addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
 	}
 
 	public function myHours(){
