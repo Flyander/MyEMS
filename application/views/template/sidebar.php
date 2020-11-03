@@ -172,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <a href="listAccount">Liste des utilisateurs</a>
                                         </li>
                                         <li>
-                                            <a href="">Ajouter un utilisateur</a>
+                                            <a href="newAccount">Ajouter un utilisateur</a>
                                         </li>
                                     </ul>
                                 </div>

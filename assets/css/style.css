@@ -816,6 +816,7 @@ body {
     color: #f0f3ff;
     background-color: #5b6582;
     border-color: #5b6582;
+    border-radius: 10px;
 }
 
 .btn.btn-outline-lightning:hover > i {
@@ -824,7 +825,7 @@ body {
 }
 
 .btn.btn-outline-lightning:hover > a {
-    transition: 0.2s;
+    transition: 0.5s;
     color: #f0f3ff;
 }
 
