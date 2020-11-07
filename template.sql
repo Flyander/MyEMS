@@ -165,7 +165,7 @@ CREATE TABLE fusillade(
 )ENGINE=InnoDB;
 
 
-INSERT INTO `grade`(`name`, `gradeName`, `type`) VALUES ('medecin','Médecin', 1);
+INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('medecin','Médecin', 1, 0);
 INSERT INTO `users`(`fullname`, `password`, `username`, `grade_name`) VALUES ('Billy Renvess','test','brenves','medecin');
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30',1, 1, 1, 1);
 INSERT INTO `fusillade`(`bed`, `bedLabel`, `patient`, `medecin`, `description`, `etatPatient`, `havePatient`) VALUES ('bloc_1', 'Bloc opératoire n°1', 'Kilauea Ake', 'Jacob Ripper', 'Jambe cassé et traumatisme crânien', 1, 1);
@@ -215,3 +215,8 @@ INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `ty
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 14);
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 15);
 INSERT INTO `service`(`dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `type`, `id_user`) VALUES ('2020-09-30', '2020-09-30', 1, 1, 1, 16);
+
+INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('caporal','Caporal', 1, 2);
+INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('paramedic','Paramedic', 1, 2);
+INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('sergent','Sergent', 1, 2);
+INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('lieutenant','Lieutenant', 1, 2);
