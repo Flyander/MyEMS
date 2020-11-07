@@ -442,6 +442,112 @@ function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin)
     }
 }
 
+function updateUserData(username)
+{
+    if (username != '')
+    {
+        jQuery.ajax({
+            url: "getUserData",
+            type: "POST",
+            data: { username: username},
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200)
+                {
+                    user = data.data.dataAccount;
+                    allGrade = data.data.collGrade;
+    
+                    modalHtml = '';
+                    modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
+    
+                    modalHtml += '<div class="modal-header">';
+                    modalHtml += '<h4 class="modal-title">'+ user.fullname +'</h4>';
+                        modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+                    modalHtml += '</div>';
+    
+                    modalHtml += '<div class="modal-body">';
+                        modalHtml += '<div class="row">';
+                            modalHtml += '<div class="col-md-3">';
+                                modalHtml += '<div class="modalBed-label">Prénom et Nom RP :</div>';
+                            modalHtml += '</div>';
+                            modalHtml += '<div class="col-md-9">';
+                                modalHtml += '<input style="margin-top: 5%;" type="text" class="form-control" id="input-fullname" value="'+ user.fullname +'">';
+                            modalHtml += '</div>';
+                        modalHtml += '</div>';
+    
+                        modalHtml += '<div style="margin-top: 6%;"></div>';
+
+                        modalHtml += '<div class="row">';
+                            modalHtml += '<div class="col-md-3">';
+                                modalHtml += '<div class="modalBed-label">Username :</div>';
+                            modalHtml += '</div>';
+                            modalHtml += '<div class="col-md-9">';
+                                modalHtml += '<input style="margin-top: 2%;" type="text" class="form-control" id="input-username" value="'+ user.username +'">';
+                            modalHtml += '</div>';
+                        modalHtml += '</div>';
+    
+                        modalHtml += '<div style="margin-top: 6%;"></div>';
+    
+                        modalHtml += '<div class="row">';
+                            modalHtml += '<div class="col-md-3">';
+                                modalHtml += '<div class="modalBed-label">Grade :</div>';
+                            modalHtml += '</div>';
+                            modalHtml += '<div class="col-md-9">';
+                                modalHtml += '<select style="margin-top: 2%;" type="text" class="form-control" id="select-grade" value="'+ user.grade_name +'">';
+                                jQuery.each(allGrade, function (i, item)
+                                {
+                                    if (item.name == user.grade_name)
+                                        modalHtml += '<option value="'+ item.name +'" selected>'+ item.name +'</option>';
+                                    else
+                                        modalHtml += '<option value="'+ item.name +'">'+ item.name +'</option>';
+                                });
+                                modalHtml += '</select>';
+                            modalHtml += '</div>';
+                        modalHtml += '</div>';
+    
+                        modalHtml += '<div style="margin-top: 8%;"></div>';
+                    modalHtml += '</div>';
+                    $("#modalFusillade").html(modalHtml);
+                        modalHtml += '<div class="modal-footer">';
+                            modalHtml += '<button type="button" id="submit-modal-admin" class="btn btn-primary">Sauvegarder les modifications</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+                        modalHtml += '</div>';
+    
+                    modalHtml += '</div></div>';
+                    $("#modalFusillade").html(modalHtml);
+    
+                    $('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+                    
+                    $("#submit-modal-admin").click(function(){
+                        var data_fullname = $("#input-fullname").val();
+                        var data_username = $("#input-username").val();
+                        var data_grade = $("#select-grade").val();
+                        setModalWithDataAdmin(data_fullname, data_username, data_grade, username);
+                    });
+                }
+            }
+        });
+    }
+}
+
+function setModalWithDataAdmin(data_fullname, data_username, data_grade, oldUsername)
+{
+
+    jQuery.ajax({
+        url: "setDataModalAdmin",
+        data: {data_fullname: data_fullname, data_username: data_username, data_grade: data_grade, oldUsername: oldUsername},
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
+            {
+                $("#submit-modal-admin").html('');
+                $(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
+            }
+        }
+    });
+}
+
+
 function getNameInTable() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;

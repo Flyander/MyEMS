@@ -58,7 +58,7 @@ class Services extends CI_Model
 		SET service.isAvailable=1 
 		WHERE username='$hour' AND service.id =".$id;
 		$queryResult = $this->db->query($query);
-		var_dump($queryResult);
+		//var_dump($queryResult);
 	}
 	public function stopPause($hour){
 
@@ -74,7 +74,7 @@ class Services extends CI_Model
 		SET service.isAvailable=1 
 		WHERE username='$hour' AND service.id =".$id;
 		$queryResult = $this->db->query($query);
-		var_dump($queryResult);
+		//var_dump($queryResult);
 	}
 		public function isOnService($id){
 			$condition = "id_user = $id AND isAvailable =1  " ;
@@ -281,6 +281,25 @@ class Services extends CI_Model
 	{
 		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`) 
 		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin')";
+		$queryResult = $this->db->query($query);
+	}
+
+	public function getUserDataInDB($username)
+	{
+		$query = "SELECT fullname, grade_name, username
+		FROM users
+		WHERE username = '$username'";
+
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0];
+	}
+
+	public function updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername)
+	{
+		$query = "UPDATE users 
+		SET fullname='$data_fullname', username='$data_username', grade_name='$data_grade'
+		WHERE username='$oldUsername'";
 		$queryResult = $this->db->query($query);
 	}
 }

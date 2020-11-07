@@ -56,7 +56,8 @@
 															<td style="transform: translateY(10%);"><?php echo $user['gradeName'];?></td>
 															<?php echo "<td style=\"transform: translateY(10%);\">N/A</td>"; ?>
 															<?php 
-															echo "<td><a class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
+															echo "<td>
+																	<a onclick=\"updateUserData('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
 																	<a class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";
 															?>

@@ -329,6 +329,7 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('dashboard/admin/listAccount',$data);
 		$this->load->view('template/footer');
 	}
@@ -364,6 +365,33 @@ class Dashboard extends CI_Controller {
 		$data_username = strtolower($data_prenom[0]) . strtolower($data_nom);
 
 		$this->Services->addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
+	public function getUserData()
+	{
+		$username = $this->input->post('username');
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['dataAccount'] = $this->Services->getUserDataInDB($username);
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+	
+	public function setDataModalAdmin() {
+		$data_fullname = $this->input->post('data_fullname');
+		$data_username = $this->input->post('data_username');
+		$data_grade = $this->input->post('data_grade');
+		$oldUsername = $this->input->post('oldUsername');
+
+		$this->Services->updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername);
 
 		$return['message'] = 'OK';
 		$return['code'] = 200;
