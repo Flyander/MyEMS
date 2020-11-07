@@ -372,6 +372,18 @@ class Dashboard extends CI_Controller {
 		echo json_encode($return);
 	}
 
+	public function deleteUserInDB()
+	{
+		$username = $this->input->post('username');
+
+		$this->Services->deleteUser($username);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
 	public function getUserData()
 	{
 		$username = $this->input->post('username');

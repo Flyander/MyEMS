@@ -58,7 +58,7 @@
 															<?php 
 															echo "<td>
 																	<a onclick=\"updateUserData('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
-																	<a class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
+																	<a onclick=\"deleteUserData('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";
 															?>
 														</tr>

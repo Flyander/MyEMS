@@ -284,6 +284,20 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 
+	public function deleteUser($username)
+	{
+		$selectQuery = "SELECT id FROM users WHERE username='$username'";
+		$queryResult = $this->db->query($selectQuery);
+		$result = $queryResult->result_array();
+		$id = $result[0]["id"];
+
+		$queryDeleteService = "DELETE FROM service WHERE id_user='$id'";
+		$queryResultService = $this->db->query($queryDeleteService);
+
+		$queryDeleteUser = "DELETE FROM users WHERE id='$id'";
+		$queryResultUser = $this->db->query($queryDeleteUser);
+	}
+
 	public function getUserDataInDB($username)
 	{
 		$query = "SELECT fullname, grade_name, username
