@@ -142,6 +142,7 @@ function getTableDispatch()
 
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
+                    table += "<td>" + item.num + "</td>";
                     if (item.spe == null)
                         table += "<td>N/A</td>";
                     else

@@ -23,7 +23,8 @@
 	                                                    <th style="width: 10px;" scope="col"></th>
 	                                                    <th scope="col">Prénom & Nom</th>
 	                                                    <th scope="col">Grade</th>
-	                                                    <th scope="col">Spécialisation</th>
+														<th scope="col"> Numéro de téléphone </th>
+														<th scope="col">Spécialisation</th>
 	                                                    <th scope="col">Status</th>
 														<th scope="col">Dispatch</th>
 	                                                </tr>

@@ -163,7 +163,7 @@ CREATE TABLE fusillade(
 
         ,CONSTRAINT FUSILLADE_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
-
+ALTER TABLE `users` ADD `num` VARCHAR(10) NOT NULL AFTER `isAdmin`;
 
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('medecin','Médecin', 1, 0);
 INSERT INTO `users`(`fullname`, `password`, `username`, `grade_name`) VALUES ('Billy Renvess','test','brenves','medecin');
@@ -220,3 +220,4 @@ INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('caporal',
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('paramedic','Paramedic', 1, 2);
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('sergent','Sergent', 1, 2);
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('lieutenant','Lieutenant', 1, 2);
+
