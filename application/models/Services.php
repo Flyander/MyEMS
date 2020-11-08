@@ -277,10 +277,10 @@ class Services extends CI_Model
 		return $result;
 	}
 
-	public function addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin)
+	public function addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin, $data_num)
 	{
-		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`) 
-		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin')";
+		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`, `num`) 
+		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin', '$data_num')";
 		$queryResult = $this->db->query($query);
 	}
 
@@ -300,7 +300,7 @@ class Services extends CI_Model
 
 	public function getUserDataInDB($username)
 	{
-		$query = "SELECT fullname, grade_name, username
+		$query = "SELECT fullname, grade_name, username, num
 		FROM users
 		WHERE username = '$username'";
 
@@ -309,10 +309,10 @@ class Services extends CI_Model
 		return $result[0];
 	}
 
-	public function updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername)
+	public function updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername, $data_num)
 	{
 		$query = "UPDATE users 
-		SET fullname='$data_fullname', username='$data_username', grade_name='$data_grade'
+		SET fullname='$data_fullname', username='$data_username', grade_name='$data_grade', num='$data_num'
 		WHERE username='$oldUsername'";
 		$queryResult = $this->db->query($query);
 	}

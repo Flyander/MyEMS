@@ -105,12 +105,13 @@ jQuery(function($) {
         var data_nom = $("#newUser-nom").val();
         var data_grade = $("#newUser-grade").val();
         var data_mdp = $("#newUser-mdp").val();
+        var data_num = $("#newUser-num").val();
         var chxbox_isAdmin = $("#newUser-isAdmin").is(":checked");
         if (chxbox_isAdmin == true)
             data_isAdmin = 1
         else
             data_isAdmin = 0
-        addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin);
+        addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num);
     });
 });
 
@@ -419,13 +420,13 @@ function setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_et
     });
 }
 
-function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin)
+function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num)
 {
     if (data_prenom != '' && data_nom != '' && data_grade != '' && data_mdp != '')
     {
         jQuery.ajax({
             url: "addNewUserInDB",
-            data: {data_prenom: data_prenom, data_nom: data_nom, data_grade: data_grade, data_mdp: data_mdp, data_isAdmin: data_isAdmin},
+            data: {data_prenom: data_prenom, data_nom: data_nom, data_grade: data_grade, data_mdp: data_mdp, data_isAdmin: data_isAdmin, data_num: data_num},
             type: "POST",
             dataType: 'json',
             success: function (data) {
@@ -537,6 +538,17 @@ function updateUserData(username)
                         modalHtml += '</div>';
     
                         modalHtml += '<div style="margin-top: 6%;"></div>';
+
+                        modalHtml += '<div class="row">';
+                            modalHtml += '<div class="col-md-3">';
+                                modalHtml += '<div class="modalBed-label">Numéro de téléphone :</div>';
+                            modalHtml += '</div>';
+                            modalHtml += '<div class="col-md-9">';
+                                modalHtml += '<input style="margin-top: 5%;" type="text" class="form-control" id="input-num" value="'+ user.num +'">';
+                            modalHtml += '</div>';
+                        modalHtml += '</div>';
+    
+                        modalHtml += '<div style="margin-top: 6%;"></div>';
     
                         modalHtml += '<div class="row">';
                             modalHtml += '<div class="col-md-3">';
@@ -571,7 +583,8 @@ function updateUserData(username)
                         var data_fullname = $("#input-fullname").val();
                         var data_username = $("#input-username").val();
                         var data_grade = $("#select-grade").val();
-                        setModalWithDataAdmin(data_fullname, data_username, data_grade, username);
+                        var data_num = $("#input-num").val();
+                        setModalWithDataAdmin(data_fullname, data_username, data_grade, username, data_num);
                     });
                 }
             }
@@ -579,12 +592,12 @@ function updateUserData(username)
     }
 }
 
-function setModalWithDataAdmin(data_fullname, data_username, data_grade, oldUsername)
+function setModalWithDataAdmin(data_fullname, data_username, data_grade, oldUsername, data_num)
 {
 
     jQuery.ajax({
         url: "setDataModalAdmin",
-        data: {data_fullname: data_fullname, data_username: data_username, data_grade: data_grade, oldUsername: oldUsername},
+        data: {data_fullname: data_fullname, data_username: data_username, data_grade: data_grade, oldUsername: oldUsername, data_num: data_num},
         type: "POST",
         dataType: 'json',
         success: function (data) {

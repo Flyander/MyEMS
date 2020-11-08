@@ -360,11 +360,14 @@ class Dashboard extends CI_Controller {
 		$data_grade = $this->input->post('data_grade');
 		$data_mdp = $this->input->post('data_mdp');
 		$data_isAdmin = $this->input->post('data_isAdmin');
+		$data_num = $this->input->post('data_num');
 
 		$data_fullname = "{$data_prenom} {$data_nom}";
 		$data_username = strtolower($data_prenom[0]) . strtolower($data_nom);
+		$data_num = str_replace(' ', '', $data_num);
+		$data_num = str_replace('-', '', $data_num);
 
-		$this->Services->addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin);
+		$this->Services->addUser($data_fullname, $data_username, $data_grade, $data_mdp, $data_isAdmin, $data_num);
 
 		$return['message'] = 'OK';
 		$return['code'] = 200;
@@ -401,9 +404,13 @@ class Dashboard extends CI_Controller {
 		$data_fullname = $this->input->post('data_fullname');
 		$data_username = $this->input->post('data_username');
 		$data_grade = $this->input->post('data_grade');
+		$data_num = $this->input->post('data_num');
 		$oldUsername = $this->input->post('oldUsername');
 
-		$this->Services->updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername);
+		$data_num = str_replace(' ', '', $data_num);
+		$data_num = str_replace('-', '', $data_num);
+
+		$this->Services->updateUserDataInDB($data_fullname, $data_username, $data_grade, $oldUsername, $data_num);
 
 		$return['message'] = 'OK';
 		$return['code'] = 200;
