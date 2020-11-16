@@ -112,9 +112,11 @@ class Services extends CI_Model
 		$idd = "SELECT id from users where username ='$hour'";
 		$id  = ($this->db->query($idd)->result_array());
 
-		$idServiceQuerry = "SELECT id from service where id_user = ".$id[0]['id'];
+		$idServiceQuerry = "SELECT id from service where id_user = ".$id[0]['id']." order by id desc";
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$idService = $idS[0]['id'];
+		var_dump(date('d-m-Y H:i:s'));
+		var_dump($idS[0]['id']);
 		$queryy = "UPDATE service set dateEnd = '".date('d-m-Y H:i:s')."' WHERE id_user = ".$id[0]['id']." AND id=".$idService;
 		$this->db->query($queryy);
 
