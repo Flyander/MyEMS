@@ -40,7 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a>
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span class="menu-text">Gestion de service</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
@@ -55,27 +54,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </ul>
                             </div>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a>
+                        <li>
+                            <a href="gestionPatient">
                                 <i class="fas fa-user-edit"></i>
-                                <span class="menu-text">Rechercher un patient</span>
-                                <span class="badge badge-pill badge-warning">Soon</span>
-                                <!--<span class="badge badge-pill badge-danger">3</span>-->
+                                <span class="menu-text">Gestion patient</span>
+                                <span class="badge badge-pill badge-primary">Beta</span>
                             </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
+
                         <!--<li class="sidebar-dropdown">
                             <a>
                                 <i class="far fa-gem"></i>

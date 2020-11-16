@@ -5,7 +5,7 @@
 	<div class="preloader"></div>
 	<main class="page-content pt-2">
 	    <div class="container-fluid p-5">
-	        <div class="row">
+	        <div class="row noselect">
 	            <div class="form-group col-md-12">
 					<div>
 						<h4 class="text-muted mb-4">Gestion de fusillade Blaine County</h4>

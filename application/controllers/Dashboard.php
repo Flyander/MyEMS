@@ -435,4 +435,19 @@ class Dashboard extends CI_Controller {
 		echo json_encode($return);
 	}
 
+	public function gestionPatient()
+	{
+		$data = $this->session->userdata('sessionData');
+
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/patient/gestion_patient',$data);
+		$this->load->view('template/footer');
+	}
+
 }
