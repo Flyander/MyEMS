@@ -26,6 +26,7 @@ class Dashboard extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Services');
 		$this->load->model('Fusillade');
+		$this->load->model('Hour');
 		if (!isset($this->session->userdata['sessionData'])) {
 			redirect('/UserLogin');
 		}
@@ -171,7 +172,7 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
 		$this->load->view('dashboard/dispatch_global',$data);
-		//redirect('/Dashboard/index');
+		redirect('/Dashboard/index');
 
 	}
 
@@ -419,8 +420,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function myHours(){
-		$firstDay = strftime("%d/%m/%Y", strtotime("this week"));
-		$lastDay = strftime("%d/%m/%Y", strtotime("sunday"));
+		$premierJour = strftime("%Y/%m/%d 00-00-00", strtotime("-1 sunday"));
+		$lastJour = strftime("%Y/%m/%d 23-59-59", strtotime(" friday"));
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
@@ -428,8 +429,14 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['collGrade'] = $this->Services->getAllGrade();
-		$data['hourWeek'] = $this->Hour->getHour();
+		$data['hourWeek'] = $this->Hour->getHour($this->session->sessionData['id'],$premierJour,$lastJour);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		//var_dump($data);
+		$this->load->view('template/header');
+		//$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/listHour',$data);
+		$this->load->view('template/footer');
+
 	}
 
 	public function endServiceOptionDispatch()

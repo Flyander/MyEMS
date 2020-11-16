@@ -1,6 +1,3 @@
-<?php
-
-//
-//foreach ($s in $listHour){
-//
-//}
+<?php foreach($hourWeek as $week) {
+	echo  $week['id'];
+}

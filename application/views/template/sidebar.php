@@ -61,6 +61,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="badge badge-pill badge-primary">Beta</span>
                             </a>
                         </li>
+						<li>
+                            <a href="myhours">
+                                <i class="fas fa-user-edit"></i>
+                                <span class="menu-text">Mes heures</span>
+                                <span class="badge badge-pill badge-primary">Beta</span>
+                            </a>
+                        </li>
 
                         <!--<li class="sidebar-dropdown">
                             <a>
