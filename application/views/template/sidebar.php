@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="gestionPatient">
                                 <i class="fas fa-user-edit"></i>
                                 <span class="menu-text">Gestion patient</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
+                                <span class="badge badge-pill badge-warning">WIP</span>
                             </a>
                         </li>
 
