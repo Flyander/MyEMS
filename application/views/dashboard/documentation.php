@@ -83,46 +83,36 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Traumatisme Balistique (TB)</h5>
+										<h5>Pharmacologie</h5>
 									</div>
 									<div class="card-body">
-									
+										<div class="form-group col-md-12">
+                                            <div class="doc-title">Tableau des médicaments :</div>
+
+                                            <div class="form-group col-md-12 doc-content">
+                                                <ul>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778568935041007637/unknown.png">Tableau A (Clonazepam, Célocurine, Propofol et Adrénaline)</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778568998613942292/unknown.png">Tableau B (Noradrénaline, Atropine, Dobutamine, Digoxine et Natispray)</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569159398785034/unknown.png">Tableau C (Loxen, Morphine, Tramadol, Paracétamol/Aspirine et Sérum Physiologique)</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569293436157952/unknown.png">Tableau D (Solutés Glucosés)</a></li>
+                                                </ul>
+                                            </div>
+										</div>
+										
+										<div class="form-group col-md-12">
+                                            <div class="doc-title">Tableau des médicaments pour la psychiatrie :</div>
+
+                                            <div class="form-group col-md-12 doc-content">
+                                                <ul>
+                                                    <li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569652837023764/unknown.png">Tableau A (Xanax, Tranxene, Valium, Tercian et Loxapac)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-                        <div style="margin-top: 6%;"></div> <!-- separator -->
-
-
-						<div class="row mb-4">
-							<div class="col-md-12">
-								<div class="card border-0 rounded-0">
-									<div class="card-title mb-1 p-3">
-										<h5>Initiation à la Pharmacologie (IP)</h5>
-									</div>
-									<div class="card-body">
-									
-									</div>
-								</div>
-							</div>
-						</div>
-
-                        <div style="margin-top: 6%;"></div> <!-- separator -->
-
-
-						<div class="row mb-4">
-							<div class="col-md-12">
-								<div class="card border-0 rounded-0">
-									<div class="card-title mb-1 p-3">
-										<h5>Orthopédie et Imagerie (OI)</h5>
-									</div>
-									<div class="card-body">
-									
-									</div>
-								</div>
-							</div>
-						</div>
 
                         <div style="margin-top: 6%;"></div> <!-- separator -->
 
