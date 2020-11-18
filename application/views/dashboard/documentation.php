@@ -93,7 +93,7 @@
                                                 <ul>
                                                     <li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778568935041007637/unknown.png">Tableau A (Clonazepam, Célocurine, Propofol et Adrénaline)</a></li>
 													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778568998613942292/unknown.png">Tableau B (Noradrénaline, Atropine, Dobutamine, Digoxine et Natispray)</a></li>
-													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569159398785034/unknown.png">Tableau C (Loxen, Morphine, Tramadol, Paracétamol/Aspirine et Sérum Physiologique</a></li>
+													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569159398785034/unknown.png">Tableau C (Loxen, Morphine, Tramadol, Paracétamol/Aspirine et Sérum Physiologique)</a></li>
 													<li><a class="image-link" href="https://media.discordapp.net/attachments/747584498178326598/778569293436157952/unknown.png">Tableau D (Solutés Glucosés)</a></li>
                                                 </ul>
                                             </div>
