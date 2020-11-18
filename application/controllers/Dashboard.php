@@ -477,6 +477,7 @@ class Dashboard extends CI_Controller {
 		$data_poids = $this->input->post('newPatient-poids');
 		$data_taille = $this->input->post('newPatient-taille');
 		$data_dob = $this->input->post('newPatient-dob');
+		$data_gs = $this->input->post('newPatient-gs');
 
 
 		$data_fullname = "{$data_prenom} {$data_nom}";
@@ -511,7 +512,7 @@ class Dashboard extends CI_Controller {
 
 			$resultOfUpload = $this->upload->data();
 
-			$this->Patient->insertNewPatient($data_fullname, $data_num, $data_proche_nom, $data_proche_num, $data_poids, $data_taille, $data_dob, $resultOfUpload["full_path"]);
+			$this->Patient->insertNewPatient($data_fullname, $data_num, $data_proche_nom, $data_proche_num, $data_gs, $data_poids, $data_taille, $data_dob, $resultOfUpload["full_path"]);
 
 			$data = $this->session->userdata('sessionData');
 

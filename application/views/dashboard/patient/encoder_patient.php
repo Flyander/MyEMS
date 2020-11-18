@@ -46,6 +46,20 @@
 											<div class="col-sm-10">
 												<input type="username" class="form-control" name="newPatient-procheNum" placeholder="Numéro">
 											</div>
+
+											<label class="control-label col-sm-3" for="username">Groupe sanguin :</label>
+											<div class="col-sm-10">
+												<select type="username" class="form-control" name="newPatient-gs" placeholder="Groupe sanguin">
+													<option value="A+">A+<option>
+													<option value="A+">A-<option>
+													<option value="A+">B+<option>
+													<option value="A+">B-<option>
+													<option value="A+">AB+<option>
+													<option value="A+">AB-<option>
+													<option value="A+">O+<option>
+													<option value="A+">O-<option>
+												</select>
+											</div>
 										
                                             <div style="margin-top: 1%;"></div> <!-- separator -->
 

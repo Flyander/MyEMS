@@ -223,6 +223,7 @@ INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('lieutenan
 
 ALTER TABLE `patient` ADD `numero` INT NULL DEFAULT NULL AFTER `fullname`;
 ALTER TABLE `patient` ADD `dob` VARCHAR(255) NULL DEFAULT NULL AFTER `weight`;
+ALTER TABLE `patient` ADD `gs` VARCHAR(255) NULL DEFAULT NULL AFTER `numero`;
 ALTER TABLE `patient` ADD `name_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `dob`;
 ALTER TABLE `patient` ADD `num_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `name_proche`;
 ALTER TABLE `patient` ADD `imagePath` VARCHAR(255) NULL DEFAULT NULL AFTER `num_proche`;
