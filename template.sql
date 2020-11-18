@@ -221,3 +221,9 @@ INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('paramedic
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('sergent','Sergent', 1, 2);
 INSERT INTO `grade`(`name`, `gradeName`, `type`, `typeGrade`) VALUES ('lieutenant','Lieutenant', 1, 2);
 
+ALTER TABLE `patient` ADD `numero` INT NULL DEFAULT NULL AFTER `fullname`;
+ALTER TABLE `patient` ADD `dob` VARCHAR(255) NULL DEFAULT NULL AFTER `weight`;
+ALTER TABLE `patient` ADD `name_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `dob`;
+ALTER TABLE `patient` ADD `num_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `name_proche`;
+ALTER TABLE `patient` ADD `imagePath` VARCHAR(255) NULL DEFAULT NULL AFTER `num_proche`;
+ALTER TABLE `patient` DROP `commentary`;

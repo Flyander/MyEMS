@@ -24,8 +24,10 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('url','form','language'));
 		$this->load->library('session');
+		$this->load->library('form_validation');
 		$this->load->model('Services');
 		$this->load->model('Fusillade');
+		$this->load->model('Patient');
 		if (!isset($this->session->userdata['sessionData'])) {
 			redirect('/UserLogin');
 		}
@@ -449,5 +451,80 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/patient/gestion_patient',$data);
 		$this->load->view('template/footer');
 	}
+
+	public function encoderPatient()
+	{
+		$data = $this->session->userdata('sessionData');
+
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/patient/encoder_patient',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function addPatient() 
+	{
+		$data_prenom = $this->input->post('newPatient-prenom');
+		$data_nom = $this->input->post('newPatient-nom');
+		$data_num = $this->input->post('newPatient-num');
+		$data_proche_nom = $this->input->post('newPatient-procheNom');
+		$data_proche_num = $this->input->post('newPatient-procheNum');
+		$data_poids = $this->input->post('newPatient-poids');
+		$data_taille = $this->input->post('newPatient-taille');
+		$data_dob = $this->input->post('newPatient-dob');
+
+
+		$data_fullname = "{$data_prenom} {$data_nom}";
+		$data_image = strtolower($data_prenom) . "_" . strtolower($data_nom) . ".png";
+		$data_num = str_replace(' ', '', $data_num);
+		$data_num = str_replace('-', '', $data_num);
+
+		$data_proche_num = str_replace(' ', '', $data_proche_num);
+		$data_proche_num = str_replace('-', '', $data_proche_num);
+
+		
+
+		$image_path = realpath(APPPATH . '../uploads');
+		$config['upload_path'] = $image_path;
+		$config['file_name'] = $data_image;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+		$config['max_height'] = 1500;
+		$config['overwrite'] = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('profile_pic')) 
+		{
+            $error = array('error' => $this->upload->display_errors());
+
+            $this->load->view('dashboard/errorView', $error);
+        } 
+		else 
+		{
+
+			$resultOfUpload = $this->upload->data();
+
+			$this->Patient->insertNewPatient($data_fullname, $data_num, $data_proche_nom, $data_proche_num, $data_poids, $data_taille, $data_dob, $resultOfUpload["full_path"]);
+
+			$data = $this->session->userdata('sessionData');
+
+			$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+			$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+			$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+			$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+	
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar',$data);
+			$this->load->view('dashboard/patient/gestion_patient',$data);
+			$this->load->view('template/footer');
+        }
+    }
 
 }
