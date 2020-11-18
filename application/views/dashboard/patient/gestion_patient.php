@@ -18,7 +18,7 @@
 
                                                 <div class="card gradient-card">
                                                     <div class="card-image" style="background-image: url(https://www.conseil-national.medecin.fr/sites/default/files/styles/fw_td_1_1/public/styles/ratio-30/public/images/adobestock_82745345_3.jpeg?itok=59qpcxzl);">
-                                                        <a style="text-decoration: none;" href="index">
+                                                        <a style="text-decoration: none;" href="encoderPatient">
                                                             <div class="text-white d-flex h-100 mask blue-gradient-rgba">
                                                                 <div class="first-content align-self-center p-3">
                                                                     <h3 class="test-title">Encoder patient</h3>
@@ -35,7 +35,7 @@
 
                                                 <div class="card gradient-card">
                                                     <div class="card-image" style="background-image: url(https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/healthcare/hc-partner-resource-microsoft.jpg?v=1);">
-                                                        <a style="text-decoration: none;" href="#!">
+                                                        <a style="text-decoration: none;" href="researchPatient">
                                                             <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
                                                                 <div class="first-content align-self-center p-3">
                                                                     <h3 class="test-title">Trouver un patient</h3>

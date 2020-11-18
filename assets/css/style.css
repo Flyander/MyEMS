@@ -1252,3 +1252,17 @@ body {
 .blue-gradient-rgba {
     background: linear-gradient(40deg, rgba(69, 202, 252, 0.9), rgba(48, 63, 159, 0.9)) !important
 }
+
+#pictureBtn {
+    display: none;
+}
+
+.picture-display {
+    color: gray;
+    border: solid;
+    border-radius: 4px;
+    width: 285px;
+    height: 325px;
+    font-size: 8em;
+    transition: 0.2s;
+}

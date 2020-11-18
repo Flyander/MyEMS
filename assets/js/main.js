@@ -113,6 +113,14 @@ jQuery(function($) {
             data_isAdmin = 0
         addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num);
     });
+
+    $('#btnAddPicture').click(function(){
+        $('#pictureBtn').trigger('click'); 
+    });
+
+    $('#pictureBtn').change(function(){
+        readURL(this);
+    });    
 });
 
 
@@ -631,4 +639,17 @@ function getNameInTable() {
         }
       }
     }
+}
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
+}
