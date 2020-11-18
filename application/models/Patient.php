@@ -8,5 +8,14 @@ class Patient extends CI_Model
 		VALUES ('$data_fullname', '$data_num', '$data_taille', '$data_poids', '$data_dob', '$data_proche_nom', '$data_proche_num', '$imagePath')";
 		$queryResult = $this->db->query($query);
     }
-    
+	
+	public function getAllPatient()
+	{
+		$query = "SELECT * 
+		FROM patient
+		ORDER BY fullname ASC";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result;
+	}
 }

@@ -525,6 +525,23 @@ class Dashboard extends CI_Controller {
 			$this->load->view('dashboard/patient/gestion_patient',$data);
 			$this->load->view('template/footer');
         }
-    }
+	}
+	
+	public function researchPatient()
+	{
+		$data = $this->session->userdata('sessionData');
+
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['collPatient'] = $this->Patient->getAllPatient();
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/patient/research_patient',$data);
+		$this->load->view('template/footer');
+	}
 
 }
