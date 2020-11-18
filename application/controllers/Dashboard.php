@@ -433,6 +433,7 @@ class Dashboard extends CI_Controller {
 		$data['collGrade'] = $this->Services->getAllGrade();
 		$data['hourWeek'] = $this->Hour->getHour($this->session->sessionData['id'],$premierJour,$lastJour);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
 		//var_dump($data);
 		$this->load->view('template/header');
 		//$this->load->view('template/sidebar',$data);
