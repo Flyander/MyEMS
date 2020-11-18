@@ -437,7 +437,7 @@ class Dashboard extends CI_Controller {
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 
 		$this->load->view('template/header');
-		//$this->load->view('template/sidebar',$data);
+		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/listHour',$data);
 		$this->load->view('template/footer');
 
