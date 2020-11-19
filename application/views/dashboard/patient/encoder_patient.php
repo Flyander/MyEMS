@@ -47,6 +47,8 @@
 												<input type="username" class="form-control" name="newPatient-procheNum" placeholder="Numéro">
 											</div>
 
+											<div style="margin-top: 1%;"></div> <!-- separator -->
+
 											<label class="control-label col-sm-3" for="username">Groupe sanguin :</label>
 											<div class="col-sm-10">
 												<select type="username" class="form-control" name="newPatient-gs" placeholder="Groupe sanguin">
