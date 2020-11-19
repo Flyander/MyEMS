@@ -18,7 +18,7 @@
                                                 <div class="label-patient">Prénom & Nom :</div>
                                                 <div class="data-patient"><?php echo $patient['fullname'] ?></div>
 
-                                                <div style="margin-left: 6.8%; margin-top: 1px;" class="label-patient">Numéro de téléphone :</div>
+                                                <div style="margin-left: 3%; margin-top: 1px;" class="label-patient">Numéro de téléphone :</div>
                                                 <div style="margin-top: 1px;" class="data-patient"><?php echo $patient['numero'] ?></div>
 
 
