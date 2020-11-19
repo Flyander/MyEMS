@@ -10,13 +10,14 @@ class Hour extends CI_Model
 		$result = $querryR->result_array();
 		return $result;
 	}
+
 	public function getTotalHour($hourArray)
 	{
 		$i = 0;
-		$hourT =array();
-		foreach ($hourArray as $hour){
+		$hourT = array();
+		foreach ($hourArray as $hour) {
 			$dateStart = new DateTime($hour['dateStart']);
-			$dateEnd =  new DateTime($hour['dateEnd']);
+			$dateEnd = new DateTime($hour['dateEnd']);
 			$hourT[$i] = $dateStart->diff($dateEnd);
 			$i++;
 		}
