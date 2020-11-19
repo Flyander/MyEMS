@@ -5,7 +5,7 @@
 	<div class="preloader"></div>
 	<main class="page-content pt-2">
 	    <div class="container-fluid p-5">
-	        <div class="row noselect">
+	        <div class="row">
 	            <div class="form-group col-md-12">
 					<div id="doc-id">
 						<h4 class="text-muted mb-4">Dossier médical de <?php echo $patient['fullname'] ?></h4>
