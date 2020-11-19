@@ -31,7 +31,7 @@
 															<td style="transform: translateY(10%);"><?php echo $patient['fullname'];?></td>
 															<?php 
                                                             echo "<td style='text-align: right; margin-right: 100%;'>
-                                                                    <a onclick=\"updatePatientData('". $patient['fullname'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-eye\"></i></a>
+                                                                    <a href=\"dataPatient?id=".$patient['id']."\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-eye\"></i></a>
 																	<a onclick=\"updatePatientData('". $patient['fullname'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
 																	<a onclick=\"deletePatientData('". $patient['fullname'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";

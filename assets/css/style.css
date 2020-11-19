@@ -1261,8 +1261,44 @@ body {
     color: gray;
     border: solid;
     border-radius: 4px;
-    width: 285px;
+    width: 286px;
     height: 325px;
     font-size: 8em;
     transition: 0.2s;
+}
+
+
+#blah {
+    color: gray;
+    border: solid;
+    border-radius: 4px;
+    width: 286px;
+    height: 325px;
+    font-size: 8em;
+    transition: 0.2s;
+
+    left: 75%;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.right-global {
+    float: right;
+}
+
+.label-patient {
+    color: gray;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.data-patient {
+
+    /*border: 1px solid #2e333c;
+    border-radius: 3px; */
+    margin-left: 2%;
+    color: #00c7ff;
+    font-size: 28px;
 }

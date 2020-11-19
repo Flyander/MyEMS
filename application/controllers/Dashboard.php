@@ -528,9 +528,11 @@ class Dashboard extends CI_Controller {
 		else 
 		{
 
-			$resultOfUpload = $this->upload->data();
+			//$resultOfUpload = $this->upload->data();
 
-			$this->Patient->insertNewPatient($data_fullname, $data_num, $data_proche_nom, $data_proche_num, $data_gs, $data_poids, $data_taille, $data_dob, $resultOfUpload["full_path"]);
+			$path = base_url() .'uploads/' . $data_image;
+
+			$this->Patient->insertNewPatient($data_fullname, $data_num, $data_proche_nom, $data_proche_num, $data_gs, $data_poids, $data_taille, $data_dob, $path);
 
 			$data = $this->session->userdata('sessionData');
 
@@ -563,4 +565,24 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+
+	public function dataPatient()
+	{
+		$data_id = $this->input->get('id');
+
+		$data = $this->session->userdata('sessionData');
+
+		
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['patient'] = $this->Patient->getPatientData($data_id);
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/patient/data_patient',$data);
+		$this->load->view('template/footer');
+	}
 }

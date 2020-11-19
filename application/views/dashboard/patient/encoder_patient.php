@@ -47,17 +47,19 @@
 												<input type="username" class="form-control" name="newPatient-procheNum" placeholder="Numéro">
 											</div>
 
+											<div style="margin-top: 1%;"></div> <!-- separator -->
+
 											<label class="control-label col-sm-3" for="username">Groupe sanguin :</label>
 											<div class="col-sm-10">
 												<select type="username" class="form-control" name="newPatient-gs" placeholder="Groupe sanguin">
-													<option value="A+">A+<option>
-													<option value="A+">A-<option>
-													<option value="A+">B+<option>
-													<option value="A+">B-<option>
-													<option value="A+">AB+<option>
-													<option value="A+">AB-<option>
-													<option value="A+">O+<option>
-													<option value="A+">O-<option>
+													<option value="A+">A+</option>
+													<option value="A-">A-</option>
+													<option value="B+">B+</option>
+													<option value="B-">B-</option>
+													<option value="AB+">AB+</option>
+													<option value="AB-">AB-</option>
+													<option value="O+">O+</option>
+													<option value="O-">O-</option>
 												</select>
 											</div>
 										
@@ -86,7 +88,7 @@
                                             <div style="margin-top: 2%;"></div> <!-- separator -->
                                             
                                             <div class="col-sm-10">
-                                                <div class="picture-display"><img id="blah" src="#" alt="" width="280" height="320"/></div>
+                                                <img id="blah" src="#" alt="" width="280" height="320"/>
                                             </div>
 
                                             <div style="margin-top: 2%;"></div> <!-- separator -->
