@@ -23,7 +23,7 @@
 
 
                                                 <div class="ml-auto mr-3">
-                                                    <img id="blah" class="right-global" src="<?php echo $patient['imagePath'] ?>" alt="" width="281" height="320"/>
+                                                    <img id="blah" class="right-global absolute" src="<?php echo $patient['imagePath'] ?>" alt="" width="281" height="320"/>
                                                 </div>
                                             </div>
 

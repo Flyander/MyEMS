@@ -1269,7 +1269,6 @@ body {
 
 
 #blah {
-    position: absolute;
     color: gray;
     border: solid;
     border-radius: 4px;
@@ -1279,6 +1278,10 @@ body {
     transition: 0.2s;
 
     left: 75%;
+}
+
+.absolute {
+    position: absolute;
 }
 
 .right-global {
