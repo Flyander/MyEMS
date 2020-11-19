@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
 						<li>
                             <a href="myhours">
-                                <i class="fas fa-user-edit"></i>
+                                <i class="fas fa-hourglass-half"></i>
                                 <span class="menu-text">Mes heures</span>
                                 <span class="badge badge-pill badge-primary">Beta</span>
                             </a>

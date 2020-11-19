@@ -202,31 +202,9 @@ function getOptionDispatch(id, isSupervisor)
                 optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='pds' onclick='getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')' type=\"button\">Prise de service</a></div>";
             else
             {
-                /*if (player.isAvailable == 1)
-                    //optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-warning w-100 rounded-0\" href='pauseService' type=\"button\">Faire une pause</a></div>";
-                else
-                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-success w-100 rounded-0\" href='finPauseService' type=\"button\">Reprendre le service</a></div>";
-                */
                 optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-danger w-100 rounded-0\" href='index' onclick='setService(\""+ id +"\", \"end\")' type=\"button\">Fin de service</a></div>";
             }
 
-           /* if (player.isAvailable != 0 && data.data.isYourself == 1) {
-                if (player.isSupervisor == 0)
-                {
-                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='supervisor' type=\"button\">Devenir superviseur</a></div>";
-                }
-                
-                if (player.isSupervisor == 1)
-                {
-                    optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-info w-100 rounded-0\" href='endSupervisor' type=\"button\">Stop superviseur</a></div>";
-                }
-            }
-
-            if (player.county == 'BC')
-                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Los Santos</a></div>";
-            else if (player.county == 'LS')
-                optionHtml += "<div class=\"col-md-4 mb-2\"><a class=\"btn btn-outline-purple w-100 rounded-0\" href='setCounty' type=\"button\">Prendre son service sur Blaine County</a></div>";
-            */
             optionHtml += "</div></div>";            
             
             $('#option_dispatch').html(optionHtml);

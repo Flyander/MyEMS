@@ -18,4 +18,14 @@ class Patient extends CI_Model
 		$result = $queryResult->result_array();
 		return $result;
 	}
+
+	public function getPatientData($id)
+	{
+		$query = "SELECT * 
+		FROM patient
+		WHERE id='$id'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0];
+	}
 }
