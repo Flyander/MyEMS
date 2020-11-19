@@ -86,7 +86,7 @@
                                             <div style="margin-top: 2%;"></div> <!-- separator -->
                                             
                                             <div class="col-sm-10">
-                                                <div class="picture-display"><img id="blah" src="#" alt="" width="280" height="320"/></div>
+                                                <img id="blah" src="#" alt="" width="280" height="320"/>
                                             </div>
 
                                             <div style="margin-top: 2%;"></div> <!-- separator -->
