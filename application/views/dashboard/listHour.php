@@ -12,7 +12,7 @@
 									<h5>Liste de vos heures</h5>
 								</div>
 								<div class="card-title mb-1 p-3">
-									<h5>Total de vos heures : <?= $totalHourWeek ?> </h5>
+									<h5>Total de vos heures  : <?= $totalHourWeek ?> </h5>
 								</div>
 								<div class="card-body">
 									<input type="text" id="myInput" onkeyup="" placeholder="Rechercher une heures..">
@@ -41,7 +41,7 @@
 
 														<td style="transform: translateY(10%);"><?php echo $dateStart; ?></td>
 														<td style="transform: translateY(10%);"><?php echo $dateEnd; ?></td>
-														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %i"); ?></td>
+														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %I"); ?></td>
 														<?php
 														echo "<td>
 																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
