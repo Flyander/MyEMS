@@ -38,7 +38,7 @@
 
 														<td style="transform: translateY(10%);"><?php echo $dateStart; ?></td>
 														<td style="transform: translateY(10%);"><?php echo $dateEnd; ?></td>
-														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %M"); ?></td>
+														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %i"); ?></td>
 														<?php
 														echo "<td>
 																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
