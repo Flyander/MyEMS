@@ -1242,7 +1242,7 @@ body {
 }
 
 .peach-gradient-rgba {
-    background: linear-gradient(40deg, rgba(255, 216, 111, 0.9), rgba(252, 98, 98, 0.9)) !important
+    background: linear-gradient(40deg, rgba(252, 98, 98, 0.9), rgba(255, 216, 111, 0.9)) !important
 }
 
 .aqua-gradient-rgba {
@@ -1250,7 +1250,7 @@ body {
 }
 
 .blue-gradient-rgba {
-    background: linear-gradient(40deg, rgba(69, 202, 252, 0.9), rgba(48, 63, 159, 0.9)) !important
+    background: linear-gradient(40deg, rgba(48, 63, 159, 0.9),rgba(69, 202, 252, 0.9)) !important
 }
 
 #pictureBtn {
