@@ -127,7 +127,7 @@ class Services extends CI_Model
 		$idServiceQuerry = "SELECT id from service where id_user = " . $id[0]['id'] . " order by id desc";
 		$idS = ($this->db->query($idServiceQuerry)->result_array());
 		$idService = $idS[0]['id'];
-		$queryy = "UPDATE service set dateEnd = '" . date('d-m-Y H:i:s') . "' WHERE id_user = " . $id[0]['id'] . " AND id=" . $idService;
+		$queryy = "UPDATE service set dateEnd = current_timestamp()  WHERE id_user = " . $id[0]['id'] . " AND id=" . $idService;
 		$this->db->query($queryy);
 
 		$queryyS = "UPDATE service set type=0 WHERE id_user = " . $id[0]['id'] . " AND id=" . $idService;
