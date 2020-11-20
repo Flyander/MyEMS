@@ -31,8 +31,8 @@
 											<?php
 											$i = 0;
 											foreach ($hourWeek as $hour) {
-												$dateStart = date("d-m-Y H:i:s", strtotime($hour['dateStart']));
-												$dateEnd = date("d-m-Y H:i:s", strtotime($hour['dateEnd']));
+												$dateStart = date("d-m-Y H:i", strtotime($hour['dateStart']));
+												$dateEnd = date("d-m-Y H:i", strtotime($hour['dateEnd']));
 
 												?>
 												<tr id="<?php echo $hour['id']; ?>">
