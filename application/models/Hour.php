@@ -23,4 +23,21 @@ class Hour extends CI_Model
 		}
 		return $hourT;
 	}
+	public function getHourWeek($hourArray){
+		$sum = 0;
+		$i =0;
+		foreach ($hourArray as $hour) {
+			$sum += $hour->days*86400 + $hour->h*3600
+			+ $hour->i*60 + $hour->s;
+
+
+
+		}
+		$hours = floor($sum / 3600);
+		$minutes = floor(($sum / 60) % 60);
+		$seconds = $sum % 60;
+		$return = sprintf('%02d h %02d',$hours,$minutes);
+		return $return;
+
+	}
 }

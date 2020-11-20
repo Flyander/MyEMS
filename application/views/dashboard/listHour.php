@@ -11,6 +11,9 @@
 								<div class="card-title mb-1 p-3">
 									<h5>Liste de vos heures</h5>
 								</div>
+								<div class="card-title mb-1 p-3">
+									<h5>Total de vos heures : <?= $totalHourWeek ?> </h5>
+								</div>
 								<div class="card-body">
 									<input type="text" id="myInput" onkeyup="" placeholder="Rechercher une heures..">
 									<div class="table-responsive-md">
