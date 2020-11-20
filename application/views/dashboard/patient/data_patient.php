@@ -14,18 +14,31 @@
 								<div class="card border-0 rounded-0">
                                     <div class="card-body">
                                         <div class="col-md-12">
+
+                                            <div style="margin-top: 1%;"></div> <!-- separator -->
+
+                                            <div class="row">
+                                                <div class="ml-auto mr-3">
+                                                    <img id="blah" class="right-global absolute" src="<?php echo $patient['imagePath'] ?>" alt="" width="140" height="160"/>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 0.5%;"></div> <!-- separator -->
+
+
                                             <div class="row">
                                                 <div class="label-patient">Prénom & Nom :</div>
                                                 <div class="data-patient"><?php echo $patient['fullname'] ?></div>
 
-                                                <div style="margin-left: 3%; margin-top: 1px;" class="label-patient">Numéro de téléphone :</div>
+
+                                                <div style="margin-top: 1px;" class="label-patient ml-auto">Numéro de téléphone :</div>
                                                 <div style="margin-top: 1px;" class="data-patient"><?php echo $patient['numero'] ?></div>
 
-
                                                 <div class="ml-auto mr-3">
-                                                    <img id="blah" class="right-global absolute" src="<?php echo $patient['imagePath'] ?>" alt="" width="281" height="320"/>
                                                 </div>
+
                                             </div>
+
 
                                             <div style="margin-top: 3%;"></div> <!-- separator -->
 
@@ -33,8 +46,11 @@
                                                 <div class="label-patient">Date de naissance :</div>
                                                 <div class="data-patient"><?php echo $patient['dob'] ?></div>
 
-                                                <div style="margin-left: 5.9%; margin-top: 1px;" class="label-patient">Groupe Sanguin :</div>
-                                                <div style="margin-top: 1px;" class="data-patient"><?php echo $patient['gs'] ?></div>
+                                                <div style="transform: translateX(-37%); margin-top: 1px;" class="label-patient ml-auto">Groupe Sanguin :</div>
+                                                <div style="transform: translateX(-37%); margin-top: 1px;" class="data-patient"><?php echo $patient['gs'] ?></div>
+
+                                                <div class="ml-auto mr-3">
+                                                </div>
                                             </div>
 
                                             <div style="margin-top: 3%;"></div> <!-- separator -->
@@ -43,8 +59,11 @@
                                                 <div class="label-patient">Taille :</div>
                                                 <div class="data-patient"><?php echo $patient['height'][0] ?>m<?php echo substr($patient['height'], 1) ?></div>
 
-                                                <div style="margin-left: 22.3%; margin-top: 1px;" class="label-patient">Poids :</div>
-                                                <div style="margin-top: 1px;" class="data-patient"><?php echo $patient['weight'] ?> Kg</div>
+                                                <div style="transform: translateX(-18%); margin-top: 1px;" class="label-patient ml-auto">Poids :</div>
+                                                <div style="transform: translateX(-18%); margin-top: 1px;" class="data-patient"><?php echo $patient['weight'] ?> Kg</div>
+
+                                                <div class="ml-auto mr-3">
+                                                </div>
                                             </div>
 
                                             <div style="margin-top: 3%;"></div> <!-- separator -->

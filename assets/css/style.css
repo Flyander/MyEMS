@@ -1272,8 +1272,8 @@ body {
     color: gray;
     border: solid;
     border-radius: 4px;
-    width: 286px;
-    height: 325px;
+    width: 235px;
+    height: 270px;
     font-size: 8em;
     transition: 0.2s;
 
@@ -1290,7 +1290,7 @@ body {
 
 .label-patient {
     color: gray;
-    font-size: 28px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -1300,5 +1300,5 @@ body {
     border-radius: 3px; */
     margin-left: 2%;
     color: #00c7ff;
-    font-size: 28px;
+    font-size: 18px;
 }
