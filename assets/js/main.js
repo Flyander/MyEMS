@@ -592,7 +592,7 @@ function getUserHour(username)
                 {
                     hour = data.data;
 
-                    console.log(hour.totalHours[0]);
+                    console.log(hour.totalHours[0].h);
                     
                     modalHtml = '';
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
@@ -634,7 +634,7 @@ function getUserHour(username)
                                         modalHtml += '<tr id="'+ hour.id +'">';
                                         modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
                                         modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours.h; +'h'+ hour.totalHours.i; +'</td>';
+                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours; +'h'+ hour.totalHours.i; +'</td>';
                                         i++;
                                         modalHtml += '</tr>';
                                     });
