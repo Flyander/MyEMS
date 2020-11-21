@@ -631,9 +631,11 @@ function getUserHour(username)
                                     jQuery.each(hour.hourWeek, function (index, hour)
                                     {                                        
                                         modalHtml += '<tr id="'+ hour.id +'">';
+                                            test1 = hour.totalHours[index].h;
+                                            test2 = hour.totalHours[index].i;
                                             modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
                                             modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[index].h +'h'+ hour.totalHours[index].i +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ test1 +'h'+ test2 +'</td>';
                                         modalHtml += '</tr>';
                                     });
                                 modalHtml += '</tbody>';
