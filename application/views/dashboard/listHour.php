@@ -9,13 +9,9 @@
 						<div class="col-md-12">
 							<div class="card border-0 rounded-0">
 								<div class="card-title mb-1 p-3">
-									<h5>Liste de vos heures</h5>
-								</div>
-								<div class="card-title mb-1 p-3">
 									<h5>Total de vos heures  : <?= $totalHourWeek ?> </h5>
 								</div>
 								<div class="card-body">
-									<input type="text" id="myInput" onkeyup="" placeholder="Rechercher une heures..">
 									<div class="table-responsive-md">
 										<table id="myTable" class="table table-hover">
 											<thead>
@@ -31,8 +27,8 @@
 											<?php
 											$i = 0;
 											foreach ($hourWeek as $hour) {
-												$dateStart = date("d-m-Y H:i", strtotime($hour['dateStart']));
-												$dateEnd = date("d-m-Y H:i", strtotime($hour['dateEnd']));
+												$dateStart = date("d/m/Y H:i", strtotime($hour['dateStart']));
+												$dateEnd = date("d/m/Y H:i", strtotime($hour['dateEnd']));
 
 												?>
 												<tr id="<?php echo $hour['id']; ?>">
