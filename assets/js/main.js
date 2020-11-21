@@ -628,14 +628,12 @@ function getUserHour(username)
                                 modalHtml += '</thead>';
 
                                 modalHtml += '<tbody>';
-                                    i = 0;
                                     jQuery.each(hour.hourWeek, function (index, hour)
                                     {                                        
                                         modalHtml += '<tr id="'+ hour.id +'">';
-                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
-                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours; +'h'+ hour.totalHours.i; +'</td>';
-                                        i++;
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[index].h; +'h'+ hour.totalHours[index].i; +'</td>';
                                         modalHtml += '</tr>';
                                     });
                                 modalHtml += '</tbody>';
