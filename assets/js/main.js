@@ -634,7 +634,7 @@ function getUserHour(username)
                                         modalHtml += '<tr id="'+ hour.id +'">';
                                         modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
                                         modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[i]; +'</td>';
+                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[i].h; +'h'+ hour.totalHours[i].i; +'</td>';
                                         i++;
                                         modalHtml += '</tr>';
                                     });
