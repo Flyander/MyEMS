@@ -624,24 +624,17 @@ function getUserHour(username)
                                         modalHtml += '<th scope="col">Début du service</th>';
                                         modalHtml += '<th scope="col">Fin de service</th>';
                                         modalHtml += '<th scope="col">Durée</th>';
-                                        modalHtml += '<th scope="col">Actions</th>';
                                     modalHtml += '</tr>';
                                 modalHtml += '</thead>';
 
                                 modalHtml += '<tbody>';
                                     i = 0;
-                                    jQuery.each(hour.hourWeek, function (i, hour)
-                                    {
-                                        //dateStart = date("d/m/Y H:i", strtotime($hour['dateStart']));
-                                        //dateEnd = date("d/m/Y H:i", strtotime($hour['dateEnd']));
-                                        
+                                    jQuery.each(hour.hourWeek, function (index, hour)
+                                    {                                        
                                         modalHtml += '<tr id="'+ hour.id +'">';
-                                        //if ($totalHours[$i]->format("%i") != 0 || $totalHours[$i]->format("%h") != 0)
-                                        //{
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                            //modalHtml += '<td style="transform: translateY(10%);">'+ totalHours[$i]->format("%h h %I"); +'</td>';
-                                        //}
+                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
+                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
+                                        modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[i]; +'</td>';
                                         i++;
                                         modalHtml += '</tr>';
                                     });
