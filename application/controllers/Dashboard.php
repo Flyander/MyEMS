@@ -411,6 +411,8 @@ class Dashboard extends CI_Controller {
 		$lastJour = strftime("%Y/%m/%d 23-59-59", strtotime(" friday"));
 
 		$id_user = $this->Hour->getIdFromUsername($username);
+		$data['data_fullname'] = $this->Hour->getFullnameFromUsername($username);
+
 
 		$data['hourWeek'] = $this->Hour->getHour($id_user, $premierJour, $lastJour);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);

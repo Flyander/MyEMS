@@ -596,7 +596,7 @@ function getUserHour(username)
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
                     modalHtml += '<div class="modal-header">';
-                    modalHtml += '<h4 class="modal-title">Nombre d\'heure de '+ username +'</h4>';
+                    modalHtml += '<h4 class="modal-title">Nombre d\'heure de '+ hour.data_fullname +'</h4>';
                         modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
                     modalHtml += '</div>';
     
