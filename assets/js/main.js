@@ -592,7 +592,7 @@ function getUserHour(username)
                 {
                     hour = data.data;
 
-                    console.log(hour);
+                    console.log(hour.totalHours[0]);
                     
                     modalHtml = '';
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
