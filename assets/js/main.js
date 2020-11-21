@@ -591,9 +591,7 @@ function getUserHour(username)
                 if (data.code == 200)
                 {
                     hour = data.data;
-
-                    console.log(hour.totalHours[0].h);
-                    
+                                        
                     modalHtml = '';
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
@@ -628,14 +626,12 @@ function getUserHour(username)
                                 modalHtml += '</thead>';
 
                                 modalHtml += '<tbody>';
-                                    jQuery.each(hour.hourWeek, function (index, hour)
+                                    jQuery.each(hour.hourWeek, function (index, item)
                                     {                                        
-                                        modalHtml += '<tr id="'+ hour.id +'">';
-                                            test1 = hour.totalHours[index].h;
-                                            test2 = hour.totalHours[index].i;
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateStart +'</td>';
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.dateEnd +'</td>';
-                                            modalHtml += '<td style="transform: translateY(10%);">'+ test1 +'h'+ test2 +'</td>';
+                                        modalHtml += '<tr id="'+ item.id +'">';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ item.dateStart +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ item.dateEnd +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ hour.totalHours[index].h +'h'+ hour.totalHours[index].i +'</td>';
                                         modalHtml += '</tr>';
                                     });
                                 modalHtml += '</tbody>';
