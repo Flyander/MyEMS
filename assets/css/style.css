@@ -1308,9 +1308,9 @@ body {
 }
 
 .dark-card {
-    
+    background-color: #121212;
 }
 
 .dark-label {
-
+    color: fff;
 }

@@ -402,6 +402,25 @@ class Dashboard extends CI_Controller {
 		 
 		echo json_encode($return);
 	}
+
+	public function getUserHourData()
+	{
+		$username = $this->input->post('username');
+
+		$premierJour = strftime("%Y/%m/%d 00-00-00", strtotime("-1 sunday"));
+		$lastJour = strftime("%Y/%m/%d 23-59-59", strtotime(" friday"));
+
+		$id_user = $this->Hour->getIdFromUsername($username);
+
+		$data['hourWeek'] = $this->Hour->getHour($id_user, $premierJour, $lastJour);
+		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
+		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
 	
 	public function setDataModalAdmin() {
 		$data_fullname = $this->input->post('data_fullname');

@@ -3,6 +3,14 @@
 
 class Hour extends CI_Model
 {
+	public function getIdFromUsername($username)
+	{
+		$querry = "SELECT id FROM users WHERE username='$username'";
+		$querryR = $this->db->query($querry);
+		$result = $querryR->result_array();
+		return $result[0]["id"];
+	}
+
 	public function getHour($idUser, $dateStart, $dateEnd)
 	{
 		$querry = "SELECT id,dateStart, dateEnd, county,id_user FROM service WHERE dateStart BETWEEN '" . $dateStart . "' and '" . $dateEnd . "' AND dateEnd BETWEEN '" . $dateStart . "' and '" . $dateEnd . "' AND id_user = $idUser ";
