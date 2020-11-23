@@ -422,7 +422,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function myHours(){
-		$premierJour = strftime("%Y/%m/%d 00-00-00", strtotime("-1 sunday"));
+		$premierJour = strftime("%Y/%m/%d 00-00-00", strtotime("-1 Saturday"));
 		$lastJour = strftime("%Y/%m/%d 23-59-59", strtotime(" friday"));
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
@@ -435,10 +435,10 @@ class Dashboard extends CI_Controller {
 		$data['hourWeek'] = $this->Hour->getHour($this->session->sessionData['id'],$premierJour,$lastJour);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar',$data);
-		$this->load->view('dashboard/listHour',$data);
-		$this->load->view('template/footer');
+	//	$this->load->view('template/header');
+	//	$this->load->view('template/sidebar',$data);
+	//	$this->load->view('dashboard/listHour',$data);
+	//	$this->load->view('template/footer');
 
 	}
 
