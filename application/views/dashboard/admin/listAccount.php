@@ -57,6 +57,7 @@
 															<?php echo "<td style=\"transform: translateY(10%);\">N/A</td>"; ?>
 															<?php 
 															echo "<td>
+																	<a onclick=\"getUserHour('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-calendar-times\"></i></a>
 																	<a onclick=\"updateUserData('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
 																	<a onclick=\"deleteUserData('". $user['username'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <body>
     <div class="page-wrapper legacy-theme sidebar-bg toggled">
-        <div style="margin-top: 1%;"class="form-group col-md-12" ><i class="fas fa-bars fa-lg usepointer toggle-sidebar"></i><div>
+        <div style="margin-top: 1%;"class="form-group col-md-12 absolute" ><i class="fas fa-bars fa-lg usepointer toggle-sidebar"></i><div>
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->

@@ -578,6 +578,97 @@ function updateUserData(username)
     }
 }
 
+function getUserHour(username)
+{
+    if (username != '')
+    {
+        jQuery.ajax({
+            url: "getUserHourData",
+            type: "POST",
+            data: { username: username},
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200)
+                {
+                    hour = data.data;
+
+                    modalHtml = '';
+                    modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
+    
+                    modalHtml += '<div class="modal-header">';
+                    modalHtml += '<h4 class="modal-title">Nombre d\'heure de '+ hour.data_fullname +'</h4>';
+                        modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+                    modalHtml += '</div>';
+    
+                    modalHtml += '<div class="modal-body">';
+
+                        modalHtml += '<div style="margin-top: 2%;"></div>';
+
+                        modalHtml += '<div class="row">';
+                            modalHtml += '<div class="col-md-3">';
+                                modalHtml += '<div style="margin-left: 2%;" class="label-patient">Nombre d\'heure :</div>';
+                            modalHtml += '</div>';
+                            modalHtml += '<div class="col-md-6">';
+                                modalHtml += '<div style="margin-top: 1px;" class="data-patient">'+ hour.totalHourWeek +'</div>';
+                            modalHtml += '</div>';
+                        modalHtml += '</div>';
+
+                        modalHtml += '<div style="margin-top: 5%;"></div>';
+
+                        modalHtml += '<div class="table-responsive-md">';
+                            modalHtml += '<table id="myTable" class="table table-hover">';
+                                modalHtml += '<thead>';
+                                    modalHtml += '<tr>';
+                                        modalHtml += '<th scope="col">Début du service</th>';
+                                        modalHtml += '<th scope="col">Fin de service</th>';
+                                        modalHtml += '<th scope="col">Durée</th>';
+                                    modalHtml += '</tr>';
+                                modalHtml += '</thead>';
+
+                                modalHtml += '<tbody>';
+                                    jQuery.each(hour.hourWeek, function (index, item)
+                                    {
+                                        if (hour.totalHours[index].h < 10)             
+                                            heure = '0' + hour.totalHours[index].h;
+                                        else
+                                            heure = hour.totalHours[index].h;
+                                            
+                                        if (hour.totalHours[index].i < 10)             
+                                            minute = '0' + hour.totalHours[index].i;
+                                        else
+                                            minute = hour.totalHours[index].i;
+
+                                        modalHtml += '<tr id="'+ item.id +'">';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ item.dateStart +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ item.dateEnd +'</td>';
+                                            modalHtml += '<td style="transform: translateY(10%);">'+ heure +' h '+ minute +'</td>';
+                                        modalHtml += '</tr>';
+                                    });
+                                modalHtml += '</tbody>';
+                            modalHtml += '</table>';
+                        modalHtml += '</div>';
+                    modalHtml += '</div>';
+                    $("#modalFusillade").html(modalHtml);
+    
+                    modalHtml += '</div></div>';
+                    $("#modalFusillade").html(modalHtml);
+    
+                    $('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+                    
+                    $("#submit-modal-admin").click(function(){
+                        var data_fullname = $("#input-fullname").val();
+                        var data_username = $("#input-username").val();
+                        var data_grade = $("#select-grade").val();
+                        var data_num = $("#input-num").val();
+                        setModalWithDataAdmin(data_fullname, data_username, data_grade, username, data_num);
+                    });
+                }
+            }
+        });
+    }
+}
+
+
 function setModalWithDataAdmin(data_fullname, data_username, data_grade, oldUsername, data_num)
 {
 
