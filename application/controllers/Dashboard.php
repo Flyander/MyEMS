@@ -456,10 +456,10 @@ class Dashboard extends CI_Controller {
 		$data['hourWeek'] = $this->Hour->getHour($this->session->sessionData['id'],$premierJour,$lastJour);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
-	//	$this->load->view('template/header');
-	//	$this->load->view('template/sidebar',$data);
-	//	$this->load->view('dashboard/listHour',$data);
-	//	$this->load->view('template/footer');
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/listHour',$data);
+		$this->load->view('template/footer');
 
 	}
 
