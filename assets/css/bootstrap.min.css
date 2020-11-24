@@ -1825,12 +1825,14 @@ pre code {
 }
 
 .table-hover .table-dark:hover {
-    background-color: #b9bbbe
+    background-color: #b9bbbe;
+    color: #1A9CC7;
 }
 
 .table-hover .table-dark:hover>td,
 .table-hover .table-dark:hover>th {
-    background-color: #b9bbbe
+    background-color: #b9bbbe;
+    color: #1A9CC7;
 }
 
 .table-active,
@@ -1880,7 +1882,8 @@ pre code {
 }
 
 .table-dark.table-hover tbody tr:hover {
-    background-color: rgba(255, 255, 255, .075)
+    background-color: rgba(255, 255, 255, .075);
+    color: black;
 }
 
 @media (max-width:575.98px) {
@@ -10204,4 +10207,3 @@ a.text-dark:hover {
 }
 
 
-/*# sourceMappingURL=bootstrap.min.css.map */

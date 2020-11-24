@@ -14,7 +14,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Basic Life Support (BLS)</h5>
+										<h5 class="titleLabelTheme">Basic Life Support (BLS)</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">
@@ -67,7 +67,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Advanced Life Support (ALS)</h5>
+										<h5 class="titleLabelTheme">Advanced Life Support (ALS)</h5>
 									</div>
 									<div class="card-body">
 									
@@ -83,7 +83,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Pharmacologie</h5>
+										<h5 class="titleLabelTheme">Pharmacologie</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">
@@ -121,7 +121,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Anatomie Avancée (AA)</h5>
+										<h5 class="titleLabelTheme">Anatomie Avancée (AA)</h5>
 									</div>
 									<div class="card-body">
 									
@@ -137,7 +137,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Traumatisme Balistique Avancé (TBA)</h5>
+										<h5 class="titleLabelTheme">Traumatisme Balistique Avancé (TBA)</h5>
 									</div>
 									<div class="card-body">
 									
@@ -153,7 +153,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Médecin Régulateur (MR)</h5>
+										<h5 class="titleLabelTheme">Médecin Régulateur (MR)</h5>
 									</div>
 									<div class="card-body">
 									
@@ -168,7 +168,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Conduite d'Intervention (CI)</h5>
+										<h5 class="titleLabelTheme">Conduite d'Intervention (CI)</h5>
 									</div>
 									<div class="card-body">
 									
@@ -183,7 +183,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Medical Air Support Unit (MASU)</h5>
+										<h5 class="titleLabelTheme">Medical Air Support Unit (MASU)</h5>
 									</div>
 									<div class="card-body">
 									

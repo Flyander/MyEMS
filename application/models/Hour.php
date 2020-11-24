@@ -19,6 +19,22 @@ class Hour extends CI_Model
 		return $result[0]["fullname"];
 	}
 
+	public function getThemeFromUsername($username)
+	{
+		$querry = "SELECT theme FROM users WHERE username='$username'";
+		$querryR = $this->db->query($querry);
+		$result = $querryR->result_array();
+		return $result[0]["theme"];
+	}
+
+	public function setThemeFromUsername($username, $theme)
+	{
+		$query = "UPDATE users
+		SET theme='$theme'
+		WHERE username='$username'";
+		$queryResult = $this->db->query($query);
+	}
+
 	public function getHour($idUser, $dateStart, $dateEnd)
 	{
 		$querry = "SELECT id,dateStart, dateEnd, county,id_user FROM service WHERE dateStart BETWEEN '" . $dateStart . "' and '" . $dateEnd . "' AND dateEnd BETWEEN '" . $dateStart . "' and '" . $dateEnd . "' AND id_user = $idUser ";

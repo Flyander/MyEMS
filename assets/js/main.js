@@ -273,7 +273,7 @@ function showModalWithData(id_bed)
                 modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
 
                 modalHtml += '<div class="modal-header">';
-                    modalHtml += '<h4 class="modal-title">'+ bed.bedLabel +'</h4>';
+                    modalHtml += '<h4 style="color: black;" class="modal-title">'+ bed.bedLabel +'</h4>';
                     modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
                 modalHtml += '</div>';
 
@@ -438,7 +438,7 @@ function deleteUserData(username)
         modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
 
         modalHtml += '<div class="modal-header">';
-        modalHtml += '<h4 class="modal-title">Suppression de compte</h4>';
+        modalHtml += '<h4 style="color: black;" class="modal-title">Suppression de compte</h4>';
             modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
         modalHtml += '</div>';
 
@@ -498,7 +498,7 @@ function updateUserData(username)
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
                     modalHtml += '<div class="modal-header">';
-                    modalHtml += '<h4 class="modal-title">'+ user.fullname +'</h4>';
+                    modalHtml += '<h4 style="color: black;" class="modal-title">'+ user.fullname +'</h4>';
                         modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
                     modalHtml += '</div>';
     
@@ -596,7 +596,7 @@ function getUserHour(username)
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
                     modalHtml += '<div class="modal-header">';
-                    modalHtml += '<h4 class="modal-title">Nombre d\'heure de '+ hour.data_fullname +'</h4>';
+                    modalHtml += '<h4 style="color: black;" class="modal-title">Nombre d\'heure de '+ hour.data_fullname +'</h4>';
                         modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
                     modalHtml += '</div>';
     
@@ -618,14 +618,14 @@ function getUserHour(username)
                         modalHtml += '<div class="table-responsive-md">';
                             modalHtml += '<table id="myTable" class="table table-hover">';
                                 modalHtml += '<thead>';
-                                    modalHtml += '<tr>';
+                                    modalHtml += '<tr style="color: black;">';
                                         modalHtml += '<th scope="col">Début du service</th>';
                                         modalHtml += '<th scope="col">Fin de service</th>';
                                         modalHtml += '<th scope="col">Durée</th>';
                                     modalHtml += '</tr>';
                                 modalHtml += '</thead>';
 
-                                modalHtml += '<tbody>';
+                                modalHtml += '<tbody style="color: black;">';
                                     jQuery.each(hour.hourWeek, function (index, item)
                                     {
                                         if (hour.totalHours[index].h < 10)             
@@ -721,4 +721,58 @@ function readURL(input) {
     
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
+}
+
+var test = false;
+
+function toggleDarkMode(theme)
+{
+    if (theme == 'dark' && test == false)
+    {
+        $('.background-theme').addClass('dark-background');
+        $('.card').addClass('dark-card');
+        $('.titleLabelTheme').addClass('dark-label');
+        $('.table').addClass('table-dark');
+        test = true
+    }
+    else
+    {
+        $('.background-theme').removeClass('dark-background');
+        $('.card').removeClass('dark-card');
+        $('.titleLabelTheme').removeClass('dark-label');
+        $('.table').removeClass('table-dark');
+        test = false
+    }    
+}
+
+function changeTheme(theme)
+{
+    jQuery.ajax({
+        url: "changeStateTheme",
+        type: "POST",
+        data: { theme: theme },
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 200)
+            {
+                console.log(data.newTheme);
+                if (data.newTheme == 'dark' && test == false)
+                {
+                    $('.background-theme').addClass('dark-background');
+                    $('.card').addClass('dark-card');
+                    $('.titleLabelTheme').addClass('dark-label');
+                    $('.table').addClass('table-dark');
+                    test = true
+                }
+                else
+                {
+                    $('.background-theme').removeClass('dark-background');
+                    $('.card').removeClass('dark-card');
+                    $('.titleLabelTheme').removeClass('dark-label');
+                    $('.table').removeClass('table-dark');
+                    test = false
+                }  
+            }
+        }
+    });
 }

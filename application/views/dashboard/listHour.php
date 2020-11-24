@@ -9,7 +9,7 @@
 						<div class="col-md-12">
 							<div class="card border-0 rounded-0">
 								<div class="card-title mb-1 p-3">
-									<h5>Total de vos heures  : <?= $totalHourWeek ?> </h5>
+									<h5 class="titleLabelTheme">Total de vos heures  : <?= $totalHourWeek ?> </h5>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive-md">

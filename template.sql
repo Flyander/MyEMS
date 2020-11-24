@@ -228,3 +228,5 @@ ALTER TABLE `patient` ADD `name_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `do
 ALTER TABLE `patient` ADD `num_proche` VARCHAR(255) NULL DEFAULT NULL AFTER `name_proche`;
 ALTER TABLE `patient` ADD `imagePath` VARCHAR(255) NULL DEFAULT NULL AFTER `num_proche`;
 ALTER TABLE `patient` DROP `commentary`;
+
+ALTER TABLE `users` ADD `theme` VARCHAR(255) NOT NULL DEFAULT 'light' AFTER `num`;

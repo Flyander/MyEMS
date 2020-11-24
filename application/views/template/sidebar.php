@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
-<body>
-    <div class="page-wrapper legacy-theme sidebar-bg toggled">
-        <div style="margin-top: 1%;"class="form-group col-md-12 absolute" ><i class="fas fa-bars fa-lg usepointer toggle-sidebar"></i><div>
+<body class="background-theme">
+    <div class="page-wrapper legacy-theme sidebar-bg toggled smooth-background background-theme">
+        <div style="margin-top: 1%;" class="form-group col-md-12 absolute titleLabelTheme" ><i class="fas fa-bars fa-lg usepointer toggle-sidebar"></i><div>
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
@@ -181,5 +181,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
+            </div>
+            <div class="sidebar-footer">
+                <div>
+                    <a onclick="changeTheme('<?php echo $stateTheme ?>')">
+                        <?php if ($stateTheme == 'light') { ?>
+                            <i class="far fa-moon"></i>
+                        <?php } else { ?>
+                            <i class="fal fa-sun"></i>
+                        <?php } ?>
+                    </a>
+                </div>
             </div>
         </nav>

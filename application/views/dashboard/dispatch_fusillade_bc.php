@@ -13,7 +13,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Salle de repos Sandy Shores</h5>
+										<h5 class="titleLabelTheme">Salle de repos Sandy Shores</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-7">
@@ -50,7 +50,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Bloc opératoire Sandy Shores</h5>
+										<h5 class="titleLabelTheme">Bloc opératoire Sandy Shores</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">
@@ -72,7 +72,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Bloc opératoire Paleto Bay</h5>
+										<h5 class="titleLabelTheme">Bloc opératoire Paleto Bay</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">

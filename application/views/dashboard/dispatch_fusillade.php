@@ -13,7 +13,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Salle de repos</h5>
+										<h5 class="titleLabelTheme">Salle de repos</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">
@@ -48,7 +48,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Salle de réveil</h5>
+										<h5 class="titleLabelTheme">Salle de réveil</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">
@@ -76,7 +76,7 @@
 							<div class="col-md-12">
 								<div class="card border-0 rounded-0">
 									<div class="card-title mb-1 p-3">
-										<h5>Bloc opératoire</h5>
+										<h5 class="titleLabelTheme">Bloc opératoire</h5>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-md-12">

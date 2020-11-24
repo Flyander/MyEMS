@@ -8,16 +8,16 @@
 	        <div class="row">
 	            <div class="form-group col-md-12">
 	                <div>
-	                    <h4 class="text-muted mb-4">Gestion du dispatch</h4>
+	                    <h4 class="text-muted mb-4 smooth-background titleLabelTheme">Gestion du dispatch</h4>
 	                    <div class="row mb-4">
 	                        <div class="col-md-12">
-	                            <div class="card border-0 rounded-0">
+	                            <div class="card border-0 rounded-0 smooth-background">
 	                                <div class="card-title mb-1 p-3">
-	                                    <h5>Dispatch actuel</h5>
+	                                    <h5 class="titleLabelTheme smooth-background">Dispatch actuel</h5>
 	                                </div>
 	                                <div class="card-body">
 	                                    <div class="table-responsive-md">
-	                                        <table class="table table-hover">
+	                                        <table class="table table-hover smooth-background">
 	                                            <thead>
 	                                                <tr>
 	                                                    <th style="width: 10px;" scope="col"></th>
@@ -54,10 +54,10 @@
 	                </div>
 					<div class="row mb-4">
 	                    <div class="col-md-12">
-	                        <div class="card border-0 rounded-0">
+	                        <div class="card border-0 rounded-0 smooth-background">
 								<div id='option_dispatch'>
 									<div class="card-title mb-1 p-3">
-										<h5>Option dispatch</h5>
+										<h5 class="titleLabelTheme smooth-background">Option dispatch</h5>
 									</div>
 									<div class="card-body">
 										<div class="row">

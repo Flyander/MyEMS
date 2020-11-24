@@ -48,6 +48,9 @@ class Dashboard extends CI_Controller {
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 		$data['onService'] = $this->Services->isOnService($this->session->sessionData['id']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/dispatch_global',$data);
@@ -66,6 +69,8 @@ class Dashboard extends CI_Controller {
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		
 		$return['data'] = $data;
 		$return['code'] = 200;
@@ -186,6 +191,9 @@ class Dashboard extends CI_Controller {
 		$data['isSupervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);
@@ -228,6 +236,9 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$county = $this->Services->getCounty($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
@@ -310,6 +321,8 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
@@ -328,6 +341,8 @@ class Dashboard extends CI_Controller {
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['collAccount'] = $this->Services->getAllAccount();
 
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
@@ -345,6 +360,8 @@ class Dashboard extends CI_Controller {
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['collGrade'] = $this->Services->getAllGrade();
 
@@ -456,6 +473,9 @@ class Dashboard extends CI_Controller {
 		$data['hourWeek'] = $this->Hour->getHour($this->session->sessionData['id'],$premierJour,$lastJour);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/listHour',$data);
@@ -485,6 +505,8 @@ class Dashboard extends CI_Controller {
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/patient/gestion_patient',$data);
@@ -499,6 +521,8 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -577,6 +601,7 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['collPatient'] = $this->Patient->getAllPatient();
 
@@ -598,6 +623,7 @@ class Dashboard extends CI_Controller {
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['patient'] = $this->Patient->getPatientData($data_id);
 
@@ -605,5 +631,21 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/patient/data_patient',$data);
 		$this->load->view('template/footer');
+	}
+
+	public function changeStateTheme()
+	{
+		$theme = $this->input->post('theme');
+
+		if ($theme == 'light')
+			$this->Hour->setThemeFromUsername($this->session->sessionData['username'], 'dark');
+		else
+			$this->Hour->setThemeFromUsername($this->session->sessionData['username'], 'light');
+
+		$return['newTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
 	}
 }

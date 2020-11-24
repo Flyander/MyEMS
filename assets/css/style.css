@@ -1303,14 +1303,19 @@ body {
     font-size: 18px;
 }
 
+.smooth-background {
+    transition: background-color 0.2s linear;
+}
+
+
 .dark-background {
     background-color: #121212;
 }
 
 .dark-card {
-    background-color: #121212;
+    background-color: #222831;
 }
 
 .dark-label {
-    color: fff;
+    color: white;
 }
