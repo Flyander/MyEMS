@@ -16,7 +16,7 @@
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
 	                                <div class="card-title mb-1 p-3">
-	                                    <h5>Ajouter un nouvel utilisateur</h5>
+	                                    <h5 class="titleLabelTheme">Ajouter un nouvel utilisateur</h5>
 	                                </div>
 	                                <div class="card-body">
 										<div class="form-group">

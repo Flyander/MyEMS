@@ -16,7 +16,7 @@
 	                        <div class="col-md-12">
 	                            <div class="card border-0 rounded-0">
 	                                <div class="card-title mb-1 p-3">
-	                                    <h5>Liste des utilisateurs</h5>
+	                                    <h5 class="titleLabelTheme">Liste des utilisateurs</h5>
 	                                </div>
 	                                <div class="card-body">
 										<input type="text" id="myInput" onkeyup="getNameInTable()" placeholder="Rechercher un utilisateur..">
