@@ -585,6 +585,8 @@ class Dashboard extends CI_Controller {
 			$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 			$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 			$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+
+			$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 	
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar',$data);
