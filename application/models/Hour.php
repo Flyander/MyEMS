@@ -42,6 +42,20 @@ class Hour extends CI_Model
 		$result = $querryR->result_array();
 		return $result;
 	}
+	public function getDateStart($idUser)
+	{
+		$querry = "SELECT dateStart FROM service WHERE id= $idUser ";
+		$querryR = $this->db->query($querry);
+		$result = $querryR->result_array();
+		return $result;
+	}
+	public function getDateEnd($idUser)
+	{
+		$querry = "SELECT dateEnd FROM service WHERE id= $idUser ";
+		$querryR = $this->db->query($querry);
+		$result = $querryR->result_array();
+		return $result;
+	}
 
 	public function getTotalHour($hourArray)
 	{
@@ -71,5 +85,12 @@ class Hour extends CI_Model
 		$return = sprintf('%02d h %02d',$hours,$minutes);
 		return $return;
 
+	}
+	public function updateHoursDataInDB($id,$dateStart,$dateEnd){
+		var_dump($dateStart);
+		$query = "UPDATE service set dateStart='$dateStart' where id=".$id;
+		$result = $this->db->query($query);
+		$query = "UPDATE service set dateEnd= '$dateEnd' where id=".$id;
+		$result = $this->db->query($query);
 	}
 }

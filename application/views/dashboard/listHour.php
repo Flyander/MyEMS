@@ -11,6 +11,9 @@
 								<div class="card-title mb-1 p-3">
 									<h5 class="titleLabelTheme">Total de vos heures  : <?= $totalHourWeek ?> </h5>
 								</div>
+								<div class="test">
+
+								</div>
 								<div class="card-body">
 									<div class="table-responsive-md">
 										<table id="myTable" class="table table-hover">
@@ -40,6 +43,8 @@
 														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %I"); ?></td>
 														<?php
 														echo "<td>
+																	<a onclick=\"getHour('". $hour['id'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-calendar-times\"></i></a>
+
 																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
 																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";

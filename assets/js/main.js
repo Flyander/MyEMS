@@ -577,6 +577,108 @@ function updateUserData(username)
         });
     }
 }
+function getHour(id){
+	if(id!= ''){
+		console.log(id)
+		jQuery.ajax({
+			url: "getHourData",
+			type: "POST",
+			data:{id:id},
+			dataType: 'json',
+			success:function (data){
+				if(data.code == 200){
+					hour = data.data;
+					var date = new Date(hour.dateEnd["dateEnd"])
+					var dateEnd = (  ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/'+ date.getFullYear() + " à " +  ((date.getHours() > 9) ? date.getHours() : ('0' + date.getHours())) + ":" +  ((date.getMinutes() > 9) ? date.getMinutes() : ('0' + date.getMinutes())) ) ;
+					var dateEndInput = ( date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-'+ ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()))  + "T" + ((date.getHours() > 9) ? date.getHours() : ('0' + date.getHours())) + ":" +  ((date.getMinutes() > 9) ? date.getMinutes() : ('0' + date.getMinutes())) ) ;
+					var date = new Date(hour.dateStart["dateStart"])
+					var dateStart = (  ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/'+ date.getFullYear() + " à " +  ((date.getHours() > 9) ? date.getHours() : ('0' + date.getHours())) + ":" +  ((date.getMinutes() > 9) ? date.getMinutes() : ('0' + date.getMinutes())) ) ;
+					var dateStartInput = ( date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-'+ ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()))  + "T" + ((date.getHours() > 9) ? date.getHours() : ('0' + date.getHours())) + ":" +  ((date.getMinutes() > 9) ? date.getMinutes() : ('0' + date.getMinutes())) ) ;
+
+					modalHtml = '';
+					modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+					modalHtml += '<div class="modal-header">';
+					modalHtml += '<h4 style="color: black;" class="modal-title"> Heure du ' + dateStart + ' au ' +  dateEnd + '</h4>';
+					modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+					modalHtml += '</div>';
+
+					modalHtml += '<div class="modal-body">';
+
+					modalHtml += '<div style="margin-top: 2%;"></div>';
+
+					modalHtml += '<div class="row">';
+					modalHtml += '<div class="col-md-3">';
+					modalHtml += '<div style="margin-left: 2%;" class="label-patient">Modification :</div>';
+					modalHtml += '</div>';
+					modalHtml += '<div class="col-md-6">';
+					modalHtml += '</div>';
+					modalHtml += '</div>';
+
+					modalHtml += '<div style="margin-top: 5%;"></div>';
+					modalHtml += '<input type="hidden" id="input_id"  value="'+id+'"> </>';
+
+					modalHtml += '<div class="row">';
+					modalHtml += '<div class="col-md-3">';
+					modalHtml += '<div class="modalBed-label" style="font-size: 18px;">Prise de service :</div>';
+					modalHtml += '</div>';
+					modalHtml += '<div class="col-md-9">';
+					modalHtml += '<input style="margin-top: 2%;" type="datetime-local" class="form-control" id="input-start" value="'+ dateStartInput +'">';
+					modalHtml += '</div>';
+					modalHtml += '</div>';
+
+					modalHtml += '<div class="row">';
+					modalHtml += '<div class="col-md-3">';
+					modalHtml += '<div class="modalBed-label" style="font-size: 18px;margin-top: 18%;"> Fin de service :</div>';
+					modalHtml += '</div>';
+					modalHtml += '<div class="col-md-9">';
+					modalHtml += '<input style="margin-top: 5%;" type="datetime-local" class="form-control" id="input-end" value="'+ dateEndInput +'">';
+					modalHtml += '</div>';
+					modalHtml += '</div>';
+
+
+					$("#modalFusillade").html(modalHtml);
+					modalHtml += '<div class="modal-footer">';
+					modalHtml += '<button type="button" id="submit-modal-hours" class="btn btn-primary">Sauvegarder les modifications</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+					modalHtml += '</div>';
+
+					modalHtml += '</div></div>';
+					$("#modalFusillade").html(modalHtml);
+
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+					$("#submit-modal-hours").click(function(){
+						var data_start = $("#input-start").val();
+						var data_end = $("#input-end").val();
+						var id = $("#input_id").val();
+
+						setModalWithDataHours(id,data_start,data_end);
+					});
+
+
+				}
+			}
+		});
+	}
+}
+function setModalWithDataHours(id,data_start,data_end)
+{
+	console.log("value : " + data_start)
+	console.log("value : " + data_end)
+	jQuery.ajax({
+		url: "setDataModalHours",
+		data: {id:id,data_start:data_start, data_end:data_end},
+		type: "POST",
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200)
+			{
+				$("#submit-modal-hours").html('');
+				$(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
+			}
+		}
+	});
+}
 
 function getUserHour(username)
 {
@@ -649,7 +751,6 @@ function getUserHour(username)
                         modalHtml += '</div>';
                     modalHtml += '</div>';
                     $("#modalFusillade").html(modalHtml);
-    
                     modalHtml += '</div></div>';
                     $("#modalFusillade").html(modalHtml);
     

@@ -419,6 +419,17 @@ class Dashboard extends CI_Controller {
 		 
 		echo json_encode($return);
 	}
+	public function getHourData()
+	{
+		$id = $this->input->post('id');
+		$data['dateStart'] = $this->Hour->getDateStart($id)[0];
+		$data['dateEnd'] = $this->Hour->getDateEnd($id)[0];
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
 
 	public function getUserHourData()
 	{
@@ -458,6 +469,21 @@ class Dashboard extends CI_Controller {
 		 
 		echo json_encode($return);
 	}
+	public function setDataModalHours() {
+		$data_start = $this->input->post('data_start');
+		$data_end = $this->input->post('data_end');
+		$data_id = $this->input->post('id');
+		$data_start = str_replace('T',' ',$data_start);
+		$data_end = str_replace('T',' ',$data_end);
+		$data_start = $data_start . ":00";
+		$data_end = $data_end .":00";
+		$this->Hour->updateHoursDataInDB($data_id, $data_start, $data_end);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
 
 	public function myHours(){
 		$premierJour = strftime("%Y/%m/%d 00-00-00", strtotime("-1 Saturday"));
@@ -478,6 +504,7 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('dashboard/listHour',$data);
 		$this->load->view('template/footer');
 
