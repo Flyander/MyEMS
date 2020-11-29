@@ -478,6 +478,54 @@ function deleteUserData(username)
         });
     }
 }
+function deleteHoursData(id)
+{
+    if (id != '')
+    {
+        modalHtml = '';
+        modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+        modalHtml += '<div class="modal-header">';
+        modalHtml += '<h4 style="color: black;" class="modal-title">Suppression de compte</h4>';
+            modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+        modalHtml += '</div>';
+
+        modalHtml += '<div class="modal-body">';
+            modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir supprimer l\' heure numéro '+ id +' ?</div>';
+            modalHtml += '<div style="margin-top: 5%;"></div>';
+        modalHtml += '</div>';
+
+        $("#modalFusillade").html(modalHtml);
+        modalHtml += '<div class="modal-footer">';
+            modalHtml += '<button type="button" id="submit-modal-yes" class="btn btn-success">Oui</button>';
+            modalHtml += '<button type="button" id="submit-modal-no" class="btn btn-danger">Annulé</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+        modalHtml += '</div>';
+
+        modalHtml += '</div></div>';
+        $("#modalFusillade").html(modalHtml);
+
+        $('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+        $("#submit-modal-yes").click(function(){
+            jQuery.ajax({
+            url: "deleteHoursInDB",
+            data: {id: id},
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200)
+                {
+                    $('#modalFusillade').modal('hide');
+                    location.reload();
+                }
+            }
+            });
+        });
+        $("#submit-modal-no").click(function(){
+            $('#modalFusillade').modal('hide');
+        });
+    }
+}
 
 function updateUserData(username)
 {

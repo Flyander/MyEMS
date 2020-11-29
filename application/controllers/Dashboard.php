@@ -406,6 +406,17 @@ class Dashboard extends CI_Controller {
 		 
 		echo json_encode($return);
 	}
+	public function deleteHoursInDB()
+	{
+		$id = $this->input->post('id');
+
+		$this->Hour->deleteHours($id);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
 
 	public function getUserData()
 	{

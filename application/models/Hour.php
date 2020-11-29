@@ -69,6 +69,10 @@ class Hour extends CI_Model
 		}
 		return $hourT;
 	}
+	public function deleteHours($id){
+		$query = "DELETE FROM service where id=".$id;
+		$result = $this->db->query($query);
+	}
 	public function getHourWeek($hourArray){
 		$sum = 0;
 		$i =0;

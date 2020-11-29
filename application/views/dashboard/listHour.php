@@ -43,10 +43,9 @@
 														<td style="transform: translateY(10%);"><?php echo $totalHours[$i]->format("%h h %I"); ?></td>
 														<?php
 														echo "<td>
-																	<a onclick=\"getHour('". $hour['id'] ."')\" class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-calendar-times\"></i></a>
 
-																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
-																	<a  class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
+																	<a onclick=\"getHour('". $hour['id'] ."')\" onclick=\"getHour('". $hour['id'] ."')\"  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a>
+																	<a onclick=\"deleteHoursData('". $hour['id'] ."')\"   class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a>
 																  </td>";
 														?>
 													<?php }
