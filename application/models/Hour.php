@@ -91,7 +91,6 @@ class Hour extends CI_Model
 
 	}
 	public function updateHoursDataInDB($id,$dateStart,$dateEnd){
-		var_dump($dateStart);
 		$query = "UPDATE service set dateStart='$dateStart' where id=".$id;
 		$result = $this->db->query($query);
 		$query = "UPDATE service set dateEnd= '$dateEnd' where id=".$id;
