@@ -728,6 +728,7 @@ function setModalWithDataHours(id,data_start,data_end)
 		type: "POST",
 		dataType: 'json',
 		success: function (data) {
+			console.log(data)
 			if (data.code == 200)
 			{
 				console.log("ta mere")

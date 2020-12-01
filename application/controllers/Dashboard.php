@@ -489,10 +489,8 @@ class Dashboard extends CI_Controller {
 		$data_start = $data_start . ":00";
 		$data_end = $data_end .":00";
 		$this->Hour->updateHoursDataInDB($data_id, $data_start, $data_end);
-
 		$return['message'] = 'OK';
 		$return['code'] = 200;
-
 		echo json_encode($return);
 	}
 
