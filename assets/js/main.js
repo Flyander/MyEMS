@@ -639,7 +639,6 @@ function updateUserData(username)
 }
 function getHour(id){
 	if(id!= ''){
-		console.log(id)
 		jQuery.ajax({
 			url: "getHourData",
 			type: "POST",
@@ -723,8 +722,6 @@ function getHour(id){
 }
 function setModalWithDataHours(id,data_start,data_end)
 {
-	console.log("value : " + data_start)
-	console.log("value : " + data_end)
 	jQuery.ajax({
 		url: "setDataModalHours",
 		data: {id:id,data_start:data_start, data_end:data_end},
@@ -916,7 +913,6 @@ function changeTheme(theme)
         success: function (data) {
             if (data.code == 200)
             {
-                console.log(data.newTheme);
                 if (data.newTheme == 'dark' && test == false)
                 {
                     $('.background-theme').addClass('dark-background');
