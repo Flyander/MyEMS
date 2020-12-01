@@ -730,6 +730,7 @@ function setModalWithDataHours(id,data_start,data_end)
 		success: function (data) {
 			if (data.code == 200)
 			{
+				console.log("ta mere")
 				$("#submit-modal-hours").html('');
 				$(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
 			}
