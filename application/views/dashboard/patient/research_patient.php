@@ -2,7 +2,11 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	?>
 
-	<div class="preloader"></div>
+	<?php if ($stateTheme == 'light') { ?>
+        <div class="preloader"></div>
+    <?php } else { ?>
+        <div class="preloaderDark"></div>
+    <?php } ?>
 	<main class="page-content pt-2">
 	    <div class="container-fluid p-5">
 	        <div class="row noselect">

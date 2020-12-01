@@ -10,6 +10,18 @@
     });
 })(window.jQuery);
 
+(function($) {
+    function handlePreloader() {
+        if ($('.preloaderDark').length) {
+            $('body').addClass('page-loaded');
+            $('.preloaderDark').delay(1000).fadeOut(300);
+        }
+    }
+    $(window).on('load', function() {
+        handlePreloader();
+    });
+})(window.jQuery);
+
 jQuery(function($) {
     // Dropdown menu
     $('.sidebar-dropdown > a').click(function() {
