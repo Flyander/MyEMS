@@ -205,6 +205,7 @@ function getTableDispatch()
         success: function (data) {
 			if (data.code == 200)
             {
+            	console.log(data)
                 $('.icon').css({ "display": "block" });
                 table = '';
                 jQuery.each(data.data.onServiceName, function (i, item)
@@ -226,8 +227,6 @@ function getTableDispatch()
                     if (item.spe == null)
                         table += "<td>N/A</td>";
                     else
-						console.log(item.spe)
-						console.log(item.fullname)
 					if(!item.spe == undefined) {
 							var select = '';
 							for (i = 0; i < item.spe.length; i++) {
