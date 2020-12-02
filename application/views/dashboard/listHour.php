@@ -5,13 +5,7 @@
     <?php } ?>
 <main class="page-content pt-2">
 	<div class="container-fluid p-5">
-		<select>
-			<?php
-			for ($i = 0; $i < 54; $i++) {
-				echo '<option value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("M j", strtotime("first saturday of january + $i week")) . " - " . date("M j", strtotime("second friday of january + $i week")) .'</option>';
-			}
-			?>
-		</select>
+
 		<div class="row">
 			<div class="form-group col-md-12">
 				<div>
