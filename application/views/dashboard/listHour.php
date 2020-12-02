@@ -3,6 +3,7 @@
     <?php } else { ?>
         <div class="preloaderDark"></div>
     <?php } ?>
+
 <main class="page-content pt-2">
 	<div class="container-fluid p-5">
 
@@ -13,11 +14,25 @@
 					<div class="row mb-4">
 						<div class="col-md-12">
 							<div class="card border-0 rounded-0">
-								<div class="card-title mb-1 p-3">
-									<h5 class="titleLabelTheme">Total de vos heures  : <?= $totalHourWeek ?> </h5>
-								</div>
-								<div class="test">
 
+
+								<div class="card-title mb-1 p-3">
+									<h5 class="titleLabelTheme">Total de vos heures : <?= $totalHourWeek ?> </h5>
+								</div>
+								<div class="card-title mb-1 p-3">
+									<h5 class="titleLabelTheme"> Semaine à afficher : <select id="weekselect"
+																							  class="form-control form-control-sm col-3"
+																							  onchange="printHourFromWeek(<?php echo $onServiceName[0]['id_user']; ?>)">             <?php
+											for ($i = 0; $i < 54; $i++) {
+												$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
+												$t = new DateTime(date("Y-m-d", strtotime("today")));
+												if ($d->format("W") != $t->format("W") - 1)
+													echo '<option  value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M Y ", strtotime("first saturday of january + $i week")) . " - " . date("j M Y ", strtotime("second friday of january + $i week")) . '</option>';
+												else
+													echo '<option   selected="selected" value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M y ", strtotime("first saturday of january + $i week")) . " - " . date("j M  Y", strtotime("second friday of january + $i week")) . '</option>';
+
+											}
+											?> </select></h5>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive-md">
@@ -30,7 +45,7 @@
 												<th scope="col">Actions</th>
 											</tr>
 											</thead>
-											<tbody>
+											<tbody id="tb">
 
 											<?php
 											$i = 0;

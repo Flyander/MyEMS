@@ -134,7 +134,51 @@ jQuery(function($) {
         readURL(this);
     });    
 });
+function printHourFromWeek(id){
+ 	val = new Date ($('#weekselect').val());
+ 	val2 =  addDays(val,6)
+	val =  val.toDateString()// updateStr(val)
+	val2 =  val2.toDateString() //updateStr(val2)
+	jQuery.ajax({
+		url: "printHourW",
+		type: "POST",
+		data:{id:id,dateStart:val,dateEnd:val2},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				$('#tb').html(' ')
+				console.log(data)
+				// var link = data.totalHourWeek.text();
+				// $("#hourstt").text("ok");
+				 table='';
 
+				jQuery.each(data.data.hourWeek, function (i, item)
+				{
+					table += '<tr>'
+					table += '<td>'+ item.dateStart +'</td>';
+					table += '<td>'+ item.dateEnd +'</td>';
+					table += '<td>'+ data.data.totalHours[i]['h'] + 'h ' + data.data.totalHours[i]['i'] +'</td>';
+					table += '<td> </td>'
+					table += '</tr>'
+				});
+				$('#tb').html(table)
+			}
+
+		}
+	});
+
+}
+function updateStr(val){
+	val = val.toLocaleString()
+	val = val.replaceAll(':','-')
+	val = val.replaceAll('à','')
+	return val.split(' ')[0]
+}
+function addDays(date, days) {
+	var result = new Date(date);
+	result.setDate(result.getDate() + days);
+	return result;
+}
 function getSpeFromUser(id){
 	jQuery.ajax({
 		url: "getSpe",
@@ -143,7 +187,6 @@ function getSpeFromUser(id){
 		dataType: 'json',
 		success: function (data) {
 			if (data.code == 200) {
-				console.log("ok")
 				return data.spe;
 
 			}
@@ -160,7 +203,6 @@ function getTableDispatch()
         type: "POST",
         dataType: 'json',
         success: function (data) {
-			console.log(data)
 			if (data.code == 200)
             {
                 $('.icon').css({ "display": "block" });
@@ -180,7 +222,7 @@ function getTableDispatch()
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>" + item.num + "</td>";
-                    if (item.spe[0]['name'] == null)
+                    if (item.spe == null)
                         table += "<td>N/A</td>";
                     else
                     	var select='';
@@ -751,7 +793,6 @@ function setModalWithDataHours(id,data_start,data_end)
 		success: function (data) {
 			if (data.code == 200)
 			{
-                console.log('test');
 				$("#submit-modal-hours").html('');
 				$(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
 			}

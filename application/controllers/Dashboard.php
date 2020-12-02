@@ -451,7 +451,17 @@ class Dashboard extends CI_Controller {
 
 		echo json_encode($return);
 	}
-
+	public function printHourW(){
+		$id = $this->input->post('id');
+		$dateStart = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateStart')));
+		$dateEnd = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateEnd')));
+		$data['hourWeek'] = $this->Hour->getHour($id, $dateStart, $dateEnd);
+		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
+		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
+		$return['data'] = $data;
+		$return['code'] = 200;
+		echo json_encode($return);
+	}
 	public function getUserHourData()
 	{
 		$username = $this->input->post('username');
