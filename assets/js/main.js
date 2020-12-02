@@ -223,11 +223,11 @@ function getTableDispatch()
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>" + item.num + "</td>";
-                    console.log(item.spe)
                     if (item.spe == null)
                         table += "<td>N/A</td>";
                     else
-					if(!item.spe == undefined) {
+
+					if(!(item.spe == undefined)) {
 							var select = '';
 							for (i = 0; i < item.spe.length; i++) {
 								if (i == 0) select = item.spe[i]['name'];
