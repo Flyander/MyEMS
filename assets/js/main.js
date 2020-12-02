@@ -226,12 +226,17 @@ function getTableDispatch()
                     if (item.spe == null)
                         table += "<td>N/A</td>";
                     else
-                    	var select='';
-                    for (i=0;i<item.spe.length;i++){
-                    	if(i==0)  select  = item.spe[i]['name'];
-                    	else select += ' | ' + item.spe[i]['name'];
-					}
-                        table += "<td>"+ select +"</td>";
+                    	if(!item.spe == undefined) {
+							var select = '';
+							for (i = 0; i < item.spe.length; i++) {
+								if (i == 0) select = item.spe[i]['name'];
+								else select += ' | ' + item.spe[i]['name'];
+							}
+							table += "<td>" + select + "</td>";
+						}else {
+							table += "<td>N/A</td>";
+
+						}
 
                     if (item.isAvailable == 1)
                     {
