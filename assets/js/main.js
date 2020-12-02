@@ -228,7 +228,6 @@ function getTableDispatch()
                     else
 						console.log(item.spe)
 						console.log(item.fullname)
-						console.log(item.spe[0])
 					if(!item.spe == undefined) {
 							var select = '';
 							for (i = 0; i < item.spe.length; i++) {
