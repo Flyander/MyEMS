@@ -62,6 +62,7 @@ class Dashboard extends CI_Controller {
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
+		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($isAvailable[0]['id_user']);
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
@@ -69,12 +70,20 @@ class Dashboard extends CI_Controller {
 		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
-
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		
 		$return['data'] = $data;
 		$return['code'] = 200;
 		 
+		echo json_encode($return);
+	}
+	public function getSpeFromUser()
+	{
+		$id = $this->input->post('id');
+		$data['spe'] = $this->Services-$this->getSpeFromUser($id);
+		$return['data'] = $data;
+		$return['code'] = 200;
+
 		echo json_encode($return);
 	}
 
@@ -124,6 +133,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
+		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($isAvailable[0]['id_user']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->session->unset_userdata('sessionData');

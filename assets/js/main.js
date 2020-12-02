@@ -135,7 +135,22 @@ jQuery(function($) {
     });    
 });
 
+function getSpeFromUser(id){
+	jQuery.ajax({
+		url: "getSpe",
+		type: "POST",
+		data:{id:id},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				console.log("ok")
+				return data.spe;
 
+			}
+
+		}
+	});
+}
 
 function getTableDispatch()
 {
@@ -145,7 +160,8 @@ function getTableDispatch()
         type: "POST",
         dataType: 'json',
         success: function (data) {
-            if (data.code == 200)
+			console.log(data)
+			if (data.code == 200)
             {
                 $('.icon').css({ "display": "block" });
                 table = '';
@@ -164,10 +180,15 @@ function getTableDispatch()
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>" + item.num + "</td>";
-                    if (item.spe == null)
+                    if (item.spe[0]['name'] == null)
                         table += "<td>N/A</td>";
                     else
-                        table += "<td>"+ item.spe +"</td>";
+                    	var select='';
+                    for (i=0;i<item.spe.length;i++){
+                    	if(i==0)  select  = item.spe[i]['name'];
+                    	else select += ' | ' + item.spe[i]['name'];
+					}
+                        table += "<td>"+ select +"</td>";
 
                     if (item.isAvailable == 1)
                     {

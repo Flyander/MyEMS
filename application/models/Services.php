@@ -338,4 +338,9 @@ class Services extends CI_Model
 		WHERE username='$oldUsername'";
 		$queryResult = $this->db->query($query);
 	}
+	public function getSpeFromUser($id){
+		$query = "SELECT name from have where id=".$id;
+		$result = $this->db->query($query)->result_array();
+		return $result;
+	}
 }
