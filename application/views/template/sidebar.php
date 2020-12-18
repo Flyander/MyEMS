@@ -143,6 +143,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </a>
                         </li>
                         <li>
+                            <a href="procedure">
+                                <i class="fa fa-book"></i>
+                                <span class="menu-text">Procédure</span>
+                                <!--<span class="badge badge-pill badge-primary">Beta</span>-->
+                            </a>
+                        </li>
+                        <li>
                             <a>
                                 <i class="fa fa-calendar"></i>
                                 <span class="menu-text">Tarification</span>
