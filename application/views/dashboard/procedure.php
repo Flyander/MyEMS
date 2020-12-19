@@ -34,11 +34,11 @@
                                         </div>
 
 										<div class="form-group col-md-12">
-                                            <div class="doc-title">Trousse de soin & Médicaments :</div>
+                                            <div class="doc-title">Trousse de soin ,Médicaments  et chaises roulantes :</div>
 
                                             <div class="form-group col-md-12 doc-content">
                                                 <ul>
-                                                    <li><a class="link" href="https://docs.google.com/spreadsheets/d/1vdzgbZLjY4LX-1lUrRbDdW7ZxgZoTolWyyf7eCbNuw0/edit#gid=1310598231" target="_blank">Ventes de trousses de soin et médicaments </a></li>
+                                                    <li><a class="link" href="https://docs.google.com/spreadsheets/d/1vdzgbZLjY4LX-1lUrRbDdW7ZxgZoTolWyyf7eCbNuw0/edit#gid=1310598231" target="_blank">Ventes de trousses de soin ,médicaments et chaises roulantes </a></li>
 												</ul>
                                             </div>
                                         </div>
