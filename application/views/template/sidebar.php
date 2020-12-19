@@ -150,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </a>
                         </li>
                         <li>
-                            <a>
+                            <a href="tarification">
                                 <i class="fa fa-calendar"></i>
                                 <span class="menu-text">Tarification</span>
                             </a>
