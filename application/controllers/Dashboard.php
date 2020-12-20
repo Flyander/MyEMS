@@ -499,6 +499,7 @@ class Dashboard extends CI_Controller {
 	}
 	public function printHourW(){
 		$id = $this->input->post('id');
+		var_dump($id);
 		$dateStart = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateStart')));
 		$dateEnd = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateEnd')));
 		$data['hourWeek'] = $this->Hour->getHour($id, $dateStart, $dateEnd);
