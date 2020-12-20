@@ -150,7 +150,7 @@ function printHourFromWeek(id){
 				// var link = data.totalHourWeek.text();
 				// $("#hourstt").text("ok");
 				 table='';
-
+				console.log(data.data)
 				jQuery.each(data.data.hourWeek, function (i, item)
 				{
 					table += '<tr>'
@@ -823,7 +823,6 @@ function getUserHour(username)
                 if (data.code == 200)
                 {
                     hour = data.data;
-					console.log(hour)
                     modalHtml = '';
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
