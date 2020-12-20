@@ -27,7 +27,7 @@
 												<table id="myTable" class="table table-hover ">
 													<thead>
 													<tr>
-														<th> # </th>
+														<th></th>
 														<th scope="col">Type </th>
 														<th scope="col"> Prix</th>
 														<th scope="col">Descriptif </th>
@@ -36,75 +36,75 @@
 													<tbody >
 														<tr>
 															<td> 1</td>
-															<td style="transform: translateY(10%);"> Prise en charge classique</td>
-															<td style="transform: translateY(10%);">100$ <span style="color: red"> +100$ </span></td>
+															<td> Prise en charge classique</td>
+															<td>100$ <span style="color: red"> +100$ </span></td>
 															<td> Prise en charge de base / Médecin de garde</td>
 														</tr>
 														<tr>
 															<td> 2</td>
-															<td style="transform: translateY(10%);">
+															<td>
 																Prise en charge avancée
 															</td>
-															<td style="transform: translateY(10%);">150$   <span style="color: red"> +100$ </span> </td>
+															<td>150$   <span style="color: red"> +100$ </span> </td>
 															<td> Prise en charge nécessitant des examens complémentaires / du matériel spécifique </td>
 														</tr>
 														<tr>
 															<td> 3 </td>
-															<td style="transform: translateY(10%);">
+															<td>
 																Prise en charge avec acte chirurgical
 															</td>
-															<td style="transform: translateY(10%);">250$ <span style="color: red"> +100$ </span> </td>
+															<td>250$ <span style="color: red"> +100$ </span> </td>
 															<td> Prise en charge nécessitant une chirurgie </td>
 														</tr>
 														<tr>
 															<td> 4 </td>
-															<td style="transform: translateY(10%);">
+															<td>
 
 																Prise en charge traumatisme balistique
 
 															</td>
-															<td style="transform: translateY(10%);">550$ </td>
+															<td>550$ </td>
 															<td> Prise en charge d’un traumatisme balistique / Médecin de garde </td>
 														</tr>
 														<tr>
 															<td> 5 </td>
-															<td style="transform: translateY(10%);">
+															<td>
 																Visite médicale / PPA
 															</td>
-															<td style="transform: translateY(10%);">200$ </td>
+															<td>200$ </td>
 															<td>																Gratuit pour les candidatures services publics. <span STYLE="color:red;"> Sur Rendez-vous </span>
 															</td>
 														</tr>
 														<tr>
 															<td> 6 </td>
-															<td style="transform: translateY(10%);">
+															<td>
 																Consultation avec un spécialiste
 															</td>
-															<td style="transform: translateY(10%);">150$ </td>
+															<td>150$ </td>
 															<td>
 																Psychologie / Cardiologie / Otologie / Rééducation / Dentaire. <span STYLE="color:red;"> Sur Rendez-vous </span>
 															</td>
 														</tr>
 														<tr>
 															<td> 7</td>
-															<td style="transform: translateY(10%);"> Trousse de soin </td>
-															<td style="transform: translateY(10%);">200$ </td>
+															<td> Trousse de soin </td>
+															<td>200$ </td>
 															<td>
 																Maximum 3 par semaine et par personne. Sur présentation d’une pièce d’identité.
 															</td>
 														</tr>
 														<tr>
 															<td> 8</td>
-															<td style="transform: translateY(10%);"> Médicament </td>
-															<td style="transform: translateY(10%);"> 50$ </td>
+															<td> Médicament </td>
+															<td> 50$ </td>
 															<td>
 																Maximum 10 par semaine et par personne. Sur présentation d’une pièce d’identité.
 															</td>
 														</tr>
 														<tr>
 															<td> 9</td>
-															<td style="transform: translateY(10%);"> Chaise roulante </td>
-															<td style="transform: translateY(10%);"> 2000$ </td>
+															<td> Chaise roulante </td>
+															<td> 2000$ </td>
 															<td>Caution à rendre lorsque le patient rapporte la chaise roulante </td>
 														</tr>
 
