@@ -139,6 +139,7 @@ function printHourFromWeek(id){
  	val2 =  addDays(val,6)
 	val =  val.toDateString()// updateStr(val)
 	val2 =  val2.toDateString() //updateStr(val2)
+	console.log("val1" + val  + " val2 " + val2)
 	jQuery.ajax({
 		url: "printHourW",
 		type: "POST",
