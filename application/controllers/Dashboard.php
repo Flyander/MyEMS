@@ -142,8 +142,10 @@ class Dashboard extends CI_Controller {
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
 		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($isAvailable[0]['id_user']);
+		else $data['OnServiceName'][0]['spe'] = "N/A";
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		//var_dump($data['OnServiceName']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');

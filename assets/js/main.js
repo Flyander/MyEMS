@@ -147,7 +147,6 @@ function printHourFromWeek(id){
 		success: function (data) {
 			if (data.code == 200) {
 				$('#tb').html(' ')
-				console.log(data)
 				// var link = data.totalHourWeek.text();
 				// $("#hourstt").text("ok");
 				 table='';
@@ -205,11 +204,13 @@ function getTableDispatch()
         success: function (data) {
 			if (data.code == 200)
             {
-            	console.log(data)
+
                 $('.icon').css({ "display": "block" });
                 table = '';
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
+                	var spe = getSpeFromUser(item.id_user)
+
                     if (data.data.isAdmin == 1)
                         table += '<tr onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')" id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
                     else
@@ -226,17 +227,16 @@ function getTableDispatch()
                     if (item.spe == null)
                         table += "<td>N/A</td>";
                     else
-					console.log(item.spe)
 					if(!(item.spe == undefined)) {
-						console.log(item.spe[0])
 							var select = '';
 							for (i = 0; i < item.spe.length; i++) {
-								if(item.spe[i]['name'] != undefined)
+								if(item.spe[i]['name'] != undefined){
 									if (i == 0) select = item.spe[i]['name'];
 									else {
-									if(item.spe[i]['name'] != undefined)  select += ' | ' + item.spe[i]['name'];
+										if (item.spe[i]['name'] != undefined) select += ' | ' + item.spe[i]['name'];
 
-								}
+									}
+									}
 							}
 							if(select == "") select +="N/A"
 							table += "<td>" + select + "</td>";
@@ -823,7 +823,7 @@ function getUserHour(username)
                 if (data.code == 200)
                 {
                     hour = data.data;
-
+					console.log(hour)
                     modalHtml = '';
                     modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';                
     
@@ -874,6 +874,7 @@ function getUserHour(username)
                                             modalHtml += '<td style="transform: translateY(10%);">'+ item.dateStart +'</td>';
                                             modalHtml += '<td style="transform: translateY(10%);">'+ item.dateEnd +'</td>';
                                             modalHtml += '<td style="transform: translateY(10%);">'+ heure +' h '+ minute +'</td>';
+                                            modalHtml += '<td>  </td> '
                                         modalHtml += '</tr>';
                                     });
                                 modalHtml += '</tbody>';
