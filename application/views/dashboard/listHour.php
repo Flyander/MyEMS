@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<div>
-					<h4 class="text-muted mb-4">Affichage des heures de la semaine</h4>
+					<h4 class="text-muted mb-4">Affichage des heures de la semaine  </h4>
 					<div class="row mb-4">
 						<div class="col-md-12">
 							<div class="card border-0 rounded-0">
@@ -22,7 +22,7 @@
 								<div class="card-title mb-1 p-3">
 									<h5 class="titleLabelTheme"> Semaine à afficher : <select id="weekselect"
 																							  class="form-control form-control-sm col-3"
-																							  onchange="printHourFromWeek(<?php echo $onServiceName[0]['id_user']; ?>)">             <?php
+																							  onchange="printHourFromWeek(<?php echo $id; ?>)">             <?php
 											for ($i = 0; $i < 54; $i++) {
 												$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
 												$t = new DateTime(date("Y-m-d", strtotime("today")));
