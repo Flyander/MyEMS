@@ -37,7 +37,7 @@
 														<tr>
 															<td> 1</td>
 															<td style="transform: translateY(10%);"> Prise en charge classique</td>
-															<td style="transform: translateY(10%);">150$ <span style="color: red"> +100$ </span></td>
+															<td style="transform: translateY(10%);">100$ <span style="color: red"> +100$ </span></td>
 															<td> Prise en charge de base / Médecin de garde</td>
 														</tr>
 														<tr>
