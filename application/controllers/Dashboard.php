@@ -153,6 +153,9 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 	}
 
+	public function getSpe(){
+
+	}
 	public function pauseService(){
 
 		$this->Services->pauseCurrentService($this->session->sessionData['username']);
