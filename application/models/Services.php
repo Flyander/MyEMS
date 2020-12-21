@@ -339,8 +339,13 @@ class Services extends CI_Model
 		$queryResult = $this->db->query($query);
 	}
 	public function getSpeFromUser($id){
-		$query = "SELECT name from have where id=".$id;
-		$result = $this->db->query($query)->result_array();
+		$result = array();
+		$j = 0;
+		foreach ( $id  as $i ){
+			$query = "SELECT name from have where id=".$i['id_user'];
+			$result[$j] = $this->db->query($query)->result_array();
+			$j++;
+		}
 		return $result;
 	}
 }

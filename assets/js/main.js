@@ -197,6 +197,7 @@ function addDays(date, days) {
 	return result;
 }
 function getSpeFromUser(id){
+
 	jQuery.ajax({
 		url: "getSpe",
 		type: "POST",
@@ -204,32 +205,29 @@ function getSpeFromUser(id){
 		dataType: 'json',
 		success: function (data) {
 			if (data.code == 200) {
-				return data.spe;
-
+				return data.data.spe;
 			}
-
 		}
 	});
 }
 
-function getTableDispatch()
+ function getTableDispatch()
 {
     $('#tbody_dispatch').html('');
     jQuery.ajax({
         url: "getDispatch",
         type: "POST",
         dataType: 'json',
-        success: function (data) {
+        success:  function (data) {
 			if (data.code == 200)
             {
-
                 $('.icon').css({ "display": "block" });
                 table = '';
+                spe = data.data.onServiceName[0]['spe']
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
-                	var spe = getSpeFromUser(item.id_user)
-
-                    if (data.data.isAdmin == 1)
+                	//console.log(spe[0][1]['name'])
+					if (data.data.isAdmin == 1)
                         table += '<tr onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')" id="'+ item.username +'"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
                     else
                         table += '<tr id="'+ item.username +'"">';
@@ -238,27 +236,23 @@ function getTableDispatch()
                         table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
                     else
                         table += "<td></td>";
-
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>" + item.num + "</td>";
-                    if (item.spe == null)
+                    if (spe[0][0]['name'] == null)
                         table += "<td>N/A</td>";
-                    else
-					if(!(item.spe == undefined)) {
-							var select = '';
-							for (i = 0; i < item.spe.length; i++) {
-								if(item.spe[i]['name'] != undefined){
-									if (i == 0) select = item.spe[i]['name'];
-									else {
-										if (item.spe[i]['name'] != undefined) select += ' | ' + item.spe[i]['name'];
-
-									}
-									}
+                    else{
+                    	let result = "";
+                    	for(j=0;j < spe[i].length; j++){
+                    		if( j == 0 && spe[i].length > 1)
+							result += spe[i][j]['name'] + " | "
+							else{
+								result += spe[i][j]['name']
 							}
-							if(select == "") select +="N/A"
-							table += "<td>" + select + "</td>";
 						}
+						table += "<td>"+ result + "</td>"
+
+					}
 
                     if (item.isAvailable == 1)
                     {

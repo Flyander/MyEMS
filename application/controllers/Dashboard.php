@@ -64,7 +64,7 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] = $isAvailable;
 		if(!empty($isAvailable) )
 		{
-			$val = $this->Services->getSpeFromUser($isAvailable[0]['id_user']);
+			$val = $this->Services->getSpeFromUser($isAvailable);
 			if(!empty($val))
 			$data['onServiceName'][0]['spe'] = $val;
 			else{
@@ -88,7 +88,7 @@ class Dashboard extends CI_Controller {
 	public function getSpeFromUser()
 	{
 		$id = $this->input->post('id');
-		$data['spe'] = $this->Services-$this->getSpeFromUser($id);
+		$data['spe'] = $this->Services->getSpeFromUser( $this->Services->isAvailable());
 		$return['data'] = $data;
 		$return['code'] = 200;
 
@@ -129,7 +129,7 @@ class Dashboard extends CI_Controller {
 
 	public function pds(){
 		if(!$this->Services->isOnService($this->session->sessionData['id'])) {
-			if(!$this->Services->isOnPause($this->session-sessionData['id'])) {
+			if(!$this->Services->isOnPause($this->session->sessionData['id'])) {
 				$this->Services->CreateServices($this->session->sessionData['id']);
 				$this->Services->startService($this->session->sessionData['username']);
 			}
@@ -141,11 +141,10 @@ class Dashboard extends CI_Controller {
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
-		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($isAvailable[0]['id_user']);
+		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($data['onServiceName']);
 		else $data['OnServiceName'][0]['spe'] = "N/A";
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		//var_dump($data['OnServiceName']);
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
@@ -154,6 +153,11 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function getSpe(){
+		//$id = $this->input->post('id');
+		if(!empty($isAvailable) ) $data['spe'] = $this->Services->getSpeFromUser( $this->Services->isAvailable());
+		$return['data'] = $data;
+		$return['code'] = 200;
+		echo json_encode($return);
 
 	}
 	public function pauseService(){
