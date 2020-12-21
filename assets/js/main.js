@@ -223,7 +223,7 @@ function getSpeFromUser(id){
             {
                 $('.icon').css({ "display": "block" });
                 table = '';
-                spe = data.data.onServiceName[0]['spe']
+                if (data.data.onServiceName[0] != undefined) spe = data.data.onServiceName[0]['spe']
                 jQuery.each(data.data.onServiceName, function (i, item)
                 {
                 	//console.log(spe[0][1]['name'])
