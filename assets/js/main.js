@@ -158,7 +158,7 @@ function printHourFromWeek(id){
 					table += '<td>'+ item.dateStart +'</td>';
 					table += '<td>'+ item.dateEnd +'</td>';
 					table += '<td>'+ data.data.totalHours[i]['h'] + 'h ' + data.data.totalHours[i]['i'] +'</td>';
-					table += '<td> </td>'
+					table += "<td> <a onclick=\"getHour('"+ item.id + "')\" onclick=\"getHour('"+item.id + "')\"  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a> <a onclick=\"deleteHoursData('"+ item.id + "')\"   class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a> </td>";
 					table += '</tr>'
 				});
 				$('#tb').html(table)
