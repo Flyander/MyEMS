@@ -239,7 +239,7 @@ function getSpeFromUser(id){
                     table += "<td>"+ item.fullname +"</td>";
                     table += "<td>"+ item.gradeName +"</td>";
                     table += "<td>" + item.num + "</td>";
-                    if (spe[0][0]['name'] == null)
+                    if (spe[0][0] == undefined)
                         table += "<td>N/A</td>";
                     else{
                     	let result = "";
