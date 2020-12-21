@@ -455,6 +455,26 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/admin/newSpe',$data);
 		$this->load->view('template/footer');
 	}
+	public function newAddSpe()
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/admin/addSpeToUser',$data);
+		$this->load->view('template/footer');
+	}
 
 	public function addNewUserInDB()
 	{
@@ -497,6 +517,8 @@ class Dashboard extends CI_Controller {
 		
 		$return['message'] = 'OK';
 		$return['code'] = 200;
+		echo json_encode($return);
+
 	}
 
 	public function deleteUserInDB()
