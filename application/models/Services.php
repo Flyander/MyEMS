@@ -360,4 +360,19 @@ class Services extends CI_Model
 		}
 		return $result;
 	}
+	public function allSpe(){
+		$query = " SELECT name from spe";
+		$result = $this->db->query($query)->result_array();
+		return $result;
+	}
+	public function allUsername(){
+		$query = "SELECT fullname, id  from users";
+		$result = $this->db->query($query)->result_array();
+		return $result;
+	}
+	public function addUserSpe($user,$spe){
+		$query = 'INSERT INTO have(`id`,`name`) values ( '.$user.' , "'.$spe.'" ) ';
+		$this->db->query($query);
+
+	}
 }

@@ -29,7 +29,37 @@
 												<input type="username" class="form-control" id="newSpe" placeholder="Spécialité">
 											</div>
 										</div>
-                                        <div id="footer-btn-spe"><button type="button" id="submit-spe" class="btn btn-primary right">Ajouter l'utilisateur</button></div>
+                                        <div id="footer-btn-spe"><button type="button" id="submit-spe" class="btn btn-primary right">Ajouter la spécialité</button></div>
+	                                </div>
+	                            </div>
+								<div class="card border-0 rounded-0">
+	                                <div class="card-title mb-1 p-3">
+	                                    <h5 class="titleLabelTheme">Ajouter une nouvelle spécialité à un utilisateurs</h5>
+	                                </div>
+	                                <div class="card-body">
+										<div class="form-group">
+											<label class="control-label col-sm-2" for="username">Nom de l'utilisateur :</label>
+											<div class="col-sm-10">
+												<select type="username" class="form-control" id="userSpe" placeholder="Grade">
+													<?php foreach ($userName as $name) { ?>
+														<option value="<?php echo $name['id']; ?>"> <?php echo $name['fullname']; ?> </option>
+
+													<?php } ?>
+												</select>
+											</div>
+											<br>
+											<label class="control-label col-sm-2" for="username">Nom de la spécialité :</label>
+
+											<div class="col-sm-10">
+												<select type="username" class="form-control" id="newUser-spe" placeholder="Grade">
+													<?php foreach ($allSpe as $spe) { ?>
+														<option value="<?php echo $spe['name']; ?>"><?php echo $spe['name']; ?></option>
+
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+                                        <div id="footer-btn-addspe"><button type="button" id="submit-addSpe" class="btn btn-primary right">Ajouter l'utilisateur</button></div>
 	                                </div>
 	                            </div>
 	                        </div>

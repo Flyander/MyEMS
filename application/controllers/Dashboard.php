@@ -447,7 +447,8 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['collGrade'] = $this->Services->getAllGrade();
-
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -488,6 +489,14 @@ class Dashboard extends CI_Controller {
 			$return['code'] = 500;
 		}
 		echo json_encode($return);
+	}
+	public  function addSpeUser(){
+		$data_spe = $this->input->post('data_spe');
+		$data_usr = $this->input->post('data_user');
+		$this->Services->addUserSpe($data_usr,$data_spe);
+		
+		$return['message'] = 'OK';
+		$return['code'] = 200;
 	}
 
 	public function deleteUserInDB()
