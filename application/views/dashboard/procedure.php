@@ -34,7 +34,7 @@
                                         </div>
 
 										<div class="form-group col-md-12">
-                                            <div class="doc-title">Trousse de soin ,Médicaments  et chaises roulantes :</div>
+                                            <div class="doc-title">Trousse de soin, Médicaments et Chaises roulantes :</div>
 
                                             <div class="form-group col-md-12 doc-content">
                                                 <ul>
