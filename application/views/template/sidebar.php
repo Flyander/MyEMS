@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="myhours">
                                 <i class="fas fa-hourglass-half"></i>
                                 <span class="menu-text">Mes heures</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
+                               <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
                             </a>
                         </li>
 
