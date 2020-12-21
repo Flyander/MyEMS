@@ -147,6 +147,8 @@ function printHourFromWeek(id){
 		success: function (data) {
 			if (data.code == 200) {
 				$('#tb').html(' ')
+				console.log($('#test').text())
+				$('#test').text("Total de vos heures : " + data.data.totalHourWeek)
 				// var link = data.totalHourWeek.text();
 				// $("#hourstt").text("ok");
 				 table='';
@@ -155,26 +157,21 @@ function printHourFromWeek(id){
 					table += '<tr>'
 					table += '<td>'+ item.dateStart +'</td>';
 					table += '<td>'+ item.dateEnd +'</td>';
-					console.log(data.data.totalHours[i])
 					if(data.data.totalHours[i]['h'] > 9 &&  data.data.totalHours[i]['i'] > 9 ){
-						console.log("1")
 
 						table += '<td>'+ data.data.totalHours[i]['h'] + 'h ' + data.data.totalHours[i]['i'] +'</td>';
 
 					}
 					if(data.data.totalHours[i]['h'] > 9 &&  data.data.totalHours[i]['i'] <= 9 ){
-						console.log("2")
 
 						table += '<td>'+ data.data.totalHours[i]['h'] + ' h ' +  '0' + data.data.totalHours[i]['i'] +'</td>';
 
 					}
 					if(data.data.totalHours[i]['h'] <= 9 &&  data.data.totalHours[i]['i'] <= 9 ){
-						console.log("3")
 						table += '<td>'+ '0'+ data.data.totalHours[i]['h'] + ' h ' +  '0' + data.data.totalHours[i]['i'] +'</td>';
 
 					}
 					if(data.data.totalHours[i]['h'] <= 9 &&  data.data.totalHours[i]['i'] > 9 ){
-						console.log("3")
 						table += '<td>'+ '0'+ data.data.totalHours[i]['h'] + ' h ' +   data.data.totalHours[i]['i'] +'</td>';
 
 					}
