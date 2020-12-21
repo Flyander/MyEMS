@@ -139,7 +139,6 @@ function printHourFromWeek(id){
  	val2 =  addDays(val,6)
 	val =  val.toDateString()// updateStr(val)
 	val2 =  val2.toDateString() //updateStr(val2)
-	console.log("val1" + val  + " val2 " + val2)
 	jQuery.ajax({
 		url: "printHourW",
 		type: "POST",
@@ -151,13 +150,34 @@ function printHourFromWeek(id){
 				// var link = data.totalHourWeek.text();
 				// $("#hourstt").text("ok");
 				 table='';
-				console.log(data.data)
 				jQuery.each(data.data.hourWeek, function (i, item)
 				{
 					table += '<tr>'
 					table += '<td>'+ item.dateStart +'</td>';
 					table += '<td>'+ item.dateEnd +'</td>';
-					table += '<td>'+ data.data.totalHours[i]['h'] + 'h ' + data.data.totalHours[i]['i'] +'</td>';
+					console.log(data.data.totalHours[i])
+					if(data.data.totalHours[i]['h'] > 9 &&  data.data.totalHours[i]['i'] > 9 ){
+						console.log("1")
+
+						table += '<td>'+ data.data.totalHours[i]['h'] + 'h ' + data.data.totalHours[i]['i'] +'</td>';
+
+					}
+					if(data.data.totalHours[i]['h'] > 9 &&  data.data.totalHours[i]['i'] <= 9 ){
+						console.log("2")
+
+						table += '<td>'+ data.data.totalHours[i]['h'] + ' h ' +  '0' + data.data.totalHours[i]['i'] +'</td>';
+
+					}
+					if(data.data.totalHours[i]['h'] <= 9 &&  data.data.totalHours[i]['i'] <= 9 ){
+						console.log("3")
+						table += '<td>'+ '0'+ data.data.totalHours[i]['h'] + ' h ' +  '0' + data.data.totalHours[i]['i'] +'</td>';
+
+					}
+					if(data.data.totalHours[i]['h'] <= 9 &&  data.data.totalHours[i]['i'] > 9 ){
+						console.log("3")
+						table += '<td>'+ '0'+ data.data.totalHours[i]['h'] + ' h ' +   data.data.totalHours[i]['i'] +'</td>';
+
+					}
 					table += "<td> <a onclick=\"getHour('"+ item.id + "')\" onclick=\"getHour('"+item.id + "')\"  class=\"btn btn-sm btn-outline-lightning rounded-0 mr-2\"><i class=\"far fa-edit\"></i></a> <a onclick=\"deleteHoursData('"+ item.id + "')\"   class=\"btn btn-sm btn-outline-lightning rounded-0\"><i class=\"far fa-trash-alt\"></i></a> </td>";
 					table += '</tr>'
 				});
