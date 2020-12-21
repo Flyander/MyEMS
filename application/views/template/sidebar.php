@@ -174,6 +174,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li>
                                             <a href="newAccount">Ajouter un utilisateur</a>
                                         </li>
+										<li>
+                                            <a href="newSpe">Ajouter une spécialité</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

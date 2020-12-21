@@ -305,6 +305,18 @@ class Services extends CI_Model
 		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin', '$data_num')";
 		$queryResult = $this->db->query($query);
 	}
+	public function addSpe($data_spe)
+	{
+		$query = "INSERT INTO spe (`name`, `type`) VALUES ('$data_spe', 0)";
+		try {
+			$queryResult = $this->db->query($query);
+			return 1;
+		}catch (\Exception $e){
+			die($e->getMessage());
+			$queryResult = null;
+			return 0;
+		}
+	}
 
 	public function deleteUser($username)
 	{

@@ -127,6 +127,11 @@ jQuery(function ($) {
 			data_isAdmin = 0
 		addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num);
 	});
+	$("#submit-spe").click(function () {
+		var data_spe = $("#newSpe").val();
+
+		addNewSpe(data_spe);
+	});
 
 	$('#btnAddPicture').click(function () {
 		$('#pictureBtn').trigger('click');
@@ -503,6 +508,30 @@ function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, d
 				if (data.code == 200) {
 					$("#submit-user").html('');
 					$("#footer-btn-user").html('<button type="button" id="submit-user" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+				}
+			}
+		});
+	} else {
+		alert('Il manque des informations');
+	}
+}
+function addNewSpe(data_spe) {
+	if (data_spe != '' ) {
+		jQuery.ajax({
+			url: "addNewSpeInDB",
+			data: {
+				data_spe: data_spe
+			},
+			type: "POST",
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$("#submit-spe").html('');
+					$("#footer-btn-spe").html('<button type="button" id="submit-spe" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+				}
+				else{
+					console.log("test")
+					alert("La spécialité existe déjà")
 				}
 			}
 		});
