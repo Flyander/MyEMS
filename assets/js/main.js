@@ -256,6 +256,7 @@ function getTableDispatch() {
 						table += "<td>N/A</td>";
 					else {
 						let result = "";
+						console.log(spe[i] + "\n");
 						for (j = 0; j < spe[i].length; j++) {
 							if (j == 0 && spe[i].length > 1)
 								result += spe[i][j]['name'] + " | "
