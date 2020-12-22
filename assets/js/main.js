@@ -128,7 +128,7 @@ jQuery(function ($) {
 		addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num);
 	});
 
-	$("#spe").click(function () {
+	$("#submit-spe").click(function () {
 		var data_spe = $("#newSpe").val();
 
 		addNewSpe(data_spe);
@@ -136,7 +136,7 @@ jQuery(function ($) {
 	$("#submit-addSpe").click(function () {
 		var data_usrspe = $("#userSpe").val();
 		var data_spe = $("#newUser-spe").val();
-		addNewSpe(data_usrspe,data_spe);
+		addNewSpeUser(data_usrspe,data_spe);
 	});
 
 	$('#btnAddPicture').click(function () {
@@ -548,7 +548,7 @@ function addNewSpe(data_spe) {
 		alert('Il manque des informations');
 	}
 }
-function addNewSpe(data_user,data_spe) {
+function addNewSpeUser(data_user,data_spe) {
 	if (data_spe != '' && data_user != '' ) {
 		jQuery.ajax({
 			url: "addSpeUser",

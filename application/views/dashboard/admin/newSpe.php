@@ -30,7 +30,9 @@
 												<input type="username" class="form-control" id="newSpe" placeholder="Spécialité">
 											</div>
 										</div>
-                                        <div id="footer-btn-spe"><button type="button" id="spe" class="btn btn-primary right">Ajouter la spécialité</button></div>
+                                        <div id="footer-btn-spe">
+											<button type="button" id="submit-spe" class="btn btn-primary right">Ajouter la spécialité</button>
+										</div>
 	                                </div>
 	                            </div>
 
