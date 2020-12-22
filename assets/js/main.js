@@ -128,7 +128,7 @@ jQuery(function ($) {
 		addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num);
 	});
 
-	$("#submit-spe").click(function () {
+	$("#spe").click(function () {
 		var data_spe = $("#newSpe").val();
 
 		addNewSpe(data_spe);
