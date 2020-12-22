@@ -262,7 +262,7 @@ function getTableDispatch() {
 								result += spe[i][j]['name'] + " | "
 							else {
 								if( j!= spe[i].length - 1){
-									result += spe[i][j]['name'] + " |"
+									result += spe[i][j]['name'] + " | "
 
 								}
 								else{
