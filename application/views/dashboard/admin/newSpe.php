@@ -1,6 +1,7 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	if ($isAdmin != 1) {
+
 		redirect('/Dashboard/index');
 	}
 	?>
