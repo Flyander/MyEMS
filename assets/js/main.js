@@ -305,7 +305,7 @@ function getOptionDispatch(id, isSupervisor) {
 		success: function (data) {
 			player = data.data.playerInfo;
 			optionHtml = '';
-			optionHtml += "<div class=\"card-title mb-1 p-3\"><h5 class=\"titleLabelTheme\">Option dispatch - " + player.fullname + "</h5></div><div class=\"card-body\">"
+			optionHtml += "<div class=\"card-title mb-1 p-3\"><h5 class=\"titleLabelTheme smooth-background dark-label\">Option dispatch - " + player.fullname + "</h5></div><div class=\"card-body\">"
 			optionHtml += "<div class=\"row\">";
 
 			if (player.isAvailable == 0)
