@@ -263,6 +263,9 @@ function getTableDispatch() {
 								result += spe[i][j]['name']
 							}
 						}
+						if(result == ""){
+							result = "N/A";
+						}
 						table += "<td>" + result + "</td>"
 
 					}
