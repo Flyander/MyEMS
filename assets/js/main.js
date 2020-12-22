@@ -261,7 +261,13 @@ function getTableDispatch() {
 							if (j == 0 && spe[i].length > 1)
 								result += spe[i][j]['name'] + " | "
 							else {
-								result += spe[i][j]['name']
+								if( j!= spe[i].length - 1){
+									result += spe[i][j]['name'] + " |"
+
+								}
+								else{
+									result += spe[i][j]['name']
+								}
 							}
 						}
 						if(result == ""){
