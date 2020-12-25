@@ -455,6 +455,34 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/admin/newSpe',$data);
 		$this->load->view('template/footer');
 	}
+	public function listSpe(){
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
+		$this->load->view('dashboard/admin/listSpe',$data);
+		$this->load->view('template/footer');
+	}
+	public function deleteSpeInDB(){
+		$spename = $this->input->post('spe');
+		$this->Services->deleteSpeDB($spename);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
 	public function newAddSpe()
 	{
 		$isAvailable = $this->Services->isAvailable();
@@ -474,6 +502,43 @@ class Dashboard extends CI_Controller {
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/admin/addSpeToUser',$data);
 		$this->load->view('template/footer');
+	}
+public function newDeleteSpe()
+	{
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('modal/modal_fusillade',$data);
+		$this->load->view('dashboard/admin/DeleteSpeFromUser',$data);
+		$this->load->view('template/footer');
+	}
+	public function deleteSpeFromUser(){
+		$id = $this->input->post('id');
+		$spe = $this->input->post('spe');
+		$this->Services->DeleteSpeUser($id,$spe);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		echo json_encode($return);
+	}
+	public function getSpeUser(){
+		$id = $this->input->post('id');
+		$data['allSpeUser'] = $this->Services->getSpeFromUserId($id);
+		$return['data'] = $data;
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		echo json_encode($return);
 	}
 
 	public function addNewUserInDB()

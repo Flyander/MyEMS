@@ -365,6 +365,7 @@ class Services extends CI_Model
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
+
 	public function allUsername(){
 		$query = "SELECT fullname, id  from users";
 		$result = $this->db->query($query)->result_array();
@@ -374,5 +375,20 @@ class Services extends CI_Model
 		$query = 'INSERT INTO have(`id`,`name`) values ( '.$user.' , "'.$spe.'" ) ';
 		$this->db->query($query);
 
+	}
+	public function deleteSpeDB($spe){
+		$query = "DELETE FROM have where name ='$spe'";
+		$this->db->query($query);
+		$query = "DELETE FROM spe where name = '$spe'";
+		$this->db->query($query);
+	}
+	public function deleteSpeUser($spename, $id){
+		$query = "DELETE FROM have where id=$id and name ='$spename'";
+		$this->db->query($query);
+	}
+	public function getSpeFromUserId($id){
+		$query = "SELECT name from have where id=$id";
+		$result = $this->db->query($query)->result_array();
+		return $result;
 	}
 }

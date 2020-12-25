@@ -183,6 +183,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </ul>
                                 </div>
                             </li>
+							<li class="sidebar-dropdown">
+                                <a>
+                                    <i class="fas fa-users"></i>
+                                    <span class="menu-text">Gestion des spécialités</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="listSpe">Liste des spécialités </a>
+                                        </li>
+										<li>
+                                            <a href="newSpe">Ajouter une spécialité</a>
+                                        </li>
+										<li>
+                                            <a href="newAddSpe">Ajouter une spécialité à un utilisateur</a>
+                                        </li>
+										<li>
+                                            <a href="newDeleteSpe">Supprimer la spé d'un utilisateur</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
 
                         <?php } ?>
                         <!--<li>

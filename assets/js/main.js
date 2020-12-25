@@ -133,6 +133,12 @@ jQuery(function ($) {
 
 		addNewSpe(data_spe);
 	});
+	$("#submit-delSpe").click(function () {
+		var data_spe = $("#deleteUser-spe").val();
+		var data_user = $("#userSpe").val();
+
+		deleteSpeUser(data_spe,data_user);
+	});
 	$("#submit-addSpe").click(function () {
 		var data_usrspe = $("#userSpe").val();
 		var data_spe = $("#newUser-spe").val();
@@ -569,10 +575,37 @@ function addNewSpeUser(data_user,data_spe) {
 				if (data.code == 200) {
 					$("#submit-spe").html('');
 					$("#footer-btn-addspe").html('<button type="button" id="submit-spe" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+					location.reload();
+
 				}
 				else{
 					console.log("test")
 					alert("La spécialité existe déjà")
+				}
+			}
+		});
+	} else {
+		alert('Il manque des informations');
+	}
+}
+function deleteSpeUser(data_user,data_spe) {
+	if (data_spe != '' && data_user != '' ) {
+		jQuery.ajax({
+			url: "deleteSpeFromUser",
+			data: {
+				spe: data_spe,
+				id: data_user
+			},
+			type: "POST",
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$("#submit-delSpe").html('');
+					$("#footer-btn-delspe").html('<button type="button" id="submit-spe" class="btn btn-success right"><i class="fas fa-check"></i> Suppression réussie</button>');
+					location.reload();
+				}
+				else{
+					console.log("test")
 				}
 			}
 		});
@@ -611,6 +644,118 @@ function deleteUserData(username) {
 			jQuery.ajax({
 				url: "deleteUserInDB",
 				data: {username: username},
+				type: "POST",
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == 200) {
+						$('#modalFusillade').modal('hide');
+						location.reload();
+					}
+				}
+			});
+		});
+		$("#submit-modal-no").click(function () {
+			$('#modalFusillade').modal('hide');
+		});
+	}
+}
+function  deleteSpeData(spename) {
+	if (spename != '') {
+		modalHtml = '';
+		modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+		modalHtml += '<div class="modal-header">';
+		modalHtml += '<h4 style="color: black;" class="modal-title">Suppression de la spécialité </h4>';
+		modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+		modalHtml += '</div>';
+
+		modalHtml += '<div class="modal-body">';
+		modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir supprimer la specialité ' + spename + ' ?</div>';
+		modalHtml += '<div style="margin-top: 5%;"></div>';
+		modalHtml += '</div>';
+
+		$("#modalFusillade").html(modalHtml);
+		modalHtml += '<div class="modal-footer">';
+		modalHtml += '<button type="button" id="submit-modal-yes" class="btn btn-success">Oui</button>';
+		modalHtml += '<button type="button" id="submit-modal-no" class="btn btn-danger">Annulé</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+		modalHtml += '</div>';
+
+		modalHtml += '</div></div>';
+		$("#modalFusillade").html(modalHtml);
+
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+		$("#submit-modal-yes").click(function () {
+			jQuery.ajax({
+				url: "deleteSpeInDB",
+				data: {spe: spename},
+				type: "POST",
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == 200) {
+						$('#modalFusillade').modal('hide');
+						location.reload();
+					}
+				}
+			});
+		});
+		$("#submit-modal-no").click(function () {
+			$('#modalFusillade').modal('hide');
+		});
+	}
+}
+function loadUserSpe(){
+	id = $("#userSpe").val()
+	jQuery.ajax({
+		url: "getSpeUser",
+		data: {id: id},
+		type: "POST",
+		dataType: 'json',
+		success: function (data) {
+			console.log(data)
+			if (data.code == 200) {
+				select =""
+				$("#deleteUser-spe").html('');
+				jQuery.each(data.data.allSpeUser, function (i, item) {
+				select += '<option value="'+item.name+'">'+ item.name + '</option>'
+
+				});
+				$("#deleteUser-spe").html(select);
+			}
+		}
+	});
+}
+
+function  deleteSpeData(spename) {
+	if (spename != '') {
+		modalHtml = '';
+		modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+		modalHtml += '<div class="modal-header">';
+		modalHtml += '<h4 style="color: black;" class="modal-title">Suppression de la spécialité </h4>';
+		modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+		modalHtml += '</div>';
+
+		modalHtml += '<div class="modal-body">';
+		modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir supprimer la specialité ' + spename + ' ?</div>';
+		modalHtml += '<div style="margin-top: 5%;"></div>';
+		modalHtml += '</div>';
+
+		$("#modalFusillade").html(modalHtml);
+		modalHtml += '<div class="modal-footer">';
+		modalHtml += '<button type="button" id="submit-modal-yes" class="btn btn-success">Oui</button>';
+		modalHtml += '<button type="button" id="submit-modal-no" class="btn btn-danger">Annulé</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+		modalHtml += '</div>';
+
+		modalHtml += '</div></div>';
+		$("#modalFusillade").html(modalHtml);
+
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+		$("#submit-modal-yes").click(function () {
+			jQuery.ajax({
+				url: "deleteSpeInDB",
+				data: {spe: spename},
 				type: "POST",
 				dataType: 'json',
 				success: function (data) {
@@ -862,6 +1007,10 @@ function setModalWithDataHours(id, data_start, data_end) {
 			if (data.code == 200) {
 				$("#submit-modal-hours").html('');
 				$(".modal-footer").html('<button type="button" id="submit-modal" class="btn btn-success"><i class="fas fa-check"></i> Sauvegarde réussie</button>');
+				$('#modalFusillade').modal('hide');
+				location.reload();
+
+
 			}
 		}
 	});
