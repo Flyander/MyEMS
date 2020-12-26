@@ -12,6 +12,8 @@ class AppointmentMod extends CI_Model
 	public function addAppointmentPanelInDb($fullname, $num, $mail, $msg, $reason,$idUser){
 		$querry = 'INSERT INTO appointment (applicant,phone,mail,description,subject,id_user,`type`) values ("'.$fullname.'","'.$num.'","'.$mail.'","'.$msg.'","'.$reason.'",'.$idUser.',2)';
 		$result = $this->db->query($querry);
+		$query = "UDAPTE appointment set `type`= 0 where id_user =0";
+		$this->db->query($query);
 		return $result;
 	}
 	public function getAppointmentInProgress(){
@@ -40,6 +42,10 @@ class AppointmentMod extends CI_Model
 		$querry = "UPDATE appointment set `type`= 1  where id = $id";
 		$this->db->query($querry);
 		$querry = "UPDATE appointment set id_user= $user  where id = $id";
+		$this->db->query($querry);
+	}
+	public function leaveAppointment($id){
+		$querry = "UPDATE appointment set `type`= 0 where id = $id";
 		$this->db->query($querry);
 	}
 	public function takeAppointment($id,$user){

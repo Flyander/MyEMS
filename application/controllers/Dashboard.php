@@ -586,6 +586,14 @@ class Dashboard extends CI_Controller {
 
 		echo json_encode($return);
 	}
+	public function leaveAppointment(){
+		$idRdv = $this->input->post('idRdv');
+		$this->AppointmentMod->leaveAppointment($idRdv);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
 	public function takeAppointment(){
 		$idRdv = $this->input->post('idRdv');
 		$idUser = $this->input->post('idUser');

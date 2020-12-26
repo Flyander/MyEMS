@@ -16,6 +16,7 @@
 			<p class="card-text" style="font-size: 13px"  >  Prise en charge  par <?=  $usernameRdv[$i];  $i += 1; ?> le <?= $e->format("d-m-y à H:i") ?></p>
 			<?php if($id == $rdv['id_user'] OR $isAdmin == 1 ){ ?>
 			<button class="btn btn-primary btn-sm float-left" onclick="validateAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Valider </button>
+			<button class="btn btn-warning btn-sm " onclick="leaveAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Abandonner  </button>
 			<button  class="btn btn-danger btn-sm float-right" onclick="deleteAppointment(<?= $rdv['id']?>,'<?= $rdv['applicant']?>')">Supprimer </button>
 			<?php } ?>
 		</div>
