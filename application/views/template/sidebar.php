@@ -76,13 +76,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="sidebar-submenu">
 								<ul>
 									<li>
+										<a href="createAppointment"> Créer un rendez-vous  <!--<span class="badge badge-pill badge-warning">WIP</span>--></a>
+
+									</li>
+									<li>
 										<a href="showRdv"> Demande en cours
 											<!--<span class="badge badge-pill badge-success">Feat</span>-->
 										</a>
 									</li>
 									<li>
+										<a href="showRdvTaken">Demande prise en charge  <!--<span class="badge badge-pill badge-warning">WIP</span>--></a>
+
+									</li>
+
+									<li>
 										<a href="showRdvEnd">Demande finalisé <!--<span class="badge badge-pill badge-warning">WIP</span>--></a>
 									</li>
+
 								</ul>
 							</div>
 						</li>

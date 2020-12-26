@@ -9,6 +9,11 @@ class AppointmentMod extends CI_Model
 
 		return $result;
 	}
+	public function addAppointmentPanelInDb($fullname, $num, $mail, $msg, $reason,$idUser){
+		$querry = 'INSERT INTO appointment (applicant,phone,mail,description,subject,id_user,`type`) values ("'.$fullname.'","'.$num.'","'.$mail.'","'.$msg.'","'.$reason.'",'.$idUser.',2)';
+		$result = $this->db->query($querry);
+		return $result;
+	}
 	public function getAppointmentInProgress(){
 		$querry = "SELECT * FROM appointment where type = 0";
 		$result = $this->db->query($querry)->result_array();
@@ -20,6 +25,11 @@ class AppointmentMod extends CI_Model
 		$result = $this->db->query($querry)->result_array();
 		return $result;
 	}
+	public function getAppointmentTaken(){
+		$querry = "SELECT * FROM appointment where type = 2";
+		$result = $this->db->query($querry)->result_array();
+		return $result;
+	}
 	public function deleteAppointment($id){
 		$querry = "DELETE FROM appointment where id = $id";
 		$this->db->query($querry);
@@ -28,6 +38,12 @@ class AppointmentMod extends CI_Model
 
 	public function validateAppointment($id,$user){
 		$querry = "UPDATE appointment set `type`= 1  where id = $id";
+		$this->db->query($querry);
+		$querry = "UPDATE appointment set id_user= $user  where id = $id";
+		$this->db->query($querry);
+	}
+	public function takeAppointment($id,$user){
+		$querry = "UPDATE appointment set `type`= 2  where id = $id";
 		$this->db->query($querry);
 		$querry = "UPDATE appointment set id_user= $user  where id = $id";
 		$this->db->query($querry);

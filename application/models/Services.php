@@ -391,4 +391,9 @@ class Services extends CI_Model
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
+	public function getUserInfo(){
+		$query = "SELECT id,grade_name,fullname from users";
+		$result = $this->db->query($query)->result_array();
+		return $result;
+	}
 }

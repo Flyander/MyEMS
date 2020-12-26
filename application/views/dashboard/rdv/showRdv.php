@@ -12,6 +12,7 @@
 			<p class="card-text"> <?= $rdv['description'] ?> </p>
 		<div class="card-footer text-center">
 			<button class="btn btn-primary btn-sm float-left" onclick="validateAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Valider </button>
+			<button class="btn btn-warning btn-sm " onclick="takeAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Prendre </button>
 			<button  class="btn btn-danger btn-sm float-right" onclick="deleteAppointment(<?= $rdv['id']?>,'<?= $rdv['applicant']?>')">Supprimer </button>
 		</div>
 		</div>
