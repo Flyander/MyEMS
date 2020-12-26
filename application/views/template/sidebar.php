@@ -68,6 +68,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
                             </a>
                         </li>
+						<li class="sidebar-dropdown">
+							<a>
+								<i class="fa fa-calendar"></i>
+								<span class="menu-text">Gestion des Rendez-vous </span>
+							</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li>
+										<a href="showRdv"> Demande en cours
+											<!--<span class="badge badge-pill badge-success">Feat</span>-->
+										</a>
+									</li>
+									<li>
+										<a href="showRdvEnd">Demande finalisé <!--<span class="badge badge-pill badge-warning">WIP</span>--></a>
+									</li>
+								</ul>
+							</div>
+						</li>
 
                         <!--<li class="sidebar-dropdown">
                             <a>

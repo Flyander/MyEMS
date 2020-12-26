@@ -53,3 +53,5 @@ $route['default_controller'] = 'UserLogin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['/Dashboard/index'] = 'Dashboard';
+$route['rdv'] = 'Appointment';
+$route['addAppointment'] = 'Appointment/addAppointment';

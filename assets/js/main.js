@@ -133,6 +133,29 @@ jQuery(function ($) {
 
 		addNewSpe(data_spe);
 	});
+	$("#submit-rdv").click(function () {
+	var msg = $("#message").val();
+	var mail = $("#mail").val();
+	var type = $("#type").val();
+	var phone = $("#num").val();
+	var fullname = $("#fullname").val();
+	if(msg !== "" && mail !== "" && type !=="" &&phone !=="" && fullname!=="")
+	sendAppointment(fullname,phone,mail,msg,type);
+	else{
+		myhtml = '<div  class="col alert alert-danger" role="alert">\n' +
+			' Merci de remplir tous les champs \n' +
+			'</div>'
+		$("#alerte").html(myhtml)
+		let y;
+		let i =0;
+		setTimeout( function () {
+			$("#alerte").html("")
+
+		}, 5000 );
+	}
+
+
+	});
 	$("#submit-delSpe").click(function () {
 		var data_spe = $("#deleteUser-spe").val();
 		var data_user = $("#userSpe").val();
@@ -217,6 +240,7 @@ function addDays(date, days) {
 	result.setDate(result.getDate() + days);
 	return result;
 }
+
 
 function getSpeFromUser(id) {
 
@@ -512,6 +536,7 @@ function setModalWithData(id_bed, data_patient, data_medecin, data_desc, data_et
 	});
 }
 
+
 function addNewUser(data_prenom, data_nom, data_grade, data_mdp, data_isAdmin, data_num) {
 	if (data_prenom != '' && data_nom != '' && data_grade != '' && data_mdp != '') {
 		jQuery.ajax({
@@ -560,6 +585,127 @@ function addNewSpe(data_spe) {
 	} else {
 		alert('Il manque des informations');
 	}
+}
+function validateAppointment(idRdv, fullname , idUser){
+	modalHtml = '';
+	modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+	modalHtml += '<div class="modal-header">';
+	modalHtml += '<h4 style="color: black;" class="modal-title">Validation  de Rendez-vous </h4>';
+	modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+	modalHtml += '</div>';
+
+	modalHtml += '<div class="modal-body">';
+	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir valider le rendez-vous de ' + fullname  + ' ?</div>';
+	modalHtml += '<div style="margin-top: 5%;"></div>';
+	modalHtml += '</div>';
+
+	$("#modalFusillade").html(modalHtml);
+	modalHtml += '<div class="modal-footer">';
+	modalHtml += '<button type="button" id="submit-modal-yes" class="btn btn-success">Oui</button>';
+	modalHtml += '<button type="button" id="submit-modal-no" class="btn btn-danger">Annulé</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+	modalHtml += '</div>';
+	modalHtml += '</div></div>';
+	$("#modalFusillade").html(modalHtml);
+
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+	$("#submit-modal-yes").click(function () {
+		jQuery.ajax({
+			url: "ValidateAppointment",
+			data: {
+				idRdv : idRdv,
+				idUser : idUser,
+			},
+			type: "POST",
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$('#modalFusillade').modal('hide');
+					location.reload()
+				}
+
+			}
+		});
+	});
+	$("#submit-modal-no").click(function () {
+		$('#modalFusillade').modal('hide');
+	});
+}
+function deleteAppointment(id,fullname){
+	modalHtml = '';
+	modalHtml += '<div class="modal-dialog modal-lg modal-info"><div class="modal-content">';
+
+	modalHtml += '<div class="modal-header">';
+	modalHtml += '<h4 style="color: black;" class="modal-title">Suppression de Rendez-vous </h4>';
+	modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="white-text">&times;</span></button>';
+	modalHtml += '</div>';
+
+	modalHtml += '<div class="modal-body">';
+	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir supprimer le rendez-vous de ' + fullname  + ' ?</div>';
+	modalHtml += '<div style="margin-top: 5%;"></div>';
+	modalHtml += '</div>';
+
+	$("#modalFusillade").html(modalHtml);
+	modalHtml += '<div class="modal-footer">';
+	modalHtml += '<button type="button" id="submit-modal-yes" class="btn btn-success">Oui</button>';
+	modalHtml += '<button type="button" id="submit-modal-no" class="btn btn-danger">Annulé</button>'; //onclick="setModalWithData(\''+ bed.bed +'\', \''+  +'\', \''+ $("#input-medecin").val() +'\', \''+ $("#input-description").val() +'\', \''+ $("#select-etat").val() +'\')"
+	modalHtml += '</div>';
+	modalHtml += '</div></div>';
+	$("#modalFusillade").html(modalHtml);
+
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+
+	$("#submit-modal-yes").click(function () {
+		jQuery.ajax({
+			url: "delAppointment",
+			data: {
+				id : id
+			},
+			type: "POST",
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$('#modalFusillade').modal('hide');
+					location.reload()
+					}
+				else{
+					console.log("test")
+					alert("La spécialité existe déjà")
+				}
+			}
+		});
+	});
+	$("#submit-modal-no").click(function () {
+		$('#modalFusillade').modal('hide');
+	});
+}
+function sendAppointment(fullname,num,mail,msg,reason) {
+	var getUrl = window.location;
+	var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	console.log(baseUrl)
+	jQuery.ajax({
+			url: "addAppointment",
+			data: {
+				fullname: fullname,
+				phone : num,
+				mail : mail,
+				msg : msg,
+				reason : reason
+			},
+			type: "POST",
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$("#submit-rdv").html('');
+					$("#footer-btn-rdv").html('<button type="button" id="submit-rdv" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+				}
+				else{
+					console.log("test")
+					alert("La spécialité existe déjà")
+				}
+			}
+		});
 }
 function addNewSpeUser(data_user,data_spe) {
 	if (data_spe != '' && data_user != '' ) {

@@ -29,6 +29,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Fusillade');
 		$this->load->model('Hour');
 		$this->load->model('Patient');
+		$this->load->model('AppointmentMod');
 		if (!isset($this->session->userdata['sessionData'])) {
 			redirect('/UserLogin');
 		}
@@ -455,6 +456,49 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/admin/newSpe',$data);
 		$this->load->view('template/footer');
 	}
+	public function showRdv(){
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['actualRdv'] = $this->AppointmentMod->getAppointmentInProgress();
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/showRdv',$data);
+		$this->load->view('modal/modal_fusillade',$data);
+		$this->load->view('template/footer');
+	}
+	public function showRdvEnd(){
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['actualRdv'] = $this->AppointmentMod->getAppointmentEnded();
+		$data['usernameRdv'] = $this->AppointmentMod->getUsernameFromId($data['actualRdv']);
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/showRdvEnd',$data);
+		$this->load->view('modal/modal_fusillade',$data);
+		$this->load->view('template/footer');
+	}
 	public function listSpe(){
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
@@ -478,6 +522,23 @@ class Dashboard extends CI_Controller {
 	public function deleteSpeInDB(){
 		$spename = $this->input->post('spe');
 		$this->Services->deleteSpeDB($spename);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+
+		echo json_encode($return);
+	}
+	public function delAppointment(){
+		$id = $this->input->post('id');
+		$this->AppointmentMod->deleteAppointment($id);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		echo json_encode($return);
+	}
+	public function ValidateAppointment(){
+		$idRdv = $this->input->post('idRdv');
+		$idUser = $this->input->post('idUser');
+
+		$this->AppointmentMod->validateAppointment($idRdv,$idUser);
 		$return['message'] = 'OK';
 		$return['code'] = 200;
 
@@ -520,14 +581,27 @@ public function newDeleteSpe()
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
+		$this->load->view('template/footer');
 		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('dashboard/admin/DeleteSpeFromUser',$data);
-		$this->load->view('template/footer');
+
 	}
 	public function deleteSpeFromUser(){
 		$id = $this->input->post('id');
 		$spe = $this->input->post('spe');
 		$this->Services->DeleteSpeUser($id,$spe);
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		echo json_encode($return);
+	}
+	public function addAppointment(){
+		$fullname = $this->input->post('fullname');
+		$num = $this->input->post('phone');
+		$mail = $this->input->post('mail');
+		$msg = $this->input->post('msg');
+		$reason = $this->input->post('reason');
+		$this->Appointment->addAppointmentInDb($fullname,$num,$mail,$msg,$reason);
+
 		$return['message'] = 'OK';
 		$return['code'] = 200;
 		echo json_encode($return);

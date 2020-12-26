@@ -11,11 +11,10 @@ class UserLogin extends CI_Controller
 		$this->load->library('session');
 		$this->load->model('Logindatabase_model','logindatabase_model');
 		$this->load->model('Services');
+		$this->load->model('AppointmentMod');
+
 	}
 
-	/**
-	 * Function to load an view
-	 */
 	public function index(){
 		$this->load->view('template/headerLogin');
 		$this->load->view('Login/loginForm');
@@ -109,6 +108,18 @@ class UserLogin extends CI_Controller
 
 		}
 	}
+	public function addAppointment(){
+		$fullname = $this->input->post('fullname');
+		$num = $this->input->post('phone');
+		$mail = $this->input->post('mail');
+		$msg = $this->input->post('msg');
+		$reason = $this->input->post('reason');
+		$this->Appointment->addAppointmentInDb($fullname,$num,$mail,$msg,$reason);
+
+		$return['message'] = 'OK';
+		$return['code'] = 200;
+		echo json_encode($return);
+	}
 	public function logout() {
 		$sessionInfo = array(
 			'username' => ''
@@ -137,6 +148,14 @@ class UserLogin extends CI_Controller
 		);
 //		$this->session->set_userdata('sessionData', $sessionData);
 //		redirect('/Dashboard/index');
+
+	}
+
+
+	public function rdv(){
+		$this->load->view('template/headerLogin');
+		$this->load->view('Login/rdv.php');
+		redirect('/Appointment/index');
 
 	}
 
