@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 									</li>
 									<li>
-										<a href="showRdv"> Demande en cours
+										<a href="showRdv">  Demande non assigné
 											<!--<span class="badge badge-pill badge-success">Feat</span>-->
 										</a>
 									</li>
