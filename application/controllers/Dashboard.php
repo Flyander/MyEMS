@@ -621,6 +621,20 @@ class Dashboard extends CI_Controller {
 		echo json_encode($return);
 	}
 
+	public function getSelectSpe()
+	{
+		$type_rdv = $this->input->post('type_rdv');
+
+		$return['collUserWithSpe'] = $this->AppointmentMod->getUserWithSpe($type_rdv);
+		echo json_encode($return);
+	}
+
+	public function getSelectAllUser()
+	{
+		$return['collUser'] = $this->Services->getUserInfo();
+		echo json_encode($return);
+	}
+
 	public function delAppointment(){
 		$id = $this->input->post('id');
 		$this->AppointmentMod->deleteAppointment($id);

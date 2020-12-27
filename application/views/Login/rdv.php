@@ -54,10 +54,14 @@
 			<label for="dropdown" style="font-size: 100%">Type de rendez-vous ? </label>
 			<select id="type" name="heard_about_us_on" class="form-control" id="dropdown" required>
 				<option value="administratif">Rendez-vous administratif</option>
-				<option value="cs">Consulation spécialiste</option>
+				<option value="suivie-med">Suivie Médical</option>
 				<option value="PPA">PPA</option>
 				<option value="VM">Visite médicale </option>
-				<option value="Autres"> Autres...</option>
+				<option value="cp">Consulation Psychiatrie</option>
+				<option value="cv">Consulation Vétérinaire</option>
+				<option value="cc">Consulation Cardiologie</option>
+				<option value="co">Consulation Otologie</option>
+				<option value="cch">Consulation Chirurgie</option>
 			</select>
 		</div>
 

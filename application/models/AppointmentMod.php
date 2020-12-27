@@ -66,4 +66,34 @@ class AppointmentMod extends CI_Model
 		return $return;
 	}
 
+	public function getUserWithSpe($type_rdv)
+	{
+		$spe = "";
+		switch ($type_rdv) {
+			case "cp":
+				$spe = "Psychologue";
+				break;
+			case "cv":
+				$spe = "Vétérinaire";
+				break;
+			case "cc":
+				$spe = "Cardiologue";
+				break;
+			case "co":
+				$spe = "Otologie";
+				break;
+			case "cch":
+				$spe = "Chirurgien";
+				break;
+		}
+
+		$query = "SELECT users.id, gradeName, fullname 
+		FROM users
+		INNER JOIN grade ON users.grade_name = grade.name
+		INNER JOIN have ON users.id = have.id 
+		WHERE have.name = '$spe'";
+		$result = $this->db->query($query)->result_array();
+		return $result;
+	}
+
 }

@@ -199,6 +199,54 @@ jQuery(function ($) {
 	$('#pictureBtn').change(function () {
 		readURL(this);
 	});
+
+	$("#type-rdv").change(function() {
+		var data_type_rdv = $("#type-rdv").val();
+		if (data_type_rdv == 'cp' || data_type_rdv == 'cv' || data_type_rdv == 'cc' || data_type_rdv == 'co' || data_type_rdv == 'cch')
+		{
+			jQuery.ajax({
+				url: "getSelectSpe",
+				type: "POST",
+				data: {type_rdv: data_type_rdv},
+				dataType: 'json',
+				success: function (data) {
+					selectHtml = '';
+					selectHtml += '<select id="idUser" name="heard_about_us_on" class="form-control" required>';
+					selectHtml += '<option value="0"> Non assigné </option>';
+
+					jQuery.each(data.collUserWithSpe, function (i, item) {
+						console.log(item);
+						selectHtml += '<option value="'+ item.id +'" >  ['+ item.gradeName +'] '+ item.fullname +' </option>';
+					});
+
+					selectHtml += '</select>';
+					$('#idUser').html(selectHtml);
+				}
+			});
+		}
+		else
+		{
+			jQuery.ajax({
+				url: "getSelectAllUser",
+				type: "POST",
+				data: {},
+				dataType: 'json',
+				success: function (data) {
+					selectHtml = '';
+					selectHtml += '<select id="idUser" name="heard_about_us_on" class="form-control" required>';
+					selectHtml += '<option value="0"> Non assigné </option>';
+
+					jQuery.each(data.collUser, function (i, item) {
+						console.log(item);
+						selectHtml += '<option value="'+ item.id +'" >  ['+ item.gradeName +'] '+ item.fullname +' </option>';
+					});
+
+					selectHtml += '</select>';
+					$('#idUser').html(selectHtml);
+				}
+			});
+		}
+	});
 });
 
 function printHourFromWeek(id) {
@@ -293,7 +341,6 @@ function getTableDispatch() {
 				table = '';
 				if (data.data.onServiceName[0] != undefined) spe = data.data.onServiceName[0]['spe']
 				jQuery.each(data.data.onServiceName, function (i, item) {
-					console.log(item.isSupervisor)
 					//console.log(spe[0][1]['name'])
 					if (data.data.isAdmin == 1)
 						table += '<tr onclick="getOptionDispatch(\'' + item.username + '\', \'' + item.isSupervisor + '\')" id="' + item.username + '"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
