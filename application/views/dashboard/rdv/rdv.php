@@ -61,7 +61,9 @@
 			</select>
 		</div>
 		<div class="form-group">
-			<label for="dropdown" style="font-size: 100%">Attribution  </label>
+			<?php var_dump($userInfo) ?>
+
+			<label for="dropdown" style="font-size: 100%">Attribution : </label>
 			<select id="idUser" name="heard_about_us_on" class="form-control" id="dropdown" required>
 				<?php foreach ($userInfo as $user){ ?>
 					<option value="<?= $user['id']?> " >  [<?= $user['gradeName'] ?>] <?= $user['fullname'] ?> </option>
