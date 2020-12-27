@@ -61,7 +61,6 @@
 			</select>
 		</div>
 		<div class="form-group">
-			<?php var_dump($userInfo) ?>
 
 			<label for="dropdown" style="font-size: 100%">Attribution : </label>
 			<select id="idUser" name="heard_about_us_on" class="form-control" id="dropdown" required>
