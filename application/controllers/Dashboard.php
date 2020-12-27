@@ -40,6 +40,7 @@ class Dashboard extends CI_Controller {
 	{
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
@@ -51,6 +52,7 @@ class Dashboard extends CI_Controller {
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -62,6 +64,7 @@ class Dashboard extends CI_Controller {
 	{
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
 		if(!empty($isAvailable) )
 		{
@@ -121,6 +124,7 @@ class Dashboard extends CI_Controller {
 		$this->Services->endSupervisor($this->session->sessionData['username']);
 		$this->Services->closePharmacie($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
 		$data['supervisor'] = 0;
@@ -139,6 +143,7 @@ class Dashboard extends CI_Controller {
 			}
 		}
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
@@ -311,6 +316,7 @@ class Dashboard extends CI_Controller {
 	{
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
@@ -396,6 +402,7 @@ class Dashboard extends CI_Controller {
 	{
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
@@ -413,6 +420,7 @@ class Dashboard extends CI_Controller {
 	public function procedure(){
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
@@ -432,6 +440,8 @@ class Dashboard extends CI_Controller {
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
@@ -452,6 +462,7 @@ class Dashboard extends CI_Controller {
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
@@ -482,6 +493,7 @@ class Dashboard extends CI_Controller {
 		$data['collGrade'] = $this->Services->getAllGrade();
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -503,6 +515,8 @@ class Dashboard extends CI_Controller {
 		$data['userName'] = $this->Services->allUsername();
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/admin/newSpe',$data);
@@ -523,6 +537,8 @@ class Dashboard extends CI_Controller {
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentInProgress();
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/rdv/showRdv',$data);
@@ -541,6 +557,8 @@ class Dashboard extends CI_Controller {
 		$data['userInfo'] = $this->Services->getUserInfo();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentInProgress();
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/rdv/rdv',$data);
@@ -563,6 +581,8 @@ class Dashboard extends CI_Controller {
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentEnded();
 		$data['usernameRdv'] = $this->AppointmentMod->getUsernameFromId($data['actualRdv']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/rdv/showRdvEnd',$data);
@@ -585,6 +605,8 @@ class Dashboard extends CI_Controller {
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentTaken();
 		$data['usernameRdv'] = $this->AppointmentMod->getUsernameFromId($data['actualRdv']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/rdv/showRdvTaken',$data);
@@ -606,6 +628,8 @@ class Dashboard extends CI_Controller {
 		$data['userName'] = $this->Services->allUsername();
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('modal/modal_fusillade',$data);
@@ -685,6 +709,8 @@ class Dashboard extends CI_Controller {
 		$data['userName'] = $this->Services->allUsername();
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/admin/addSpeToUser',$data);
@@ -705,6 +731,8 @@ public function newDeleteSpe()
 		$data['userName'] = $this->Services->allUsername();
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('template/footer');
@@ -924,6 +952,7 @@ public function newDeleteSpe()
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -956,6 +985,7 @@ public function newDeleteSpe()
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -973,6 +1003,7 @@ public function newDeleteSpe()
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -1037,6 +1068,7 @@ public function newDeleteSpe()
 			$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 
 			$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+			$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 	
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar',$data);
@@ -1056,6 +1088,7 @@ public function newDeleteSpe()
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['collPatient'] = $this->Patient->getAllPatient();
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -1078,6 +1111,7 @@ public function newDeleteSpe()
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['patient'] = $this->Patient->getPatientData($data_id);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);

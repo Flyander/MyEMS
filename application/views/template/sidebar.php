@@ -18,7 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="<?php echo base_url()?>assets/img/user.jpg" alt="User picture">
+                        <?php if ($imagePath != '') { ?>
+                            <img class="img-responsive img-rounded" src="<?php echo $imagePath?>" alt="User picture">
+                        <?php } else { ?>
+                            <img class="img-responsive img-rounded" src="<?php echo base_url()?>assets/img/user.jpg" alt="User picture">
+                        <?php } ?>   
                     </div>
                     <div class="user-info">
                         <span class="user-name"><?php echo "$name"?>

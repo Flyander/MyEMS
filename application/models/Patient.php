@@ -28,4 +28,20 @@ class Patient extends CI_Model
 		$result = $queryResult->result_array();
 		return $result[0];
 	}
+
+	public function getImageForSideBar($username)
+	{
+		$query = "SELECT imagePath
+		FROM patient
+		INNER JOIN users ON users.fullname = patient.fullname
+		WHERE username = '$username'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		
+		if ($result != null)
+			return $result[0]['imagePath'];
+		else
+			return "";
+		
+	}
 }
