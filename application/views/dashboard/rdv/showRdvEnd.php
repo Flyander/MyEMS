@@ -13,7 +13,7 @@
 			<h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 5px; font-size: 11px "> Arrivé le : <?= $d->format("d-m-y à H:i") ?>  , Type de rendez-vous : <?= $rdv['subject']; ?></h6>
 			<p class="card-text"> <?= $rdv['description'] ?> </p>
 		<div class="card-footer text-center">
-			<p class="card-text" style="font-size: 13px"  >  validée par <?=  $usernameRdv[$i];  $i += 1; ?> le <?= $e->format("d-m-y à H:i") ?>
+			<p class="card-text" style="font-size: 13px"  > 	<?php  if($rdv['type'] != 1){ ?> <span style="color: red"> Archivé par  </span> <?php }else {  ?> <span style="color: forestgreen"> Effectué par  </span> <?php } ?> <?=   $usernameRdv[$i];  $i += 1; ?> le <?= $e->format("d-m-y à H:i") ?>
 			</p>
 		</div>
 		</div>

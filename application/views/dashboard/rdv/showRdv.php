@@ -11,9 +11,10 @@
 			<h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 5px; font-size: 11px "> Arrivé le : <?= $d->format("d-m-y à H:i") ?>  , Type de rendez-vous : <?= $rdv['subject']; ?></h6>
 			<p class="card-text"> <?= $rdv['description'] ?> </p>
 		<div class="card-footer text-center">
-			<button class="btn btn-primary btn-sm float-left" onclick="validateAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Valider </button>
-			<button class="btn btn-warning btn-sm " onclick="takeAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> Prendre </button>
-			<button  class="btn btn-danger btn-sm float-right" onclick="deleteAppointment(<?= $rdv['id']?>,'<?= $rdv['applicant']?>')">Supprimer </button>
+			<button class="btn btn-primary btn-sm float-left" onclick="validateAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "><i class="far fa-check-circle">  </i></button>
+			<button class="btn btn-warning btn-sm " onclick="takeAppointment( <?= $rdv['id']?> , '<?= $rdv['applicant']?>' , <?= $id ?> ) "> <i class="fas fa-clipboard-check"> </i> </button>
+			<button  class="btn btn-danger btn-sm float-right" onclick="deleteAppointment(<?= $rdv['id']?>,'<?= $rdv['applicant']?>')"><i class="far fa-times-circle"></i>
+			</button>
 		</div>
 		</div>
 	</div>

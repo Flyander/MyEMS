@@ -666,7 +666,7 @@ function leaveAppointment(idRdv, fullname , idUser){
 	modalHtml += '</div>';
 
 	modalHtml += '<div class="modal-body">';
-	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir abandonner le rendez-vous de ' + fullname  + ' ?</div>';
+	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir remettre en attente le rendez-vous de ' + fullname  + ' ?</div>';
 	modalHtml += '<div style="margin-top: 5%;"></div>';
 	modalHtml += '</div>';
 
@@ -711,7 +711,7 @@ function takeAppointment(idRdv,fullname, idUser){
 	modalHtml += '</div>';
 
 	modalHtml += '<div class="modal-body">';
-	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir prendre le rendez-vous de ' + fullname  + ' ?</div>';
+	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir prendre en charge le rendez-vous de ' + fullname  + ' ?</div>';
 	modalHtml += '<div style="margin-top: 5%;"></div>';
 	modalHtml += '</div>';
 
@@ -760,7 +760,7 @@ function deleteAppointment(id,fullname){
 	modalHtml += '</div>';
 
 	modalHtml += '<div class="modal-body">';
-	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir supprimer le rendez-vous de ' + fullname  + ' ?</div>';
+	modalHtml += '<div class="modalBed-label">Êtes vous sur de vouloir archiver le rendez-vous de ' + fullname  + ' ?</div>';
 	modalHtml += '<div style="margin-top: 5%;"></div>';
 	modalHtml += '</div>';
 

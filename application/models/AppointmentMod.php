@@ -12,18 +12,18 @@ class AppointmentMod extends CI_Model
 	public function addAppointmentPanelInDb($fullname, $num, $mail, $msg, $reason,$idUser){
 		$querry = 'INSERT INTO appointment (applicant,phone,mail,description,subject,id_user,`type`) values ("'.$fullname.'","'.$num.'","'.$mail.'","'.$msg.'","'.$reason.'",'.$idUser.',2)';
 		$result = $this->db->query($querry);
-		$query = "UDAPTE appointment set `type`= 0 where id_user =0";
+		$query = "UPDATE appointment set type= 0 where id_user =0";
 		$this->db->query($query);
 		return $result;
 	}
 	public function getAppointmentInProgress(){
-		$querry = "SELECT * FROM appointment where type = 0";
+		$querry = "SELECT * FROM appointment where type = 0 ";
 		$result = $this->db->query($querry)->result_array();
 		return $result;
 	}
 
 	public function getAppointmentEnded(){
-		$querry = "SELECT * FROM appointment where type = 1";
+		$querry = "SELECT * FROM appointment where type = 1 or type = 2";
 		$result = $this->db->query($querry)->result_array();
 		return $result;
 	}
@@ -33,7 +33,7 @@ class AppointmentMod extends CI_Model
 		return $result;
 	}
 	public function deleteAppointment($id){
-		$querry = "DELETE FROM appointment where id = $id";
+		$querry = "UPDATE appointment set type=2  where id = $id";
 		$this->db->query($querry);
 
 	}
