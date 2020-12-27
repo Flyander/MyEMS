@@ -339,7 +339,7 @@ function getTableDispatch() {
 						else
 							table += "<td style = \"color: green;\"><i class=\"fas fa-sync-alt fa-spin\"></i> En service</td>";
 					} else if (item.isAvailable == 2)
-						table += "<td style = \"color: orange;\"><i class=\"fas fa-spinner fa-pulse\"></i> En pause</td>";
+						table += "<td style = \"color: lightskyblue ;\"><i class=\"fad fa-spinner-third\"></i> Service Spécialité </td>";
 
 					table += '<td style = \"color: #1A9CC7;\">' + item.county + '</td>';
 

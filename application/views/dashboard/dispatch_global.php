@@ -72,13 +72,16 @@
 												</div>
 											<?php }else{ ?>
 											<?php if ($onService == 1) {?>
-												<!--<div class="col-md-4 mb-2">
-													<a class="btn btn-outline-warning w-100 rounded-0" href='pauseService' type="button">Faire une pause</a>
-												</div>-->
+												<div class="col-md-4 mb-2">
+													<a class="btn btn-outline-primary w-100 rounded-0" href='speService'  type="button">Prise de Service spécialité</a>
+												</div>
 											<?php }else{ ?>
-												<!--<div class="col-md-4 mb-2">
-													<a class="btn btn-outline-success w-100 rounded-0" href='finPauseService' type="button">Reprendre le service</a>
-												</div>-->
+												<div class="col-md-4 mb-2">
+													<a class="btn btn-outline-success w-100 rounded-0" href='endSpeService' type="button">Reprendre le service</a>
+												</div>
+													<div class="col-md-4 mb-2">
+														<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
+													</div>
 											<?php } ?>
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
@@ -133,4 +136,7 @@
 	</main>
 	</div>
 
-	<script>$(function () { getTableDispatch(); });</script>
+	<script>$(function () { getTableDispatch(); });
+
+		console.log($onService) )
+	</script>

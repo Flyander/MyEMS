@@ -391,11 +391,24 @@ class Services extends CI_Model
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
+
 	public function getUserInfo(){
 		$query = "SELECT id, gradeName, fullname 
 		FROM users
 		INNER JOIN grade ON users.grade_name = grade.name";
 		$result = $this->db->query($query)->result_array();
 		return $result;
+	}
+	public function takeSpeServices($idUser){
+		$q = "SELECT * from service where id_user = $idUser  and 	isAvailable = 1 order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0]['id'];
+		$query = "UPDATE service set 	isAvailable = 2 where id = $idServices";
+		$this->db->query($query);
+	}
+	public function SpeServicestoService($idUser){
+		$q = "SELECT * from service where id_user = $idUser  and isAvaible = 2 order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0];
+		$query = "UPDATE service set 	isAvailable = 1 where id = $idServices";
+		$this->db->query($query);
 	}
 }
