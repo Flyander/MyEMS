@@ -137,6 +137,4 @@
 	</div>
 
 	<script>$(function () { getTableDispatch(); });
-
-		console.log($onService) )
 	</script>
