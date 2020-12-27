@@ -293,14 +293,20 @@ function getTableDispatch() {
 				table = '';
 				if (data.data.onServiceName[0] != undefined) spe = data.data.onServiceName[0]['spe']
 				jQuery.each(data.data.onServiceName, function (i, item) {
+					console.log(item.isSupervisor)
 					//console.log(spe[0][1]['name'])
 					if (data.data.isAdmin == 1)
 						table += '<tr onclick="getOptionDispatch(\'' + item.username + '\', \'' + item.isSupervisor + '\')" id="' + item.username + '"">'; //onclick="getOptionDispatch(\''+ item.username +'\', \''+ item.isSupervisor +'\')"
 					else
 						table += '<tr id="' + item.username + '"">';
 
-					if (item.isSupervisor == 1)
-						table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
+					if (item.isSupervisor > 0){
+
+					if(item.isSupervisor == 1) table += "<td style=\"color: orange; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-crown\"></i></td>";
+					else table += "<td style=\"color: darkred; font-size: 12px; padding-top: 15px;\"><i class=\"fas fa-phone-alt\"></i></td>";
+
+					}
+
 					else
 						table += "<td></td>";
 					table += "<td>" + item.fullname + "</td>";
@@ -310,7 +316,6 @@ function getTableDispatch() {
 						table += "<td>N/A</td>";
 					else {
 						let result = "";
-						console.log(spe[i].length + "\n");
 						for (j = 0; j < spe[i].length; j++) {
 							if (j == 0 && spe[i].length > 1)
 								result += spe[i][j]['name'] + " | "

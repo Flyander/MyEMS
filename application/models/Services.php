@@ -41,7 +41,7 @@ class Services extends CI_Model
 		$query = "SELECT * from users 
 		INNER JOIN service ON users.id = service.id_user 
 		INNER JOIN grade ON users.grade_name = grade.name 
-		WHERE isSupervisor=1 AND username = '$name'";
+		WHERE isSupervisor=2  or isSupervisor=1 AND username = '$name'";
 		$queryResult = $this->db->query($query);
 		$result = $queryResult->result_array();
 
@@ -160,11 +160,32 @@ class Services extends CI_Model
 		$query = "UPDATE users 
 		JOIN service ON users.id = service.id_user 
 		SET isSupervisor=0 
-		WHERE username != '$name'";
+		WHERE username != '$name' and isSupervisor!=2";
+		$queryResult = $this->db->query($query);
+	}
+	public function dispatch($name)
+	{
+		$query = "UPDATE users 
+		JOIN service ON users.id = service.id_user 
+		SET isSupervisor=2 
+		WHERE users.id = '$name'";
+		$queryResult = $this->db->query($query);
+		$query = "UPDATE users 
+		JOIN service ON users.id = service.id_user 
+		SET isSupervisor=0 
+		WHERE users.id != '$name' and isSupervisor!=1";
 		$queryResult = $this->db->query($query);
 	}
 
 	public function endSupervisor($name)
+	{
+		$query = "UPDATE users 
+		JOIN service ON users.id = service.id_user 
+		SET isSupervisor=0 
+		WHERE username='$name'";
+		$queryResult = $this->db->query($query);
+	}
+	public function endDispatch($name)
 	{
 		$query = "UPDATE users 
 		JOIN service ON users.id = service.id_user 

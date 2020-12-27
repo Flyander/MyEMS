@@ -72,9 +72,9 @@
 												</div>
 											<?php }else{ ?>
 											<?php if ($onService == 1) {?>
-												<div class="col-md-4 mb-2">
-													<a class="btn btn-outline-primary w-100 rounded-0" href='speService'  type="button">Prise de Service spécialité</a>
-												</div>
+<!--												<div class="col-md-4 mb-2">-->
+<!--													<a class="btn btn-outline-primary w-100 rounded-0" href='speService'  type="button">Prise de Service spécialité</a>-->
+<!--												</div>-->
 											<?php }else{ ?>
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-success w-100 rounded-0" href='endSpeService' type="button">Reprendre le service</a>
@@ -89,16 +89,24 @@
 											<?php } ?>
 
 											<?php if($onService != 0) { ?>
-												<?php if($nbSupervisor == 0){ ?>
+												<?php if($nbSupervisor == 0 ){ ?>
 													<div class="col-md-4 mb-2">
 														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir régulateur</a>
 													</div>
+													<div class="col-md-4 mb-2">
+														<a class="btn btn-outline-info w-100 rounded-0" href='dispatch' type="button">Devenir dispatcher</a>
+													</div>
+
 												<?php } ?>
-												<?php if($nbSupervisor >= 1){ ?> 
+												<?php if($nbSupervisor >= 1 && $isSupervisor == 1){ ?>
 													<div class="col-md-4 mb-2">
 														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur</a>
 													</div>
-												<?php } ?>
+												<?php } elseif($nbSupervisor >= 1 && $isSupervisor == 2) { ?>
+													<div class="col-md-4 mb-2">
+														<a class="btn btn-outline-info w-100 rounded-0" href='endDispatch' type="button">Stop dispatcher</a>
+													</div>
+												<?php }?>
  
 												<?php if($county == 'LS'){ ?>
 													<div class="col-md-4 mb-2">
@@ -137,4 +145,5 @@
 	</div>
 
 	<script>$(function () { getTableDispatch(); });
+	console.log(<?= $isSupervisor ?>)
 	</script>
