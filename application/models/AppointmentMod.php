@@ -70,6 +70,15 @@ class AppointmentMod extends CI_Model
 	{
 		$spe = "";
 		switch ($type_rdv) {
+			case "administratif":
+				$spe = "Administratif";
+				break;
+			case "PPA":
+				$spe = "PPA";
+				break;
+			case "VM":
+				$spe = "Visite Médicale";
+				break;
 			case "cp":
 				$spe = "Psychologue";
 				break;

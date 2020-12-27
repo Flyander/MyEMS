@@ -202,7 +202,7 @@ jQuery(function ($) {
 
 	$("#type-rdv").change(function() {
 		var data_type_rdv = $("#type-rdv").val();
-		if (data_type_rdv == 'cp' || data_type_rdv == 'cv' || data_type_rdv == 'cc' || data_type_rdv == 'co' || data_type_rdv == 'cch')
+		if (data_type_rdv == 'administratif' || data_type_rdv == 'PPA' || data_type_rdv == 'VM' || data_type_rdv == 'cp' || data_type_rdv == 'cv' || data_type_rdv == 'cc' || data_type_rdv == 'co' || data_type_rdv == 'cch')
 		{
 			jQuery.ajax({
 				url: "getSelectSpe",
