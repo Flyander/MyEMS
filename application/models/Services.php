@@ -392,7 +392,9 @@ class Services extends CI_Model
 		return $result;
 	}
 	public function getUserInfo(){
-		$query = "SELECT id,grade_name,fullname from users";
+		$query = "SELECT id, gradeName, fullname 
+		FROM users
+		INNER JOIN grade ON users.grade_name = grade.name";
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
