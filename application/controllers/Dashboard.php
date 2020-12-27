@@ -219,6 +219,7 @@ class Dashboard extends CI_Controller {
 
 		$this->Services->endService($this->session->sessionData['username']);
 		$this->Services->endSupervisor($this->session->sessionData['username']);
+		$this->Services->endDispatch($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  0;
