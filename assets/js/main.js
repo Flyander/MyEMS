@@ -1,3 +1,4 @@
+
 (function ($) {
 	function handlePreloader() {
 		if ($('.preloader').length) {
@@ -8,8 +9,18 @@
 
 	$(window).on('load', function () {
 		handlePreloader();
+		if('caches' in window){
+			caches.keys().then((names) => {
+				names.forEach(async (name) => {
+					await caches.delete(name)
+				})
+			})
+
+		}
 	});
 })(window.jQuery);
+
+
 
 (function ($) {
 	function handlePreloader() {
