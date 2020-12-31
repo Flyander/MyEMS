@@ -169,6 +169,8 @@ class Services extends CI_Model
 		$idS = $this->db->query($q)->result_array()[0]['id'];
 		$quer = "UPDATE service set isSupervisor=2 where id_user= $name and id = $idS";
 		$this->db->query($quer);
+		$quer = "UPDATE service set isSupervisor= 0 where id_user != $name and isSupervisor != 1";
+		$this->db->query($quer);
 	}
 
 	public function endSupervisor($name)
