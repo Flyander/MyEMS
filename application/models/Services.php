@@ -165,16 +165,10 @@ class Services extends CI_Model
 	}
 	public function dispatch($name)
 	{
-		$query = "UPDATE users 
-		JOIN service ON users.id = service.id_user 
-		SET isSupervisor=2 
-		WHERE users.id = '$name'";
-		$queryResult = $this->db->query($query);
-		$query = "UPDATE users 
-		JOIN service ON users.id = service.id_user 
-		SET isSupervisor=0 
-		WHERE users.id != '$name' and isSupervisor!=1";
-		$queryResult = $this->db->query($query);
+		$q = "select id from service where id_user = $name order by id desc";
+		$idS = $this->db->query($q)->result_array()[0]['id'];
+		$quer = "UPDATE service set isSupervisor=2 where id_user= $name and id = $idS";
+		$this->db->query($quer);
 	}
 
 	public function endSupervisor($name)

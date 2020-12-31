@@ -260,12 +260,10 @@ class Dashboard extends CI_Controller {
 		$this->Services->dispatch($this->session->sessionData['id']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['isSupervisor'] = 2;
+		$data['isSupervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
-
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header',$data);
@@ -273,8 +271,27 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index');
 	}
 
+//	public function dispatch(){
+//
+//		$this->Services->dispatch($this->session->sessionData['id']);
+//		$data = $this->session->userdata('sessionData');
+//		$data['onServiceName'] =  $this->Services->isAvailable();
+//		$data['isSupervisor'] = 2;
+//		$data['fname'] = $this->session->sessionData['fullname'];
+//		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+//
+//		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+//
+//		$this->session->unset_userdata('sessionData');
+//		$this->session->set_userdata('sessionData', $data);
+//		$this->load->view('template/header',$data);
+//		$this->load->view('dashboard/dispatch_global',$data);
+//		redirect('/Dashboard/index');
+//	}
+
 	public function endSupervisor(){
 		$this->Services->endSupervisor($this->session->sessionData['username']);
+		$this->Services->endDispatch($this->session->sessionData['username']);
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['isSupervisor'] = 0;

@@ -89,18 +89,18 @@
 											<?php } ?>
 
 											<?php if($onService != 0) { ?>
-												<?php if($nbSupervisor == 0 ){ ?>
+												<?php if($nbSupervisor <= 1 && $isSupervisor==0  ){ ?>
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button">Devenir régulateur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='supervisor' type="button"> Devenir Regulateur  </a>
 													</div>
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='dispatch' type="button">Devenir dispatcher</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='dispatch' type="button">Devenir Dispatcher</a>
 													</div>
 
 												<?php } ?>
 												<?php if($nbSupervisor >= 1 && $isSupervisor == 1){ ?>
 													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur</a>
+														<a class="btn btn-outline-info w-100 rounded-0" href='endSupervisor' type="button">Stop régulateur / Dispatch </a>
 													</div>
 												<?php } elseif($nbSupervisor >= 1 && $isSupervisor == 2) { ?>
 													<div class="col-md-4 mb-2">
