@@ -23,7 +23,7 @@ class AppointmentMod extends CI_Model
 	}
 
 	public function getAppointmentEnded(){
-		$querry = "SELECT * FROM appointment where type = 1 or type = 2";
+		$querry = "SELECT * FROM appointment where type = 1 ";
 		$result = $this->db->query($querry)->result_array();
 		return $result;
 	}
