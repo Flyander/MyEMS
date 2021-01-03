@@ -23,7 +23,7 @@ class AppointmentMod extends CI_Model
 	}
 
 	public function getAppointmentEnded(){
-		$querry = "SELECT * FROM appointment where type = 1 or type = 2";
+		$querry = "SELECT * FROM appointment where type = 1 or type = 3";
 		$result = $this->db->query($querry)->result_array();
 		return $result;
 	}
@@ -33,7 +33,7 @@ class AppointmentMod extends CI_Model
 		return $result;
 	}
 	public function deleteAppointment($id){
-		$querry = "UPDATE appointment set type=2  where id = $id";
+		$querry = "UPDATE appointment set type=3  where id = $id";
 		$this->db->query($querry);
 
 	}
