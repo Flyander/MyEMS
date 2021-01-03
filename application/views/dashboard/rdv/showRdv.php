@@ -8,6 +8,7 @@
 			<?php $d  = new DateTime($rdv['arrived']) ?>
 
 			<h5 class="card-title"> Demande de : <?= $rdv['applicant'] ?> </h5>
+			<h4 class="card-title"> Contact :  <?= $rdv['phone'] ?> ou <?= $rdv['mail'] ?>  </h4>
 			<h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 5px; font-size: 11px "> Arrivé le : <?= $d->format("d-m-y à H:i") ?>  , Type de rendez-vous : <?= $rdv['subject']; ?></h6>
 			<p class="card-text"> <?= $rdv['description'] ?> </p>
 		<div class="card-footer text-center">
