@@ -24,12 +24,12 @@
 																							  class="form-control form-control-sm col-3"
 																							  onchange="printHourFromWeek(<?php echo $id; ?>)">             <?php
 											for ($i = 0; $i < 54; $i++) {
-												$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
+												$d = new DateTime(date("Y-m-d", strtotime("28/12/2019  + $i week")));
 												$t = new DateTime(date("Y-m-d", strtotime("today")));
 												if ($d->format("W") != $t->format("W") - 1)
-													echo '<option  value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M Y ", strtotime("first saturday of january + $i week")) . " - " . date("j M Y ", strtotime("second friday of january + $i week")) . '</option>';
+													echo '<option  value="' . date("Y-m-d", strtotime("14 Nov 2020 + $i week")) . '">' . date("j M Y ", strtotime("14 Nov 2020 + $i week")) . " - " . date("j M Y ", strtotime("20 Nov 2020 + $i week")) . '</option>';
 												else
-													echo '<option   selected="selected" value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M y ", strtotime("first saturday of january + $i week")) . " - " . date("j M  Y", strtotime("second friday of january + $i week")) . '</option>';
+													echo '<option   selected="selected" value="' . date("Y-m-d", strtotime("14 Nov 2020 + $i week")) . '">' . date("j M y ", strtotime("14 Nov 2020 + $i week")) . " - " . date("j M  Y", strtotime("20 Nov 2020 + $i week")) . '</option>';
 
 											}
 											?> </select></h5>
