@@ -260,21 +260,27 @@ jQuery(function ($) {
 	});
 });
 
-function printHourFromWeek(id) {
-	val = new Date($('#weekselect').val());
+function printHourFromWeek(id, dateSemaine, nbSemaine) {
+	console.log(new Date(dateSemaine));
+	val = new Date(dateSemaine)
 	val2 = addDays(val, 6)
 	val = val.toDateString()// updateStr(val)
 	val2 = val2.toDateString() //updateStr(val2)
 	jQuery.ajax({
 		url: "printHourW",
 		type: "POST",
-		data: {id: id, dateStart: val, dateEnd: val2},
+		data: {id: id, dateStart: val, dateEnd: val2, nbSemaineTemp: nbSemaine},
 		dataType: 'json',
 		success: function (data) {
 			if (data.code == 200) {
 				$('#tb').html(' ')
-				console.log($('#test').text())
 				$('#test').text("Total de vos heures : " + data.data.totalHourWeek)
+				$('#btn-semaine').text("Semaine n°"+ nbSemaine);
+				if (nbSemaine > 0)
+					$('#btn-semaine-remove').html('<button id="btn-semaine-remove" type="button" class="btn btn-default" onclick=\'printHourFromWeek('+ id +', "'+ data.data.paramRemove + '", '+ (nbSemaine - 1) +')\'><i class="fas fa-chevron-left"></i></button>');
+				if (nbSemaine < 52)
+					$('#btn-semaine-add').html('<button id="btn-semaine-remove" type="button" class="btn btn-default" onclick=\'printHourFromWeek('+ id +', "'+ data.data.paramAdd + '", '+ (nbSemaine + 1) +')\'><i class="fas fa-chevron-right"></i></button>');
+				console.log(data.data.hourWeek);
 				// var link = data.totalHourWeek.text();
 				// $("#hourstt").text("ok");
 				table = '';

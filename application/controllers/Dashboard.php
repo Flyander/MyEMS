@@ -892,13 +892,24 @@ public function newDeleteSpe()
 	}
 	public function printHourW(){
 		$id = $this->input->post('id');
+		$nbSemaineTemp = $this->input->post('nbSemaineTemp');
+
 		$dateStart = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateStart')));
 		$dateEnd = strftime("%Y/%m/%d 00-00-00",strtotime($this->input->post('dateEnd')));
+
 		$data['hourWeek'] = $this->Hour->getHour($id, $dateStart, $dateEnd);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
+
+		$temp = $nbSemaineTemp + 1;
+		$data['paramAdd'] = date("Y-m-d", strtotime("first saturday of january + $temp week"));
+		
+		$temp = $nbSemaineTemp - 1;
+		$data['paramRemove'] = date("Y-m-d", strtotime("first saturday of january + $temp week"));
+
 		$return['data'] = $data;
 		$return['code'] = 200;
+
 		echo json_encode($return);
 	}
 	public function getUserHourData()
@@ -970,6 +981,19 @@ public function newDeleteSpe()
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+		$data['nbSemaine'] = 1;
+		
+
+		for ($i = 0; $i < 54; $i++) {
+			$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
+			$t = new DateTime(date("Y-m-d", strtotime("today")));
+			if ($d->format("W") == $t->format("W") - 1)
+			{
+				$data['nbSemaine'] = $i + 1 ;
+			}	
+		}
+		
+		$this->session->set_userdata('sessionData', $data);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);

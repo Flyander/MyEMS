@@ -15,24 +15,21 @@
 						<div class="col-md-12">
 							<div class="card border-0 rounded-0">
 
-
 								<div class="card-title mb-1 p-3">
 									<h5 class="titleLabelTheme" id="test">Total de vos heures : <?= $totalHourWeek ?> </h5>
 								</div>
 								<div class="card-title mb-1 p-3">
-									<h5 class="titleLabelTheme"> Semaine à afficher : <select id="weekselect"
-																							  class="form-control form-control-sm col-3"
-																							  onchange="printHourFromWeek(<?php echo $id; ?>)">             <?php
-											for ($i = 0; $i < 54; $i++) {
-												$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
-												$t = new DateTime(date("Y-m-d", strtotime("today")));
-												if ($d->format("W") != $t->format("W") - 1)
-													echo '<option  value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M Y ", strtotime("first saturday of january + $i week")) . " - " . date("j M Y ", strtotime("second friday of january + $i week")) . '</option>';
-												else
-													echo '<option   selected="selected" value="' . date("Y-m-d", strtotime("first saturday of january + $i week")) . '">' . date("j M y ", strtotime("first saturday of january + $i week")) . " - " . date("j M  Y", strtotime("second friday of january + $i week")) . '</option>';
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<div id="btn-semaine-remove">
+											<button type="button" class="btn btn-default" onclick='printHourFromWeek(<?php echo $id; ?>, "<?php $temp = $nbSemaine - 1; echo date("Y-m-d", strtotime("first saturday of january + $temp week")); ?>", <?php echo $temp; ?>)'><i class="fas fa-chevron-left"></i></button>
+										</div>
 
-											}
-											?> </select></h5>
+										<button id="btn-semaine" type="button" class="btn btn-default">Semaine n°<?php echo $nbSemaine ?></button>
+										
+										<div id="btn-semaine-add">
+											<button type="button" class="btn btn-default" onclick='printHourFromWeek(<?php echo $id; ?>, "<?php $temp = $nbSemaine + 1; echo date("Y-m-d", strtotime("first saturday of january + $temp week")); ?>", <?php echo $temp; ?>)'><i class="fas fa-chevron-right"></i></button>
+										</div>
+									</div>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive-md">
