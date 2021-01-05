@@ -903,7 +903,7 @@ public function newDeleteSpe()
 
 		$temp = $nbSemaineTemp + 1;
 		$data['paramAdd'] = date("Y-m-d", strtotime("first saturday of january + $temp week"));
-		
+
 		$temp = $nbSemaineTemp - 1;
 		$data['paramRemove'] = date("Y-m-d", strtotime("first saturday of january + $temp week"));
 
@@ -981,7 +981,7 @@ public function newDeleteSpe()
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['nbSemaine'] = 1;
+		$data['nbSemaine'] = 0;
 		
 
 		for ($i = 0; $i < 54; $i++) {
