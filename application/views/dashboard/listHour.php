@@ -19,13 +19,10 @@
 									<h5 class="titleLabelTheme" id="test">Total de vos heures : <?= $totalHourWeek ?> </h5>
 								</div>
 								<div class="card-title mb-1 p-3">
-<<<<<<< HEAD
 									<div class="btn-group" role="group" aria-label="Basic example">
 										<div id="btn-semaine-remove">
 											<button type="button" class="btn btn-default" onclick='printHourFromWeek(<?php echo $id; ?>, "<?php $temp = $nbSemaine - 1; echo date("Y-m-d", strtotime("first saturday of january + $temp week")); ?>", <?php echo $temp; ?>)'><i class="fas fa-chevron-left"></i></button>
 										</div>
-=======
->>>>>>> 25de1856bfd87e2acaedd4305c9d31fd68ddc13a
 
 										<button id="btn-semaine" type="button" class="btn btn-default">Semaine n°<?php echo $nbSemaine ?></button>
 										
