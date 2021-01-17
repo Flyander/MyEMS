@@ -984,14 +984,17 @@ public function newDeleteSpe()
 		$data['nbSemaine'] = 0;
 		
 
-		for ($i = 0; $i < 54; $i++) {
+		/*for ($i = 0; $i < 54; $i++) {
 			$d = new DateTime(date("Y-m-d", strtotime("first saturday of january + $i week")));
 			$t = new DateTime(date("Y-m-d", strtotime("today")));
+			print_r($d->format("W"));die();
 			if ($d->format("W") == $t->format("W") - 1)
 			{
 				$data['nbSemaine'] = $i + 1 ;
 			}	
-		}
+		}*/
+		$t = new DateTime(date("Y-m-d", strtotime("today")));
+		$data['nbSemaine'] = $t->format("W");
 		
 		$this->session->set_userdata('sessionData', $data);
 
