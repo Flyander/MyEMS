@@ -28,8 +28,10 @@
     <link href="<?php echo base_url()?>assets/css/sidebar-themes.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/magnific-popup.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/fontawesome/css/all.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>assets/jquery-ui/jquery-ui.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/magnific.js"></script>
     <script src="<?php echo base_url()?>assets/js/mCustomScrollbar.concat.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
