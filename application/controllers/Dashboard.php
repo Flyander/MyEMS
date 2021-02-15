@@ -661,6 +661,27 @@ class Dashboard extends CI_Controller {
 
 		echo json_encode($return);
 	}
+	public function testPage(){
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+		$this->load->view('template/header');
+	//	$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/testpage',$data);
+		$this->load->view('template/footer');
+
+	}
 
 	public function getSelectSpe()
 	{
