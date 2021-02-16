@@ -206,7 +206,13 @@ jQuery(function ($) {
 	$('#btnAddPicture').click(function () {
 		$('#pictureBtn').trigger('click');
 	});
-
+	$("#submit-addRapportUser").click(function () {
+		var user = $("#idUser").val();
+		var date = $("#date_rapport").val();
+		var msg = $("#rapportMessage").val();
+		console.log(msg)
+		sendRapportIntern(user,date,msg);
+	});
 	$('#pictureBtn').change(function () {
 		readURL(this);
 	});
@@ -460,6 +466,27 @@ function setService(username, action) {
 			dataType: 'json',
 			success: function (data) {
 				if (data.code == 200) {
+				}
+			}
+		});
+	}
+}
+function sendRapportIntern(user, date , msg) {
+	if (user && date && msg ) {
+		jQuery.ajax({
+			url: "addNewRapportIntern",
+			type: "POST",
+			data: {
+				id_user: user,
+				dateRapport : date,
+				msgRapport : msg
+			},
+			dataType: 'json',
+			success: function (data) {
+				if (data.code == 200) {
+					$('#footer-btn-rapportIntern').html('')
+					$("#footer-btn-rapportIntern").html('<button type="button" id="submit-addRapportUser" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
+
 				}
 			}
 		});

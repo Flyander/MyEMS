@@ -98,6 +98,20 @@ class Services extends CI_Model
 			return false;
 		}
 	}
+	public function canCreateRapport($id)
+	{
+		$condition = "id = $id AND grade_name != 'intern' AND grade_name != 'probies' AND grade_name != 'interne'  ";
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($condition);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public function isOnPause($id)
 	{
@@ -133,7 +147,12 @@ class Services extends CI_Model
 		$queryyS = "UPDATE service set type=0 WHERE id_user = " . $id[0]['id'] . " AND id=" . $idService;
 		$this->db->query($queryyS);
 	}
+	public function getFullnameFromid($id){
+		$querry = "SELECT * FROM users WHERE id=$id";
+		$result = $this->db->query($querry)->result_array()[0];
 
+		return $result;
+	}
 	public function pauseCurrentService($name)
 	{
 		$idd = "SELECT id from users where username ='$name'";

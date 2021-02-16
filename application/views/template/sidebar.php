@@ -100,70 +100,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</ul>
 							</div>
 						</li>
-
-                        <!--<li class="sidebar-dropdown">
-                            <a>
-                                <i class="far fa-gem"></i>
-                                <span class="menu-text">In progress</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a>
-                                <i class="fa fa-chart-line"></i>
-                                <span class="menu-text">In progress</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a>
-                                <i class="fa fa-globe"></i>
-                                <span class="menu-text">In progress</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                    <li>
-                                        <a>Examples</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>-->
                         <li class="header-menu">
                             <span>Extra</span>
                         </li>
@@ -187,6 +123,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="menu-text">Tarification</span>
                             </a>
                         </li>
+
+					<?php 	if($isAdmin == 1 or $checkReturnRapport) { ?>
+
+                        <li>
+                            <a href="returnRapport">
+                                <i class="fa fa-pencil"></i>
+                                <span class="menu-text">Retour SAMS - ( Rapport) </span>
+                            </a>
+                        </li>
+					<?php 	}  ?>
 
                         <?php if ($isAdmin == 1) { ?>
 
@@ -240,6 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
 
                         <?php } ?>
+
                         <!--<li>
                             <a>
                                 <i class="fa fa-folder"></i>
