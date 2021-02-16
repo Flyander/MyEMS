@@ -1283,4 +1283,8 @@ public function newDeleteSpe()
 		echo json_encode($return);
 
 	}
+
+	function newRapportInter() {
+		
+	}
 }
