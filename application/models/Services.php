@@ -98,21 +98,6 @@ class Services extends CI_Model
 			return false;
 		}
 	}
-	public function canCreateRapport($id)
-	{
-		$condition = "id = $id AND grade_name != 'intern' AND grade_name != 'probies' AND grade_name != 'interne'  ";
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->where($condition);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 1) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public function isOnPause($id)
 	{
 		$condition = "id_user = $id AND isAvailable =2 ";

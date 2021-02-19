@@ -40,6 +40,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$isAvailable = $this->Services->isAvailable();
+
 		$data = $this->session->userdata('sessionData');
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['onServiceName'] = $isAvailable;
@@ -54,7 +55,8 @@ class Dashboard extends CI_Controller {
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
+		$data['onService'] = $this->session->sessionData['onService'];
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -85,7 +87,7 @@ class Dashboard extends CI_Controller {
 		$data['isPharmacieOpen'] = $this->Services->getPharmacieState($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$return['data'] = $data;
 		$return['code'] = 200;
@@ -154,7 +156,7 @@ class Dashboard extends CI_Controller {
 		else $data['OnServiceName'][0]['spe'] = "N/A";
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -175,19 +177,26 @@ class Dashboard extends CI_Controller {
 
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] =  $this->Services->isAvailable();
-		$data['onService'] =  2;
 		//var_dump($data);
 		$data['isSupervisor'] = 0;
 		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($data['onServiceName']);
 		else $data['OnServiceName'][0]['spe'] = "N/A";
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+		$data['onService'] =  2;
+		$data['county'] = $this->Services->getCounty($this->session->sessionData['username']);
 		$this->Services->takeSpeServices($this->session->sessionData['id']);
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
+
+
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/dispatch_global',$data);
-		redirect('/Dashboard/index');
+		redirect('/Dashboard/index',$data);
 
 	}
 	public function endSpeService(){
@@ -218,7 +227,7 @@ class Dashboard extends CI_Controller {
 		$data['onService'] = 1;
 		$data['isSupervisor'] = 0;
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -238,7 +247,7 @@ class Dashboard extends CI_Controller {
 		$data['onService'] =  0;
 		$data['supervisor'] = 0;
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -256,7 +265,7 @@ class Dashboard extends CI_Controller {
 		$data['isSupervisor'] = 1;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
@@ -275,7 +284,7 @@ class Dashboard extends CI_Controller {
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -310,7 +319,7 @@ class Dashboard extends CI_Controller {
 		$data['isSupervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -325,7 +334,7 @@ class Dashboard extends CI_Controller {
 		$data['isSupervisor'] = 0;
 		$data['fname'] = $this->session->sessionData['fullname'];
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
@@ -360,7 +369,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$county = $this->Services->getCounty($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 
 		$this->load->view('template/header');
@@ -447,7 +456,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -466,7 +475,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -487,7 +496,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -510,7 +519,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -534,7 +543,7 @@ class Dashboard extends CI_Controller {
 
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -557,7 +566,7 @@ class Dashboard extends CI_Controller {
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -580,7 +589,7 @@ class Dashboard extends CI_Controller {
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentInProgress();
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -601,7 +610,7 @@ class Dashboard extends CI_Controller {
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentInProgress();
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -626,7 +635,7 @@ class Dashboard extends CI_Controller {
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentEnded();
 		$data['usernameRdv'] = $this->AppointmentMod->getUsernameFromId($data['actualRdv']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -651,7 +660,7 @@ class Dashboard extends CI_Controller {
 		$data['actualRdv'] = $this->AppointmentMod->getAppointmentTaken();
 		$data['usernameRdv'] = $this->AppointmentMod->getUsernameFromId($data['actualRdv']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -675,7 +684,7 @@ class Dashboard extends CI_Controller {
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -706,7 +715,7 @@ class Dashboard extends CI_Controller {
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 	//	$this->load->view('template/sidebar',$data);
@@ -781,7 +790,7 @@ class Dashboard extends CI_Controller {
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -804,8 +813,8 @@ public function newDeleteSpe()
 		$data['allSpe'] = $this->Services->allSpe();
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -957,7 +966,7 @@ public function newDeleteSpe()
 		$data['hourWeek'] = $this->Hour->getHour($id, $dateStart, $dateEnd);
 		$data['totalHours'] = $this->Hour->getTotalHour($data['hourWeek']);
 		$data['totalHourWeek'] = $this->Hour->getHourWeek($data['totalHours']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$temp = $nbSemaineTemp + 1;
 		$data['paramAdd'] = date("Y-m-d", strtotime("first saturday of january + $temp week"));
@@ -979,7 +988,7 @@ public function newDeleteSpe()
 
 		$id_user = $this->Hour->getIdFromUsername($username);
 		$data['data_fullname'] = $this->Hour->getFullnameFromUsername($username);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 
 		$data['hourWeek'] = $this->Hour->getHour($id_user, $premierJour, $lastJour);
@@ -1029,7 +1038,7 @@ public function newDeleteSpe()
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
 		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
@@ -1056,8 +1065,8 @@ public function newDeleteSpe()
 		}*/
 		$t = new DateTime(date("Y-m-d", strtotime("today")));
 		$data['nbSemaine'] = $t->format("W");
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->session->set_userdata('sessionData', $data);
 
@@ -1093,7 +1102,7 @@ public function newDeleteSpe()
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -1112,7 +1121,7 @@ public function newDeleteSpe()
 
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -1137,7 +1146,7 @@ public function newDeleteSpe()
 		$data_image = strtolower($data_prenom) . "_" . strtolower($data_nom) . ".png";
 		$data_num = str_replace(' ', '', $data_num);
 		$data_num = str_replace('-', '', $data_num);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$data_proche_num = str_replace(' ', '', $data_proche_num);
 		$data_proche_num = str_replace('-', '', $data_proche_num);
@@ -1179,7 +1188,7 @@ public function newDeleteSpe()
 
 			$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 			$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-			$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+			$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar',$data);
@@ -1200,7 +1209,7 @@ public function newDeleteSpe()
 
 		$data['collPatient'] = $this->Patient->getAllPatient();
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -1221,7 +1230,7 @@ public function newDeleteSpe()
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
 		$data['patient'] = $this->Patient->getPatientData($data_id);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
@@ -1264,7 +1273,7 @@ public function newDeleteSpe()
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['userInfo'] = $this->Services->getUserInfo();
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
-		$data['checkReturnRapport'] = $this->Services->canCreateRapport($this->session->sessionData['id']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/rapport_intern',$data);
@@ -1282,5 +1291,28 @@ public function newDeleteSpe()
 		$return['code'] = 200;
 		echo json_encode($return);
 
+	}
+	function  showReturnedRapport(){
+		$isAvailable = $this->Services->isAvailable();
+		$data = $this->session->userdata('sessionData');
+		$data['onServiceName'] = $isAvailable;
+		$data['userGrade'] = $this->Services->userGrade($this->session->sessionData['username']);
+		$data['name'] = $this->Services->getName($this->session->sessionData['username']);
+		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
+
+		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
+
+		$data['collGrade'] = $this->Services->getAllGrade();
+		$data['userName'] = $this->Services->allUsername();
+		$data['allSpe'] = $this->Services->allSpe();
+		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
+		$data['userInfo'] = $this->Services->getUserInfo();
+		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
+		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
+		$data['returnedRapport'] = $this->returnRapportMod->getReturnedRapport();
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar',$data);
+		$this->load->view('dashboard/rapport_intern',$data);
+		$this->load->view('template/footer');
 	}
 }
