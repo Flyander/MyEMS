@@ -1,7 +1,7 @@
 <?php
 
 
-class returnRapportMod extends  CI_Model
+class ReturnRapportMod extends  CI_Model
 {
 	public function canCreateRapport($id)
 	{
