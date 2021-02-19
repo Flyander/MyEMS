@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-    if (ENVIRONMENT == 'development')
+    if (ENVIRONMENT == 'production')
     {
         $config['base_url'] = 'http://myems.me/';
     }
