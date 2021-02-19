@@ -199,23 +199,25 @@ class Dashboard extends CI_Controller {
 		redirect('/Dashboard/index',$data);
 
 	}
-	public function endSpeService(){
+		public function endSpeService(){
 
 		$data = $this->session->userdata('sessionData');
+
 		$data['onServiceName'] =  $this->Services->isAvailable();
 		$data['onService'] =  1;
 		$data['isSupervisor'] = 0;
+
 		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($data['onServiceName']);
 		else $data['OnServiceName'][0]['spe'] = "N/A";
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
-		$this->Services->takeSpeServices($this->session->sessionData['id']);
+		$this->Services->endSpServices($this->session->sessionData['id']);
 
 		$this->session->unset_userdata('sessionData');
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
 		$this->load->view('dashboard/dispatch_global',$data);
-		redirect('/Dashboard/index');
+		redirect('/Dashboard/index',$data);
 
 	}
 

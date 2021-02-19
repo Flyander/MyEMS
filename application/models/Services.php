@@ -426,6 +426,12 @@ class Services extends CI_Model
 		$query = "UPDATE service set 	isAvailable = 2 where id = $idServices";
 		$this->db->query($query);
 	}
+	public function endSpServices($idUser){
+		$q = "SELECT * from service where id_user = $idUser  and 	isAvailable = 2 order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0]['id'];
+		$query = "UPDATE service set 	isAvailable = 1 where id = $idServices";
+		$this->db->query($query);
+	}
 	public function SpeServicestoService($idUser){
 		$q = "SELECT * from service where id_user = $idUser  and isAvaible = 2 order by id desc";
 		$idServices = $this->db->query($q)->result_array()[0];
