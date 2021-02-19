@@ -60,7 +60,7 @@
 	}
 	else 
 	{
-		define('ENVIRONMENT', 'production');
+		define('ENVIRONMENT', 'development');
 	}
 	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
