@@ -412,6 +412,12 @@ class Services extends CI_Model
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
+	public function  getOnServiceType($id){
+		$q = "SELECT * from service where id_user = ".$id. "  order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0]['id'];
+		$query = "SELECT isAvailable from service where id = $idServices";
+		return $this->db->query($query)->result_array()[0]['isAvailable'];
+	}
 
 	public function getUserInfo(){
 		$query = "SELECT id, gradeName, fullname 

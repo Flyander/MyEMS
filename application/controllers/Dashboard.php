@@ -56,7 +56,7 @@ class Dashboard extends CI_Controller {
 		$data['stateTheme'] = $this->Hour->getThemeFromUsername($this->session->sessionData['username']);
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
-		$data['onService'] = $this->session->sessionData['onService'];
+		$data['onService'] = $this->Services->getOnServiceType($this->session->sessionData['id']);
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
@@ -209,6 +209,8 @@ class Dashboard extends CI_Controller {
 
 		if(!empty($isAvailable) ) $data['onServiceName'][0]['spe'] = $this->Services->getSpeFromUser($data['onServiceName']);
 		else $data['OnServiceName'][0]['spe'] = "N/A";
+
+
 		$data['isAdmin'] = $this->Services->isAdmin($this->session->sessionData['username']);
 		$data['nbSupervisor'] = $this->Services->nbDispatch($this->session->sessionData['username']);
 		$this->Services->endSpServices($this->session->sessionData['id']);
@@ -217,6 +219,8 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('sessionData', $data);
 		$this->load->view('template/header');
 		$this->load->view('dashboard/dispatch_global',$data);
+
+
 		redirect('/Dashboard/index',$data);
 
 	}
