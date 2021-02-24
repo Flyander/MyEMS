@@ -1282,12 +1282,15 @@ public function newDeleteSpe()
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
-		$this->load->view('dashboard/rapport_intern',$data);
+		$this->load->view('dashboard/retourSams/rapport_intern',$data);
 		$this->load->view('template/footer');
 	}
 	function addNewRapportIntern(){
 		$id = $this->input->post('id_user');
 		$date = $this->input->post('dateRapport');
+		$date = str_replace("T"," ",$date);
+		$date .= ":00";
+		var_dump($date);
 		$msg = $this->input->post('msgRapport');
 		$fullname = $this->Services->getFullnameFromid($id)['fullname'];
 		$author = $this->session->sessionData['id'];
@@ -1296,8 +1299,8 @@ public function newDeleteSpe()
 		else $return['message'] = 'KO';
 		$return['code'] = 200;
 		echo json_encode($return);
-
 	}
+
 	function  showReturnedRapport(){
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
@@ -1316,9 +1319,10 @@ public function newDeleteSpe()
 		$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 		$data['returnedRapport'] = $this->returnRapportMod->getReturnedRapport();
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
-		$this->load->view('dashboard/rapport_intern',$data);
+		$this->load->view('dashboard/retourSams/show_rapport_intern',$data);
 		$this->load->view('template/footer');
 	}
 }

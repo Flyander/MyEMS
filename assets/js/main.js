@@ -210,7 +210,7 @@ jQuery(function ($) {
 		var user = $("#idUser").val();
 		var date = $("#date_rapport").val();
 		var msg = $("#rapportMessage").val();
-		console.log(msg)
+		console.log(date)
 		sendRapportIntern(user,date,msg);
 	});
 	$('#pictureBtn').change(function () {

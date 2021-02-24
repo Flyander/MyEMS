@@ -23,7 +23,7 @@ class ReturnRapportMod extends  CI_Model
 		return $this->db->query($querry)->result_array();
 	}
 	public  function AddNewReturnRapport($id_user,$date,$description,$fullname,$author){
-		$querry = "INSERT INTO returnedrapport (`date`,`description`,`id_redactor`,`id_concerned`,`fullname`)values (\"".$date.'","'.$description.'","'.$fullname.'",'.$author.','.$id_user.')';
+		$querry = "INSERT INTO returnedrapport (`date`,`description`,`id_redactor`,`id_concerned`,`fullname`)values (\"".$date.'","'.$description.'","'.$author.'",'.$id_user.',"'.$fullname.'")';
 
 		return $this->db->query($querry);
 
