@@ -325,7 +325,12 @@ class Services extends CI_Model
 		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`, `num`) 
 		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin', '$data_num')";
 		$queryResult = $this->db->query($query);
+		$query = "SELECT id from users order by id desc LIMIT 0,1";
+		$id = $this->db->query($query)->result_array()[0]['id'];
+		$q = "INSERT INTO `service` (`id`, `dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `isPharmacieOpen`, `type`, `id_user`, `county`) VALUES (NULL, current_timestamp(), current_timestamp(), '0', '0', '0', '0', '$id', 'LS')";
+		$this->db->query($q);
 	}
+
 	public function addSpe($data_spe)
 	{
 		$query = "INSERT INTO spe (`name`, `type`) VALUES ('$data_spe', 0)";
