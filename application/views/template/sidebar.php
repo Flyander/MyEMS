@@ -183,8 +183,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     </ul>
                                 </div>
+							<li>
+								<a href="showReturnedRapport">
+									<i class="fa fa-pencil"></i>
+									<span class="menu-text">Voir les retours SAMS  </span>
+								</a>
+							</li>
                             </li>
-
                         <?php } ?>
 
                         <!--<li>

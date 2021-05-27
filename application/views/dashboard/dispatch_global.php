@@ -66,22 +66,22 @@
 									</div>
 									<div class="card-body">
 										<div class="row">
-											<?php if($onService == 0)  { ?> 
+											<?php if($onService == 0 )  { ?>
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-success w-100 rounded-0" href='pds' type="button">Prise de service</a>
+
 												</div>
+
 											<?php }else{ ?>
 											<?php if ($onService == 1) {?>
-<!--												<div class="col-md-4 mb-2">-->
-<!--													<a class="btn btn-outline-primary w-100 rounded-0" href='speService'  type="button">Prise de Service spécialité</a>-->
-<!--												</div>-->
+												<div class="col-md-4 mb-2">
+													<a class="btn btn-outline-primary w-100 rounded-0" href='speService'  type="button">Prise de Service spécialité</a>
+												</div>
 											<?php }else{ ?>
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-success w-100 rounded-0" href='endSpeService' type="button">Reprendre le service</a>
 												</div>
-													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
-													</div>
+
 											<?php } ?>
 												<div class="col-md-4 mb-2">
 													<a class="btn btn-outline-danger w-100 rounded-0" href='fds' type="button">Fin de service</a>
@@ -120,16 +120,6 @@
 													</div>
 												<?php } ?>
 
-												<?php if($isPharmacieOpen == 0 && $isPharmacien == 1){ ?>
-													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-brown w-100 rounded-0" href='ouvrirPharmacie' type="button">Ouvrir la pharmacie</a>
-													</div>
-												<?php } ?>
-												<?php if($isPharmacieOpen >= 1){ ?> 
-													<div class="col-md-4 mb-2">
-														<a class="btn btn-outline-brown w-100 rounded-0" href='fermerPharmacie' type="button">Fermer la pharmacie</a>
-													</div>
-												<?php } ?>
 
 											<?php } ?>
 										</div>

@@ -98,21 +98,6 @@ class Services extends CI_Model
 			return false;
 		}
 	}
-	public function canCreateRapport($id)
-	{
-		$condition = "id = $id AND grade_name != 'intern' AND grade_name != 'probies' AND grade_name != 'interne'  ";
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->where($condition);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 1) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public function isOnPause($id)
 	{
 		$condition = "id_user = $id AND isAvailable =2 ";
@@ -340,7 +325,12 @@ class Services extends CI_Model
 		$query = "INSERT INTO users (`fullname`, `password`, `username`, `grade_name`, `isAdmin`, `num`) 
 		VALUES ('$data_fullname', '$data_mdp', '$data_username', '$data_grade', '$data_isAdmin', '$data_num')";
 		$queryResult = $this->db->query($query);
+		$query = "SELECT id from users order by id desc LIMIT 0,1";
+		$id = $this->db->query($query)->result_array()[0]['id'];
+		$q = "INSERT INTO `service` (`id`, `dateStart`, `dateEnd`, `isSupervisor`, `isAvailable`, `isPharmacieOpen`, `type`, `id_user`, `county`) VALUES (NULL, current_timestamp(), current_timestamp(), '0', '0', '0', '0', '$id', 'LS')";
+		$this->db->query($q);
 	}
+
 	public function addSpe($data_spe)
 	{
 		$query = "INSERT INTO spe (`name`, `type`) VALUES ('$data_spe', 0)";
@@ -427,6 +417,12 @@ class Services extends CI_Model
 		$result = $this->db->query($query)->result_array();
 		return $result;
 	}
+	public function  getOnServiceType($id){
+		$q = "SELECT * from service where id_user = ".$id. "  order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0]['id'];
+		$query = "SELECT isAvailable from service where id = $idServices";
+		return $this->db->query($query)->result_array()[0]['isAvailable'];
+	}
 
 	public function getUserInfo(){
 		$query = "SELECT id, gradeName, fullname 
@@ -439,6 +435,12 @@ class Services extends CI_Model
 		$q = "SELECT * from service where id_user = $idUser  and 	isAvailable = 1 order by id desc";
 		$idServices = $this->db->query($q)->result_array()[0]['id'];
 		$query = "UPDATE service set 	isAvailable = 2 where id = $idServices";
+		$this->db->query($query);
+	}
+	public function endSpServices($idUser){
+		$q = "SELECT * from service where id_user = $idUser  and 	isAvailable = 2 order by id desc";
+		$idServices = $this->db->query($q)->result_array()[0]['id'];
+		$query = "UPDATE service set 	isAvailable = 1 where id = $idServices";
 		$this->db->query($query);
 	}
 	public function SpeServicestoService($idUser){
