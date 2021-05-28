@@ -621,7 +621,7 @@ function showModalWithData(id_bed) {
 				modalHtml += '</div></div>';
 				$("#modalFusillade").html(modalHtml);
 
-				$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+				$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 				$("#submit-modal").click(function () {
 					var data_patient = $("#input-patient").val();
@@ -728,7 +728,7 @@ function validateAppointment(idRdv, fullname , idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -774,7 +774,7 @@ function leaveAppointment(idRdv, fullname , idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -819,7 +819,7 @@ function takeAppointment(idRdv,fullname, idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -868,7 +868,7 @@ function deleteAppointment(id,fullname){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -1022,7 +1022,7 @@ function deleteUserData(username) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1067,7 +1067,7 @@ function  deleteSpeData(spename) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1134,7 +1134,7 @@ function  deleteSpeData(spename) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1180,7 +1180,7 @@ function deleteHoursData(id) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1282,7 +1282,7 @@ function updateUserData(username) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-admin").click(function () {
 						var data_fullname = $("#input-fullname").val();
@@ -1364,7 +1364,7 @@ function getHour(id) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-hours").click(function () {
 						var data_start = $("#input-start").val();
@@ -1470,7 +1470,7 @@ function getUserHour(username) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-admin").click(function () {
 						var data_fullname = $("#input-fullname").val();
@@ -1587,3 +1587,85 @@ function changeTheme(theme) {
 		}
 	});
 }
+
+
+function modalDataPatient(theme) {
+	jQuery.ajax({
+		url: "getUserData",
+		type: "POST",
+		data: {username: 'jripper'},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				user = data.data.dataAccount;
+				allGrade = data.data.collGrade;
+
+				modalHtml = '';
+				modalHtml += '<div class="modal-dialog modal-xl"><div class="modal-content">';
+
+				modalHtml += '<div class="modal-body">';
+					modalHtml += '<input class="listOfPatient"/>';
+					modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
+				modalHtml += '</div>';
+
+
+				modalHtml += '</div></div>';
+				$("#modalFusillade").html(modalHtml);
+
+				
+
+				$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
+				
+
+				if (theme == 'light') {
+					$('.modal-content').removeClass('dark-card');
+					$('.titleLabelTheme').removeClass('dark-label');
+				}
+				else {
+					$('.modal-content').addClass('dark-card');
+					$('.titleLabelTheme').addClass('dark-label');
+				}
+
+				
+				/*var availableTags = [
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"
+				];
+			
+				$(".listOfPatient").autocomplete({
+					source: availableTags
+				});*/
+				
+
+				$("#submit-modal-admin").click(function () {
+					var data_fullname = $("#input-fullname").val();
+					var data_username = $("#input-username").val();
+					var data_grade = $("#select-grade").val();
+					var data_num = $("#input-num").val();
+					setModalWithDataAdmin(data_fullname, data_username, data_grade, username, data_num);
+				});
+			}
+		}
+	});
+}
+

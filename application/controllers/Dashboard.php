@@ -1113,6 +1113,7 @@ public function newDeleteSpe()
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/patient/gestion_patient',$data);
+		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('template/footer');
 	}
 
@@ -1301,7 +1302,7 @@ public function newDeleteSpe()
 		echo json_encode($return);
 	}
 
-	function  showReturnedRapport(){
+	function showReturnedRapport(){
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
