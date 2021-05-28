@@ -1224,6 +1224,15 @@ public function newDeleteSpe()
 		$this->load->view('template/footer');
 	}
 
+	public function getAllPatientList()
+	{
+		$data['collPatient'] = $this->Patient->getAllPatient();
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
 
 	public function dataPatient()
 	{

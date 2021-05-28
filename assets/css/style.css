@@ -1188,12 +1188,9 @@ body {
 }
 
 #myInput {
-	background-image: url("https://www.w3schools.com/css/searchicon.png"); /* Add a search icon to input */
-	background-position: 10px 12px; /* Position the search icon */
-	background-repeat: no-repeat; /* Do not repeat the icon image */
 	width: 100%; /* Full-width */
 	font-size: 16px; /* Increase font-size */
-	padding: 12px 20px 12px 40px; /* Add some padding */
+	padding: 12px 20px 12px 20px; /* Add some padding */
 	border: 1px solid #ddd; /* Add a grey border */
 	margin-bottom: 12px; /* Add some space below the input */
 }
@@ -1483,4 +1480,39 @@ body {
 .modal-open .container-fluid,
 .modal-open .container {
 	-webkit-filter: blur(5px);
+}
+
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	width: 15.9%;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 75%;
+	left: 1.25%;
+	right: 0;
+}
+.autocomplete-items div {
+	padding: 10px;
+	cursor: pointer;
+	background-color: #222831;
+	color: #fff;
+	border-bottom: 1px solid #121212;
+}
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	background-color: #2a313b;
+}
+.autocomplete-active {
+	/*when navigating through the items using the arrow keys:*/
+	background-color: #2a313b !important;
+	color: #ffffff;
+}
+
+.dark-input {
+	background-color: #2a313b !important;
+	border: 1px solid #d4d4d4;
+	color: #ffffff;
 }
