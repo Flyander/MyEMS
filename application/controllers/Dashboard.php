@@ -1070,7 +1070,7 @@ public function newDeleteSpe()
 			}	
 		}*/
 		$t = new DateTime(date("Y-m-d", strtotime("today")));
-		$data['nbSemaine'] = $t->format("W");
+		$data['nbSemaine'] = $t->format("W") - 1;
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
