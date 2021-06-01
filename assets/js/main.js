@@ -1614,7 +1614,7 @@ function modalDataPatient(theme) {
 
 				modalHtml += '<div class="modal-body">';
 					modalHtml += '<input class="input-modal" id="listOfPatient"/>';
-					modalHtml += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
+					modalHtml += '<button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
 				modalHtml += '</div>';
 
 
@@ -1640,15 +1640,6 @@ function modalDataPatient(theme) {
 
 				
 				autocomplete(document.getElementById("listOfPatient"), allPatientName);
-				
-
-				$("#submit-modal-admin").click(function () {
-					var data_fullname = $("#input-fullname").val();
-					var data_username = $("#input-username").val();
-					var data_grade = $("#select-grade").val();
-					var data_num = $("#input-num").val();
-					setModalWithDataAdmin(data_fullname, data_username, data_grade, username, data_num);
-				});
 			}
 		}
 	});
@@ -1663,6 +1654,7 @@ function autocomplete(inp, arr) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
+	  nbElemDisplay = 0;
       if (!val) { return false;}
       currentFocus = -1;
       /*create a DIV element that will contain the items (values):*/
@@ -1673,25 +1665,42 @@ function autocomplete(inp, arr) {
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-              closeAllLists();
-          });
-          a.appendChild(b);
-        }
+			if (arr[i].toUpperCase().indexOf(val.toUpperCase()) > -1 && nbElemDisplay < 4) {
+				/*create a DIV element for each matching element:*/
+				nbElemDisplay++;
+				b = document.createElement("DIV");
+				/*make the matching letters bold:*/
+				check = false
+				for (j = 0; j < arr[i].length; j++) {
+					for (idx = 0; idx < val.length; idx++)
+					{
+						if (arr[i][j].toUpperCase() == val[idx].toUpperCase())
+						{
+							b.innerHTML += "<strong>" + arr[i][j] + "</strong>";
+							check = true
+							break;
+						}
+					}
+					if (check == false) 
+						b.innerHTML += arr[i][j];
+					else
+						check = false;
+					
+				}
+				//b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+				//b.innerHTML += arr[i].substr(val.length);
+				/*insert a input field that will hold the current array item's value:*/
+				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+				/*execute a function when someone clicks on the item value (DIV element):*/
+					b.addEventListener("click", function(e) {
+					/*insert the value for the autocomplete text field:*/
+					inp.value = this.getElementsByTagName("input")[0].value;
+					/*close the list of autocompleted values,
+					(or any other open lists of autocompleted values:*/
+					closeAllLists();
+				});
+				a.appendChild(b);
+			}
       }
   });
   /*execute a function presses a key on the keyboard:*/
