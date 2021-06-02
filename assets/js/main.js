@@ -1544,11 +1544,11 @@ function readURL(input) {
 	}
 }
 
-var test = false;
+darkMode = false;
 bigTheme = 'light';
 
 function toggleDarkMode(theme) {
-	if (theme == 'dark' && test == false) {
+	if (theme == 'dark' && darkMode == false) {
 		$('.background-theme').addClass('dark-background');
 		$('.card').addClass('dark-card');
 		$('.titleLabelTheme').addClass('dark-label');
@@ -1560,7 +1560,7 @@ function toggleDarkMode(theme) {
 
 		$('.titleLabelTheme').addClass('dark-label');
 		bigTheme = 'light';
-		test = true
+		darkMode = true
 	} else {
 		$('.background-theme').removeClass('dark-background');
 		$('.card').removeClass('dark-card');
@@ -1572,8 +1572,19 @@ function toggleDarkMode(theme) {
 		$('.input-theme').removeClass('dark-input');
 		$('.titleLabelTheme').removeClass('dark-label');
 		bigTheme = 'dark';
-		test = false
+		darkMode = false
 	}
+
+	sideBarHtml = '';
+	sideBarHtml += '<div>';
+		sideBarHtml += '<a onclick="changeTheme(\''+ theme +'\')">';
+			if (theme == 'light') 
+				sideBarHtml += '<i class="far fa-moon"></i>';
+			else
+				sideBarHtml += '<i class="fal fa-sun"></i>'
+		sideBarHtml +='</a>'
+	sideBarHtml += '</div>';
+	$('.sidebar-footer').html(sideBarHtml);
 }
 
 function changeTheme(theme) {
@@ -1584,7 +1595,7 @@ function changeTheme(theme) {
 		dataType: 'json',
 		success: function (data) {
 			if (data.code == 200) {
-				if (data.newTheme == 'dark' && test == false) {
+				if (data.newTheme == 'dark' && darkMode == false) {
 					$('.background-theme').addClass('dark-background');
 					$('.card').addClass('dark-card');
 					$('.titleLabelTheme').addClass('dark-label');
@@ -1594,7 +1605,7 @@ function changeTheme(theme) {
 					$('.modal-content').addClass('dark-card');
 					$('.input-modal').addClass('dark-input');
 					$('.titleLabelTheme').addClass('dark-label');
-					test = true
+					darkMode = true
 				} else {
 					$('.background-theme').removeClass('dark-background');
 					$('.card').removeClass('dark-card');
@@ -1605,8 +1616,20 @@ function changeTheme(theme) {
 					$('.modal-content').removeClass('dark-card');
 					$('.input-modal').removeClass('dark-input');
 					$('.titleLabelTheme').removeClass('dark-label');
-					test = false
+					darkMode = false
 				}
+				sideBarHtml = '';
+				sideBarHtml += '<div>';
+					sideBarHtml += '<a onclick="changeTheme(\''+ data.newTheme +'\')">';
+						if (data.newTheme == 'light') 
+							sideBarHtml += '<i class="far fa-moon"></i>';
+						else
+							sideBarHtml += '<i class="fal fa-sun"></i>'
+					sideBarHtml +='</a>'
+				sideBarHtml += '</div>';
+
+
+				$('.sidebar-footer').html(sideBarHtml);
 			}
 		}
 	});
