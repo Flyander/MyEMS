@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <!-- sidebar-menu  -->
                     </div>
-                    <div class="sidebar-footer">
+                    <div class="sidebar-footer usepointer">
                         <div>
                             <a onclick="changeTheme('<?php echo $stateTheme ?>')">
                                 <?php if ($stateTheme == 'light') { ?>
