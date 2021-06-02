@@ -1405,6 +1405,8 @@ body {
 
 #pictureBtn {
 	display: none;
+	width: 286px;
+	height: 325px;
 }
 
 .picture-display {
@@ -1482,18 +1484,28 @@ body {
 	filter: blur(5px);
 }
 
+.autocomplete {
+	position: relative;
+	display: block;
+	border-radius: 0;
+	margin: 0 auto;
+	width: 100%;
+	height: 2.5em;
+}
+
 .autocomplete-items {
 	position: absolute;
 	border: 1px solid #d4d4d4;
 	border-bottom: none;
 	border-top: none;
-	z-index: 99;
-	width: 48.4%;
+	z-index: 9999999 !important;
+	width: 50%;
 	/*position the autocomplete items to be the same width as the container:*/
-	top: 79%;
-	left: 25.8%;
+	top: 100%;
+	left: 25%;
 	right: 0;
 }
+
 .autocomplete-items div {
 	padding: 10px;
 	cursor: pointer;
@@ -1501,10 +1513,12 @@ body {
 	color: #fff;
 	border-bottom: 1px solid #121212;
 }
+
 .autocomplete-items div:hover {
 	/*when hovering an item:*/
 	background-color: #2a313b;
 }
+
 .autocomplete-active {
 	/*when navigating through the items using the arrow keys:*/
 	background-color: #2a313b !important;
@@ -1515,11 +1529,20 @@ body {
 	background-color: #2a313b !important;
 	border: 1px solid #d4d4d4;
 	color: #ffffff;
+	outline: none;
+}
+
+.dark-input:focus,
+.dark-input:active {
+	border: 2px solid #d4d4d4;
+	color: #ffffff;
+	outline: none;
 }
 
 .input-modal {
 	border-radius: 0;
 	text-align: center;
+	outline: none;
 }
 
 .input-modal:focus,

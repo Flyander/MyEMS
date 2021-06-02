@@ -1234,6 +1234,18 @@ public function newDeleteSpe()
 		echo json_encode($return);
 	}
 
+	public function getDataPatient()
+	{
+		$patient = $this->input->post('patient');
+
+		$data['patient'] = $this->Patient->getPatientDataByName($patient);
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
 	public function dataPatient()
 	{
 		$data_id = $this->input->get('id');

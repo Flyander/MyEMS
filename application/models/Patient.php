@@ -29,6 +29,16 @@ class Patient extends CI_Model
 		return $result[0];
 	}
 
+	public function getPatientDataByName($fullname)
+	{
+		$query = "SELECT * 
+		FROM patient
+		WHERE fullname='$fullname'";
+		$queryResult = $this->db->query($query);
+		$result = $queryResult->result_array();
+		return $result[0];
+	}
+
 	public function getImageForSideBar($username)
 	{
 		$query = "SELECT imagePath

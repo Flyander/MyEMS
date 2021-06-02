@@ -1545,6 +1545,7 @@ function readURL(input) {
 }
 
 var test = false;
+bigTheme = 'light';
 
 function toggleDarkMode(theme) {
 	if (theme == 'dark' && test == false) {
@@ -1552,7 +1553,13 @@ function toggleDarkMode(theme) {
 		$('.card').addClass('dark-card');
 		$('.titleLabelTheme').addClass('dark-label');
 		$('.table').addClass('table-dark');
-		$('#myInput').addClass('dark-input')
+		$('#myInput').addClass('dark-input');
+		$('.input-theme').addClass('dark-input');
+		$('.modal-content').addClass('dark-card');
+		$('.input-modal').addClass('dark-input');
+
+		$('.titleLabelTheme').addClass('dark-label');
+		bigTheme = 'light';
 		test = true
 	} else {
 		$('.background-theme').removeClass('dark-background');
@@ -1560,6 +1567,11 @@ function toggleDarkMode(theme) {
 		$('.titleLabelTheme').removeClass('dark-label');
 		$('.table').removeClass('table-dark');
 		$('#myInput').removeClass('dark-input')
+		$('.modal-content').removeClass('dark-card');
+		$('.input-modal').removeClass('dark-input');
+		$('.input-theme').removeClass('dark-input');
+		$('.titleLabelTheme').removeClass('dark-label');
+		bigTheme = 'dark';
 		test = false
 	}
 }
@@ -1578,13 +1590,21 @@ function changeTheme(theme) {
 					$('.titleLabelTheme').addClass('dark-label');
 					$('.table').addClass('table-dark');
 					$('#myInput').addClass('dark-input')
+					$('.input-theme').addClass('dark-input');
+					$('.modal-content').addClass('dark-card');
+					$('.input-modal').addClass('dark-input');
+					$('.titleLabelTheme').addClass('dark-label');
 					test = true
 				} else {
 					$('.background-theme').removeClass('dark-background');
 					$('.card').removeClass('dark-card');
 					$('.titleLabelTheme').removeClass('dark-label');
 					$('.table').removeClass('table-dark');
-					$('#myInput').removeClass('dark-input')
+					$('#myInput').removeClass('dark-input');
+					$('.input-theme').removeClass('dark-input');
+					$('.modal-content').removeClass('dark-card');
+					$('.input-modal').removeClass('dark-input');
+					$('.titleLabelTheme').removeClass('dark-label');
 					test = false
 				}
 			}
@@ -1610,10 +1630,12 @@ function modalDataPatient(theme) {
 
 
 				modalHtml = '';
+				modalBodyHtml = '';
 				modalHtml += '<div class="modal-dialog modal-xl"><div class="modal-content">';
 
-				modalHtml += '<div class="modal-body">';
-					modalHtml += '<input class="input-modal" id="listOfPatient"/>';
+
+				modalHtml += '<div class="modal-body" id="modalBody">';
+					modalHtml += '<div class="autocomplete"><input class="input-modal" id="listOfPatient"/></div>';
 					modalHtml += '<button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
 				modalHtml += '</div>';
 
@@ -1624,7 +1646,11 @@ function modalDataPatient(theme) {
 				
 
 				$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
-				
+
+
+				modalBodyHtml += '<div class="autocomplete"><input class="input-modal" id="listOfPatient"/></div>';
+				modalBodyHtml += '<button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
+					
 				
 
 				if (theme == 'light') {
@@ -1639,13 +1665,13 @@ function modalDataPatient(theme) {
 				}
 
 				
-				autocomplete(document.getElementById("listOfPatient"), allPatientName);
+				autocomplete(document.getElementById("listOfPatient"), allPatientName, theme);
 			}
 		}
 	});
 }
 
-function autocomplete(inp, arr) {
+function autocomplete(inp, arr, theme) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -1697,6 +1723,7 @@ function autocomplete(inp, arr) {
 					inp.value = this.getElementsByTagName("input")[0].value;
 					/*close the list of autocompleted values,
 					(or any other open lists of autocompleted values:*/
+					onInputChangePatient(inp.value, arr, theme)
 					closeAllLists();
 				});
 				a.appendChild(b);
@@ -1761,4 +1788,40 @@ function autocomplete(inp, arr) {
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
+}
+
+function onInputChangePatient(patient, allPatientName, theme)
+{
+	jQuery.ajax({
+		url: "getDataPatient",
+		type: "POST",
+		data: {patient: patient},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				dataPatient = data.data.patient;
+				$("#modalBody").html(modalBodyHtml);
+
+				newModalBodyHtml = modalBodyHtml
+				newModalBodyHtml += '<img id="blah" class="" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
+
+
+				$("#modalBody").html(newModalBodyHtml);
+				$('#listOfPatient').val(patient);
+
+				if (theme == 'light') {
+					$('.modal-content').removeClass('dark-card');
+					$('.input-modal').removeClass('dark-input')
+					$('.titleLabelTheme').removeClass('dark-label');
+				}
+				else {
+					$('.modal-content').addClass('dark-card');
+					$('.input-modal').addClass('dark-input')
+					$('.titleLabelTheme').addClass('dark-label');
+				}
+
+				autocomplete(document.getElementById("listOfPatient"), allPatientName, theme);
+			}
+		}
+	});
 }
