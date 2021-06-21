@@ -622,7 +622,7 @@ function showModalWithData(id_bed) {
 				modalHtml += '</div></div>';
 				$("#modalFusillade").html(modalHtml);
 
-				$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+				$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 				$("#submit-modal").click(function () {
 					var data_patient = $("#input-patient").val();
@@ -729,7 +729,7 @@ function validateAppointment(idRdv, fullname , idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -775,7 +775,7 @@ function leaveAppointment(idRdv, fullname , idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -820,7 +820,7 @@ function takeAppointment(idRdv,fullname, idUser){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -869,7 +869,7 @@ function deleteAppointment(id,fullname){
 	modalHtml += '</div></div>';
 	$("#modalFusillade").html(modalHtml);
 
-	$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+	$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 	$("#submit-modal-yes").click(function () {
 		jQuery.ajax({
@@ -1023,7 +1023,7 @@ function deleteUserData(username) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1068,7 +1068,7 @@ function  deleteSpeData(spename) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1135,7 +1135,7 @@ function  deleteSpeData(spename) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1181,7 +1181,7 @@ function deleteHoursData(id) {
 		modalHtml += '</div></div>';
 		$("#modalFusillade").html(modalHtml);
 
-		$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+		$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 		$("#submit-modal-yes").click(function () {
 			jQuery.ajax({
@@ -1283,7 +1283,7 @@ function updateUserData(username) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-admin").click(function () {
 						var data_fullname = $("#input-fullname").val();
@@ -1365,7 +1365,7 @@ function getHour(id) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-hours").click(function () {
 						var data_start = $("#input-start").val();
@@ -1471,7 +1471,7 @@ function getUserHour(username) {
 					modalHtml += '</div></div>';
 					$("#modalFusillade").html(modalHtml);
 
-					$('#modalFusillade').modal({backdrop: 'static', keyboard: false});
+					$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
 
 					$("#submit-modal-admin").click(function () {
 						var data_fullname = $("#input-fullname").val();
@@ -1545,22 +1545,47 @@ function readURL(input) {
 	}
 }
 
-var test = false;
+darkMode = false;
+bigTheme = 'light';
 
 function toggleDarkMode(theme) {
-	if (theme == 'dark' && test == false) {
+	if (theme == 'dark' && darkMode == false) {
 		$('.background-theme').addClass('dark-background');
 		$('.card').addClass('dark-card');
 		$('.titleLabelTheme').addClass('dark-label');
 		$('.table').addClass('table-dark');
-		test = true
+		$('#myInput').addClass('dark-input');
+		$('.input-theme').addClass('dark-input');
+		$('.modal-content').addClass('dark-card');
+		$('.input-modal').addClass('dark-input');
+
+		$('.titleLabelTheme').addClass('dark-label');
+		bigTheme = 'light';
+		darkMode = true
 	} else {
 		$('.background-theme').removeClass('dark-background');
 		$('.card').removeClass('dark-card');
 		$('.titleLabelTheme').removeClass('dark-label');
 		$('.table').removeClass('table-dark');
-		test = false
+		$('#myInput').removeClass('dark-input')
+		$('.modal-content').removeClass('dark-card');
+		$('.input-modal').removeClass('dark-input');
+		$('.input-theme').removeClass('dark-input');
+		$('.titleLabelTheme').removeClass('dark-label');
+		bigTheme = 'dark';
+		darkMode = false
 	}
+
+	sideBarHtml = '';
+	sideBarHtml += '<div>';
+		sideBarHtml += '<a onclick="changeTheme(\''+ theme +'\')">';
+			if (theme == 'light') 
+				sideBarHtml += '<i class="far fa-moon"></i>';
+			else
+				sideBarHtml += '<i class="fal fa-sun"></i>'
+		sideBarHtml +='</a>'
+	sideBarHtml += '</div>';
+	$('.sidebar-footer').html(sideBarHtml);
 }
 
 function changeTheme(theme) {
@@ -1571,19 +1596,255 @@ function changeTheme(theme) {
 		dataType: 'json',
 		success: function (data) {
 			if (data.code == 200) {
-				if (data.newTheme == 'dark' && test == false) {
+				if (data.newTheme == 'dark' && darkMode == false) {
 					$('.background-theme').addClass('dark-background');
 					$('.card').addClass('dark-card');
 					$('.titleLabelTheme').addClass('dark-label');
 					$('.table').addClass('table-dark');
-					test = true
+					$('#myInput').addClass('dark-input')
+					$('.input-theme').addClass('dark-input');
+					$('.modal-content').addClass('dark-card');
+					$('.input-modal').addClass('dark-input');
+					$('.titleLabelTheme').addClass('dark-label');
+					darkMode = true
 				} else {
 					$('.background-theme').removeClass('dark-background');
 					$('.card').removeClass('dark-card');
 					$('.titleLabelTheme').removeClass('dark-label');
 					$('.table').removeClass('table-dark');
-					test = false
+					$('#myInput').removeClass('dark-input');
+					$('.input-theme').removeClass('dark-input');
+					$('.modal-content').removeClass('dark-card');
+					$('.input-modal').removeClass('dark-input');
+					$('.titleLabelTheme').removeClass('dark-label');
+					darkMode = false
 				}
+				sideBarHtml = '';
+				sideBarHtml += '<div>';
+					sideBarHtml += '<a onclick="changeTheme(\''+ data.newTheme +'\')">';
+						if (data.newTheme == 'light') 
+							sideBarHtml += '<i class="far fa-moon"></i>';
+						else
+							sideBarHtml += '<i class="fal fa-sun"></i>'
+					sideBarHtml +='</a>'
+				sideBarHtml += '</div>';
+
+
+				$('.sidebar-footer').html(sideBarHtml);
+			}
+		}
+	});
+}
+
+
+function modalDataPatient(theme) {
+	jQuery.ajax({
+		url: "getAllPatientList",
+		type: "POST",
+		data: {},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				var allPatient = data.data.collPatient;
+				var allPatientName = [];
+
+				jQuery.each(allPatient, function (i, item) {
+					allPatientName.push(item.fullname)
+				});
+
+
+				modalHtml = '';
+				modalBodyHtml = '';
+				modalHtml += '<div class="modal-dialog modal-xl"><div class="modal-content">';
+
+
+				modalHtml += '<div class="modal-body" id="modalBody">';
+					modalHtml += '<div class="autocomplete"><input class="input-modal" id="listOfPatient"/></div>';
+					modalHtml += '<button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
+				modalHtml += '</div>';
+
+
+				modalHtml += '</div></div>';
+				$("#modalFusillade").html(modalHtml);
+
+				
+
+				$('#modalFusillade').modal({backdrop: 'static', keyboard: true});
+
+
+				modalBodyHtml += '<div class="autocomplete"><input class="input-modal" id="listOfPatient"/></div>';
+				modalBodyHtml += '<button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="titleLabelTheme">&times;</span></button>';
+					
+				
+
+				if (theme == 'light') {
+					$('.modal-content').removeClass('dark-card');
+					$('.input-modal').removeClass('dark-input')
+					$('.titleLabelTheme').removeClass('dark-label');
+				}
+				else {
+					$('.modal-content').addClass('dark-card');
+					$('.input-modal').addClass('dark-input')
+					$('.titleLabelTheme').addClass('dark-label');
+				}
+
+				
+				autocomplete(document.getElementById("listOfPatient"), allPatientName, theme);
+			}
+		}
+	});
+}
+
+function autocomplete(inp, arr, theme) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+	  nbElemDisplay = 0;
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+			if (arr[i].toUpperCase().indexOf(val.toUpperCase()) > -1 && nbElemDisplay < 4) {
+				/*create a DIV element for each matching element:*/
+				nbElemDisplay++;
+				b = document.createElement("DIV");
+				/*make the matching letters bold:*/
+				check = false
+				for (j = 0; j < arr[i].length; j++) {
+					for (idx = 0; idx < val.length; idx++)
+					{
+						if (arr[i][j].toUpperCase() == val[idx].toUpperCase())
+						{
+							b.innerHTML += "<strong>" + arr[i][j] + "</strong>";
+							check = true
+							break;
+						}
+					}
+					if (check == false) 
+						b.innerHTML += arr[i][j];
+					else
+						check = false;
+					
+				}
+				//b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+				//b.innerHTML += arr[i].substr(val.length);
+				/*insert a input field that will hold the current array item's value:*/
+				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+				/*execute a function when someone clicks on the item value (DIV element):*/
+					b.addEventListener("click", function(e) {
+					/*insert the value for the autocomplete text field:*/
+					inp.value = this.getElementsByTagName("input")[0].value;
+					/*close the list of autocompleted values,
+					(or any other open lists of autocompleted values:*/
+					onInputChangePatient(inp.value, arr, theme)
+					closeAllLists();
+				});
+				a.appendChild(b);
+			}
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
+}
+
+function onInputChangePatient(patient, allPatientName, theme)
+{
+	jQuery.ajax({
+		url: "getDataPatient",
+		type: "POST",
+		data: {patient: patient},
+		dataType: 'json',
+		success: function (data) {
+			if (data.code == 200) {
+				dataPatient = data.data.patient;
+				$("#modalBody").html(modalBodyHtml);
+
+				newModalBodyHtml = modalBodyHtml
+				newModalBodyHtml += '<img id="blah" class="" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
+
+
+				$("#modalBody").html(newModalBodyHtml);
+				$('#listOfPatient').val(patient);
+
+				if (theme == 'light') {
+					$('.modal-content').removeClass('dark-card');
+					$('.input-modal').removeClass('dark-input')
+					$('.titleLabelTheme').removeClass('dark-label');
+				}
+				else {
+					$('.modal-content').addClass('dark-card');
+					$('.input-modal').addClass('dark-input')
+					$('.titleLabelTheme').addClass('dark-label');
+				}
+
+				autocomplete(document.getElementById("listOfPatient"), allPatientName, theme);
 			}
 		}
 	});

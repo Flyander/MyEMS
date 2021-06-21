@@ -1070,7 +1070,7 @@ public function newDeleteSpe()
 			}	
 		}*/
 		$t = new DateTime(date("Y-m-d", strtotime("today")));
-		$data['nbSemaine'] = $t->format("W");
+		$data['nbSemaine'] = $t->format("W") - 1;
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 		$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
@@ -1113,6 +1113,7 @@ public function newDeleteSpe()
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
 		$this->load->view('dashboard/patient/gestion_patient',$data);
+		$this->load->view('modal/modal_fusillade',$data);
 		$this->load->view('template/footer');
 	}
 
@@ -1223,6 +1224,27 @@ public function newDeleteSpe()
 		$this->load->view('template/footer');
 	}
 
+	public function getAllPatientList()
+	{
+		$data['collPatient'] = $this->Patient->getAllPatient();
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
+
+	public function getDataPatient()
+	{
+		$patient = $this->input->post('patient');
+
+		$data['patient'] = $this->Patient->getPatientDataByName($patient);
+
+		$return['data'] = $data;
+		$return['code'] = 200;
+		 
+		echo json_encode($return);
+	}
 
 	public function dataPatient()
 	{
@@ -1301,7 +1323,7 @@ public function newDeleteSpe()
 		echo json_encode($return);
 	}
 
-	function  showReturnedRapport(){
+	function showReturnedRapport(){
 		$isAvailable = $this->Services->isAvailable();
 		$data = $this->session->userdata('sessionData');
 		$data['onServiceName'] = $isAvailable;
