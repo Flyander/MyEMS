@@ -483,8 +483,9 @@ function sendRapportIntern(user, date , msg) {
 			},
 			dataType: 'json',
 			success: function (data) {
-				console.log("test")
 				if (data.code === 200) {
+					console.log("ici")
+
 					$('#footer-btn-rapportIntern').html('')
 					$("#footer-btn-rapportIntern").html('<button type="button" id="submit-addRapportUser" class="btn btn-success right"><i class="fas fa-check"></i> Ajout réussie</button>');
 

@@ -1312,7 +1312,6 @@ public function newDeleteSpe()
 		$date = $this->input->post('dateRapport');
 		$date = str_replace("T"," ",$date);
 		$date .= ":00";
-		var_dump($date);
 		$msg = $this->input->post('msgRapport');
 		$fullname = $this->Services->getFullnameFromid($id)['fullname'];
 		$author = $this->session->sessionData['id'];
