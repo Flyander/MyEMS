@@ -1826,10 +1826,16 @@ function onInputChangePatient(patient, allPatientName, theme)
 			if (data.code == 200) {
 				dataPatient = data.data.patient;
 				$("#modalBody").html(modalBodyHtml);
+				console.log(dataPatient);
 
 				newModalBodyHtml = modalBodyHtml
-				newModalBodyHtml += '<img id="blah" class="" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
-
+				newModalBodyHtml += '<div class="patient-card">'
+					newModalBodyHtml += '<div class="patient-item">'
+						newModalBodyHtml += '<img id="blah" class="img-patient noselect" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
+						newModalBodyHtml += '<h4 class="patient-fullname">'+ dataPatient.fullname +'</h4>'
+						newModalBodyHtml += '<p class="patient-number">'+ dataPatient.numero +'</p>'
+					newModalBodyHtml += '</div>'
+				newModalBodyHtml += '</div>'
 
 				$("#modalBody").html(newModalBodyHtml);
 				$('#listOfPatient').val(patient);

@@ -1420,11 +1420,10 @@ body {
 }
 
 #blah {
-	color: gray;
-	border: solid;
-	border-radius: 4px;
-	width: 235px;
-	height: 270px;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	width: 180px;
+	height: 203px;
 	font-size: 8em;
 	transition: 0.2s;
 
@@ -1566,4 +1565,37 @@ body {
 	margin: 0 auto;
 	width: 50%;
 	height: 2.5em;
+}
+
+.patient-card {
+	margin-top: 2%;
+	width: 100%;
+	border-radius: 2px;
+	background-color: #2a313b;
+}
+
+.img-patient {
+	margin-top: 2%;
+}
+
+.patient-item {
+	vertical-align: top;
+	display: inline-block;
+	/* To horizontally center images and caption */
+	text-align: center;
+	/* The width of the container also implies margin around the images. */
+	width: 203px;
+	margin-top: 2%;
+	margin-left: 2%;
+}
+
+.patient-fullname {
+	display: block;
+	margin-top: 4%;
+	margin-bottom: 0%;
+}
+
+.patient-number {
+	color: #4e5053;
+	font-size: 1em;
 }

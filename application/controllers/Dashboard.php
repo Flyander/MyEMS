@@ -1197,10 +1197,7 @@ public function newDeleteSpe()
 			$data['imagePath'] = $this->Patient->getImageForSideBar($this->session->sessionData['username']);
 			$data['checkReturnRapport'] = $this->returnRapportMod->canCreateRapport($this->session->sessionData['id']);
 
-			$this->load->view('template/header');
-			$this->load->view('template/sidebar',$data);
-			$this->load->view('dashboard/patient/gestion_patient',$data);
-			$this->load->view('template/footer');
+			redirect('/Dashboard/gestionPatient',$data);
         }
 	}
 	
@@ -1312,6 +1309,7 @@ public function newDeleteSpe()
 		$date = $this->input->post('dateRapport');
 		$date = str_replace("T"," ",$date);
 		$date .= ":00";
+		var_dump($date);
 		$msg = $this->input->post('msgRapport');
 		$fullname = $this->Services->getFullnameFromid($id)['fullname'];
 		$author = $this->session->sessionData['id'];
