@@ -5,6 +5,8 @@ MyEMS is a medical panel built with Codeigniter that allows the management, enco
 
 This open source project is still being deployed and continues to receive content updates on an ongoing basis. (http://myems.me/)
 
+https://user-images.githubusercontent.com/48117641/130049904-6aefb145-291d-4579-9535-8a52830ed386.mp4
+
 # Installation
 
 ### Using git
