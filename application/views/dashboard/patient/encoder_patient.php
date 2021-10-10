@@ -95,7 +95,7 @@
 
                                     <div style="margin-top: 1%;"></div> <!-- separator -->
 
-                                    <label class="control-label col-sm-3" for="username">Date de naissance (Sous le format xx/xx/xxxx):</label>
+                                    <label class="control-label col-sm-3" for="username">Date de naissance (Sous le format xx/xx/xxxx) :</label>
                                     <div class="col-sm-10">
                                         <input type="username" class="form-control input-theme" name="newPatient-dob"
                                             placeholder="Date de naissance">
