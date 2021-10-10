@@ -1827,6 +1827,12 @@ function onInputChangePatient(patient, allPatientName, theme)
 				dataPatient = data.data.patient;
 				$("#modalBody").html(modalBodyHtml);
 				console.log(dataPatient);
+				var dobSplit = dataPatient.dob.split("/");
+				var dateDob = new Date(dobSplit[2], dobSplit[1], dobSplit[0]);
+				
+				var diff = Date.now() - dateDob.getTime();
+				var age = new Date(diff)
+				age = Math.abs(age.getUTCFullYear() - 1970);
 
 				newModalBodyHtml = modalBodyHtml
 				newModalBodyHtml += '<div class="patient-card">'
@@ -1834,6 +1840,40 @@ function onInputChangePatient(patient, allPatientName, theme)
 						newModalBodyHtml += '<img id="blah" class="img-patient noselect" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
 						newModalBodyHtml += '<h4 class="patient-fullname">'+ dataPatient.fullname +'</h4>'
 						newModalBodyHtml += '<p class="patient-number">'+ dataPatient.numero +'</p>'
+					newModalBodyHtml += '</div>'
+					
+					newModalBodyHtml += '<div class="patient-item patient-item-center patient-item-bigger">'
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Taille :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.height +' cm</h1>'
+						newModalBodyHtml += '</div>'
+
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Groupe Sanguin :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.gs +'</h1>'
+						newModalBodyHtml += '</div>'
+
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Date de naissance :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.dob +' ('+ age +' ans)</h1>'
+						newModalBodyHtml += '</div>'
+					newModalBodyHtml += '</div>'
+
+					newModalBodyHtml += '<div class="patient-item patient-item-center patient-item-bigger">'
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Poids :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.weight +' kg</h1>'
+						newModalBodyHtml += '</div>'
+
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Nom d\'un proche :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.name_proche +'</h1>'
+						newModalBodyHtml += '</div>'
+
+						newModalBodyHtml += '<div class="patient-align-container">'
+							newModalBodyHtml += '<h1 class="patient-label">Numéro du proche :</h1>'
+							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.num_proche +'</h1>'
+						newModalBodyHtml += '</div>'
 					newModalBodyHtml += '</div>'
 				newModalBodyHtml += '</div>'
 

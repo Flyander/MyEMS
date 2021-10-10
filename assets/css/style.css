@@ -1568,21 +1568,27 @@ body {
 }
 
 .patient-card {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
 	margin-top: 2%;
 	width: 100%;
 	border-radius: 2px;
+	gap: 3%;
 	background-color: #2a313b;
 }
 
 .img-patient {
 	margin-top: 2%;
+	margin-left: 6%;
 }
 
 .patient-item {
-	vertical-align: top;
-	display: inline-block;
-	/* To horizontally center images and caption */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	text-align: center;
+	/* To horizontally center images and caption */
 	/* The width of the container also implies margin around the images. */
 	width: 203px;
 	margin-top: 2%;
@@ -1596,6 +1602,36 @@ body {
 }
 
 .patient-number {
-	color: #4e5053;
+	color: #b0b0b0;
+	font-weight: 500;
 	font-size: 1em;
+}
+
+.patient-align-container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 5%;
+	padding-bottom: 8%;
+	flex-shrink: 1;
+}
+
+.patient-label {
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 1.15em;
+}
+
+.patient-value {
+	color: #b0b0b0;
+	font-weight: 500;
+	font-size: 1.15em;
+}
+
+.patient-item-bigger {
+	width: 350px;
+}
+
+.patient-item-center {
+	margin-top: 5%;
 }
