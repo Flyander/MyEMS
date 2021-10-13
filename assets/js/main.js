@@ -1820,13 +1820,18 @@ function onInputChangePatient(patient, allPatientName, theme)
 	jQuery.ajax({
 		url: "getDataPatient",
 		type: "POST",
+		async: false,
 		data: {patient: patient},
 		dataType: 'json',
+		beforeSend: function (data) {
+			var shimmerHtml = modalBodyHtml
+			shimmerHtml += createSkeleton()
+
+			$("#modalBody").html(shimmerHtml);
+		},
 		success: function (data) {
 			if (data.code == 200) {
 				dataPatient = data.data.patient;
-				$("#modalBody").html(modalBodyHtml);
-				console.log(dataPatient);
 				var dobSplit = dataPatient.dob.split("/");
 				var dateDob = new Date(dobSplit[2], dobSplit[1], dobSplit[0]);
 				
@@ -1835,47 +1840,12 @@ function onInputChangePatient(patient, allPatientName, theme)
 				age = Math.abs(age.getUTCFullYear() - 1970);
 
 				newModalBodyHtml = modalBodyHtml
-				newModalBodyHtml += '<div class="patient-card">'
-					newModalBodyHtml += '<div class="patient-item">'
-						newModalBodyHtml += '<img id="blah" class="img-patient noselect" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
-						newModalBodyHtml += '<h4 class="patient-fullname">'+ dataPatient.fullname +'</h4>'
-						newModalBodyHtml += '<p class="patient-number">'+ dataPatient.numero +'</p>'
-					newModalBodyHtml += '</div>'
-					
-					newModalBodyHtml += '<div class="patient-item patient-item-center patient-item-bigger">'
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Taille :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.height +' cm</h1>'
-						newModalBodyHtml += '</div>'
+				newModalBodyHtml = researchPatientHtml(dataPatient, newModalBodyHtml, age)
 
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Groupe Sanguin :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.gs +'</h1>'
-						newModalBodyHtml += '</div>'
-
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Date de naissance :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.dob +' ('+ age +' ans)</h1>'
-						newModalBodyHtml += '</div>'
-					newModalBodyHtml += '</div>'
-
-					newModalBodyHtml += '<div class="patient-item patient-item-center patient-item-bigger">'
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Poids :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.weight +' kg</h1>'
-						newModalBodyHtml += '</div>'
-
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Nom d\'un proche :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.name_proche +'</h1>'
-						newModalBodyHtml += '</div>'
-
-						newModalBodyHtml += '<div class="patient-align-container">'
-							newModalBodyHtml += '<h1 class="patient-label">Numéro du proche :</h1>'
-							newModalBodyHtml += '<h1 class="patient-value">'+ dataPatient.num_proche +'</h1>'
-						newModalBodyHtml += '</div>'
-					newModalBodyHtml += '</div>'
-				newModalBodyHtml += '</div>'
+				
+				setTimeout(function(){
+					$("#start-skeleton").addClass('fade-out-effect')
+				}, 1000);
 
 				$("#modalBody").html(newModalBodyHtml);
 				$('#listOfPatient').val(patient);
@@ -1895,4 +1865,84 @@ function onInputChangePatient(patient, allPatientName, theme)
 			}
 		}
 	});
+}
+
+
+function createSkeleton(){
+	var skeletonHTML = ''
+	skeletonHTML += '<div class="patient-card ph-item" id="start-skeleton">'
+		skeletonHTML += '<div class="patient-item">';
+			skeletonHTML += '<div class="ph-avatar ph-border-rect"></div>';
+			
+			skeletonHTML += '<div class="ph-row ph-gap">';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+			skeletonHTML += '</div>';
+		skeletonHTML += '</div>';
+
+		skeletonHTML += '<div class="patient-item">'
+			skeletonHTML += '<div class="ph-row">';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+			skeletonHTML += '</div>';
+		skeletonHTML += '</div>';
+
+		skeletonHTML += '<div class="patient-item">'
+			skeletonHTML += '<div class="ph-row">';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+				skeletonHTML += '<div class="ph-col-12 big"></div>';
+			skeletonHTML += '</div>';
+		skeletonHTML += '</div>';
+	skeletonHTML += '</div>';
+	
+	return skeletonHTML;
+}
+
+
+function researchPatientHtml(dataPatient, strHTML, age)
+{
+	strHTML += '<div class="patient-card fade-in-effect">'
+		strHTML += '<div class="patient-item">'
+			strHTML += '<img id="blah" class="img-patient noselect" src="'+ dataPatient.imagePath +'" alt="" width="140" height="160"/>';
+			strHTML += '<h4 class="patient-fullname">'+ dataPatient.fullname +'</h4>'
+			strHTML += '<p class="patient-number">'+ dataPatient.numero +'</p>'
+		strHTML += '</div>'
+		
+		strHTML += '<div class="patient-item patient-item-center patient-item-bigger">'
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Taille :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.height +' cm</h1>'
+			strHTML += '</div>'
+
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Groupe Sanguin :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.gs +'</h1>'
+			strHTML += '</div>'
+
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Date de naissance :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.dob +' ('+ age +' ans)</h1>'
+				strHTML += '</div>'
+		strHTML += '</div>'
+
+		strHTML += '<div class="patient-item patient-item-center patient-item-bigger">'
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Poids :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.weight +' kg</h1>'
+			strHTML += '</div>'
+
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Nom d\'un proche :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.name_proche +'</h1>'
+			strHTML += '</div>'
+
+			strHTML += '<div class="patient-align-container">'
+				strHTML += '<h1 class="patient-label">Numéro du proche :</h1>'
+				strHTML += '<h1 class="patient-value">'+ dataPatient.num_proche +'</h1>'
+			strHTML += '</div>'
+		strHTML += '</div>'
+	strHTML += '</div>'
+
+	return strHTML;
 }
