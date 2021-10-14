@@ -1750,3 +1750,105 @@ body {
 		opacity: 0;
 	}
 }
+
+/*
+
+HUMAN Anatomy Code Part
+
+*/
+
+.patient-rapport-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	/* To horizontally center images and caption */
+	/* The width of the container also implies margin around the images. */
+	width: 400px;
+	margin-left: 4%;
+}
+
+#anatomywrapper {
+	max-width: 1920px;
+	background-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#anatomybase svg {
+	width: 100%;
+}
+
+#anatomybase svg g path:hover {
+	cursor: pointer;
+}
+
+#tipanatomy {
+	font: 14px/16px Trebuchet MS, Helvetica, Arial, sans-serif;
+	display: none;
+	max-width: 40%;
+	padding: 5px;
+	border: 1px solid #404040;
+	color: #404040;
+	z-index: 1000;
+	float: left;
+	position: absolute;
+	background: rgba(265, 265, 265, 0.9);
+	word-break: keep-all;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+#tipanatomy p {
+	margin: 0 !important;
+	color: #404040 !important;
+}
+#tipanatomy img {
+	float: left;
+	padding: 3px;
+}
+
+@media screen and (max-width: 320px) {
+	#anatomybase svg {
+		height: 540px;
+	}
+	#tipanatomy {
+		max-width: 40%;
+	}
+	#tipanatomy img {
+		max-width: 40%;
+	}
+}
+@media screen and (max-width: 400px) and (min-width: 321px) {
+	#anatomybase svg {
+		height: 610px;
+	}
+}
+@media screen and (max-width: 480px) and (min-width: 401px) {
+	#anatomybase svg {
+		height: 700px;
+	}
+}
+@media screen and (max-width: 568px) and (min-width: 481px) {
+	#anatomybase svg {
+		height: 760px;
+	}
+}
+@media screen and (max-width: 685px) and (min-width: 569px) {
+	#anatomybase svg {
+		height: 860px;
+	}
+}
+@media screen and (max-width: 767px) and (min-width: 686px) {
+	#anatomybase svg {
+		height: 860px;
+	}
+}
+@media screen and (min-width: 768px) {
+	#anatomybase svg {
+		height: 860px;
+	}
+}

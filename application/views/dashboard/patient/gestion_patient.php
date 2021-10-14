@@ -62,7 +62,7 @@
                                             <div class="card gradient-card">
                                                 <div class="card-image"
                                                     style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSo3dkGXkGaRtX5eVyedNs2xtJt_Vq1BIjzoA&usqp=CAU);">
-                                                    <a style="text-decoration: none;" href="#!">
+                                                    <a style="text-decoration: none;" onClick="newRapportPatientModal('<?php echo $stateTheme ?>', '<?php echo base_url()?>')">
                                                         <div class="text-white d-flex h-100 mask peach-gradient-rgba">
                                                             <div class="first-content align-self-center p-3">
                                                                 <h3 class="test-title">Rapport d'intervention</h3>
